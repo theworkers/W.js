@@ -1,4 +1,6 @@
-# W JavaScript Framework for Node.js and Clientside Brower
+# W.js
+
+JavaScript Framework for Node.js and Clientside Brower
 
 ## Libraries
 
@@ -10,7 +12,10 @@
 
 ### _Client Side Only_
 
-W.slideshow.*
+* W.slideshow.*
+
+
+#### o_o
 
 -------------
 
