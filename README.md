@@ -17,6 +17,14 @@ JavaScript Framework for Node.js and Clientside Brower
 
 #### o_o
 
+### Roadmap
+
+* ideas
+    * add
+        * W.warn, W.log, W.stub to node.js
+        * W.flashcomm
+            * *evented flash communication*
+
 -------------
 
 		////////////////////////////    

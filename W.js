@@ -27,14 +27,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-/**
- *  @todo   add W.warn, W.log, W.stub to node.js
- *  @todo   JSDoc
- *
- *
- *
- */
-
 (function () {
 	// module setup inspired by underscore.js
 
@@ -77,7 +69,7 @@
          *
    	 * @example
    	 * 		W.aloop(10, 
-         *                      function (loop, index) {
+         *                      function (index, loop) {
          *                          log(index);
          *                          loop.next();
          *                      },
