@@ -24,6 +24,8 @@ JavaScript Framework for Node.js and Clientside Brower
         * W.warn, W.log, W.stub to node.js
         * W.flashcomm
             * *evented flash communication*
+        * W.symphony
+            * *symphpny datasource and event utilities*
 
 -------------
 
