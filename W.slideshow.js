@@ -69,7 +69,10 @@ if(Function.prototype.method == undefined) {
             this._frontSlide;
             this._nextSlide;
 
+            // State
+            this._isPlaying = false;
             this._isChangingSlide = false;
+            this._intervalID = undefined;
 
             this._currentImageIndex = 0;
             this._albums = [];
@@ -91,8 +94,8 @@ if(Function.prototype.method == undefined) {
             this.SLIDE_WILL_CHANGE = "slidewillchange";
             /** Event */
             this.SLIDE_DID_CHANGE = "slidedidchange";
-            /** Event */
-            this.PLAY_STATE_CHANGED = "playstatechanged";
+            /** Event. Called on play(), stop() etc. */
+            this.PLAY_STATE_CHANGE = "playstatechange";
         };
         
         // extend with dispatcher
@@ -106,6 +109,11 @@ if(Function.prototype.method == undefined) {
         W.slideshow.Controller.prototype._slideDidChange = function () {
             this._isChangingSlide = false;
             this.dispatch(this.SLIDE_DID_CHANGE, this.getStats());
+        }
+
+        W.slideshow.Controller.prototype._playStateChanged = function () {
+            this._isChangingSlide = false;
+            this.dispatch(this.PLAY_STATE_CHANGE, this.getStats());
         }
 
         /**
@@ -204,9 +212,23 @@ if(Function.prototype.method == undefined) {
                 /**
                  * @name play
                  * @methodOf W.slideshow.Controller
+                 * @param   {Boolean} nextSlideOnPlay      Default true. Transition to next image on execution
                  */
-                function () {
-                    W.stub("play");
+                function (nextSlideOnPlay) {
+                    if (this._isPlaying) {
+                         W.w(".play() fail: already playing");
+                        return this;
+                    }
+
+                    // @todo sort logic. when pressed (not auto set) it should load next image
+                    if (nextSlideOnPlay == undefined)  this.nextSlideOnPlay = true;
+
+                    this._intervalID = setInterval(W.bind(this, function () {
+                       this.next();
+                    }), this._settings.slideDuration + this._settings.transitionInTime + this._settings.transitionOutTime);
+
+                    this._isPlaying = true;
+                    this._playStateChanged();
 
                     return this;
                 }
@@ -217,7 +239,16 @@ if(Function.prototype.method == undefined) {
                  * @methodOf W.slideshow.Controller
                  */
                 function () {
-                    W.stub("stop");
+                   if (!this._isPlaying) {
+                         W.w(".stop() fail: already stopped");
+
+                        return this;
+                    }
+
+                    clearInterval(this._intervalID);
+
+                    this._isPlaying = false;
+                    this._playStateChanged();
 
                     return this;
                 }
@@ -492,6 +523,12 @@ if(Function.prototype.method == undefined) {
              * @default true
             */
             this.loops =                    params['loops'] || true;
+            /**
+             * Duration of Slide. Excludes transtition in and out time ( transtition in and out time are added to  play() intervals )
+             * @type    Number
+             * @default 3000
+            */
+            this.slideDuration =                    params['slideDuration'] || 3000;
         }
         W.slideshow.Settings
             .method("mergeSettings",
