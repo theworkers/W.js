@@ -48,13 +48,17 @@ Function.prototype.method = function(name, fn) {
         }
 
        /**
-         *  Creates a new  W.slideshow.Controller shows {@link W.slideshow.SlideAlbum}s.
+         *  Creates a new  W.slideshow.Controller shows {@link W.slideshow.SlideAlbum}s. <br />
+         *  <br />
+         *  W.slideshow.Controller is a slideshow controller that provides its functionality though delegation to provide a slideshow without locked-in functionality
+         *
          *
          *  @augments W.event.Dispatcher
          *
          *  @class
          */
         W.slideshow.Controller = function(/** jQuery */ $view, /** W.slideshow.Settings */ $settings) {
+            
             /** @private  */
 
             /** @memberOf W.slideshow.Controller */
@@ -62,7 +66,14 @@ Function.prototype.method = function(name, fn) {
 
             /** The Dom Object used as the Slideshow container  */
             this._$view = $view;
-            this._items = [];
+            this._frontSlide;
+            this._nextSlide;
+
+            this._isChangingSlide = false;
+
+            this._currentImageIndex = 0;
+            this._albums = [];
+            this._activeAlbum;
             this._hasItems = false;
             this._settings = ($settings == undefined) ? $settings = new W.slideshow.Settings() : $settings;
 
@@ -70,23 +81,32 @@ Function.prototype.method = function(name, fn) {
              *  @memberOf W.slideshow.Controller
              **/
 
-            /** Event */
-            this.IMAGE_CHANGED = "image changed";
-            /** Event */
-            this.PLAY_STATE_CHANGED = "image changed";
-            
-            /**#@-*/
-
             /** Version.
              *  @memberOf W.slideshow.Controller
              **/
-            this.VERSION = "0.0.1";
-        };
+            this.VERSION = "0.1.0";
 
-        // extend dispatcher
+           
+            /** Event. Useful for locking the interaction of control. e.g. addClass(".inactive") until SLIDE_DID_CHANGE is called */
+            this.SLIDE_WILL_CHANGE = "slidewillchange";
+            /** Event */
+            this.SLIDE_DID_CHANGE = "slidedidchange";
+            /** Event */
+            this.PLAY_STATE_CHANGED = "playstatechanged";
+        };
+        
+        // extend with dispatcher
         W.slideshow.Controller.prototype = new W.event.Dispatcher();
 
+        W.slideshow.Controller.prototype._slideWillChange = function () {
+            this._isChangingSlide = true;
+            this.dispatch(this.SLIDE_WILL_CHANGE, this.getStats());
+        }
 
+        W.slideshow.Controller.prototype._slideDidChange = function () {
+            this._isChangingSlide = false;
+            this.dispatch(this.SLIDE_DID_CHANGE, this.getStats());
+        }
 
         /**
          *  Settings
@@ -125,23 +145,15 @@ Function.prototype.method = function(name, fn) {
                  * @name addAlbum
                  * @methodOf W.slideshow.Controller
                  */
-                function (/** W.slideshow.SlideAlbum */ album) {
-                    this._items.push(album);
-                    if(!this._hasItems) {
-                        this.createImage(album.slides[0]);
+                function (/** W.slideshow.SlideAlbum */ album, /** Boolean */ makeActiveAlbum ) {
+                    this._albums.push(album);
+
+                    if (makeActiveAlbum == undefined || album != this._activeAlbum || makeActiveAlbum == true) {
+                       this._activeAlbum = album;
+                       this._currentImageIndex = -1;
+                       this.next();
                     }
-                    return this;
-                }
-            )
-            .method( "createImage",
-                /**
-                 * @name createImage
-                 * @methodOf W.slideshow.Controller
-                 */
-                function (item) {
-                    var $item = $("<img src='" + item.src + "'/>");
-                    this._$view.append($item);
-                    $item.fadeOut(0).fadeIn(this._settings.transitionTime);
+
                     return this;
                 }
             );
@@ -156,6 +168,29 @@ Function.prototype.method = function(name, fn) {
                  */
                 function () {
                     return this._$view;
+                }
+            )
+            .method("getStats",
+                /**
+                 * @name getStats
+                 *
+                 * @methodOf W.slideshow.Controller
+                 * @return {Object} returns state information about the gallery controller
+                 */
+                function () {
+                    return {
+                        totalImages : this._activeAlbum.slides.count,
+                        hasNext : (this.currentImageIndex == this.totalImages - 1),
+                        hasPrevious : (this._activeAlbum.slides.count > 0) ,
+                        currentImageIndex : this._currentImageIndex,
+                        currentImageTitle : "The image",
+                        currentImageDecription : "The images description",
+                        currentImageExtraInfo : {},
+                        callBackImageWillAppear : undefined,
+                        callBackImageDidAppear : undefined,
+                        callBackImageWillDisappear : undefined,
+                        callBackImageDidDisappear : undefined
+                    };
                 }
             );
 
@@ -204,9 +239,22 @@ Function.prototype.method = function(name, fn) {
                  * @methodOf W.slideshow.Controller
                  */
                 function () {
-                    W.stub("next");
-                    W.l(this);
-                    this.dispatch(this.IMAGE_CHANGED);
+                    if (this._isChangingSlide) {
+                        W.w(".next() fail: slide is in the process of changing");
+                        return this;
+                    }
+                    
+                    if (this._currentImageIndex + 1 === this._activeAlbum.slides.length) {
+                        if (this._settings.loops === true)
+                             this._currentImageIndex = -1;
+                        else
+                            return this; // Break
+                    }
+
+                    this._currentImageIndex++;
+                    this._slideWillChange();
+                    
+                    this.transitionSlide(this._activeAlbum.slides[this._currentImageIndex]);
 
                     return this;
                 }
@@ -217,7 +265,22 @@ Function.prototype.method = function(name, fn) {
                  * @methodOf W.slideshow.Controller
                  */
                 function () {
-                    W.stub("previous");
+                    if (this._isChangingSlide) {
+                        W.w(".previous() fail: slide is in the process of changing");
+                        return this;
+                    }
+
+                    if (this._currentImageIndex -1 < 0) {
+                        if (this._settings.loops === true)
+                             this._currentImageIndex = this._activeAlbum.slides.length;
+                        else
+                            return this; // Break
+                    }
+
+                    this._currentImageIndex--;
+                    this._slideWillChange();
+
+                    this.transitionSlide(this._activeAlbum.slides[this._currentImageIndex]);
 
                     return this;
                 }
@@ -228,7 +291,20 @@ Function.prototype.method = function(name, fn) {
                  * @methodOf W.slideshow.Controller
                  */
                 function () {
-                    W.stub("last");
+                    if (this._isChangingSlide) {
+                        W.w(".last() fail: slide is in the process of changing");
+                        return this;
+                    }
+
+                    if (this._currentImageIndex == this._activeAlbum.slides.length - 1) {
+                        W.w(".last() fail: current slide is last");
+                        return this;
+                    }
+
+                    this._currentImageIndex = this._activeAlbum.slides.length - 1;
+                    this._slideWillChange();
+
+                    this.transitionSlide(this._activeAlbum.slides[this._currentImageIndex]);
 
                     return this;
                 }
@@ -239,18 +315,71 @@ Function.prototype.method = function(name, fn) {
                  * @methodOf W.slideshow.Controller
                  */
                 function () {
-                    W.stub("first");
+                    if (this._isChangingSlide) {
+                        W.w(".first() fail: slide is in the process of changing");
+                        return this;
+                    }
+
+                    if (this._currentImageIndex == 0) {
+                        W.w(".first() fail: current slide is first");
+                        return this;
+                    }
+
+                    this._currentImageIndex = 0;
+                    this._slideWillChange();
+
+                    this.transitionSlide(this._activeAlbum.slides[this._currentImageIndex]);
 
                     return this;
                 }
             );
         /**#@-*/
 
+        /**#@+
+         *  Transitions
+         *  @private
+         **/
+        W.slideshow.Controller
+                .method( "transitionSlide",
+                /**
+                 * @name transitionSlide
+                 * @private
+                 * @params nextSlide
+                 * @methodOf W.slideshow.Controller
+                 */
+                function(/** W.slideshow.Slide */ nextSlide) {
+                    this._nextSlide = nextSlide;
+                    this._$view.append(this._nextSlide.$view);
+                    this._nextSlide.$view.fadeOut(0);
+                    this._nextSlide.$view.fadeIn(this._settings.transitionInTime, W.bind(this, this.transitionDidFinish));
+                })
+                .method('transitionDidFinish',
+                /**
+                 * Called when transitions have finished
+                 * @name transitionDidFinish
+                 * @private
+                 * @methodOf W.slideshow.Controller
+                 */
+                function () {
+                    if(this._frontSlide == undefined) {
+                        this._frontSlide = this._nextSlide;
+                        this._slideDidChange();
+                    } else {
+                        this._frontSlide.$view.fadeOut(this._settings.transitionOutTime, W.bind(this, function () {
+                                this._frontSlide = this._nextSlide;
+                                this._slideDidChange();
+                            })
+                        );
+                    }
+                });
+
+        /**#@-*/
+
         /**
             Creates a new  W.slideshow.Album Contains {@link W.slideshow.Slide}
             @class
          */
-        W.slideshow.SlideAlbum = function() {
+        W.slideshow.SlideAlbum = function () {
              /**
              *  @private
              *  @memberOf W.slideshow.SlideAlbum
@@ -284,13 +413,52 @@ Function.prototype.method = function(name, fn) {
         /**
             Creates a new  W.slideshow.Slide.
             @class
+
+                @param (obj)  params    override/pass default information
          */
         W.slideshow.Slide = function(params) {
             if (params == undefined)  params = {};
+
+            /** url of image */
             this.src =                params['src'] || "";
+            /** url of description */
             this.description =        params['description'] || "";
+            /** url of title of image */
             this.title  =             params['title'] || "";
+            /** a custom object */
+            this.details  =             params['details'] || {};
+            /** the DOM element. if not proveded an div.img element will be created using `src` & `title`  */
+            this.$view =              params['$view'] || undefined;
+            /** style object for slide. default is 'position' : 'absolute',
+                                                                'top' : 0,
+                                                                'left' : 0  */
+            this.style =              params['style'] || {
+                                                                'position' : 'absolute',
+                                                                'top' : 0,
+                                                                'left' : 0
+                                                           };
+
+            // must be last
+            if (this.$view ==  undefined) this.renderView();
+
+            return this;
         };
+
+        W.slideshow.Slide
+            .method("renderView",
+                /**
+                 * Creates the view element of the slide. Ideally this will not be called when a `$view` is provied at slide creation.
+                 * Will try to create an img tag using the `src` and title. Needs to be wrapped in a div
+                 * @name renderView
+                 * @returns W.slideshow.Slide
+                 * @methodOf W.slideshow.Slide
+                 */
+                 function () {
+                     this.$view = $('<div><img src="' + this.src + '" title="' + this.title + '" /></div>');
+                     this.$view.css(this.style);
+                     return this;
+                 }
+            );
 
 
          /**
@@ -301,9 +469,9 @@ Function.prototype.method = function(name, fn) {
             if (params == undefined)     params = {};
 
             /**
-             * CSS for container
+             * Overflow CSS for container
              * @type    String
-             * @default hidden
+             * @default overflow: hidden
             */
             this.overflow =              params['overflow'] || "hidden";
             /**
@@ -311,13 +479,19 @@ Function.prototype.method = function(name, fn) {
              * @type    Number
              * @default 100
             */
-            this.transitionTime =        params['transitionTime'] || 100;
+            this.transitionInTime =        params['transitionInTime'] || 100;
             /**
-             * Slide Container Element
-             * @type    String / DOM_Element
-             * @default <div class=".w-slideshow-slide-container"></div>
+             * Milliseconds. Only visible if transitioning out slide is visible (i.e. overlapping).
+             * @type    Number
+             * @default 100
             */
-            this.slideContainer =        params['slideContainer'] || '<div class=".w-slideshow-slide-container"></div>';
+            this.transitionOutTime =        params['transitionOutTime'] || 20;
+            /**
+             * Where the gallery controller cycles through images
+             * @type    Boolean
+             * @default true
+            */
+            this.loops =                    params['loops'] || true;
         }
         W.slideshow.Settings
             .method("mergeSettings",
