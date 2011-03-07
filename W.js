@@ -57,7 +57,7 @@
 	}
 
 	/** Current version. */
-	W.VERSION = '0.0,1';
+	W.VERSION = '0.0.1';
         
 	/**
          * Asynchronous Loop
