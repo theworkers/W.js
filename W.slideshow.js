@@ -27,14 +27,14 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-
-
-/* Adding .method() to JavaScript to Allow
- * Add a method to the Function object that can be used to declare methods. */
-Function.prototype.method = function(name, fn) {
-    this.prototype[name] = fn;
-    return this;
-};
+if(Function.prototype.method == undefined) {
+    /* Adding .method() to JavaScript to Allow
+     * Add a method to the Function object that can be used to declare methods. */
+    Function.prototype.method = function(name, fn) {
+        this.prototype[name] = fn;
+        return this;
+    };
+}
 
 (function (W) {
 
@@ -427,7 +427,7 @@ Function.prototype.method = function(name, fn) {
             this.title  =             params['title'] || "";
             /** a custom object */
             this.details  =             params['details'] || {};
-            /** the DOM element. if not proveded an div.img element will be created using `src` & `title`  */
+            /** the DOM element. if not provided an div.img element will be created using `src` & `title`  */
             this.$view =              params['$view'] || undefined;
             /** style object for slide. default is 'position' : 'absolute',
                                                                 'top' : 0,
