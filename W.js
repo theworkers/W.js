@@ -201,7 +201,7 @@
         /**#@-*/
 
         /**
-         *
+         * Use to mark a function as a place holder during development
          * @param   {String ...}     name    Name of the stub method / function plus any additional details
          *
          */
@@ -220,6 +220,19 @@
                 }
                 return false;
             }
+        }
+        
+        /**
+         * Bind function to scope. Useful for events
+         * @param   {Object}     scope    Scope of the function to be executed in
+         * @param   {Function}   fn     function
+         *
+         * @example $("div").fadeIn(100, W.bind(this, this.transitionDidFinish));
+         */
+        W.bind = function bind(scope, fn) {
+                return function () {
+                fn.apply(scope, arguments);
+            };
         }
 
 
