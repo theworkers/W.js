@@ -291,7 +291,7 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.IMAGE_CHANGED">IMAGE_CHANGED</a></b>
+								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.PLAY_STATE_CHANGED">PLAY_STATE_CHANGED</a></b>
 								</div>
 								<div class="description">Event</div>
 							</td>
@@ -301,9 +301,19 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.PLAY_STATE_CHANGED">PLAY_STATE_CHANGED</a></b>
+								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.SLIDE_DID_CHANGE">SLIDE_DID_CHANGE</a></b>
 								</div>
 								<div class="description">Event</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.SLIDE_WILL_CHANGE">SLIDE_WILL_CHANGE</a></b>
+								</div>
+								<div class="description">Event.</div>
 							</td>
 						</tr>
 					
@@ -354,15 +364,6 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.createImage">createImage</a></b>()
-								</div>
-								<div class="description">Content control</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
 								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.first">first</a></b>()
 								</div>
 								<div class="description">Play control</div>
@@ -382,6 +383,15 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.getSettings">getSettings</a></b>()
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.getStats">getStats</a></b>()
 								</div>
 								<div class="description"></div>
 							</td>
@@ -456,7 +466,7 @@ ul.inheritsList
 				
 				
 				<dl class="inheritsList">
-				<dt>Methods borrowed from class <a href="../symbols/W.event.Dispatcher.html">W.event.Dispatcher</a>: </dt><dd><a href="../symbols/W.event.Dispatcher.html#addEventlistener">addEventlistener</a>, <a href="../symbols/W.event.Dispatcher.html#dispatchEvent">dispatchEvent</a>, <a href="../symbols/W.event.Dispatcher.html#removeEventlistener">removeEventlistener</a></dd>
+				<dt>Methods borrowed from class <a href="../symbols/W.event.Dispatcher.html">W.event.Dispatcher</a>: </dt><dd><a href="../symbols/W.event.Dispatcher.html#addEventlistener">addEventlistener</a>, <a href="../symbols/W.event.Dispatcher.html#dispatch">dispatch</a>, <a href="../symbols/W.event.Dispatcher.html#removeEventlistener">removeEventlistener</a></dd>
 				</dl>
 				
 			
@@ -475,7 +485,9 @@ ul.inheritsList
 				</div>
 				
 				<div class="description">
-					Creates a new  W.slideshow.Controller shows <a href="../symbols/W.slideshow.SlideAlbum.html">W.slideshow.SlideAlbum</a>s.
+					Creates a new  W.slideshow.Controller shows <a href="../symbols/W.slideshow.SlideAlbum.html">W.slideshow.SlideAlbum</a>s. <br />
+ <br />
+ W.slideshow.Controller is a slideshow controller that provides its functionality though delegation to provide a slideshow without locked-in functionality
 					
 				</div>
 				
@@ -538,11 +550,11 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".IMAGE_CHANGED"> </a>
+					<a name=".PLAY_STATE_CHANGED"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">W.slideshow.Controller.</span><b>IMAGE_CHANGED</b>
+					<span class="light">W.slideshow.Controller.</span><b>PLAY_STATE_CHANGED</b>
 					
 					</div>
 					<div class="description">
@@ -560,15 +572,37 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".PLAY_STATE_CHANGED"> </a>
+					<a name=".SLIDE_DID_CHANGE"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">W.slideshow.Controller.</span><b>PLAY_STATE_CHANGED</b>
+					<span class="light">W.slideshow.Controller.</span><b>SLIDE_DID_CHANGE</b>
 					
 					</div>
 					<div class="description">
 						Event
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".SLIDE_WILL_CHANGE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">W.slideshow.Controller.</span><b>SLIDE_WILL_CHANGE</b>
+					
+					</div>
+					<div class="description">
+						Event. Useful for locking the interaction of control. e.g. addClass(".inactive") until SLIDE_DID_CHANGE is called
 						
 						
 					</div>
@@ -617,38 +651,6 @@ ul.inheritsList
 					
 					<span class="light">{Controller}</span>
 					<span class="light">W.slideshow.Controller.</span><b>addAlbum</b>()
-					
-					</div>
-					<div class="description">
-						Content control
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".createImage"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Controller}</span>
-					<span class="light">W.slideshow.Controller.</span><b>createImage</b>()
 					
 					</div>
 					<div class="description">
@@ -764,6 +766,38 @@ ul.inheritsList
 							<dt class="heading">Returns:</dt>
 							
 								<dd>W.slideshow.Settings</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getStats"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">W.slideshow.Controller.</span><b>getStats</b>()
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> returns state information about the gallery controller</dd>
 							
 							</dl>
 						
@@ -1008,7 +1042,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Sun Mar 06 2011 18:57:25 GMT-0000 (GMT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Mon Mar 07 2011 20:32:48 GMT-0000 (GMT)
 		</div>
 	</body>
 </html>
