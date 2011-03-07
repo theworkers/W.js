@@ -1,6 +1,8 @@
 (function (W) {
 
-        /** @namespace W.animation
+        /**
+         *  Experamental
+         *  @namespace W.animation
          *  @requires Tween.js
          *  @link   <a href="https://github.com/sole/tween.js">https://github.com/sole/tween.js</a>
          **/
