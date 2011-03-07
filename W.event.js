@@ -7,9 +7,11 @@
          /**
          *  Create new W.event.Dispatcher
          *  
-         *  Based on <a href="http://www.nonobtrusive.com/2009/07/24/custom-events-in-javascript-by-making-your-own-dispatcher-class/">Custom Event Dispatcher</a> by Erik Karlsson
+         *  Based on <a href="http://www.nonobtrusive.com/2009/07/24/custom-events-in-javascript-by-making-your-own-dispatcher-class/">Custom Event Dispatcher</a> by Erik Karlsson. Extended to pass a details custom object
          *
          *  @todo   bind events by default
+         *  @todo   check for non-blocking implemetation
+         *  @todo   implement bubbling
          *
          *  @example
          *
@@ -41,7 +43,9 @@
             }
         }
 
-        /** Remove event listener */
+        /** Remove event listener
+         *
+         **/
         W.event.Dispatcher.prototype.removeEventlistener=function(/** String */ event, /** Function */ callback){
             if ( this.events[event] ) {
 		var listeners = this.events[event];
@@ -55,8 +59,12 @@
             return false;
         }
 
-        /** Dispatch event with Details */
-        W.event.Dispatcher.prototype.dispatch=function(/** String */ event, /** Object */ details){
+        /** Dispatch event with Details
+         *
+         * @param {String} event        Name of the Event to be dispatched
+         * @param {Object} details      Custom object passed to event handlers
+         **/
+        W.event.Dispatcher.prototype.dispatch=function(event, details){
             if ( this.events[event] ) {
 		var listeners = this.events[event], len = listeners.length;
 		while ( len-- ) {
