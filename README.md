@@ -5,6 +5,7 @@ JavaScript Framework for Node.js and Client-side Browser
 ## Usage
 
      git clone git@github.com:rc1/W.js.git
+     cd W.js
      git submodule update --init
 
 ## Libraries
