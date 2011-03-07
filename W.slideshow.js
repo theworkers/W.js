@@ -1,4 +1,4 @@
-////////////////////////////    W.slideShow
+////////////////////////////    W.slideshow
 //    ///////////////    ///    Copyright (c) 2011 The Workers
 ///    /////////////    ////    Authors: Ross Cairns
 ////    ///// /////    /////
@@ -27,59 +27,148 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
+
+
+/* Adding .method() to JavaScript to Allow
+ * Add a method to the Function object that can be used to declare methods. */
+Function.prototype.method = function(name, fn) {
+    this.prototype[name] = fn;
+    return this;
+};
+
 (function (W) {
 
-        /** @namespace W.slideshow */
-  	W.slideShow = {};
-        
-        /* Adding .method() to JavaScript to Allow
-         * Add a method to the Function object that can be used to declare methods. */
-        Function.prototype.method = function(name, fn) {
-            this.prototype[name] = fn;
-            return this;
-        };
+        /** @namespace W.slideshow
+         **/
+  	W.slideshow = {};
+
+        // check for required
+        if(W.animation == undefined) {
+            W.w("W.animation not included. W.slideshow will fail");
+        }
 
        /**
-         *  Creates a new  W.slideShow.Controller Shows {@link WAlbum}.
+         *  Creates a new  W.slideshow.Controller shows {@link W.slideshow.SlideAlbum}s.
+         *
+         *  @augments W.event.Dispatcher
+         *
          *  @class
          */
-        W.slideShow.Controller = function($view) {
+        W.slideshow.Controller = function(/** jQuery */ $view, /** W.slideshow.Settings */ $settings) {
             /** @private  */
 
-            /** @memberOf W.slideShow.Controller */
+            /** @memberOf W.slideshow.Controller */
             var Controller = this;
 
             /** The Dom Object used as the Slideshow container  */
-            var _$view = $view;
+            this._$view = $view;
+            this._items = [];
+            this._hasItems = false;
+            this._settings = ($settings == undefined) ? $settings = new W.slideshow.Settings() : $settings;
+
+            /**#@+
+             *  @memberOf W.slideshow.Controller
+             **/
+
+            /** Event */
+            this.IMAGE_CHANGED = "image changed";
+            /** Event */
+            this.PLAY_STATE_CHANGED = "image changed";
+            
+            /**#@-*/
 
             /** Version.
-             *  @memberOf W.slideShow.Controller
+             *  @memberOf W.slideshow.Controller
              **/
             this.VERSION = "0.0.1";
         };
 
-         W.slideShow.Controller
-            .method("get$View",
+        // extend dispatcher
+        W.slideshow.Controller.prototype = new W.event.Dispatcher();
+
+
+
+        /**
+         *  Settings
+         **/
+         W.slideshow.Controller
+            .method( "getSettings",
+                /**
+                 * @name getSettings
+                 * @methodOf W.slideshow.Controller
+                 * @return W.slideshow.Settings
+                 */
+                 function () {
+                    return this._settings;
+                 }
+            )
+            .method( "setSettings",
+                /**
+                 * @name setSettings
+                 * @methodOf W.slideshow.Controller
+                 * @return W.slideshow.Controller
+                 */
+                function (settings) {
+                    this._settings = this._settings.mergeSettings(settings, this._settings);
+                    return this;
+                }
+            );
+
+        /**#@+
+         *  Content control
+         *  @returns {W.slideshow.Controller} Controller to allow for chaining
+         *  @type Controller
+         **/
+         W.slideshow.Controller
+            .method( "addAlbum",
+                /**
+                 * @name addAlbum
+                 * @methodOf W.slideshow.Controller
+                 */
+                function (/** W.slideshow.SlideAlbum */ album) {
+                    this._items.push(album);
+                    if(!this._hasItems) {
+                        this.createImage(album.slides[0]);
+                    }
+                    return this;
+                }
+            )
+            .method( "createImage",
+                /**
+                 * @name createImage
+                 * @methodOf W.slideshow.Controller
+                 */
+                function (item) {
+                    var $item = $("<img src='" + item.src + "'/>");
+                    this._$view.append($item);
+                    $item.fadeOut(0).fadeIn(this._settings.transitionTime);
+                    return this;
+                }
+            );
+         /**#@-*/
+
+         W.slideshow.Controller
+            .method( "get$View",
                 /**
                  * @name get$View
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  * @return {jQuery} the main view for the Slideshow
                  */
                 function () {
-                 return Controller._$view
+                    return this._$view;
                 }
             );
 
         /**#@+
          *  Play control
-         *  @returns {W.slideShow.Controller} Controller to allow for chaining
+         *  @returns {W.slideshow.Controller} Controller to allow for chaining
          *  @type Controller
          **/
-        W.slideShow.Controller
+        W.slideshow.Controller
             .method( "play",
                 /**
                  * @name play
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  */
                 function () {
                     W.stub("play");
@@ -90,7 +179,7 @@
             .method( "stop",
                 /**
                  * @name stop
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  */
                 function () {
                     W.stub("stop");
@@ -101,7 +190,7 @@
             .method( "restart",
                 /**
                  * @name restart
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  */
                 function () {
                     W.stub("restart");
@@ -112,10 +201,12 @@
             .method( "next",
                 /**
                  * @name next
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  */
                 function () {
                     W.stub("next");
+                    W.l(this);
+                    this.dispatch(this.IMAGE_CHANGED);
 
                     return this;
                 }
@@ -123,7 +214,7 @@
             .method( "previous",
                 /**
                  * @name previous
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  */
                 function () {
                     W.stub("previous");
@@ -134,7 +225,7 @@
             .method( "last",
                 /**
                  * @name last
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  */
                 function () {
                     W.stub("last");
@@ -145,7 +236,7 @@
             .method( "first",
                 /**
                  * @name first
-                 * @methodOf W.slideShow.Controller
+                 * @methodOf W.slideshow.Controller
                  */
                 function () {
                     W.stub("first");
@@ -155,59 +246,103 @@
             );
         /**#@-*/
 
-        /**#@+
-         *  Content control
-         *  @returns {W.slideShow.Controller} Controller to allow for chaining
-         *  @type Controller
-         **/
-         W.slideShow.Controller
-            .method( "addAlbum",
-                /**
-                 * @name addAlbum
-                 * @methodOf W.slideShow.Controller
-                 */
-                function () {
-                    W.stub("addAlbum");
-
-                    return this;
-                }
-            );
-         /**#@-*/
-
         /**
-            Creates a new  W.slideShow.Album Contains {@link W.slideShow.Slide}
+            Creates a new  W.slideshow.Album Contains {@link W.slideshow.Slide}
             @class
          */
-        W.slideShow.SlideAlbum = function() {
+        W.slideshow.SlideAlbum = function() {
              /**
              *  @private
-             *  @memberOf W.slideShow.SlideAlbum
+             *  @memberOf W.slideshow.SlideAlbum
             */
             var Album = this;
 
             /** @private */
 
             /**
-             * Internal Array of {@link W.slideShow.Slide}
+             * Internal Array of {@link W.slideshow.Slide}
              * @type Array
             */
-            this.slides = array();
+            this.slides = [];
 
         };
+
+        W.slideshow.SlideAlbum
+            .method( "addSlide",
+                /**
+                 * @name addSlide
+                 * @methodOf W.slideshow.SlideAlbum
+                 */
+                function (/** W.slideshow.Slide */ slide) {
+                    this.slides.push(slide);
+
+                    return this;
+                }
+            );
 
 
         /**
-            Creates a new  W.slideShow.Slide.
+            Creates a new  W.slideshow.Slide.
             @class
          */
-        W.slideShow.Slide = function() {
-            /**
-             *  @private
-             *  @memberOf W.slideShow.Slide
-            */
-            var Slide = this;
+        W.slideshow.Slide = function(params) {
+            if (params == undefined)  params = {};
+            this.src =                params['src'] || "";
+            this.description =        params['description'] || "";
+            this.title  =             params['title'] || "";
         };
 
 
+         /**
+            Creates a new  W.slideshow.Settings
+            @class
+         */
+        W.slideshow.Settings = function(params) {
+            if (params == undefined)     params = {};
+
+            /**
+             * CSS for container
+             * @type    String
+             * @default hidden
+            */
+            this.overflow =              params['overflow'] || "hidden";
+            /**
+             * Milliseconds
+             * @type    Number
+             * @default 100
+            */
+            this.transitionTime =        params['transitionTime'] || 100;
+            /**
+             * Slide Container Element
+             * @type    String / DOM_Element
+             * @default <div class=".w-slideshow-slide-container"></div>
+            */
+            this.slideContainer =        params['slideContainer'] || '<div class=".w-slideshow-slide-container"></div>';
+        }
+        W.slideshow.Settings
+            .method("mergeSettings",
+                /**
+                 * Safely merge settings
+                 * @private
+                 * @name mergeSettings
+                 * @methodOf W.slideshow.Controller
+                 */
+                function (/** W.slideshow.Settings */ newSettings, /** W.slideshow.Settings */ oldSettings) {
+
+                    // break if no arguments
+                    if (newSettings == undefined) return;
+                    // if no oldSettings create a setting object with defaults to merge with
+                    if (oldSettings == undefined) {
+                        oldSettings = new W.slideshow.Settings();
+                    };
+
+                    // merge
+                    for (var i in newSettings) {
+                        oldSettings[i] = newSettings[i];
+                    };
+
+                    return oldSettings;
+                }
+        );
 
 })(W);
