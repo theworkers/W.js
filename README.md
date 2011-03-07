@@ -9,6 +9,7 @@ JavaScript Framework for Node.js and Client-side Browser
 * W 
 * W.text
 * W.console
+* W.eventnot required by node see: [Node's implementation](http://nodejs.org/docs/v0.4.2/api/events.html )()
 
 ### _Client Side Only_
 
@@ -27,12 +28,12 @@ JavaScript Framework for Node.js and Client-side Browser
     * W.symphony
         * *symphpny datasource and event utilities*
 	* W.slideshow
-                * all for a transition delegate pattern. this will allow for custom transitions.
-		* make jQuery independant
+            - all for a transition delegate pattern. this will allow for custom transitions.
+            - make jQuery independant
 	* W.event
-		* @todo   bind events by default
-                * @todo   check for non-blocking implemetation
-                * @todo   implement bubbling
+            - @todo   bind events by default
+            -  @todo   check for non-blocking implemetation
+            - @todo   implement bubbling
 
 -------------
 
