@@ -1,6 +1,6 @@
 # W.js
 
-JavaScript Framework for Node.js and Clientside Brower
+JavaScript Framework for Node.js and Client-side Browser
 
 ## Libraries
 
@@ -19,13 +19,17 @@ JavaScript Framework for Node.js and Clientside Brower
 
 ### Roadmap
 
-* ideas
-    * add
-        * W.warn, W.log, W.stub to node.js
-        * W.flashcomm
-            * *evented flash communication*
-        * W.symphony
-            * *symphpny datasource and event utilities*
+* add
+    * W.safeJSON    parse if not already JSON
+    * W.warn, W.log, W.stub to node.js
+    * W.flashcomm
+        * *evented flash communication*
+    * W.symphony
+        * *symphpny datasource and event utilities*
+	* W.slideshow
+		* make jQuery independant
+	* W.event
+		* by default bind events?
 
 -------------
 
