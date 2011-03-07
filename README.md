@@ -27,9 +27,12 @@ JavaScript Framework for Node.js and Client-side Browser
     * W.symphony
         * *symphpny datasource and event utilities*
 	* W.slideshow
+                * all for a transition delegate pattern. this will allow for custom transitions.
 		* make jQuery independant
 	* W.event
-		* by default bind events?
+		* @todo   bind events by default
+                * @todo   check for non-blocking implemetation
+                * @todo   implement bubbling
 
 -------------
 
