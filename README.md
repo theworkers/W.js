@@ -39,7 +39,7 @@ JavaScript Framework for Node.js and Client-side Browser
 	* W.event
 		* @todo   bind events by default
 		* @todo   check for non-blocking implemetation
-		* @todo   implement bubbling
+		* <s>@todo   implement bubbling</s> << this is in node. needed for browser? maybe later
 
 -------------
 
