@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - W.slideShow.Controller</title>
+		<title>JsDoc Reference - W.slideshow.Controller</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -193,15 +193,23 @@ ul.inheritsList
 	
 	<li><a href="../symbols/W.html">W</a></li>
 	
+	<li><a href="../symbols/W.animation.html">W.animation</a></li>
+	
 	<li><a href="../symbols/W.console.html">W.console</a></li>
 	
-	<li><a href="../symbols/W.slideShow.html">W.slideShow</a></li>
+	<li><a href="../symbols/W.event.html">W.event</a></li>
 	
-	<li><a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a></li>
+	<li><a href="../symbols/W.event.Dispatcher.html">W.event.Dispatcher</a></li>
 	
-	<li><a href="../symbols/W.slideShow.Slide.html">W.slideShow.Slide</a></li>
+	<li><a href="../symbols/W.slideshow.html">W.slideshow</a></li>
 	
-	<li><a href="../symbols/W.slideShow.SlideAlbum.html">W.slideShow.SlideAlbum</a></li>
+	<li><a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a></li>
+	
+	<li><a href="../symbols/W.slideshow.Settings.html">W.slideshow.Settings</a></li>
+	
+	<li><a href="../symbols/W.slideshow.Slide.html">W.slideshow.Slide</a></li>
+	
+	<li><a href="../symbols/W.slideshow.SlideAlbum.html">W.slideshow.SlideAlbum</a></li>
 	
 	<li><a href="../symbols/W.text.html">W.text</a></li>
 	
@@ -214,12 +222,14 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class W.slideShow.Controller
+				Class W.slideshow.Controller
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
 			<p class="description">
 				
+				<br />Extends
+					<a href="../symbols/W.event.Dispatcher.html">W.event.Dispatcher</a>.<br />
 				
 			
 				
@@ -231,7 +241,7 @@ ul.inheritsList
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class W.slideShow.Controller.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class W.slideshow.Controller.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -244,9 +254,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/W.slideShow.Controller.html#constructor">W.slideShow.Controller</a></b>($view)
+								<b><a href="../symbols/W.slideshow.Controller.html#constructor">W.slideshow.Controller</a></b>($view, $settings)
 							</div>
-							<div class="description">Creates a new  W.slideShow.Controller Shows WAlbum.</div>
+							<div class="description">Creates a new  W.slideshow.Controller shows <a href="../symbols/W.slideshow.SlideAlbum.html">W.slideshow.SlideAlbum</a>s.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -257,7 +267,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class W.slideShow.Controller.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class W.slideshow.Controller.">
 					<caption>Field Summary</caption>
 					<thead>
 						<tr>
@@ -271,7 +281,7 @@ ul.inheritsList
 							<td class="attributes">&lt;inner&gt; &lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.Controller">Controller</a></b>
+								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.Controller">Controller</a></b>
 								</div>
 								<div class="description"></div>
 							</td>
@@ -281,7 +291,27 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.VERSION">VERSION</a></b>
+								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.IMAGE_CHANGED">IMAGE_CHANGED</a></b>
+								</div>
+								<div class="description">Event</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.PLAY_STATE_CHANGED">PLAY_STATE_CHANGED</a></b>
+								</div>
+								<div class="description">Event</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.VERSION">VERSION</a></b>
 								</div>
 								<div class="description">Version.</div>
 							</td>
@@ -292,13 +322,17 @@ ul.inheritsList
 				
 				
 				
+				<dl class="inheritsList">
+				
+				</dl>
+				
 			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class W.slideShow.Controller.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class W.slideshow.Controller.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -311,7 +345,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.addAlbum">addAlbum</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.addAlbum">addAlbum</a></b>()
 								</div>
 								<div class="description">Content control</div>
 							</td>
@@ -320,7 +354,16 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.first">first</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.createImage">createImage</a></b>()
+								</div>
+								<div class="description">Content control</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.first">first</a></b>()
 								</div>
 								<div class="description">Play control</div>
 							</td>
@@ -329,7 +372,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.get$View">get$View</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.get$View">get$View</a></b>()
 								</div>
 								<div class="description"></div>
 							</td>
@@ -338,7 +381,16 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.last">last</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.getSettings">getSettings</a></b>()
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.last">last</a></b>()
 								</div>
 								<div class="description">Play control</div>
 							</td>
@@ -347,7 +399,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.next">next</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.next">next</a></b>()
 								</div>
 								<div class="description">Play control</div>
 							</td>
@@ -356,7 +408,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.play">play</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.play">play</a></b>()
 								</div>
 								<div class="description">Play control</div>
 							</td>
@@ -365,7 +417,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.previous">previous</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.previous">previous</a></b>()
 								</div>
 								<div class="description">Play control</div>
 							</td>
@@ -374,7 +426,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.restart">restart</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.restart">restart</a></b>()
 								</div>
 								<div class="description">Play control</div>
 							</td>
@@ -383,7 +435,16 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.slideShow.Controller.<b><a href="../symbols/W.slideShow.Controller.html#.stop">stop</a></b>()
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.setSettings">setSettings</a></b>()
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.slideshow.Controller.<b><a href="../symbols/W.slideshow.Controller.html#.stop">stop</a></b>()
 								</div>
 								<div class="description">Play control</div>
 							</td>
@@ -393,6 +454,10 @@ ul.inheritsList
 				</table>
 				
 				
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/W.event.Dispatcher.html">W.event.Dispatcher</a>: </dt><dd><a href="../symbols/W.event.Dispatcher.html#addEventlistener">addEventlistener</a>, <a href="../symbols/W.event.Dispatcher.html#dispatchEvent">dispatchEvent</a>, <a href="../symbols/W.event.Dispatcher.html#removeEventlistener">removeEventlistener</a></dd>
+				</dl>
 				
 			
 <!-- ============================== events summary ======================== -->
@@ -406,11 +471,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>W.slideShow.Controller</b>($view)
+						<b>W.slideshow.Controller</b>($view, $settings)
 				</div>
 				
 				<div class="description">
-					Creates a new  W.slideShow.Controller Shows WAlbum.
+					Creates a new  W.slideshow.Controller shows <a href="../symbols/W.slideshow.SlideAlbum.html">W.slideshow.SlideAlbum</a>s.
 					
 				</div>
 				
@@ -422,7 +487,13 @@ ul.inheritsList
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								 <b>$view</b>
+								<span class="light fixedFont">{jQuery}</span>  <b>$view</b>
+								
+							</dt>
+								<dd></dd>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/W.slideshow.Settings.html">W.slideshow.Settings</a>}</span>  <b>$settings</b>
 								
 							</dt>
 								<dd></dd>
@@ -449,7 +520,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;inner&gt; &lt;static&gt; 
 					
 					
-					<span class="light">W.slideShow.Controller.</span><b>Controller</b>
+					<span class="light">W.slideshow.Controller.</span><b>Controller</b>
 					
 					</div>
 					<div class="description">
@@ -467,11 +538,55 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name=".IMAGE_CHANGED"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">W.slideshow.Controller.</span><b>IMAGE_CHANGED</b>
+					
+					</div>
+					<div class="description">
+						Event
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".PLAY_STATE_CHANGED"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">W.slideshow.Controller.</span><b>PLAY_STATE_CHANGED</b>
+					
+					</div>
+					<div class="description">
+						Event
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name=".VERSION"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">W.slideShow.Controller.</span><b>VERSION</b>
+					<span class="light">W.slideshow.Controller.</span><b>VERSION</b>
 					
 					</div>
 					<div class="description">
@@ -501,7 +616,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>addAlbum</b>()
+					<span class="light">W.slideshow.Controller.</span><b>addAlbum</b>()
 					
 					</div>
 					<div class="description">
@@ -520,7 +635,39 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".createImage"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Controller}</span>
+					<span class="light">W.slideshow.Controller.</span><b>createImage</b>()
+					
+					</div>
+					<div class="description">
+						Content control
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
 							
 							</dl>
 						
@@ -533,7 +680,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>first</b>()
+					<span class="light">W.slideshow.Controller.</span><b>first</b>()
 					
 					</div>
 					<div class="description">
@@ -552,7 +699,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
 							
 							</dl>
 						
@@ -565,7 +712,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{jQuery}</span>
-					<span class="light">W.slideShow.Controller.</span><b>get$View</b>()
+					<span class="light">W.slideshow.Controller.</span><b>get$View</b>()
 					
 					</div>
 					<div class="description">
@@ -593,11 +740,43 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name=".getSettings"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">W.slideshow.Controller.</span><b>getSettings</b>()
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>W.slideshow.Settings</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".last"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>last</b>()
+					<span class="light">W.slideshow.Controller.</span><b>last</b>()
 					
 					</div>
 					<div class="description">
@@ -616,7 +795,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
 							
 							</dl>
 						
@@ -629,7 +808,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>next</b>()
+					<span class="light">W.slideshow.Controller.</span><b>next</b>()
 					
 					</div>
 					<div class="description">
@@ -648,7 +827,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
 							
 							</dl>
 						
@@ -661,7 +840,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>play</b>()
+					<span class="light">W.slideshow.Controller.</span><b>play</b>()
 					
 					</div>
 					<div class="description">
@@ -680,7 +859,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
 							
 							</dl>
 						
@@ -693,7 +872,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>previous</b>()
+					<span class="light">W.slideshow.Controller.</span><b>previous</b>()
 					
 					</div>
 					<div class="description">
@@ -712,7 +891,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
 							
 							</dl>
 						
@@ -725,7 +904,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>restart</b>()
+					<span class="light">W.slideshow.Controller.</span><b>restart</b>()
 					
 					</div>
 					<div class="description">
@@ -744,7 +923,39 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".setSettings"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">W.slideshow.Controller.</span><b>setSettings</b>()
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>W.slideshow.Controller</dd>
 							
 							</dl>
 						
@@ -757,7 +968,7 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Controller}</span>
-					<span class="light">W.slideShow.Controller.</span><b>stop</b>()
+					<span class="light">W.slideshow.Controller.</span><b>stop</b>()
 					
 					</div>
 					<div class="description">
@@ -776,7 +987,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/W.slideShow.Controller.html">W.slideShow.Controller</a>}</span> Controller to allow for chaining</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/W.slideshow.Controller.html">W.slideshow.Controller</a>}</span> Controller to allow for chaining</dd>
 							
 							</dl>
 						
@@ -797,7 +1008,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Fri Mar 04 2011 20:52:31 GMT-0000 (GMT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Sun Mar 06 2011 18:57:25 GMT-0000 (GMT)
 		</div>
 	</body>
 </html>

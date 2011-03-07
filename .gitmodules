@@ -1,0 +1,3 @@
+[submodule "tween.js"]
+	path = tween.js
+	url = https://github.com/sole/tween.js.git

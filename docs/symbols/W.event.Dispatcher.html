@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - W</title>
+		<title>JsDoc Reference - W.event.Dispatcher</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -222,7 +222,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class W
+				Class W.event.Dispatcher
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -233,13 +233,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/W.js.html">W.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/W.event.js.html">W.event.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class W.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class W.event.Dispatcher.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -252,9 +252,11 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/W.html#constructor">W</a></b>()
+								<b><a href="../symbols/W.event.Dispatcher.html#constructor">W.event.Dispatcher</a></b>()
 							</div>
-							<div class="description">Global refernce to this</div>
+							<div class="description">Create new W.event.Dispatcher
+ 
+ Based on <a href="http://www.nonobtrusive.com/2009/07/24/custom-events-in-javascript-by-making-your-own-dispatcher-class/">Custom Event Dispatcher</a> by Erik Karlsson</div>
 						</td>
 					</tr>
 				</tbody>
@@ -263,40 +265,12 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class W.">
-					<caption>Field Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Field Attributes</th>
-							<th scope="col">Field Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								W.<b><a href="../symbols/W.html#.VERSION">VERSION</a></b>
-								</div>
-								<div class="description">Current version.</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-				
-				
-			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class W.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class W.event.Dispatcher.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -307,56 +281,29 @@ ul.inheritsList
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.<b><a href="../symbols/W.html#.aloop">aloop</a></b>(iterations, func, callback)
+								<div class="fixedFont"><b><a href="../symbols/W.event.Dispatcher.html#addEventlistener">addEventlistener</a></b>(event, callback)
 								</div>
-								<div class="description">Asynchronous Loop</div>
+								<div class="description">Add event listener</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.<b><a href="../symbols/W.html#.l">l</a></b>(obj)
+								<div class="fixedFont"><b><a href="../symbols/W.event.Dispatcher.html#dispatchEvent">dispatchEvent</a></b>(event, details)
 								</div>
-								<div class="description">Alias of <a href="../symbols/W.console.html#.log">W.console.log</a>()</div>
+								<div class="description">Dispatch event with Details</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.<b><a href="../symbols/W.html#.log">log</a></b>(obj)
+								<div class="fixedFont"><b><a href="../symbols/W.event.Dispatcher.html#removeEventlistener">removeEventlistener</a></b>(event, callback)
 								</div>
-								<div class="description">Alias of <a href="../symbols/W.console.html#.log">W.console.log</a>()</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">W.<b><a href="../symbols/W.html#.stub">stub</a></b>(name)
-								</div>
-								<div class="description"></div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">W.<b><a href="../symbols/W.html#.w">w</a></b>(obj)
-								</div>
-								<div class="description">Alias of <a href="../symbols/W.console.html#.warn">W.console.warn</a>(obj)</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">W.<b><a href="../symbols/W.html#.warn">warn</a></b>(obj)
-								</div>
-								<div class="description">Alias of <a href="../symbols/W.console.html#.warn">W.console.warn</a>(obj)</div>
+								<div class="description">Remove event listener</div>
 							</td>
 						</tr>
 					
@@ -377,13 +324,31 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>W</b>()
+						<b>W.event.Dispatcher</b>()
 				</div>
 				
 				<div class="description">
-					Global refernce to this
+					Create new W.event.Dispatcher
+ 
+ Based on <a href="http://www.nonobtrusive.com/2009/07/24/custom-events-in-javascript-by-making-your-own-dispatcher-class/">Custom Event Dispatcher</a> by Erik Karlsson
 					
 				</div>
+				
+				
+				
+				<pre class="code">
+ function SomeClass(){
+     Dispatcher.call(this);
+ }
+ SomeClass.prototype = new Dispatcher();
+
+ SomeClass.prototype.sendSomeEvent=function(){
+     this.dispatch("test");
+ }
+
+ var foo = new SomeClass();
+ foo.addEventlistener( "test", function(){ alert("bah"); } )
+ foo.sendSomeEvent();</pre>
 				
 				
 				
@@ -401,33 +366,6 @@ ul.inheritsList
 
 <!-- ============================== field details ========================== -->		
 			
-				<div class="sectionTitle">
-					Field Detail
-				</div>
-				
-					<a name=".VERSION"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">W.</span><b>VERSION</b>
-					
-					</div>
-					<div class="description">
-						Current version.
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					
-				
-			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -435,30 +373,18 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".aloop"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="addEventlistener"> </a>
+					<div class="fixedFont">
 					
 					
-					<span class="light">W.</span><b>aloop</b>(iterations, func, callback)
+					<b>addEventlistener</b>(event, callback)
 					
 					</div>
 					<div class="description">
-						Asynchronous Loop
+						Add event listener
 						
 						
 					</div>
-					
-					
-					
-					<pre class="code">		W.aloop(10, 
-                     function (index, loop) {
-                         log(index);
-                         loop.next();
-                     },
-                     function () {
-                         log('finished');
-                     }
-              );</pre>
 					
 					
 					
@@ -467,23 +393,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>iterations</b>
+									<span class="light fixedFont">{String}</span> <b>event</b>
 									
 								</dt>
-								<dd>Number of times to run</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Function}</span> <b>func</b>
-									
-								</dt>
-								<dd>Function to execute in each iteration.
-                                     Must call loop.next() when finished.</dd>
+								<dd></dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>callback</b>
 									
 								</dt>
-								<dd>On loop finshed call back</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -496,15 +415,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".l"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="dispatchEvent"> </a>
+					<div class="fixedFont">
 					
 					
-					<span class="light">W.</span><b>l</b>(obj)
+					<b>dispatchEvent</b>(event, details)
 					
 					</div>
 					<div class="description">
-						Alias of <a href="../symbols/W.console.html#.log">W.console.log</a>()
+						Dispatch event with Details
 						
 						
 					</div>
@@ -516,10 +435,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object ...}</span> <b>obj</b>
+									<span class="light fixedFont">{String}</span> <b>event</b>
 									
 								</dt>
-								<dd>Objects to log to console</dd>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>details</b>
+									
+								</dt>
+								<dd></dd>
 							
 							</dl>
 						
@@ -532,15 +457,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".log"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="removeEventlistener"> </a>
+					<div class="fixedFont">
 					
 					
-					<span class="light">W.</span><b>log</b>(obj)
+					<b>removeEventlistener</b>(event, callback)
 					
 					</div>
 					<div class="description">
-						Alias of <a href="../symbols/W.console.html#.log">W.console.log</a>()
+						Remove event listener
 						
 						
 					</div>
@@ -552,118 +477,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object ...}</span> <b>obj</b>
+									<span class="light fixedFont">{String}</span> <b>event</b>
 									
 								</dt>
-								<dd>Objects to log to console</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".stub"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">W.</span><b>stub</b>(name)
-					
-					</div>
-					<div class="description">
-						
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
+								<dd></dd>
 							
 								<dt>
-									<span class="light fixedFont">{String ...}</span> <b>name</b>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
 									
 								</dt>
-								<dd>Name of the stub method / function plus any additional details</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".w"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">W.</span><b>w</b>(obj)
-					
-					</div>
-					<div class="description">
-						Alias of <a href="../symbols/W.console.html#.warn">W.console.warn</a>(obj)
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object ...}</span> <b>obj</b>
-									
-								</dt>
-								<dd>Objects sent to console as warning</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".warn"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">W.</span><b>warn</b>(obj)
-					
-					</div>
-					<div class="description">
-						Alias of <a href="../symbols/W.console.html#.warn">W.console.warn</a>(obj)
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object ...}</span> <b>obj</b>
-									
-								</dt>
-								<dd>Objects sent to console as warning</dd>
+								<dd></dd>
 							
 							</dl>
 						
