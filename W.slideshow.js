@@ -112,7 +112,6 @@ if(Function.prototype.method == undefined) {
         }
 
         W.slideshow.Controller.prototype._playStateChanged = function () {
-            this._isChangingSlide = false;
             this.dispatch(this.PLAY_STATE_CHANGE, this.getStats());
         }
 
@@ -191,7 +190,7 @@ if(Function.prototype.method == undefined) {
                  */
                 function () {
                     return {
-                        totalImages : this._activeAlbum.slides.count,
+                        totalImages : this._activeAlbum.slides.length,
                         hasNext : (this.currentImageIndex == this.totalImages - 1),
                         hasPrevious : (this._activeAlbum.slides.count > 0) ,
                         currentImageIndex : this._currentImageIndex,
