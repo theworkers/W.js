@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - _global_</title>
+		<title>JsDoc Reference - W.route.Router</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -228,7 +228,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Built-In Namespace _global_
+				Class W.route.Router
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -239,9 +239,32 @@ ul.inheritsList
 				
 				
 				
+					<br /><i>Defined in: </i> <a href="../symbols/src/W.route.js.html">W.route.js</a>.
+				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class W.route.Router.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/W.route.Router.html#constructor">W.route.Router</a></b>()
+							</div>
+							<div class="description">Establishes a W.route.Router.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			
 
 <!-- ============================== properties summary ===================== -->
@@ -249,16 +272,186 @@ ul.inheritsList
 
 <!-- ============================== methods summary ======================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class W.route.Router.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.route.Router.<b><a href="../symbols/W.route.Router.html#.dispatch">dispatch</a></b>(path)
+								</div>
+								<div class="description">Broadcast a Path string to the Route which will call any mapped functions to the provided route.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.route.Router.<b><a href="../symbols/W.route.Router.html#.map">map</a></b>(path)
+								</div>
+								<div class="description">Create a route with path string.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 <!-- ============================== events summary ======================== -->
 			
 
 <!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>W.route.Router</b>()
+				</div>
+				
+				<div class="description">
+					Establishes a W.route.Router. Maps functions and, optionally, parameters to route strings<br />
+ <br />
+ Based on <a href="https://github.com/mtrpcic/pathjs">pathjs</a> by Mike Trpcic. Stripped down to not use the location.hash matching<br />
+ <br />
+ todo:   create a regex version more like backbone<br />
+ todo:   allow for non URL strings<br />
+ <br />
+ <b>Route strings must be in the format /something/somthing/</b>
+					
+				</div>
+				
+				
+				
+				<pre class="code">
+     W.route.Router.map("/test/route/:whatever/").to(function(){
+           alert("test/route + " + this.params['whatever']);
+     });
+
+     W.route.Router.dispatch("/test/route/helloworld");</pre>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
 			
 
 <!-- ============================== field details ========================== -->		
 			
 
 <!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".dispatch"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/W.route.Router.core.route.html">W.route.Router.core.route</a>}</span>
+					<span class="light">W.route.Router.</span><b>dispatch</b>(path)
+					
+					</div>
+					<div class="description">
+						Broadcast a Path string to the Route which will call any mapped functions to the provided route.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>Path string. For parameters use :ParameterName</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/W.route.Router.core.route.html">W.route.Router.core.route</a>}</span> Route object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".map"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/W.route.Router.core.route.html">W.route.Router.core.route</a>}</span>
+					<span class="light">W.route.Router.</span><b>map</b>(path)
+					
+					</div>
+					<div class="description">
+						Create a route with path string.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>Path string. For parameters use :Parameter e.g. /hello/:ross/</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/W.route.Router.core.route.html">W.route.Router.core.route</a>}</span> Route object</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
 			
 			
 <!-- ============================== event details ========================= -->		
@@ -271,7 +464,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Tue Mar 08 2011 16:17:41 GMT-0000 (GMT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Tue Mar 08 2011 16:17:42 GMT-0000 (GMT)
 		</div>
 	</body>
 </html>
