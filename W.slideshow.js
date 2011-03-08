@@ -159,7 +159,11 @@ if(Function.prototype.method == undefined) {
                     if (makeActiveAlbum == undefined || album != this._activeAlbum || makeActiveAlbum == true) {
                        this._activeAlbum = album;
                        this._currentImageIndex = -1;
-                       this.next();
+                       if (this._settings.autoPlay) {
+                            this.play(true);
+                       } else {
+                            this.next();
+                       }
                     }
 
                     return this;
@@ -193,11 +197,8 @@ if(Function.prototype.method == undefined) {
                         currentImageIndex : this._currentImageIndex,
                         currentImageTitle : "The image",
                         currentImageDecription : "The images description",
-                        currentImageExtraInfo : {},
-                        callBackImageWillAppear : undefined,
-                        callBackImageDidAppear : undefined,
-                        callBackImageWillDisappear : undefined,
-                        callBackImageDidDisappear : undefined
+                        currentImageDetails : this._activeAlbum.slides[this._currentImageIndex],
+                        settings : this.settings
                     };
                 }
             );
@@ -220,12 +221,16 @@ if(Function.prototype.method == undefined) {
                         return this;
                     }
 
-                    // @todo sort logic. when pressed (not auto set) it should load next image
                     if (nextSlideOnPlay == undefined)  this.nextSlideOnPlay = true;
 
                     this._intervalID = setInterval(W.bind(this, function () {
-                       this.next();
+                       this._next();
                     }), this._settings.slideDuration + this._settings.transitionInTime + this._settings.transitionOutTime);
+
+                    if (this.nextSlideOnPlay) {
+                         W.l("will do next slide now");
+                         this._next();
+                    }
 
                     this._isPlaying = true;
                     this._playStateChanged();
@@ -264,17 +269,18 @@ if(Function.prototype.method == undefined) {
                     return this;
                 }
             )
-            .method( "next",
+            .method( "_next",
                 /**
                  * @name next
                  * @methodOf W.slideshow.Controller
+                 * @private
                  */
                 function () {
                     if (this._isChangingSlide) {
                         W.w(".next() fail: slide is in the process of changing");
                         return this;
                     }
-                    
+
                     if (this._currentImageIndex + 1 === this._activeAlbum.slides.length) {
                         if (this._settings.loops === true)
                              this._currentImageIndex = -1;
@@ -284,16 +290,28 @@ if(Function.prototype.method == undefined) {
 
                     this._currentImageIndex++;
                     this._slideWillChange();
-                    
+
                     this.transitionSlide(this._activeAlbum.slides[this._currentImageIndex]);
 
                     return this;
                 }
             )
-            .method( "previous",
+            .method( "next",
+                /**
+                 * Next slide. Intended to be called by user interaction. _next(); handles automated next slide requests.
+                 * @name next
+                 * @methodOf W.slideshow.Controller
+                 */
+                function () {
+                    if(this._settings.stopOnNextOrPrevious) this.stop();
+                    this._next();
+                }
+            )
+            .method( "_previous",
                 /**
                  * @name previous
                  * @methodOf W.slideshow.Controller
+                 * @private
                  */
                 function () {
                     if (this._isChangingSlide) {
@@ -314,6 +332,17 @@ if(Function.prototype.method == undefined) {
                     this.transitionSlide(this._activeAlbum.slides[this._currentImageIndex]);
 
                     return this;
+                }
+            )
+            .method( "previous",
+                /**
+                 * Previous slide. Intended to be called by user interaction. _previous(); handles automated previous slide requests.
+                 * @name previous
+                 * @methodOf W.slideshow.Controller
+                 */
+                function () {
+                    if(this._settings.stopOnNextOrPrevious) this.stop();
+                    this._previous();
                 }
             )
             .method( "last",
@@ -504,31 +533,49 @@ if(Function.prototype.method == undefined) {
              * @type    String
              * @default overflow: hidden
             */
-            this.overflow =              params['overflow'] || "hidden";
+            this.overflow =                params['overflow'] || "hidden";
             /**
              * Milliseconds
              * @type    Number
              * @default 100
             */
-            this.transitionInTime =        params['transitionInTime'] || 100;
+            this.transitionInTime =       params['transitionInTime'] || 100;
             /**
              * Milliseconds. Only visible if transitioning out slide is visible (i.e. overlapping).
              * @type    Number
              * @default 100
             */
-            this.transitionOutTime =        params['transitionOutTime'] || 20;
+            this.transitionOutTime =      params['transitionOutTime'] || 20;
             /**
              * Where the gallery controller cycles through images
              * @type    Boolean
              * @default true
             */
-            this.loops =                    params['loops'] || true;
+            this.loops =                  params['loops'] || true;
             /**
              * Duration of Slide. Excludes transtition in and out time ( transtition in and out time are added to  play() intervals )
              * @type    Number
              * @default 3000
             */
-            this.slideDuration =                    params['slideDuration'] || 3000;
+            this.slideDuration =          params['slideDuration'] || 3000;
+            /**
+             * Stop slideshow when next or previous is called.
+             * @type    Boolean
+             * @default true
+            */
+            this.stopOnNextOrPrevious =   params['stopOnNextOrPrevious'] || true;
+            /**
+             * Stop slideshow when a specific slide is requested
+             * @type    Boolean
+             * @default true
+            */
+            this.stopOnGoToSlide =        params['stopOnGoToSlide'] || true;
+            /**
+             * Play when adding Album
+             * @type    Boolean
+             * @default true
+            */
+            this.autoPlay =        params['autoPlay'] || true;
         }
         W.slideshow.Settings
             .method("mergeSettings",
