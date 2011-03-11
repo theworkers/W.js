@@ -26,8 +26,6 @@
 
             for (var i=0; i<W.animation.dom._domAnimations.length; i++) {
 
-                W.l(W.animation.dom._domAnimations);
-
                 if(W.animation.dom._domAnimations[i].type == 'js-in-fadeIn') {
                     var animation = W.animation.dom._domAnimations[i];
                     if (animation.processed === 'not yet') {
