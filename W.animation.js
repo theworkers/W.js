@@ -1,5 +1,5 @@
 (function (W) {
-
+        if (W.animation ==  undefined) {
         /**
          *  Experamental
          *  @namespace W.animation
@@ -7,6 +7,7 @@
          *  @link   <a href="https://github.com/sole/tween.js">https://github.com/sole/tween.js</a>
          **/
   	W.animation = {};
+        }
 
         W.animation.__frameRate = 100;
 
@@ -290,7 +291,7 @@ TWEEN.Tween = function ( object ) {
 	*/
 }
 
-TWEEN.Easing = { Linear: {}, Quadratic: {}, Cubic: {}, Quartic: {}, Quintic: {}, Sinusoidal: {}, Exponential: {}, Circular: {}, Elastic: {}, Back: {}, Bounce: {} };
+TWEEN.Easing = {Linear: {}, Quadratic: {}, Cubic: {}, Quartic: {}, Quintic: {}, Sinusoidal: {}, Exponential: {}, Circular: {}, Elastic: {}, Back: {}, Bounce: {}};
 
 
 TWEEN.Easing.Linear.EaseNone = function ( k ) {
@@ -452,8 +453,8 @@ TWEEN.Easing.Circular.EaseInOut = function ( k ) {
 TWEEN.Easing.Elastic.EaseIn = function( k ) {
 
 	var s, a = 0.1, p = 0.4;
-	if ( k == 0 ) return 0; if ( k == 1 ) return 1; if ( !p ) p = 0.3;
-	if ( !a || a < 1 ) { a = 1; s = p / 4; }
+	if ( k == 0 ) return 0;if ( k == 1 ) return 1;if ( !p ) p = 0.3;
+	if ( !a || a < 1 ) {a = 1;s = p / 4;}
 	else s = p / ( 2 * Math.PI ) * Math.asin( 1 / a );
 	return - ( a * Math.pow( 2, 10 * ( k -= 1 ) ) * Math.sin( ( k - s ) * ( 2 * Math.PI ) / p ) );
 
@@ -462,8 +463,8 @@ TWEEN.Easing.Elastic.EaseIn = function( k ) {
 TWEEN.Easing.Elastic.EaseOut = function( k ) {
 
 	var s, a = 0.1, p = 0.4;
-	if ( k == 0 ) return 0; if ( k == 1 ) return 1; if ( !p ) p = 0.3;
-	if ( !a || a < 1 ) { a = 1; s = p / 4; }
+	if ( k == 0 ) return 0;if ( k == 1 ) return 1;if ( !p ) p = 0.3;
+	if ( !a || a < 1 ) {a = 1;s = p / 4;}
 	else s = p / ( 2 * Math.PI ) * Math.asin( 1 / a );
 	return ( a * Math.pow( 2, - 10 * k) * Math.sin( ( k - s ) * ( 2 * Math.PI ) / p ) + 1 );
 
@@ -472,8 +473,8 @@ TWEEN.Easing.Elastic.EaseOut = function( k ) {
 TWEEN.Easing.Elastic.EaseInOut = function( k ) {
 
 	var s, a = 0.1, p = 0.4;
-	if ( k == 0 ) return 0; if ( k == 1 ) return 1; if ( !p ) p = 0.3;
-        if ( !a || a < 1 ) { a = 1; s = p / 4; }
+	if ( k == 0 ) return 0;if ( k == 1 ) return 1;if ( !p ) p = 0.3;
+        if ( !a || a < 1 ) {a = 1;s = p / 4;}
         else s = p / ( 2 * Math.PI ) * Math.asin( 1 / a );
         if ( ( k *= 2 ) < 1 ) return - 0.5 * ( a * Math.pow( 2, 10 * ( k -= 1 ) ) * Math.sin( ( k - s ) * ( 2 * Math.PI ) / p ) );
         return a * Math.pow( 2, -10 * ( k -= 1 ) ) * Math.sin( ( k - s ) * ( 2 * Math.PI ) / p ) * 0.5 + 1;
