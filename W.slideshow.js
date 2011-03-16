@@ -409,6 +409,7 @@ if(Function.prototype.method == undefined) {
                 function(/** W.slideshow.Slide */ nextSlide) {
                     this._nextSlide = nextSlide;
                     this._$view.append(this._nextSlide.$view);
+                    W.l(this._nextSlide.$view);
                     this._nextSlide.$view.fadeOut(0);
                     this._nextSlide.$view.fadeIn(this._settings.transitionInTime, W.bind(this, this.transitionDidFinish));
                 })
@@ -488,6 +489,8 @@ if(Function.prototype.method == undefined) {
             this.details  =             params['details'] || {};
             /** the DOM element. if not provided an div.img element will be created using `src` & `title`  */
             this.$view =              params['$view'] || undefined;
+            /** should apply styles to view */
+            this.useStyles =                params['useStyles'] || true;
             /** style object for slide. default is 'position' : 'absolute',
                                                                 'top' : 0,
                                                                 'left' : 0  */
@@ -496,7 +499,16 @@ if(Function.prototype.method == undefined) {
                                                                 'top' : 0,
                                                                 'left' : 0
                                                            };
-
+			
+			// check view is a jquery object
+			if (this.$view instanceof jQuery && this.$view != undefined) {
+				//W.l('is jQuery');
+			} else {
+				this.$view = jQuery(this.$view);
+			}
+			
+			if (this.useStyles) this.$view.css(this.style); 
+			
             // must be last
             if (this.$view ==  undefined) this.renderView();
 
@@ -514,7 +526,7 @@ if(Function.prototype.method == undefined) {
                  */
                  function () {
                      this.$view = $('<div><img src="' + this.src + '" title="' + this.title + '" /></div>');
-                     this.$view.css(this.style);
+                     if (this.useStyles) this.$view.css(this.style);
                      return this;
                  }
             );
@@ -538,13 +550,13 @@ if(Function.prototype.method == undefined) {
              * @type    Number
              * @default 100
             */
-            this.transitionInTime =       params['transitionInTime'] || 100;
+            this.transitionInTime =       params['transitionInTime'] || 1000;
             /**
              * Milliseconds. Only visible if transitioning out slide is visible (i.e. overlapping).
              * @type    Number
              * @default 100
             */
-            this.transitionOutTime =      params['transitionOutTime'] || 20;
+            this.transitionOutTime =      params['transitionOutTime'] || 200;
             /**
              * Where the gallery controller cycles through images
              * @type    Boolean
