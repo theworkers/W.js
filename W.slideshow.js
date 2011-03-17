@@ -227,7 +227,6 @@ if(Function.prototype.method == undefined) {
                     }), this._settings.slideDuration + this._settings.transitionInTime + this._settings.transitionOutTime);
 
                     if (this.nextSlideOnPlay) {
-                         W.l("will do next slide now");
                          this._next();
                     }
 
@@ -409,7 +408,6 @@ if(Function.prototype.method == undefined) {
                 function(/** W.slideshow.Slide */ nextSlide) {
                     this._nextSlide = nextSlide;
                     this._$view.append(this._nextSlide.$view);
-                    W.l(this._nextSlide.$view);
                     this._nextSlide.$view.fadeOut(0);
                     this._nextSlide.$view.fadeIn(this._settings.transitionInTime, W.bind(this, this.transitionDidFinish));
                 })
@@ -607,7 +605,11 @@ if(Function.prototype.method == undefined) {
 
                     // merge
                     for (var i in newSettings) {
-                        oldSettings[i] = newSettings[i];
+                    	if(newSettings[i] != undefined && isNaN(newSettings[i]) == false) { // error check
+                        	oldSettings[i] = newSettings[i];
+                        } else {
+                        	W.w("slideshow", "invalid setting for:", i);
+                        }
                     };
 
                     return oldSettings;
