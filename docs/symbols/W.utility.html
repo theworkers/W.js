@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - W.route.Router.core.route</title>
+		<title>JsDoc Reference - W.utility</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -234,7 +234,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class W.route.Router.core.route
+				Namespace W.utility
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -242,17 +242,17 @@ ul.inheritsList
 				
 				
 			
+				W.utility
 				
 				
-				
-					<br /><i>Defined in: </i> <a href="../symbols/src/W.route.js.html">W.route.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/W.utility.js.html">W.utility.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class W.route.Router.core.route.">
-				<caption>Class Summary</caption>
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class W.utility.">
+				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Attributes</th>
@@ -264,9 +264,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/W.route.Router.core.route.html#constructor">W.route.Router.core.route</a></b>()
+								<b><a href="../symbols/W.utility.html#constructor">W.utility</a></b>
 							</div>
-							<div class="description"></div>
+							<div class="description">Utilities</div>
 						</td>
 					</tr>
 				</tbody>
@@ -275,12 +275,17 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
+				
+				
+				
+				
+			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class W.route.Router.core.route.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class W.utility.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -293,9 +298,29 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">W.route.Router.core.route.<b><a href="../symbols/W.route.Router.core.route.html#.to">to</a></b>(fn)
+								<div class="fixedFont">W.utility.<b><a href="../symbols/W.utility.html#.getURLParameter">getURLParameter</a></b>(name)
 								</div>
-								<div class="description">Bind a function to a route object</div>
+								<div class="description">Get URL Parameter
+
+<br/><strong>Incomplete</strong></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.utility.<b><a href="../symbols/W.utility.html#.pathFromURL">pathFromURL</a></b>(url)
+								</div>
+								<div class="description">Return the Path (Url stripped of protocol and get vars)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">W.utility.<b><a href="../symbols/W.utility.html#.stringStartsWith">stringStartsWith</a></b>(str, test)
+								</div>
+								<div class="description">Tests if a string</div>
 							</td>
 						</tr>
 					
@@ -312,15 +337,15 @@ ul.inheritsList
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Class Detail
+					Namespace Detail
 				</div>
 				
 				<div class="fixedFont">
-						<b>W.route.Router.core.route</b>()
+						<b>W.utility</b>
 				</div>
 				
 				<div class="description">
-					
+					Utilities
 					
 				</div>
 				
@@ -347,15 +372,17 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".to"> </a>
+					<a name=".getURLParameter"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<span class="light">W.route.Router.core.route.</span><b>to</b>(fn)
+					<span class="light">{Object}</span>
+					<span class="light">W.utility.</span><b>getURLParameter</b>(name)
 					
 					</div>
 					<div class="description">
-						Bind a function to a route object
+						Get URL Parameter
+
+<br/><strong>Incomplete</strong>
 						
 						
 					</div>
@@ -367,10 +394,95 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Function}</span> <b>fn</b>
+									<span class="light fixedFont">{string}</span> <b>name</b>
 									
 								</dt>
-								<dd>Function to be binded. The context containts a params collection of parameters found from map</dd>
+								<dd>Parameter name to look for</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> Result object with name and value of found parameter.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".pathFromURL"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">W.utility.</span><b>pathFromURL</b>(url)
+					
+					</div>
+					<div class="description">
+						Return the Path (Url stripped of protocol and get vars)
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>url</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".stringStartsWith"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">W.utility.</span><b>stringStartsWith</b>(str, test)
+					
+					</div>
+					<div class="description">
+						Tests if a string
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>str</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>test</b>
+									
+								</dt>
+								<dd></dd>
 							
 							</dl>
 						
@@ -395,7 +507,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Thu Mar 17 2011 12:13:29 GMT-0000 (GMT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Thu Mar 17 2011 12:13:30 GMT-0000 (GMT)
 		</div>
 	</body>
 </html>
