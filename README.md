@@ -1,6 +1,6 @@
 # W.js
 
-JavaScript Framework for Node.js and Client-side Browser
+JavaScript Library for Node.js and Client-side Browser
 
 ## Usage
 
