@@ -160,6 +160,7 @@ if(Function.prototype.method == undefined) {
                        this._currentImageIndex = -1;
                        if (this._settings.autoPlay) {
                             this.play(true);
+                            this.next();
                        } else {
                             this.next();
                        }
