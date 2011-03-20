@@ -25,7 +25,7 @@
          *  }
          *
          *  var foo = new SomeClass();
-         *  foo.addEventlistener( "test", function(){ alert("bah"); } )
+         *  foo.addEventlistener( "test", function(context, data){ alert("bah"); } )
          *  foo.sendSomeEvent();
          *
          *
@@ -35,7 +35,7 @@
             this.events=[];
         }
 
-        /** Add event listener */
+        /** Add event listener. Callback will recieve (context, details) arguments */
         W.event.Dispatcher.prototype.addEventlistener=function(/** String */ event, /** Function */ callback){
             this.events[event] = this.events[event] || [];
             if ( this.events[event] ) {
@@ -59,10 +59,15 @@
             return false;
         }
 
-        /** Dispatch event with Details
+        /** Dispatch event. Delegates will be passes the dispatcher context and a details
          *
          * @param {String} event        Name of the Event to be dispatched
          * @param {Object} details      Custom object passed to event handlers
+         *
+         * @example
+         * 
+         *      obj.addEventListener("event", function(context, data) {} );
+         * 
          **/
         W.event.Dispatcher.prototype.dispatch=function(event, details){
             if ( this.events[event] ) {

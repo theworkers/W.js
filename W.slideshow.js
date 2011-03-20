@@ -407,6 +407,11 @@ if(Function.prototype.method == undefined) {
                  * @methodOf W.slideshow.Controller
                  */
                 function(/** W.slideshow.Slide */ nextSlide) {
+                	if(nextSlide === undefined) {
+                		W.bind(this, this.transitionDidFinish);
+                		return;
+                	}
+                
                     this._nextSlide = nextSlide;
                     this._$view.append(this._nextSlide.$view);
                     this._nextSlide.$view.fadeOut(0);
