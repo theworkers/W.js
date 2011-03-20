@@ -26,6 +26,10 @@ JavaScript Library for Node.js and Client-side Browser
 
 ### Roadmap
 
+* todo
+    * add W.each() safe browser and node implementation
+    * W.text.enableStringPrototype with W.each() encapsulate each W.text. method, passing `this` as the first argument, a and add to String prototype
+
 * add
 	* W.safeJSON    parse if not already JSON
     * W.warn, W.log, W.stub to node.js
