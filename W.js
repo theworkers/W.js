@@ -190,7 +190,7 @@
             }
 
             // catch all; a good old alert box
-            alert(args);
+            //alert(args);
             return false;
         }
     };
