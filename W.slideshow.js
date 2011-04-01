@@ -160,7 +160,6 @@ if(Function.prototype.method == undefined) {
                        this._currentImageIndex = -1;
                        if (this._settings.autoPlay) {
                             this.play(true);
-                            this.next();
                        } else {
                             this.next();
                        }
@@ -168,7 +167,16 @@ if(Function.prototype.method == undefined) {
 
                     return this;
                 }
-            );
+           	 )
+           	 .method( "getActiveAlbum",
+                /**
+                 * @name getActiveAlbum
+                 * @methodOf W.slideshow.Controller
+                 */
+                function () {
+                    return this._activeAlbum;
+                }
+           	 );
          /**#@-*/
 
          W.slideshow.Controller
@@ -217,7 +225,7 @@ if(Function.prototype.method == undefined) {
                  */
                 function (nextSlideOnPlay) {
                     if (this._isPlaying) {
-                         W.w(".play() fail: already playing");
+                        //W.w(".play() fail: already playing");
                         return this;
                     }
 
@@ -226,6 +234,7 @@ if(Function.prototype.method == undefined) {
                     this._intervalID = setInterval(W.bind(this, function () {
                        this._next();
                     }), this._settings.slideDuration + this._settings.transitionInTime + this._settings.transitionOutTime);
+                    
 
                     if (this.nextSlideOnPlay) {
                          this._next();
@@ -275,6 +284,7 @@ if(Function.prototype.method == undefined) {
                  * @private
                  */
                 function () {
+                
                     if (this._isChangingSlide) {
                         W.w(".next() fail: slide is in the process of changing");
                         return this;
