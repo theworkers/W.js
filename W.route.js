@@ -82,20 +82,24 @@ if(Function.prototype.method == undefined) {
                 var params = {};
                 var route = null;
                 var i = null;
+                
                 for (route in  W.route.Router.routes) {
+                
                     if (route !== null && route !== undefined) {
                         var compare = path;
-                        if (route.search(/:/) > 0) {
+                        if (route.indexOf(":") > -1) {
                             for (i = 0; i < route.split("/").length; i++) {
-                                if ((i < compare.split("/").length) && (route.split("/")[i][0] === ":")) {
-                                    params[route.split('/')[i].replace(/:/, '')] = compare.split("/")[i];
+                                if ((i < compare.split("/").length) && (route.split("/")[i].charAt(0) === ":")) {
+                                    params[route.split('/')[i].replace(":", '')] = compare.split("/")[i];
                                     compare = compare.replace(compare.split("/")[i], route.split("/")[i]);
                                 }
                             }
                         }
+                        
+                        
 
                         if (route === compare) {
-                             W.route.Router.routes[route].params = params;
+                            W.route.Router.routes[route].params = params;
                             return  W.route.Router.routes[route];
                         }
                     }
