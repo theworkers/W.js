@@ -167,74 +167,74 @@
 <span class='line'>160</span> </span><span class="WHIT">                       </span><span class="NAME">this._currentImageIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>161</span> </span><span class="WHIT">                       </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._settings.autoPlay</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>162</span> </span><span class="WHIT">                            </span><span class="NAME">this.play</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>163</span> </span><span class="WHIT">                       </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>164</span> </span><span class="WHIT">                            </span><span class="NAME">this.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>165</span> </span><span class="WHIT">                       </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>166</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>167</span> 
-<span class='line'>168</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>169</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>170</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>171</span> </span><span class="WHIT">         </span><span class="COMM">/**#@-*/</span><span class="WHIT">
-<span class='line'>172</span> 
-<span class='line'>173</span> </span><span class="WHIT">         </span><span class="NAME">W.slideshow.Controller</span><span class="WHIT">
-<span class='line'>174</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">"get$View"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>175</span> </span><span class="WHIT">                </span><span class="COMM">/**
-<span class='line'>176</span>                  * @name get$View
-<span class='line'>177</span>                  * @methodOf W.slideshow.Controller
-<span class='line'>178</span>                  * @return {jQuery} the main view for the Slideshow
-<span class='line'>179</span>                  */</span><span class="WHIT">
-<span class='line'>180</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>181</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._$view</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>182</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>183</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>184</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">"getStats"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>185</span> </span><span class="WHIT">                </span><span class="COMM">/**
-<span class='line'>186</span>                  * @name getStats
-<span class='line'>187</span>                  *
-<span class='line'>188</span>                  * @methodOf W.slideshow.Controller
-<span class='line'>189</span>                  * @return {Object} returns state information about the gallery controller
-<span class='line'>190</span>                  */</span><span class="WHIT">
-<span class='line'>191</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>192</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>193</span> </span><span class="WHIT">                        </span><span class="NAME">totalImages</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this._activeAlbum.slides.length</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>194</span> </span><span class="WHIT">                        </span><span class="NAME">hasNext</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.currentImageIndex</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">this.totalImages</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>195</span> </span><span class="WHIT">                        </span><span class="NAME">hasPrevious</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._activeAlbum.slides.count</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>196</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageIndex</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this._currentImageIndex</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>197</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageTitle</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"The image"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>198</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageDecription</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"The images description"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>199</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageDetails</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this._activeAlbum.slides</span><span class="PUNC">[</span><span class="NAME">this._currentImageIndex</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>200</span> </span><span class="WHIT">                        </span><span class="NAME">settings</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.settings</span><span class="WHIT">
-<span class='line'>201</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>202</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>203</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>204</span> 
-<span class='line'>205</span> </span><span class="WHIT">        </span><span class="COMM">/**#@+
-<span class='line'>206</span>          *  Play control
-<span class='line'>207</span>          *  @returns {W.slideshow.Controller} Controller to allow for chaining
-<span class='line'>208</span>          *  @type Controller
-<span class='line'>209</span>          **/</span><span class="WHIT">
-<span class='line'>210</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Controller</span><span class="WHIT">
-<span class='line'>211</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">"play"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>212</span> </span><span class="WHIT">                </span><span class="COMM">/**
-<span class='line'>213</span>                  * @name play
-<span class='line'>214</span>                  * @methodOf W.slideshow.Controller
-<span class='line'>215</span>                  * @param   {Boolean} nextSlideOnPlay      Default true. Transition to next image on execution
-<span class='line'>216</span>                  */</span><span class="WHIT">
-<span class='line'>217</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">nextSlideOnPlay</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>218</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._isPlaying</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>219</span> </span><span class="WHIT">                         </span><span class="NAME">W.w</span><span class="PUNC">(</span><span class="STRN">".play() fail: already playing"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>220</span> </span><span class="WHIT">                        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>221</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>222</span> 
-<span class='line'>223</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">nextSlideOnPlay</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT">  </span><span class="NAME">this.nextSlideOnPlay</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>224</span> 
-<span class='line'>225</span> </span><span class="WHIT">                    </span><span class="NAME">this._intervalID</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">setInterval</span><span class="PUNC">(</span><span class="NAME">W.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>226</span> </span><span class="WHIT">                       </span><span class="NAME">this._next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>227</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this._settings.slideDuration</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this._settings.transitionInTime</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this._settings.transitionOutTime</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>228</span> 
-<span class='line'>229</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.nextSlideOnPlay</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>230</span> </span><span class="WHIT">                         </span><span class="NAME">W.l</span><span class="PUNC">(</span><span class="STRN">"will do next slide now"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">                            </span><span class="NAME">this.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">                       </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">                            </span><span class="NAME">this.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">                       </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>168</span> 
+<span class='line'>169</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">         </span><span class="COMM">/**#@-*/</span><span class="WHIT">
+<span class='line'>173</span> 
+<span class='line'>174</span> </span><span class="WHIT">         </span><span class="NAME">W.slideshow.Controller</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">"get$View"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>177</span>                  * @name get$View
+<span class='line'>178</span>                  * @methodOf W.slideshow.Controller
+<span class='line'>179</span>                  * @return {jQuery} the main view for the Slideshow
+<span class='line'>180</span>                  */</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._$view</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">"getStats"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>187</span>                  * @name getStats
+<span class='line'>188</span>                  *
+<span class='line'>189</span>                  * @methodOf W.slideshow.Controller
+<span class='line'>190</span>                  * @return {Object} returns state information about the gallery controller
+<span class='line'>191</span>                  */</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">                        </span><span class="NAME">totalImages</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this._activeAlbum.slides.length</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">                        </span><span class="NAME">hasNext</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.currentImageIndex</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">this.totalImages</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">                        </span><span class="NAME">hasPrevious</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._activeAlbum.slides.count</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageIndex</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this._currentImageIndex</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageTitle</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"The image"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageDecription</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"The images description"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">                        </span><span class="NAME">currentImageDetails</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this._activeAlbum.slides</span><span class="PUNC">[</span><span class="NAME">this._currentImageIndex</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">                        </span><span class="NAME">settings</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.settings</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> 
+<span class='line'>206</span> </span><span class="WHIT">        </span><span class="COMM">/**#@+
+<span class='line'>207</span>          *  Play control
+<span class='line'>208</span>          *  @returns {W.slideshow.Controller} Controller to allow for chaining
+<span class='line'>209</span>          *  @type Controller
+<span class='line'>210</span>          **/</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Controller</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">"play"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>214</span>                  * @name play
+<span class='line'>215</span>                  * @methodOf W.slideshow.Controller
+<span class='line'>216</span>                  * @param   {Boolean} nextSlideOnPlay      Default true. Transition to next image on execution
+<span class='line'>217</span>                  */</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">nextSlideOnPlay</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._isPlaying</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">                         </span><span class="NAME">W.w</span><span class="PUNC">(</span><span class="STRN">".play() fail: already playing"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">                        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>223</span> 
+<span class='line'>224</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">nextSlideOnPlay</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT">  </span><span class="NAME">this.nextSlideOnPlay</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> 
+<span class='line'>226</span> </span><span class="WHIT">                    </span><span class="NAME">this._intervalID</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">setInterval</span><span class="PUNC">(</span><span class="NAME">W.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">                       </span><span class="NAME">this._next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this._settings.slideDuration</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this._settings.transitionInTime</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this._settings.transitionOutTime</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> 
+<span class='line'>230</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.nextSlideOnPlay</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>231</span> </span><span class="WHIT">                         </span><span class="NAME">this._next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>232</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>233</span> 
@@ -414,212 +414,220 @@
 <span class='line'>407</span>                  * @methodOf W.slideshow.Controller
 <span class='line'>408</span>                  */</span><span class="WHIT">
 <span class='line'>409</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/** W.slideshow.Slide */</span><span class="WHIT"> </span><span class="NAME">nextSlide</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>410</span> </span><span class="WHIT">                    </span><span class="NAME">this._nextSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nextSlide</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>411</span> </span><span class="WHIT">                    </span><span class="NAME">this._$view.append</span><span class="PUNC">(</span><span class="NAME">this._nextSlide.$view</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>412</span> </span><span class="WHIT">                    </span><span class="NAME">W.l</span><span class="PUNC">(</span><span class="NAME">this._nextSlide.$view</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>413</span> </span><span class="WHIT">                    </span><span class="NAME">this._nextSlide.$view.fadeOut</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>414</span> </span><span class="WHIT">                    </span><span class="NAME">this._nextSlide.$view.fadeIn</span><span class="PUNC">(</span><span class="NAME">this._settings.transitionInTime</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">W.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.transitionDidFinish</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>415</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>416</span> </span><span class="WHIT">                </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">'transitionDidFinish'</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>417</span> </span><span class="WHIT">                </span><span class="COMM">/**
-<span class='line'>418</span>                  * Called when transitions have finished
-<span class='line'>419</span>                  * @name transitionDidFinish
-<span class='line'>420</span>                  * @private
-<span class='line'>421</span>                  * @methodOf W.slideshow.Controller
-<span class='line'>422</span>                  */</span><span class="WHIT">
-<span class='line'>423</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>424</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">this._frontSlide</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>425</span> </span><span class="WHIT">                        </span><span class="NAME">this._frontSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._nextSlide</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>426</span> </span><span class="WHIT">                        </span><span class="NAME">this._slideDidChange</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>427</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>428</span> </span><span class="WHIT">                        </span><span class="NAME">this._frontSlide.$view.fadeOut</span><span class="PUNC">(</span><span class="NAME">this._settings.transitionOutTime</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">W.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>429</span> </span><span class="WHIT">                                </span><span class="NAME">this._frontSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._nextSlide</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>430</span> </span><span class="WHIT">                                </span><span class="NAME">this._slideDidChange</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>431</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>432</span> </span><span class="WHIT">                        </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>433</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>434</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>435</span> 
-<span class='line'>436</span> </span><span class="WHIT">        </span><span class="COMM">/**#@-*/</span><span class="WHIT">
-<span class='line'>437</span> 
-<span class='line'>438</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>439</span>             Creates a new  W.slideshow.Album Contains {@link W.slideshow.Slide}
-<span class='line'>440</span>             @class
-<span class='line'>441</span>          */</span><span class="WHIT">
-<span class='line'>442</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.SlideAlbum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>443</span> </span><span class="WHIT">             </span><span class="COMM">/**
-<span class='line'>444</span>              *  @private
-<span class='line'>445</span>              *  @memberOf W.slideshow.SlideAlbum
-<span class='line'>446</span>             */</span><span class="WHIT">
-<span class='line'>447</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Album</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>448</span> 
-<span class='line'>449</span> </span><span class="WHIT">            </span><span class="COMM">/** @private */</span><span class="WHIT">
-<span class='line'>450</span> 
-<span class='line'>451</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>452</span>              * Internal Array of {@link W.slideshow.Slide}
-<span class='line'>453</span>              * @type Array
-<span class='line'>454</span>             */</span><span class="WHIT">
-<span class='line'>455</span> </span><span class="WHIT">            </span><span class="NAME">this.slides</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>456</span> 
-<span class='line'>457</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>458</span> 
-<span class='line'>459</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.SlideAlbum</span><span class="WHIT">
-<span class='line'>460</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">"addSlide"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>461</span> </span><span class="WHIT">                </span><span class="COMM">/**
-<span class='line'>462</span>                  * @name addSlide
-<span class='line'>463</span>                  * @methodOf W.slideshow.SlideAlbum
-<span class='line'>464</span>                  */</span><span class="WHIT">
-<span class='line'>465</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="COMM">/** W.slideshow.Slide */</span><span class="WHIT"> </span><span class="NAME">slide</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>466</span> </span><span class="WHIT">                    </span><span class="NAME">this.slides.push</span><span class="PUNC">(</span><span class="NAME">slide</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>467</span> 
-<span class='line'>468</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>469</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>470</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">                	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">nextSlide</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">                		</span><span class="NAME">W.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.transitionDidFinish</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">                		</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">                	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">                
+<span class='line'>415</span>                     </span><span class="NAME">this._nextSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nextSlide</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">                    </span><span class="NAME">this._$view.append</span><span class="PUNC">(</span><span class="NAME">this._nextSlide.$view</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">                    </span><span class="NAME">this._nextSlide.$view.fadeOut</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">                    </span><span class="NAME">this._nextSlide.$view.fadeIn</span><span class="PUNC">(</span><span class="NAME">this._settings.transitionInTime</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">W.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.transitionDidFinish</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">                </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">'transitionDidFinish'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>422</span>                  * Called when transitions have finished
+<span class='line'>423</span>                  * @name transitionDidFinish
+<span class='line'>424</span>                  * @private
+<span class='line'>425</span>                  * @methodOf W.slideshow.Controller
+<span class='line'>426</span>                  */</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">this._frontSlide</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">                        </span><span class="NAME">this._frontSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._nextSlide</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">                        </span><span class="NAME">this._slideDidChange</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">                        </span><span class="NAME">this._frontSlide.$view.fadeOut</span><span class="PUNC">(</span><span class="NAME">this._settings.transitionOutTime</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">W.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">                                </span><span class="NAME">this._frontSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._nextSlide</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">                                </span><span class="NAME">this._slideDidChange</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="WHIT">                        </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>439</span> 
+<span class='line'>440</span> </span><span class="WHIT">        </span><span class="COMM">/**#@-*/</span><span class="WHIT">
+<span class='line'>441</span> 
+<span class='line'>442</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>443</span>             Creates a new  W.slideshow.Album Contains {@link W.slideshow.Slide}
+<span class='line'>444</span>             @class
+<span class='line'>445</span>          */</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.SlideAlbum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">             </span><span class="COMM">/**
+<span class='line'>448</span>              *  @private
+<span class='line'>449</span>              *  @memberOf W.slideshow.SlideAlbum
+<span class='line'>450</span>             */</span><span class="WHIT">
+<span class='line'>451</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Album</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>452</span> 
+<span class='line'>453</span> </span><span class="WHIT">            </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>454</span> 
+<span class='line'>455</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>456</span>              * Internal Array of {@link W.slideshow.Slide}
+<span class='line'>457</span>              * @type Array
+<span class='line'>458</span>             */</span><span class="WHIT">
+<span class='line'>459</span> </span><span class="WHIT">            </span><span class="NAME">this.slides</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>460</span> 
+<span class='line'>461</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span> 
+<span class='line'>463</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.SlideAlbum</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">"addSlide"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>466</span>                  * @name addSlide
+<span class='line'>467</span>                  * @methodOf W.slideshow.SlideAlbum
+<span class='line'>468</span>                  */</span><span class="WHIT">
+<span class='line'>469</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="COMM">/** W.slideshow.Slide */</span><span class="WHIT"> </span><span class="NAME">slide</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="WHIT">                    </span><span class="NAME">this.slides.push</span><span class="PUNC">(</span><span class="NAME">slide</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>471</span> 
-<span class='line'>472</span> 
-<span class='line'>473</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>474</span>             Creates a new  W.slideshow.Slide.
-<span class='line'>475</span>             @class
+<span class='line'>472</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>475</span> 
 <span class='line'>476</span> 
-<span class='line'>477</span>                 @param (obj)  params    override/pass default information
-<span class='line'>478</span>          */</span><span class="WHIT">
-<span class='line'>479</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Slide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>480</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT">  </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>481</span> 
-<span class='line'>482</span> </span><span class="WHIT">            </span><span class="COMM">/** url of image */</span><span class="WHIT">
-<span class='line'>483</span> </span><span class="WHIT">            </span><span class="NAME">this.src</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'src'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>484</span> </span><span class="WHIT">            </span><span class="COMM">/** url of description */</span><span class="WHIT">
-<span class='line'>485</span> </span><span class="WHIT">            </span><span class="NAME">this.description</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">        </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'description'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>486</span> </span><span class="WHIT">            </span><span class="COMM">/** url of title of image */</span><span class="WHIT">
-<span class='line'>487</span> </span><span class="WHIT">            </span><span class="NAME">this.title</span><span class="WHIT">  </span><span class="PUNC">=</span><span class="WHIT">             </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'title'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>488</span> </span><span class="WHIT">            </span><span class="COMM">/** a custom object */</span><span class="WHIT">
-<span class='line'>489</span> </span><span class="WHIT">            </span><span class="NAME">this.details</span><span class="WHIT">  </span><span class="PUNC">=</span><span class="WHIT">             </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'details'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>490</span> </span><span class="WHIT">            </span><span class="COMM">/** the DOM element. if not provided an div.img element will be created using `src` & `title`  */</span><span class="WHIT">
-<span class='line'>491</span> </span><span class="WHIT">            </span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">              </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'$view'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>492</span> </span><span class="WHIT">            </span><span class="COMM">/** should apply styles to view */</span><span class="WHIT">
-<span class='line'>493</span> </span><span class="WHIT">            </span><span class="NAME">this.useStyles</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'useStyles'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>494</span> </span><span class="WHIT">            </span><span class="COMM">/** style object for slide. default is 'position' : 'absolute',
-<span class='line'>495</span>                                                                 'top' : 0,
-<span class='line'>496</span>                                                                 'left' : 0  */</span><span class="WHIT">
-<span class='line'>497</span> </span><span class="WHIT">            </span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">              </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'style'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>498</span> </span><span class="WHIT">                                                                </span><span class="STRN">'position'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'absolute'</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>499</span> </span><span class="WHIT">                                                                </span><span class="STRN">'top'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>500</span> </span><span class="WHIT">                                                                </span><span class="STRN">'left'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT">
-<span class='line'>501</span> </span><span class="WHIT">                                                           </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>502</span> </span><span class="WHIT">			
-<span class='line'>503</span> 			</span><span class="COMM">// check view is a jquery object</span><span class="WHIT">
-<span class='line'>504</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">jQuery</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>505</span> </span><span class="WHIT">				</span><span class="COMM">//W.l('is jQuery');</span><span class="WHIT">
-<span class='line'>506</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>507</span> </span><span class="WHIT">				</span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jQuery</span><span class="PUNC">(</span><span class="NAME">this.$view</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>508</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>509</span> </span><span class="WHIT">			
-<span class='line'>510</span> 			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.useStyles</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this.$view.css</span><span class="PUNC">(</span><span class="NAME">this.style</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> 
-<span class='line'>511</span> 			
-<span class='line'>512</span>             </span><span class="COMM">// must be last</span><span class="WHIT">
-<span class='line'>513</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT">  </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this.renderView</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>514</span> 
-<span class='line'>515</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>516</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>517</span> 
-<span class='line'>518</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Slide</span><span class="WHIT">
-<span class='line'>519</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">"renderView"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>520</span> </span><span class="WHIT">                </span><span class="COMM">/**
-<span class='line'>521</span>                  * Creates the view element of the slide. Ideally this will not be called when a `$view` is provied at slide creation.
-<span class='line'>522</span>                  * Will try to create an img tag using the `src` and title. Needs to be wrapped in a div
-<span class='line'>523</span>                  * @name renderView
-<span class='line'>524</span>                  * @returns W.slideshow.Slide
-<span class='line'>525</span>                  * @methodOf W.slideshow.Slide
-<span class='line'>526</span>                  */</span><span class="WHIT">
-<span class='line'>527</span> </span><span class="WHIT">                 </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>528</span> </span><span class="WHIT">                     </span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">'&lt;div>&lt;img src="'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.src</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" title="'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.title</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" />&lt;/div>'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>529</span> </span><span class="WHIT">                     </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.useStyles</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this.$view.css</span><span class="PUNC">(</span><span class="NAME">this.style</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>530</span> </span><span class="WHIT">                     </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>531</span> </span><span class="WHIT">                 </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>532</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>533</span> 
-<span class='line'>534</span> 
-<span class='line'>535</span> </span><span class="WHIT">         </span><span class="COMM">/**
-<span class='line'>536</span>             Creates a new  W.slideshow.Settings
-<span class='line'>537</span>             @class
-<span class='line'>538</span>          */</span><span class="WHIT">
-<span class='line'>539</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Settings</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>540</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT">     </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>541</span> 
-<span class='line'>542</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>543</span>              * Overflow CSS for container
-<span class='line'>544</span>              * @type    String
-<span class='line'>545</span>              * @default overflow: hidden
-<span class='line'>546</span>             */</span><span class="WHIT">
-<span class='line'>547</span> </span><span class="WHIT">            </span><span class="NAME">this.overflow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'overflow'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"hidden"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>548</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>549</span>              * Milliseconds
-<span class='line'>550</span>              * @type    Number
-<span class='line'>551</span>              * @default 100
-<span class='line'>552</span>             */</span><span class="WHIT">
-<span class='line'>553</span> </span><span class="WHIT">            </span><span class="NAME">this.transitionInTime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">       </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'transitionInTime'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>554</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>555</span>              * Milliseconds. Only visible if transitioning out slide is visible (i.e. overlapping).
-<span class='line'>556</span>              * @type    Number
-<span class='line'>557</span>              * @default 100
-<span class='line'>558</span>             */</span><span class="WHIT">
-<span class='line'>559</span> </span><span class="WHIT">            </span><span class="NAME">this.transitionOutTime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">      </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'transitionOutTime'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">200</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>560</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>561</span>              * Where the gallery controller cycles through images
-<span class='line'>562</span>              * @type    Boolean
-<span class='line'>563</span>              * @default true
-<span class='line'>564</span>             */</span><span class="WHIT">
-<span class='line'>565</span> </span><span class="WHIT">            </span><span class="NAME">this.loops</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                  </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'loops'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>566</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>567</span>              * Duration of Slide. Excludes transtition in and out time ( transtition in and out time are added to  play() intervals )
-<span class='line'>568</span>              * @type    Number
-<span class='line'>569</span>              * @default 3000
-<span class='line'>570</span>             */</span><span class="WHIT">
-<span class='line'>571</span> </span><span class="WHIT">            </span><span class="NAME">this.slideDuration</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">          </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'slideDuration'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">3000</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>572</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>573</span>              * Stop slideshow when next or previous is called.
-<span class='line'>574</span>              * @type    Boolean
-<span class='line'>575</span>              * @default true
-<span class='line'>576</span>             */</span><span class="WHIT">
-<span class='line'>577</span> </span><span class="WHIT">            </span><span class="NAME">this.stopOnNextOrPrevious</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">   </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'stopOnNextOrPrevious'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>578</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>579</span>              * Stop slideshow when a specific slide is requested
-<span class='line'>580</span>              * @type    Boolean
-<span class='line'>581</span>              * @default true
-<span class='line'>582</span>             */</span><span class="WHIT">
-<span class='line'>583</span> </span><span class="WHIT">            </span><span class="NAME">this.stopOnGoToSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">        </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'stopOnGoToSlide'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>584</span> </span><span class="WHIT">            </span><span class="COMM">/**
-<span class='line'>585</span>              * Play when adding Album
-<span class='line'>586</span>              * @type    Boolean
-<span class='line'>587</span>              * @default true
-<span class='line'>588</span>             */</span><span class="WHIT">
-<span class='line'>589</span> </span><span class="WHIT">            </span><span class="NAME">this.autoPlay</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">        </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'autoPlay'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>590</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>591</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Settings</span><span class="WHIT">
-<span class='line'>592</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">"mergeSettings"</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>593</span> </span><span class="WHIT">                </span><span class="COMM">/**
-<span class='line'>594</span>                  * Safely merge settings
-<span class='line'>595</span>                  * @private
-<span class='line'>596</span>                  * @name mergeSettings
-<span class='line'>597</span>                  * @methodOf W.slideshow.Controller
-<span class='line'>598</span>                  */</span><span class="WHIT">
-<span class='line'>599</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="COMM">/** W.slideshow.Settings */</span><span class="WHIT"> </span><span class="NAME">newSettings</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/** W.slideshow.Settings */</span><span class="WHIT"> </span><span class="NAME">oldSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>600</span> 
-<span class='line'>601</span> </span><span class="WHIT">                    </span><span class="COMM">// break if no arguments</span><span class="WHIT">
-<span class='line'>602</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">newSettings</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>603</span> </span><span class="WHIT">                    </span><span class="COMM">// if no oldSettings create a setting object with defaults to merge with</span><span class="WHIT">
-<span class='line'>604</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">oldSettings</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>605</span> </span><span class="WHIT">                        </span><span class="NAME">oldSettings</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">W.slideshow.Settings</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>606</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>607</span> 
-<span class='line'>608</span> </span><span class="WHIT">                    </span><span class="COMM">// merge</span><span class="WHIT">
-<span class='line'>609</span> </span><span class="WHIT">                    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">newSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>610</span> </span><span class="WHIT">                        </span><span class="NAME">oldSettings</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">newSettings</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>611</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>612</span> 
-<span class='line'>613</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">oldSettings</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>614</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>615</span> </span><span class="WHIT">        </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>616</span> 
-<span class='line'>617</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">W</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>618</span> </span></pre></body></html>
+<span class='line'>477</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>478</span>             Creates a new  W.slideshow.Slide.
+<span class='line'>479</span>             @class
+<span class='line'>480</span> 
+<span class='line'>481</span>                 @param (obj)  params    override/pass default information
+<span class='line'>482</span>          */</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Slide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT">  </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>485</span> 
+<span class='line'>486</span> </span><span class="WHIT">            </span><span class="COMM">/** url of image */</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">            </span><span class="NAME">this.src</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'src'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>488</span> </span><span class="WHIT">            </span><span class="COMM">/** url of description */</span><span class="WHIT">
+<span class='line'>489</span> </span><span class="WHIT">            </span><span class="NAME">this.description</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">        </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'description'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">            </span><span class="COMM">/** url of title of image */</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="WHIT">            </span><span class="NAME">this.title</span><span class="WHIT">  </span><span class="PUNC">=</span><span class="WHIT">             </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'title'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="WHIT">            </span><span class="COMM">/** a custom object */</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">            </span><span class="NAME">this.details</span><span class="WHIT">  </span><span class="PUNC">=</span><span class="WHIT">             </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'details'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">            </span><span class="COMM">/** the DOM element. if not provided an div.img element will be created using `src` & `title`  */</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">            </span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">              </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'$view'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">            </span><span class="COMM">/** should apply styles to view */</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">            </span><span class="NAME">this.useStyles</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'useStyles'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="WHIT">            </span><span class="COMM">/** style object for slide. default is 'position' : 'absolute',
+<span class='line'>499</span>                                                                 'top' : 0,
+<span class='line'>500</span>                                                                 'left' : 0  */</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">            </span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">              </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'style'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>502</span> </span><span class="WHIT">                                                                </span><span class="STRN">'position'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'absolute'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="WHIT">                                                                </span><span class="STRN">'top'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">                                                                </span><span class="STRN">'left'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT">
+<span class='line'>505</span> </span><span class="WHIT">                                                           </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>506</span> </span><span class="WHIT">			
+<span class='line'>507</span> 			</span><span class="COMM">// check view is a jquery object</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">jQuery</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>509</span> </span><span class="WHIT">				</span><span class="COMM">//W.l('is jQuery');</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">				</span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jQuery</span><span class="PUNC">(</span><span class="NAME">this.$view</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">			
+<span class='line'>514</span> 			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.useStyles</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this.$view.css</span><span class="PUNC">(</span><span class="NAME">this.style</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> 
+<span class='line'>515</span> 			
+<span class='line'>516</span>             </span><span class="COMM">// must be last</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT">  </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this.renderView</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>518</span> 
+<span class='line'>519</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>521</span> 
+<span class='line'>522</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Slide</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">"renderView"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>525</span>                  * Creates the view element of the slide. Ideally this will not be called when a `$view` is provied at slide creation.
+<span class='line'>526</span>                  * Will try to create an img tag using the `src` and title. Needs to be wrapped in a div
+<span class='line'>527</span>                  * @name renderView
+<span class='line'>528</span>                  * @returns W.slideshow.Slide
+<span class='line'>529</span>                  * @methodOf W.slideshow.Slide
+<span class='line'>530</span>                  */</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">                 </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">                     </span><span class="NAME">this.$view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">'&lt;div>&lt;img src="'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.src</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" title="'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.title</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" />&lt;/div>'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="WHIT">                     </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.useStyles</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this.$view.css</span><span class="PUNC">(</span><span class="NAME">this.style</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>534</span> </span><span class="WHIT">                     </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="WHIT">                 </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>537</span> 
+<span class='line'>538</span> 
+<span class='line'>539</span> </span><span class="WHIT">         </span><span class="COMM">/**
+<span class='line'>540</span>             Creates a new  W.slideshow.Settings
+<span class='line'>541</span>             @class
+<span class='line'>542</span>          */</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Settings</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT">     </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>545</span> 
+<span class='line'>546</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>547</span>              * Overflow CSS for container
+<span class='line'>548</span>              * @type    String
+<span class='line'>549</span>              * @default overflow: hidden
+<span class='line'>550</span>             */</span><span class="WHIT">
+<span class='line'>551</span> </span><span class="WHIT">            </span><span class="NAME">this.overflow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'overflow'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"hidden"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>552</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>553</span>              * Milliseconds
+<span class='line'>554</span>              * @type    Number
+<span class='line'>555</span>              * @default 100
+<span class='line'>556</span>             */</span><span class="WHIT">
+<span class='line'>557</span> </span><span class="WHIT">            </span><span class="NAME">this.transitionInTime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">       </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'transitionInTime'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>559</span>              * Milliseconds. Only visible if transitioning out slide is visible (i.e. overlapping).
+<span class='line'>560</span>              * @type    Number
+<span class='line'>561</span>              * @default 100
+<span class='line'>562</span>             */</span><span class="WHIT">
+<span class='line'>563</span> </span><span class="WHIT">            </span><span class="NAME">this.transitionOutTime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">      </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'transitionOutTime'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">200</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>565</span>              * Where the gallery controller cycles through images
+<span class='line'>566</span>              * @type    Boolean
+<span class='line'>567</span>              * @default true
+<span class='line'>568</span>             */</span><span class="WHIT">
+<span class='line'>569</span> </span><span class="WHIT">            </span><span class="NAME">this.loops</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">                  </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'loops'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>570</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>571</span>              * Duration of Slide. Excludes transtition in and out time ( transtition in and out time are added to  play() intervals )
+<span class='line'>572</span>              * @type    Number
+<span class='line'>573</span>              * @default 3000
+<span class='line'>574</span>             */</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="WHIT">            </span><span class="NAME">this.slideDuration</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">          </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'slideDuration'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">3000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>576</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>577</span>              * Stop slideshow when next or previous is called.
+<span class='line'>578</span>              * @type    Boolean
+<span class='line'>579</span>              * @default true
+<span class='line'>580</span>             */</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="WHIT">            </span><span class="NAME">this.stopOnNextOrPrevious</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">   </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'stopOnNextOrPrevious'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>583</span>              * Stop slideshow when a specific slide is requested
+<span class='line'>584</span>              * @type    Boolean
+<span class='line'>585</span>              * @default true
+<span class='line'>586</span>             */</span><span class="WHIT">
+<span class='line'>587</span> </span><span class="WHIT">            </span><span class="NAME">this.stopOnGoToSlide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">        </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'stopOnGoToSlide'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>588</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>589</span>              * Play when adding Album
+<span class='line'>590</span>              * @type    Boolean
+<span class='line'>591</span>              * @default true
+<span class='line'>592</span>             */</span><span class="WHIT">
+<span class='line'>593</span> </span><span class="WHIT">            </span><span class="NAME">this.autoPlay</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">        </span><span class="NAME">params</span><span class="PUNC">[</span><span class="STRN">'autoPlay'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>594</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>595</span> </span><span class="WHIT">        </span><span class="NAME">W.slideshow.Settings</span><span class="WHIT">
+<span class='line'>596</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">method</span><span class="PUNC">(</span><span class="STRN">"mergeSettings"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>598</span>                  * Safely merge settings
+<span class='line'>599</span>                  * @private
+<span class='line'>600</span>                  * @name mergeSettings
+<span class='line'>601</span>                  * @methodOf W.slideshow.Controller
+<span class='line'>602</span>                  */</span><span class="WHIT">
+<span class='line'>603</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="COMM">/** W.slideshow.Settings */</span><span class="WHIT"> </span><span class="NAME">newSettings</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/** W.slideshow.Settings */</span><span class="WHIT"> </span><span class="NAME">oldSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>604</span> 
+<span class='line'>605</span> </span><span class="WHIT">                    </span><span class="COMM">// break if no arguments</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">newSettings</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>607</span> </span><span class="WHIT">                    </span><span class="COMM">// if no oldSettings create a setting object with defaults to merge with</span><span class="WHIT">
+<span class='line'>608</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">oldSettings</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">                        </span><span class="NAME">oldSettings</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">W.slideshow.Settings</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>610</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>611</span> 
+<span class='line'>612</span> </span><span class="WHIT">                    </span><span class="COMM">// merge</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">                    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">newSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">                    	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">newSettings</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">newSettings</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="COMM">// error check</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">                        	</span><span class="NAME">oldSettings</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">newSettings</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>617</span> </span><span class="WHIT">                        	</span><span class="NAME">W.w</span><span class="PUNC">(</span><span class="STRN">"slideshow"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"invalid setting for:"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>619</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>620</span> 
+<span class='line'>621</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">oldSettings</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>623</span> </span><span class="WHIT">        </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>624</span> 
+<span class='line'>625</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">W</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>626</span> </span></pre></body></html>
