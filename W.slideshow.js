@@ -301,6 +301,11 @@ if(Function.prototype.method == undefined) {
                     this._slideWillChange();
 
                     this.transitionSlide(this._activeAlbum.slides[this._currentImageIndex]);
+                    
+                    if ( this._activeAlbum.slides.length === 1) {
+                    	W.l("stopping only one slide");
+                    	this.stop();
+                    }
 
                     return this;
                 }
