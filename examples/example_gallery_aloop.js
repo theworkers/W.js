@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     
     
-    gallery.addEventlistener(gallery.EXHIBIT_DID_CHANGE, function () {
+    gallery.events.addEventlistener(gallery.EXHIBIT_DID_CHANGE, function () {
     	
     	var status = gallery.getStatus();    	
     	
@@ -43,7 +43,6 @@ $(document).ready(function () {
     		$("#js-last").removeClass('active');
     	}
     	
-    	W.l(status.loops);
     	
     	if (!status.loops) {
     		if (status.totalExhibits > 1 && status.currentExhibitIndex == 0 ) {
@@ -58,7 +57,7 @@ $(document).ready(function () {
 	    	}
     	}
     });
-    gallery.addEventlistener(gallery.EXHIBIT_WILL_CHANGE, function () {
+    gallery.events.addEventlistener(gallery.EXHIBIT_WILL_CHANGE, function () {
     	
     	var status = gallery.getStatus();
     	
@@ -67,11 +66,9 @@ $(document).ready(function () {
     	
        //$("#gallery-controls").addClass("js-inactive");
     });
-    gallery.addEventlistener(gallery.STATE_DID_CHANGE, function () {
+    gallery.events.addEventlistener(gallery.STATE_DID_CHANGE, function () {
 		
 		var status = gallery.getStatus();
-		
-		W.l();
 		
 		if ( status.isPlaying ) {
 			$("#js-play").addClass('active');
@@ -88,7 +85,7 @@ $(document).ready(function () {
     //
     var exhibition = new W.gallery.Exhibition();
     
-    exhibition.addEventlistener(exhibition.EXHIBITION_ADDED_TO_GALLERY, function () {
+    exhibition.events.addEventlistener(exhibition.EXHIBITION_ADDED_TO_GALLERY, function () {
     	
     	// example chaining 
     	gallery.controller.next().next().previous().previous().play();
@@ -96,7 +93,16 @@ $(document).ready(function () {
     	
     })
     
-    loadGallery("ajax/gallery_1.ajax", exhibition);
+    loadGallery("example_gallery_aloop_gallery_default.ajax", exhibition);
+    
+    ////
+    ///  Load Other Galleries
+    //
+    
+    $("#js-gallery-1").css({cursor:"pointer"}).click(function () { loadGallery("example_gallery_aloop_gallery_1.ajax", new W.gallery.Exhibition() ); });
+    $("#js-gallery-2").css({cursor:"pointer"}).click(function () { loadGallery("example_gallery_aloop_gallery_2.ajax", new W.gallery.Exhibition() ); });
+    $("#js-gallery-3").css({cursor:"pointer"}).click(function () { loadGallery("example_gallery_aloop_gallery_3.ajax", new W.gallery.Exhibition() ); });
+    $("#js-gallery-4").css({cursor:"pointer"}).click(function () { loadGallery("example_gallery_aloop_gallery_4.ajax", new W.gallery.Exhibition() ); });
     
 });
 
@@ -156,8 +162,9 @@ function createPaging( $selector, status ) {
 		$link.data("number", i)
 		
 		$link.css({cursor:"pointer"}).click( function () {
-			W.l($(this).data("number"));
+		
 			gallery.controller.goto( $(this).data("number") );
+			
 		});
 
 

@@ -17,6 +17,9 @@
 		this.EXHIBIT_WILL_CHANGE = "exhibit will change";
 		this.STATE_DID_CHANGE = "state did change";
 		
+		this.events = new W.event.Dispatcher();
+		
+		
 		// to do
 		// setView();
 		// getView();
@@ -24,6 +27,8 @@
 		// getSettings();
 		
 		this.addExhibition = function ( exhibition ) {
+		
+			if ( self.exhibition === exhibition ) return;
 		
 			self.exhibition = exhibition;
 			
@@ -37,7 +42,7 @@
 				
 			}
 			
-			exhibition.dispatch(exhibition.EXHIBITION_ADDED_TO_GALLERY);
+			exhibition.events.dispatch(exhibition.EXHIBITION_ADDED_TO_GALLERY);
 		
 		};
 		
@@ -57,8 +62,6 @@
 		
 	};
 	
-	W.gallery.Gallery.prototype = new W.event.Dispatcher();
-	
 	W.gallery.Juggler = function (gallery, startsPlaying) {
 		var self = this;
 		
@@ -69,13 +72,15 @@
 		
 		this.currentExhibit = null;
 		this._nextExhibit = null;
+	
+		this.events = new W.event.Dispatcher();
 		
 		this.JUGGLER_DID_FINISH = 'juggler did finish';
 		
 		this.transitionTo = function (toExhibit) {
 		
-			self.gallery.dispatch(self.gallery.EXHIBIT_WILL_CHANGE);
-			toExhibit.dispatch( toExhibit.EXHIBIT_WILL_APPEAR );
+			self.gallery.events.dispatch(self.gallery.EXHIBIT_WILL_CHANGE);
+			toExhibit.events.dispatch( toExhibit.EXHIBIT_WILL_APPEAR );
 		
             this._nextExhibit = toExhibit;
             this.gallery.$view.append(this._nextExhibit.view);
@@ -91,15 +96,15 @@
 				
 				self.currentExhibit = self._nextExhibit;
 				
-				self.currentExhibit.dispatch(self.currentExhibit.EXHIBIT_DID_APPEAR);
+				self.currentExhibit.events.dispatch(self.currentExhibit.EXHIBIT_DID_APPEAR);
 				
 				self._nextExhibit = undefined;
 				
 			}
 		
-			self.dispatch(self.JUGGLER_DID_FINISH);
+			self.events.dispatch(self.JUGGLER_DID_FINISH);
 			
-			self.gallery.dispatch(self.gallery.EXHIBIT_DID_CHANGE);
+			self.gallery.events.dispatch(self.gallery.EXHIBIT_DID_CHANGE);
 			
 		};
 		
@@ -109,7 +114,7 @@
 		
 			self.intervalID = setInterval( self.next, self.gallery.settings.display_time );
 			
-			self.gallery.dispatch(self.gallery.STATE_DID_CHANGE);
+			self.gallery.events.dispatch(self.gallery.STATE_DID_CHANGE);
 			
 		};
 		
@@ -134,13 +139,11 @@
 		
 			clearInterval( self.intervalID );
 			
-			self.gallery.dispatch(self.gallery.STATE_DID_CHANGE);
+			self.gallery.events.dispatch(self.gallery.STATE_DID_CHANGE);
 			
 		};
 		
 	};
-	
-	W.gallery.Juggler.prototype = new W.event.Dispatcher();
 	
 	W.gallery.Controller = function (gallery) {
 		var self = this;
@@ -169,7 +172,7 @@
 				
 				self.gallery.juggler.transitionTo( nextExhibit ); // class back
 				
-				self.gallery.juggler.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
+				self.gallery.juggler.events.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
 				
 			} else {
 				
@@ -193,7 +196,7 @@
 				
 				self.gallery.juggler.transitionTo( nextExhibit ); // class back
 				
-				self.gallery.juggler.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
+				self.gallery.juggler.events.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
 				
 			} else {
 				
@@ -217,7 +220,7 @@
 				
 				self.gallery.juggler.transitionTo( nextExhibit ); // class back
 				
-				self.gallery.juggler.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
+				self.gallery.juggler.events.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
 				
 			} else {
 				
@@ -241,7 +244,7 @@
 				
 				self.gallery.juggler.transitionTo( nextExhibit ); // class back
 				
-				self.gallery.juggler.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
+				self.gallery.juggler.events.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
 				
 			} else {
 				
@@ -265,7 +268,7 @@
 				
 				self.gallery.juggler.transitionTo( nextExhibit ); // class back
 				
-				self.gallery.juggler.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
+				self.gallery.juggler.events.addEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted  );
 				
 			} else {
 				
@@ -295,7 +298,7 @@
 		
 		this._actionCompleted = function () {
 		
-			self.gallery.juggler.removeEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted )
+			self.gallery.juggler.events.removeEventlistener( self.gallery.juggler.JUGGLER_DID_FINISH, self._actionCompleted )
 		
 			if ( self._queue.length === 0 ) {
 				self._ready = true;
@@ -336,6 +339,8 @@
 		this._exhibits = [];
 		this.currentExhibit = -1;
 		this.length = 0;
+		
+		this.events = new W.event.Dispatcher();
 		
 		this.EXHIBITION_ADDED_TO_GALLERY = "exhibition added to gallery";
 		
@@ -397,13 +402,13 @@
 		};
 	};
 	
-	W.gallery.Exhibition.prototype = new W.event.Dispatcher();
-	
 	W.gallery.Exhibit = function ( view ) {
 	
 		var self = this;
 		
 		this.view = view || null;
+		
+		this.events = new W.event.Dispatcher();
 		
 		this.EXHIBIT_WILL_APPEAR = "exhibit will appear";
 		this.EXHIBIT_DID_APPEAR = "exhibit did appear";
@@ -419,8 +424,6 @@
 		};
 		
 	};
-	
-	W.gallery.Exhibit.prototype = new W.event.Dispatcher();
 	
 	W.gallery.Status = function (args) {
 	
