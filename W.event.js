@@ -46,15 +46,15 @@
         /** Remove event listener
          *
          **/
-        W.event.Dispatcher.prototype.removeEventlistener=function(/** String */ event, /** Function */ callback){
+        W.event.Dispatcher.prototype.removeEventlistener=function(/** String */ event, /** Function */ callback) {
             if ( this.events[event] ) {
-		var listeners = this.events[event];
-		for ( var i = listeners.length-1; i>=0; --i ){
+				var listeners = this.events[event];
+				for ( var i = listeners.length-1; i>=0; --i ){
                     if ( listeners[i] === callback ) {
-			listeners.splice( i, 1 );
-			return true;
+						listeners.splice( i, 1 );
+						return true;
                     }
-		}
+				}
             }
             return false;
         }

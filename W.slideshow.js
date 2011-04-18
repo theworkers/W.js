@@ -158,7 +158,9 @@ if(Function.prototype.method == undefined) {
                     if (makeActiveAlbum == undefined || album != this._activeAlbum || makeActiveAlbum == true) {
                        this._activeAlbum = album;
                        this._currentImageIndex = -1;
+                       
                        if (this._settings.autoPlay) {
+                            this.next();
                             this.play(true);
                        } else {
                             this.next();
@@ -224,12 +226,13 @@ if(Function.prototype.method == undefined) {
                  * @param   {Boolean} nextSlideOnPlay      Default true. Transition to next image on execution
                  */
                 function (nextSlideOnPlay) {
+                
                     if (this._isPlaying) {
-                        //W.w(".play() fail: already playing");
+                        W.w(".play() fail: already playing");
                         return this;
                     }
 
-                    if (nextSlideOnPlay == undefined)  this.nextSlideOnPlay = true;
+                    nextSlideOnPlay = nextSlideOnPlay || true;
 
                     this._intervalID = setInterval(W.bind(this, function () {
                        this._next();
@@ -253,8 +256,6 @@ if(Function.prototype.method == undefined) {
                  */
                 function () {
                    if (!this._isPlaying) {
-                         W.w(".stop() fail: already stopped");
-
                         return this;
                     }
 
@@ -289,9 +290,13 @@ if(Function.prototype.method == undefined) {
                         W.w(".next() fail: slide is in the process of changing");
                         return this;
                     }
+                    
+                    W.l("this._currentImageIndex = " + this._currentImageIndex);
+                    W.l("this._activeAlbum.slides.length = " + this._activeAlbum.slides.length);
+                    W.l("this._settings.loops = " + this._settings.loops);
 
-                    if (this._currentImageIndex + 1 === this._activeAlbum.slides.length) {
-                        if (this._settings.loops === true)
+                    if (this._currentImageIndex + 1 === this._activeAlbum.slides.length || this._activeAlbum.slides.length === 1) {
+                        if (this._settings.loops === true )
                              this._currentImageIndex = -1;
                         else
                             return this; // Break
