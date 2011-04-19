@@ -23,7 +23,6 @@
 		// to do
 		// setView();
 		// getView();
-		// setSettings();
 		// getSettings();
 		
 		this.addExhibition = function ( exhibition ) {
@@ -60,9 +59,26 @@
 			return status;
 		};
 		
+		this.setSettings = function ( newSettings ) {
+            
+            W.l(self.settings);
+		
+			 if (newSettings == undefined) return;
+			 
+			 for (var i in newSettings) {
+            	if(newSettings[i] != undefined && isNaN(newSettings[i]) == false) { // error check
+                	self.settings[i] = newSettings[i];
+                } else {
+                	W.w("slideshow", "invalid setting for:", i);
+                }
+            };
+            
+            W.l(self.settings);
+		};
+		
 	};
 	
-	W.gallery.Juggler = function (gallery, startsPlaying) {
+	W.gallery.Juggler = function ( gallery, startsPlaying ) {
 		var self = this;
 		
 		this.intervalID = undefined;
@@ -112,7 +128,7 @@
 		
 			self.isPlaying = true;
 		
-			self.intervalID = setInterval( self.next, self.gallery.settings.display_time );
+			self.intervalID = setInterval( self.next, self.gallery.settings.display_time + self.gallery.settings.transition_time );
 			
 			self.gallery.events.dispatch(self.gallery.STATE_DID_CHANGE);
 			
@@ -402,16 +418,22 @@
 		};
 	};
 	
-	W.gallery.Exhibit = function ( view ) {
+	W.gallery.Exhibit = function ( view, shouldApplyDefaultCSS ) {
 	
 		var self = this;
 		
 		this.view = view || null;
 		
+		if ( !(view instanceof jQuery && this.view != null) ) {
+			this.view = $(this.view);
+		}
+		
 		this.events = new W.event.Dispatcher();
 		
 		this.EXHIBIT_WILL_APPEAR = "exhibit will appear";
 		this.EXHIBIT_DID_APPEAR = "exhibit did appear";
+		
+		this.shouldApplyDefaultCSS = shouldApplyDefaultCSS || false;
 		
 		this.applyDefaultCSS = function () {
 		
@@ -422,6 +444,11 @@
             });
             
 		};
+		
+		if (shouldApplyDefaultCSS) {
+			W.l("will apply defaults");
+			this.applyDefaultCSS();
+		}
 		
 	};
 	
