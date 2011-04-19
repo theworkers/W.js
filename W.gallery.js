@@ -137,6 +137,12 @@
 		this.next = function () {
 			
 			var nextExhibit = self.gallery.exhibition.getNextExhibit();
+			
+			if ( !nextExhibit && self.gallery.settings.loops && self.gallery.exhibition.length > 1 ) {
+			
+				nextExhibit = self.gallery.exhibition.getFirstExhibit();
+				
+			}
 		
 			if ( nextExhibit ) {
 				
@@ -256,6 +262,12 @@
 			
 			var nextExhibit = self.gallery.exhibition.getNextExhibit();
 			
+			if ( !nextExhibit && self.gallery.settings.loops && self.gallery.exhibition.length > 1 ) {
+			
+				nextExhibit = self.gallery.exhibition.getFirstExhibit();
+				
+			}
+			
 			if ( nextExhibit ) {
 				
 				self.gallery.juggler.transitionTo( nextExhibit ); // class back
@@ -279,6 +291,12 @@
 			self.gallery.juggler.stop();
 			
 			var nextExhibit = self.gallery.exhibition.getPreviousExhibit();
+			
+			if ( !nextExhibit && gallery.settings.loops && self.gallery.exhibition.length > 1 ) {
+			
+				nextExhibit = self.gallery.exhibition.getLastExhibit();
+				
+			}
 			
 			if ( nextExhibit ) {
 				
@@ -343,7 +361,7 @@
 			args = args || {};
 		
 		this.display_time = args["display_time"] || 2000;
-		this.loops = args['loops'] || false;
+		this.loops = args['loops'] || true;
 		this.transition_time = args['transition_time_in'] || 1000;
 		this.startsPlaying = args['startsPlaying'] || true;
 		
