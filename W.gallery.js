@@ -379,7 +379,10 @@
 		this.EXHIBITION_ADDED_TO_GALLERY = "exhibition added to gallery";
 		
 		this.addExhibit = function ( exhibit ) {
-		
+		    if (!exhibit) {
+                W.l("ERROR W.gallery.Exhibition::addExhibit undefined exhibit added");   
+                return
+		    }
 			self._exhibits.push(exhibit);
 			self.length = self._exhibits.length;
 		};
