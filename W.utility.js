@@ -19,7 +19,19 @@
          **/
         W.utility.stringStartsWith = function (str, test) {
             return str.substr(0, test.length) === test;
-        }
+        };
+        
+        /**
+         * Shorten a string
+         * @param {String} str  String to be shortened
+         * @param {Boolean} useWordBoundary retain last wholeword
+         **/
+         W.utility.truncateString = function (str, length, useWordBoundary) {
+            var  toLong = str.length>length,
+                s_ = toLong ? str.substr(0,length-1) : str;
+            s_ = useWordBoundary && toLong ? s_.substr(0,s_.lastIndexOf(' ')) : s_;
+            return  toLong ? s_ +'...' : s_;
+         };
 
 		/**
          * Get URL Parameter
@@ -36,14 +48,14 @@
 			var regexS = "[\\?&]"+name+"=([^&#]*)";
 			var regex = new RegExp( regexS );
 			var results = regex.exec( window.location.href );
-			if( results == null )
+			if( results === null )
 				return resultObject;
 			else {
 				resultObject.name = results[0];
 				if(results.length > 1) resultObject.value = results[1];
 				return resultObject;
 			}
-        }
+        };
 
 
 
