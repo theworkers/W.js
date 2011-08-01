@@ -467,7 +467,6 @@
 		};
 		
 		if (shouldApplyDefaultCSS) {
-			W.l("will apply defaults");
 			this.applyDefaultCSS();
 		}
 		
