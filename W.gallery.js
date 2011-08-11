@@ -186,7 +186,7 @@
 		
 		this.goto = function ( index ) {
 		
-			if ( !self._readyOrQueue( self.goto ) ) break;
+			if ( !self._readyOrQueue( self.goto ) ) return this;
 			
 			var nextExhibit = self.gallery.exhibition.getExhibit( index );
 			
@@ -208,7 +208,7 @@
 		
 		this.last = function () {
 		
-			if ( !self._readyOrQueue( self.last )) break;
+			if ( !self._readyOrQueue( self.last ))  return this;
 			
 			self.gallery.juggler.stop();
 			
@@ -232,7 +232,7 @@
 		
 		this.first = function () {
 		
-			if ( !self._readyOrQueue( self.first )) break;
+			if ( !self._readyOrQueue( self.first )) return this;
 			
 			self.gallery.juggler.stop();
 			
@@ -256,7 +256,7 @@
 		
 		this.next = function () {
 		
-			if ( !self._readyOrQueue( self.next )) break;
+			if ( !self._readyOrQueue( self.next )) return this;
 			
 			self.gallery.juggler.stop();
 			
@@ -286,7 +286,7 @@
 		
 		this.previous = function () {
 		
-			if ( !self._readyOrQueue( self.previous )) break;
+			if ( !self._readyOrQueue( self.previous )) return this;
 			
 			self.gallery.juggler.stop();
 			
@@ -316,7 +316,7 @@
 		
 		this.stop = function () {
 		
-			if (!self.gallery.juggler.isPlaying) return;
+			if (!self.gallery.juggler.isPlaying) return this;
 			
 			self.gallery.juggler.stop();
 			
@@ -379,10 +379,7 @@
 		this.EXHIBITION_ADDED_TO_GALLERY = "exhibition added to gallery";
 		
 		this.addExhibit = function ( exhibit ) {
-		    if (!exhibit) {
-                W.l("ERROR W.gallery.Exhibition::addExhibit undefined exhibit added");   
-                return
-		    }
+		
 			self._exhibits.push(exhibit);
 			self.length = self._exhibits.length;
 		};
@@ -467,6 +464,7 @@
 		};
 		
 		if (shouldApplyDefaultCSS) {
+			W.l("will apply defaults");
 			this.applyDefaultCSS();
 		}
 		
