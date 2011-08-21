@@ -60,8 +60,6 @@
 		};
 		
 		this.setSettings = function ( newSettings ) {
-            
-            W.l(self.settings);
 		
 			 if (newSettings == undefined) return;
 			 
@@ -72,8 +70,6 @@
                 	W.w("slideshow", "invalid setting for:", i);
                 }
             };
-            
-            W.l(self.settings);
 		};
 		
 	};
@@ -464,7 +460,7 @@
 		};
 		
 		if (shouldApplyDefaultCSS) {
-			W.l("will apply defaults");
+		
 			this.applyDefaultCSS();
 		}
 		
