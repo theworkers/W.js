@@ -33,9 +33,9 @@
             
             self.controller.clearQueue();
             
-            self.controller.next();
-            
             if ( self.settings.startsPlaying) {
+            
+                self.controller.next();
             
                 self.juggler.start();
                 
