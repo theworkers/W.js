@@ -1,0 +1,10 @@
+.gradient {
+	width:100%;
+	height:110px;
+	display: block;
+}
+.box {
+	width:2%;
+	height: 100px;
+	float:left;
+}
