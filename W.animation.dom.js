@@ -1,7 +1,8 @@
+// Copyright The Workers Ltd. 2012 (theworkers.net)
+// @author Ross Cairns
 (function (W) {
 
-
-        if (W.animation ==  undefined) {
+        if (W.animation ===  undefined) {
             W.animation = {};
         }
 
@@ -37,7 +38,7 @@
                     }
                 }
             }
-        }
+        };
 
         /** Stores animation objects into the current W.animation._domAnimations
          *  @private
@@ -46,10 +47,10 @@
         W.animation.dom._getAnimations = function (animationType) {
             $("." + animationType + ":not(." + animationType + "-referenced)").each( function () {
                 var animationsParams = W.animation.dom._getPramas(animationType, this);
-                if(animationsParams.object != undefined)
+                if(animationsParams.object !== undefined)
                     W.animation.dom._domAnimations.push(animationsParams);
             }).addClass(animationType + "-referenced");
-        }
+        };
 
         /** Creates animation o bjects from class names
          *  @private
@@ -67,11 +68,12 @@
                     var propertyAndValue = classNamesArray[i].split(animationType)[1];
                     var propertyAndValueArray = propertyAndValue.split(/([a-zA-Z\-]+)(.*)/);
 
-                    if(propertyAndValueArray[1] != undefined)
+                    if(propertyAndValueArray[1] !== undefined) {
                         params[propertyAndValueArray[1]] = propertyAndValueArray[2];
+                    }
                 }
             }
              return params;
-         }
+         };
 })(W);
 
