@@ -37,16 +37,6 @@
      *     - make ColorAttributeClass
      *     - make huePolar
      */
-    
-    W.Color = W.Color || function () {
-        return {};
-    };
-
-    W.ColorAttribute = W.ColorAttribute || function () {
-        return {
-            value : 0
-        };
-    };
 
     W.HSLtoStringMixin = {
         toHSLString : function () {
@@ -58,6 +48,7 @@
     };
 
     W.HSLGradient = Backbone.Object.extend({
+        version : 1,
         constructor : function (initColor) {
             this._hStops = [];
             this._sStops = [];

@@ -2,7 +2,9 @@
 // @author Ross Cairns
 ( function (W) {
 
-    W.gallery = {};
+    W.gallery = {
+        version: 1
+    };
 
     W.gallery.Gallery = function ($view, settings) { 
         var self = this;

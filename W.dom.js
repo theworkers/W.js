@@ -12,6 +12,7 @@
   	var W = this.W || {};
   	
   	W.dom = {
+  		version : 1,
   		defaultInputs : function (className) {
 			$('input.' + className).live('focus', function () {
 				$this = $(this);

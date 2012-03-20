@@ -10,6 +10,7 @@
          *  @namespace W.animation.dom
          **/
         W.animation.dom = {};
+        W.animation.dom.version = 1;
 
         /**
          *  Runs all animations which are contained with in DOM Elements class name

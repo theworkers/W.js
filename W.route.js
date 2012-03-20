@@ -37,6 +37,7 @@ if(Function.prototype.method === undefined) {
          *  @class
          */
         W.route.Router = {
+            version: 1,
             /**
              *  Create a route with path string.
              *  @param   {String}   path    Path string. For parameters use :Parameter e.g. /hello/:ross/

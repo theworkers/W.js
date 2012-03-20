@@ -11,6 +11,8 @@
         W.animation = {};
     }
 
+    W.animation.version = 1;
+
     W.animation.__frameRate = 100;
 
     /** Per second  */

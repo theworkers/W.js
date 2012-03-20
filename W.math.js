@@ -12,6 +12,7 @@
     W.math = W.math || {};
     W.math.util = W.math.util || {};
     W.math.util = {
+        version : 1,
         clipNormalized : function (x, min, max) { // or (value, max), or (value)
             if (arguments.length === 2) {
                 max = min;

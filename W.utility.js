@@ -6,7 +6,9 @@
          *  Utilities
          *  @namespace W.utility
          **/
-    W.utility = {};
+    W.utility = {
+        version : 1
+    };
 
         /**
          * Return the Path (Url stripped of protocol and get vars)
