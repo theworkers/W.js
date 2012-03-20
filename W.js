@@ -23,7 +23,7 @@
     /** Current version. */
     W.version = '2';
 
-    // From underscore.js
+    // Inspired/taken from underscore.js
     // Underscore.js 1.3.1
     // (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.
     // Underscore is freely distributable under the MIT license.
@@ -32,6 +32,7 @@
     // For all details and documentation:
     // http://documentcloud.github.com/underscore
     var nativeForEach   = Array.prototype.forEach,
+        nativeBind      = Function.prototype.bind,
         slice           = Array.prototype.slice,
         breaker         = {};
     W.extend = function(obj) {
@@ -58,7 +59,7 @@
             }
         }
     };
-
+    var ctor = function(){};
     /**
      * Bind function to scope. Useful for events.
      * @param   {Function}   fn     function
@@ -66,8 +67,16 @@
      * @example $("div").fadeIn(100, W.bind(this, this.transitionDidFinish));
     */
     W.bind = function bind(scope, fn) {
-        return function () {
-            fn.apply(scope, arguments);
+        var bound, args;
+        if (fn.bind === nativeBind && nativeBind) return nativeBind.apply(fn, slice.call(arguments, 1));
+        args = slice.call(arguments, 2);
+        return bound = function() {
+            if (!(this instanceof bound)) return fn.apply(scope, args.concat(slice.call(arguments)));
+            ctor.prototype = fn.prototype;
+            var self = new ctor();
+            var result = fn.apply(self, args.concat(slice.call(arguments)));
+            if (Object(result) === result) return result;
+            return self;
         };
     };
 
@@ -81,9 +90,9 @@
     *
     * @example
     *      W.aloop(10,
-    *           function (index, loop) {
+    *           function (index, next, end) {
     *               log(index);
-    *               loop.next();
+    *               next();
     *           },
     *           function () {
     *               log('finished');
@@ -93,23 +102,21 @@
     W.loop = function (iterations, fn, callback) {
         var index = 0;
         var done = false;
-        var loop = {
-            next: function() {
-                if (done) { return; }
-                if (index < iterations) {
-                    index++;
-                    fn(index-1, loop);
-                } else {
-                    done = true;
-                    callback();
-                }
-            },
-            endLoop: function() {
+        var end =  function() {
+            done = true;
+            callback();
+        };
+        var next = function() {
+            if (done) { return; }
+            if (index < iterations) {
+                index++;
+                fn(index-1, next, end);
+            } else {
                 done = true;
                 callback();
             }
         };
-        loop.next();
-        return loop;
+        next();
+        return next;
     };
 })();
