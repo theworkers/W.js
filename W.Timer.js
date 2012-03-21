@@ -8,7 +8,7 @@
         root.W = W;
     }
 
-    W.Timer = Backbone.Object.extend({
+    W.Timer = W.Object.extend({
         constructor : function (options) {
             W.extend(this, W.EventMixin);
             this.options = W.extend({
