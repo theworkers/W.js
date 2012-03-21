@@ -1,10 +1,17 @@
 .gradient {
 	width:100%;
-	height:110px;
+	height:50px;
 	display: block;
 }
 .box {
 	width:2%;
-	height: 100px;
+	height: 49px;
+	float:left;
+	padding: 0 0 1px 0;
+}
+
+.box2 {
+	width:2%;
+	height: 49px;
 	float:left;
 }

@@ -75,7 +75,7 @@ var getByClass = function (className) {
     var descendants=document.getElementsByTagName('*'), i=-1, e, result=[];
     while ((e=descendants[++i])) {
         if ((' '+(e['class']||e.className)+' ').indexOf(' '+className+' ') > -1) {
-            result.push(e);
+            result.push(e); 
         }
     }
     return result;
@@ -101,8 +101,14 @@ window.onload = function () {
         ok(gradientArray && gradientArray.length > 0, "Got gradients");
 
         W.each(getByClass("box"), function(el, i) {
+           el.style.backgroundColor = gradientArray[i].toRGBString();
+        });
+
+        W.each(getByClass("box2"), function(el, i) {
             el.style.backgroundColor = 'hsl('+gradientArray[i].h+','+gradientArray[i].s+'%,'+gradientArray[i].l+'%)';
         });
+
+        ok("colors set", "Colors set on DOM");
 
     });
 };
