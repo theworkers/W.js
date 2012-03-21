@@ -1,3 +1,6 @@
 [submodule "tween.js"]
 	path = lib/tween.js
 	url = https://github.com/sole/tween.js.git
+[submodule "tests/libs/underscore"]
+	path = tests/libs/underscore
+	url = https://github.com/documentcloud/underscore.git
