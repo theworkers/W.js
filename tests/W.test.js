@@ -36,11 +36,9 @@ asyncTest("W.bind", 2, function() {
 		worked : "worked"
 	};
 	setTimeout(function () {
-		console.dir(this);
 		notEqual(this.worked, "worked", "without bind carried into timeout");
 	}, 10);
 	setTimeout(W.bind(function () {
-		console.dir(this);
 		equal(this.worked, "worked", "scope carried into timeout");
 		start();
 	}, scope), 100);

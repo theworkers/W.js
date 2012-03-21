@@ -40,7 +40,6 @@ test("W.EventMixin", 9	, function () {
 		yo : "fish"
 	};
 	mObj.on(TEST_EVENT_NAME, function (data) {
-		console.log(this);
 		equal(this.yo, "fish", "context worked");
 	}, scope);
 
