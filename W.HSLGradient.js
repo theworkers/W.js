@@ -47,7 +47,7 @@
         }
     };
 
-    W.HSLGradient = Backbone.Object.extend({
+    W.HSLGradient = W.Object.extend({
         version : 1,
         constructor : function (initColor) {
             this._hStops = [];
@@ -61,7 +61,7 @@
         addColorStop : function (position, color) {
             var wrappedPointColor;
 
-            _.extend(color, W.HSLtoStringMixin);
+            W.extend(color, W.HSLtoStringMixin);
 
             if (!_.isUndefined(color.h)) {
                 wrappedPointColor = {position:position, value:color.h};
