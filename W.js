@@ -66,7 +66,7 @@
      * @param   {Object}     scope    Scope of the function to be executed in
      * @example $("div").fadeIn(100, W.bind(this, this.transitionDidFinish));
     */
-    W.bind = function bind(scope, fn) {
+    W.bind = function bind(fn, scope) {
         var bound, args;
         if (fn.bind === nativeBind && nativeBind) return nativeBind.apply(fn, slice.call(arguments, 1));
         args = slice.call(arguments, 2);

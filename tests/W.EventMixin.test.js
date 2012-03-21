@@ -1,4 +1,4 @@
-test("W.event", 9, function () {
+test("W.EventMixin", 9	, function () {
 	var TEST_EVENT_NAME = "TEST_EVENT_NAME";
 
 	var Obj = W.Object.extend({
@@ -44,9 +44,6 @@ test("W.event", 9, function () {
 		equal(this.yo, "fish", "context worked");
 	}, scope);
 
-
 	mObj.trigger(TEST_EVENT_NAME);
-
-
 
 });

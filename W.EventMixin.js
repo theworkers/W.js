@@ -15,7 +15,7 @@
             this.events()[event] = this.events()[event] || [];
             if (this.events()[event]) {
                 if (scope) {
-                    this.events()[event].push(W.bind(scope,callback));
+                    this.events()[event].push(W.bind(callback,scope));
                 } else {
                     this.events()[event].push(callback);
                 }
