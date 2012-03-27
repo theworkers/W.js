@@ -1,4 +1,4 @@
-test("W.EventMixin", 9	, function () {
+test("W.EventMixin", 10	, function () {
 	var TEST_EVENT_NAME = "TEST_EVENT_NAME";
 
 	var Obj = W.Object.extend({
@@ -45,4 +45,19 @@ test("W.EventMixin", 9	, function () {
 
 	mObj.trigger(TEST_EVENT_NAME);
 
+	ok(!mObj.trigger("no one listening to this"), "triggering event with no listeners");
+
+});
+
+test("W.EventMixin no listeners", 1	, function () {
+	var TEST_EVENT_NAME = "TEST_EVENT_NAME";
+
+	var Obj = W.Object.extend({
+		constructor : function (options) {
+			W.extend(this, W.EventMixin);
+		}
+	});
+	var mObj = new Obj();
+
+	ok(!mObj.trigger("no one listening to this"), "triggering event with no listeners");
 });

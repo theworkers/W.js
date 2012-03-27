@@ -12,6 +12,9 @@
         version : 2,
         /** Add event listener. Callback will recieve (context, details) arguments */
         on : function (/** String */ event, /** Function */ callback, /** Object */ scope) {
+            if (typeof callback !== 'function') {
+                throw "callback not function";
+            }
             this.events()[event] = this.events()[event] || [];
             if (this.events()[event]) {
                 if (scope) {
@@ -43,9 +46,15 @@
             if (this.events()[event]) {
                 var listeners = this.events()[event], 
                     len = listeners.length;
+                if (len <= 0) { return false; }
                 while (len--) {
-                    listeners[len](data);  //callback with self
+                    if (typeof listeners[len]==='function') {
+                        listeners[len](data);  //callback with self
+                    }
                 }
+                return true;
+            } else {
+                return false;
             }
         },
         /** get all the events  */
