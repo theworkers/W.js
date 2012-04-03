@@ -47,3 +47,14 @@ test("Route with params", 11, function () {
 	equal(router.trigger("/test/1/fish/"), router, "Triggering with wrong number of params and no fallback");
 	equal(router.trigger("/test/1/fish/pizza/"), router, "Triggering with wrong number of params and no fallback");
 });
+
+test("Route with context binding", 5, function () {
+	var router =  new W.Router();
+	ok(router, "Router was created");
+	var route = router.map("/test/").to(function (params) {
+		ok(!!this.setup, "Router fired in the correct context");
+	}, this);
+	ok(route, "Added route/map with context binding");
+	equal(router.routes["/test/"], route, "Router has route");
+	equal(router.trigger("/test/"), router, "Triggering route");
+});

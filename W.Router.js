@@ -77,7 +77,10 @@
             this.action = null;
             this.params = {};
         },
-        to : function (fn) {
+        to : function (fn, context) {
+            if (context) {
+                fn = W.bind(fn, context);
+            }
             this.action = fn;
             return this;
         },
