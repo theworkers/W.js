@@ -70,6 +70,7 @@
         var bound, args;
         if (fn.bind === nativeBind && nativeBind) return nativeBind.apply(fn, slice.call(arguments, 1));
         args = slice.call(arguments, 2);
+        // @todo: don't link this
         return bound = function() {
             if (!(this instanceof bound)) return fn.apply(scope, args.concat(slice.call(arguments)));
             ctor.prototype = fn.prototype;
@@ -78,6 +79,20 @@
             if (Object(result) === result) return result;
             return self;
         };
+    };
+
+    // for help with snippets, and
+    // for people who don't like namespacing
+    // reverse bind
+    // not overly sure we (i) need this
+    W.use = function (lib, context) {
+        lib = (typeof lib == "string") ? W.snippet[lib] : lib;
+        if (!context) {
+            return lib;
+        } else {
+            W.extend(context, lib);
+        }
+        return lib;
     };
 
     /**
