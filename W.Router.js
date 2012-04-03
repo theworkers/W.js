@@ -82,7 +82,7 @@
                 fn = W.bind(fn, context);
             }
             this.action = fn;
-            return this;
+            return this.router;
         },
         run : function () {
             this.router.routes[this.path].action(this.router.routes[this.path].params);
