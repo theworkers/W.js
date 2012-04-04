@@ -9,11 +9,11 @@
     }
     W.snippet = W.snippet || {};
 
-    W.snippet.text = W.text || {};
-    W.snippet.text.version = "2.0.0";
+    W.snippet.string = W.string || {};
+    W.snippet.string.version = "2.0.0";
 
     /** Add Commas to number */
-    W.snippet.text.addCommas = function (number) {
+    W.snippet.string.addCommas = function (number) {
         number = '' + number;
         if(number.indexOf(",") > 0) { return number; }
         if (number.length > 3) {
@@ -32,16 +32,19 @@
     };
 
     /** String has string */
-    W.snippet.text.contains = function (str, test) { return (str.indexOf(test) != -1 ); };
+    W.snippet.string.contains = function (str, test) { return (str.indexOf(test) != -1 ); };
     
     /** String trim leading and ending whitespace */
-    W.snippet.text.trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
+    W.snippet.string.trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
     
     /** String string starts with 
     http://stackoverflow.com/a/646643/179015 */
-    W.snippet.text.startsWith = function(str, test) { return str.slice(0, test.length) == test; };
+    W.snippet.string.startsWith = function(str, test) { return str.slice(0, test.length) == test; };
     /** String string ends with 
     http://stackoverflow.com/a/646643/179015 */
-    W.snippet.text.endsWith = function(str, test) { return str.slice(-test.length) == test; };
+    W.snippet.string.endsWith = function(str, test) { return str.slice(-test.length) == test; };
+
+    /** String contains a top level domain */
+    W.snippet.string.hasTld = function(str) { var result = str.match(/[a-z0-9.\-]+[.][a-z]{1,4}[\/:]?([\d]{1,5})?/m); return (!!result); };
 
 }());
