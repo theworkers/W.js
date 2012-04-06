@@ -11,17 +11,18 @@ Client and server side JavaScript library produced & used by [TheWorkers.net](ht
 
 * Tests
 	* Core
-		* [W.js](/tests/W.test.html) contains: W, W.extend, W.ayncLoop, 
-		* [W.Object.js](/tests/W.Object.test.html)
-		* [W.EventMixin.js](/tests/W.EventMixin.test.html)
+		* [W.js](tests/W.test.html) contains: W, W.extend, W.ayncLoop, 
+		* [W.Object.js](tests/W.Object.test.html)
+		* [W.EventMixin.js](tests/W.EventMixin.test.html)
 	* Utility
-		* [W.Timer](/tests/W.Timer.test.html)
-		* [W.HSLGradient](/tests/W.Timer.test.html)
+		* [W.Timer.js](tests/W.Timer.test.html)
+		* [W.HSLGradient.js](tests/W.Timer.test.html)
+		* [W.Router.js](tests/W.Router.test.html)
 	* DOM
-		* [W.gallery](/tests/W.Gallery.test.html)
+		* [W.gallery.js](tests/W.Gallery.test.html)
 
   
-&nbsp;  
+&nbsp;
 
 ---------------
 
