@@ -14,10 +14,10 @@
     W.DisplayViewMixin = {
         version : 1,
         setPosition : function (x, y) { // or setXY(array) or setXY({x:y:})
-            if (_.isArray(x)) {
+            if (typeof x === "[object Array]") {
                 this.x(x[0]);
                 this.y(y[1]);
-            } else if (_.isNumber(x)) {
+            } else if (typeof x === "number") {
                 this.x(x);
                 this.y(y);
             } else {
@@ -26,13 +26,13 @@
             }
         },
         setSize : function (width, height) { // or setSize(Array) or setSize({width:height}) or setSize(DOMElement)
-            if (_.isElement(width)) {
+            if (!!width.tagName) {
                 this.width($(width).width());
                 this.height($(width).height());
-            } else if (_.isNumber(width)) {
+            } else if (typeof width === "number") {
                 this.width(width);
                 this.height(height);
-            } else if (_.isArray(width)) {
+            } else if (typeof width === "height") {
                 this.width(width[0]);
                 this.height(width[1]);
             } else {
@@ -42,26 +42,26 @@
             this.trigger("resize", width, height);
         },
         x : function (x) {
-             if (arguments.length > 0) { this._x = x; }
-             if (_.isUndefined(this._x)) { this._x = 0; }
-             return this._x;
-         },
-         y : function (y) {
-             if (arguments.length > 0) { this._y = y; }
-             if (_.isUndefined(this._y)) { this._y = 0; }
-             return this._y;
-         },
-         width : function (width)  {
-             if (arguments.length > 0) { this._width = width; }
-             if (_.isUndefined(this._width)) { this._width = 0; }
-             return this._width;
-         },
-         height : function (height) {
-             if (arguments.length > 0) { this._height = height; }
-             if (_.isUndefined(this._height)) { this._height = 0; }
-             return this._height;
-         }
-     };
+            if (arguments.length > 0) { this._x = x; }
+            if (typeof this._x === "undefined") { this._x = 0; }
+            return this._x;
+        },
+        y : function (y) {
+            if (arguments.length > 0) { this._y = y; }
+            if (typeof this._y === "undefined") { this._y = 0; }
+            return this._y;
+        },
+        width : function (width)  {
+            if (arguments.length > 0) { this._width = width; }
+            if (typeof this._width === "undefined") { this._width = 0; }
+            return this._width;
+        },
+        height : function (height) {
+            if (arguments.length > 0) { this._height = height; }
+            if (typeof this._height === "undefined") { this._height = 0; }
+            return this._height;
+        }
+    };
 
 }());
 
