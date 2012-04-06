@@ -177,7 +177,7 @@ Backbone like DOM element reference but for canvas
 		object.draw();
 	}, 60);
 	
-Backbone like refernce to options
+Backbone like reference to options
 
     var Object = new W.Object({
     	constructor : function (options) {
@@ -200,7 +200,7 @@ Default options
 
     console.log(p1.options.name, p1.options.name); // no name, superman
 
-### Mixin's: 
+### Mixins: 
 
 Mixin which needs enabled (i.e. needs to initial events and/or many properties)
 
