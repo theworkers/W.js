@@ -83,11 +83,11 @@
 
     // for help with snippets, and
     // for people who don't like namespacing
-    // reverse bind
-    // not overly sure we (i) need this
+    // reservse bind. If no context will bind to W.
     W.use = function (lib, context) {
         lib = (typeof lib == "string") ? W.snippet[lib] : lib;
         if (!context) {
+             W.extend(W, lib);
             return lib;
         } else {
             W.extend(context, lib);
