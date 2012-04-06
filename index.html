@@ -133,51 +133,203 @@ body{font-size:16px;}
 <p>Tests</p>
 <ul>
 <li>Core<ul>
-<li><a href="tests/W.test.html">W.js</a> contains: W, W.extend, W.ayncLoop, </li>
-<li><a href="tests/W.Object.test.html">W.Object.js</a></li>
-<li><a href="tests/W.EventMixin.test.html">W.EventMixin.js</a></li>
+<li>W.js contains: W, W.bind, W.extend, W.ayncLoop <a href="W.js">[source]</a> <a href="tests/W.test.html">[test]</a> </li>
+<li>W.Object.js <a href="W.Object.js">[source]</a> <a href="tests/W.Object.test.html">[test]</a></li>
+<li>W.EventMixin.js <a href="W.EventMixin.js">[source]</a> <a href="tests/W.EventMixin.test.html">[test]</a></li>
 </ul>
 </li>
 <li>Utility<ul>
-<li><a href="tests/W.Timer.test.html">W.Timer.js</a></li>
-<li><a href="tests/W.Timer.test.html">W.HSLGradient.js</a></li>
-<li><a href="tests/W.Router.test.html">W.Router.js</a></li>
+<li>W.Timer.js <a href="W.Timer.js">[source]</a> <a href="tests/W.Timer.test.html">[test]</a></li>
+<li>W.HSLGradient.js <a href="W.HSLGradient.js">[source]</a> <a href="tests/W.Timer.test.html">[test]</a></li>
+<li>W.Router.js <a href="W.Router.js">[source]</a> <a href="tests/W.Router.test.html">[test]</a></li>
 </ul>
 </li>
-<li>DOM<ul>
-<li><a href="tests/W.Gallery.test.html">W.gallery.js</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>&nbsp;</p>
-<hr />
-<h2>Untested</h2>
-<p>Untested (in <span class="backtick">dev</span> branch)</p>
-<ul>
 <li>Canvas Utilities<ul>
-<li>W.DisplayViewMixin</li>
-<li>W.TouchEventViewMixin</li>
+<li>W.DisplayViewMixin <a href="W.DisplayViewMixin.js">[source]</a></li>
+<li>W.TouchEventViewMixin <a href="W.TouchEventViewMixin.js">[source]</a></li>
 </ul>
 </li>
 </ul>
-<!-- 
-------
+</li>
+</ul>
+<h2>&nbsp;</h2>
+<h2>In Development</h2>
+<ul>
+<li>Dom<ul>
+<li>W.gallery.js <a href="W.gallery.js">[source]</a> <a href="tests/W.Gallery.test.html">[test]</a></li>
+</ul>
+</li>
+</ul>
+<h2>&nbsp;</h2>
+<h2>Usage pointers</h2>
+<h3>W.Object</h3>
+<p>Example: Define a class</p>
+<pre><code>var Object = W.Object.extend({
+    constructor : function (options) {
+        // define ivars
+        this.property1 = 1;
+        this.property2 = options.name;
 
-* Untested (in `dev` branch)
-    * Canvas Utility
-        * W.DisplayViewMixin
-        * W.TouchEventViewMixin
-    * Misc Utitlity
-        * W.route
-        * W.math
-        * W.text
-    * Likely Depreciated (in `dev` branch)
-        * W.console
-        * W.dom
-        * W.maps
-        * W.animation
-        * W.animation.dom
+        // call method
+        this.method();
+    },
+    // methods*
+    method1 : function () { 
+        console.log( this.property1 );
+    },
+    method2 : function () {
 
-    -->
+    },
+});
+</code></pre>
+<p>Example: Initiate object</p>
+<pre><code>var object = new Object({ 
+    // optional options object, passed 
+    // to the constructor function
+    name : "spiderman" 
+});
+</code></pre>
+<p><em>*good practice to only create functions here, although any object can be defined.</em></p>
+<p>Example: Mixin</p>
+<pre><code>var mixin = {
+    mixedIn : {
+        // initiate property if it is not already initiatate*
+        this.property = this.property || 1;
+        console.log(this.property);
+        this.property++;
+    }
+}
+
+var Object =  W.Object.extend({
+    constructor : function (options) {
+        W.extend(this, mixin);
+
+        this.mixedIn(); // will output 1
+        this.mixedIn(); // will output 2
+    },
+});
+</code></pre>
+<h3>W.extend</h3>
+<p>Extends one object with the values of another. Same as <a href="http://documentcloud.github.com/underscore/#extend">UnderScore Extend</a>.</p>
+<h3>W.bind</h3>
+<p>Will make a passed function execute within the the passed scope (<em>this</em>). Same as <a href="http://documentcloud.github.com/underscore/#extend">UnderScore Bind</a>. Handy for exents.</p>
+<h3>W.EventMixin</h3>
+<pre><code>var EventedObject = W.Object.extend({
+    constructor = function (options) {
+        W.extend(this, W.EventMixin);
+    },
+    methodWithEvent : function () {
+        this.trigger("joy", { message : "woop" });
+    }
+});
+
+var Listener = W.Object.extend({
+    constructor = function (options) {
+        this.evented = options.evented;
+
+        // listen without guaranteed scope
+        this.evented.on("joy", this.shout);
+
+        // list with guaranteed scope (binded scope)
+        this.evented.on("joy", W.bind(this.shout, this));
+        // or just
+        this.evented.on("joy", this.shout, this);
+    },
+    shout : function (data) {
+        console.log(data.message);
+    }
+});
+
+var evented = new EventedObject();
+var listener = new Listener({
+    evented : evented
+});
+
+evented.methodWithEvent(); // woop woop woop
+</code></pre>
+<h2>Recommended coding styles &amp; patterns</h2>
+<h3>W.Object</h3>
+<p>Backbone like DOM element reference</p>
+<pre><code>var Object = W.Object.extend({
+    constructor = function (options) {
+        // the dom element
+        this.el = options.el || document.createElement("div");
+    }
+});
+
+var object = new Object();
+$("body").append(object.el);
+</code></pre>
+<p>Backbone like DOM element reference but for canvas</p>
+<pre><code>var Object = W.Object.extend({
+    constructor = function (options) {
+        // the object
+        this.el = options.el || document.createElement("canvas");
+        // the context
+        this.context = options.context || this.el.getContext("2d");
+    },
+    draw : function () {
+        this.context.beginPath();
+        this.context.moveTo(10, 10);
+        this.context.lineTo(20, 10); 
+        this.context.closePath();
+    }
+});
+
+var canvas = $("canvas")[0];
+var context = canvas.getContext("2d");
+
+var object = new Object({
+    el : canvas,
+    context : context
+});
+
+// e.g. with a timeout or on [requestAnimationFrame](https://developer.mozilla.org/en/DOM/window.requestAnimationFrame)
+setTimeout(function () {
+    object.draw();
+}, 60);
+</code></pre>
+<p>Backbone like refernce to options</p>
+<pre><code>var Object = new W.Object({
+    constructor : function (options) {
+        this.options = options;
+    }
+});
+</code></pre>
+<p>Default options</p>
+<pre><code>var Object = new W.Object({
+    constructor : function (options) {
+        this.options  = W.extend({
+            name : "no name";
+        }, options);
+    }
+});
+
+var p1 = new Object();
+var p2 = new Object({ name : "superman" });
+
+console.log(p1.options.name, p1.options.name); // no name, superman
+</code></pre>
+<h3>Mixin's:</h3>
+<p>Mixin which needs enabled (i.e. needs to initial events and/or many properties)</p>
+<pre><code>var MixinName = {
+    enableMixinName : function () {
+        // create properties
+        this.property = 1;
+
+        // enable events
+        this.on("something");
+        $(window).resize();
+    },
+    mixedIn : function () { 
+        console.log(this.property++);
+    }
+}
+
+var Object = new W.Object({
+    constructor : function () {
+        W.extend(this, MixinName);
+        this.enableMixinName;
+    }
+});
+</code></pre>
