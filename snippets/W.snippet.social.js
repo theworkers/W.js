@@ -42,7 +42,7 @@
         if (options && options.link) { facebookurl += "&u="+ encodeURIComponent(string.trim(options.link)); }
         if (options && options.message) { facebookurl += "&t="+ encodeURIComponent(string.trim(options.message)); }
         console.log(facebookurl);
-        window.open(facebookurl, 'facebookwindow', 'height=300, width=645, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, menubar=0, directories=0, scrollbars=0'); //location=0, 
+        window.open(facebookurl, 'facebookwindow', 'height=400, width=800, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, menubar=0, directories=0, scrollbars=0'); //location=0, 
     };
 
 }());
