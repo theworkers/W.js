@@ -42,7 +42,6 @@
                 this.width(_.isFunction(width.width) ? width.width() : width.width);
                 this.height(_.isFunction(width.height) ? width.height() : width.height);
             }
-            this.trigger("resize", width, height);
         },
         x : function (x) {
             if (arguments.length > 0) { this._x = x; }
