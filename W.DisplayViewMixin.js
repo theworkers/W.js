@@ -1,5 +1,7 @@
 // Copyright The Workers Ltd. 2012 (theworkers.net)
 // @author Ross Cairns
+// @notes  Not suitable for heavy usage (i.e. particles) as produces 
+//         many object with in turn will cause big
 //         garbage collections delays 
 (function () {
 
