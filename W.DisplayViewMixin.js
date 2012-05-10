@@ -24,9 +24,10 @@
                 this.x(x);
                 this.y(y);
             } else {
-                this.x = x.x;
-                this.y = x.y;
+                this.x(x.x);
+                this.y(x.y);
             }
+            return this;
         },
         setSize : function (width, height) { // or setSize(Array) or setSize({width:height}) or setSize(DOMElement)
             if (!!width.tagName) {
