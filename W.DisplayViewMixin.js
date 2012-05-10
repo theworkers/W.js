@@ -1,5 +1,6 @@
 // Copyright The Workers Ltd. 2012 (theworkers.net)
 // @author Ross Cairns
+//         garbage collections delays 
 (function () {
 
     var root = this;
