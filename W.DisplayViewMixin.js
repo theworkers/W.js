@@ -36,13 +36,18 @@
             } else if (typeof width === "number") {
                 this.width(width);
                 this.height(height);
-            } else if (typeof width === "height") {
+            } else if (typeof width === "array") {
                 this.width(width[0]);
                 this.height(width[1]);
+            } else if (typeof(width) == 'function') {
+                this.width(width());
+                this.height(height());
             } else {
-                this.width(_.isFunction(width.width) ? width.width() : width.width);
-                this.height(_.isFunction(width.height) ? width.height() : width.height);
+                var obj = width;
+                this.width(typeof(obj.width) == 'function' ? obj.width() : obj.width);
+                this.height(typeof(obj.height) == 'function' ? obj.height() : obj.height);
             }
+            return this;
         },
         x : function (x) {
             if (arguments.length > 0) { this._x = x; }
