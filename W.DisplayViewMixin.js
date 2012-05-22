@@ -30,9 +30,12 @@
             return this;
         },
         setSize : function (width, height) { // or setSize(Array) or setSize({width:height}) or setSize(DOMElement)
-            if (!!width.tagName) {
-                this.width($(width).width());
-                this.height($(width).height());
+            if (!!width.tagName && typeof jQuery === 'function') {
+                this.width(jQuery(width).width());
+                this.height(jQuery(width).height());
+            } else if (!!width.tagName) {
+                this.width = width.width;
+                this.height = width.height;
             } else if (typeof width === "number") {
                 this.width(width);
                 this.height(height);
