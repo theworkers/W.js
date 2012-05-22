@@ -1,8 +1,10 @@
-<meta charset="UTF-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 body{
   color:#444;
-  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times,
+              'Times New Roman', serif,
+              "Hiragino Sans GB", "STXihei", "微软雅黑";
   font-size:12px;
   line-height:1.5em;
   background:#fefefe;
@@ -65,7 +67,7 @@ hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-b
 pre , code, kbd, samp { 
   color: #000; 
   font-family: monospace; 
-  font-size: 0.98em; 
+  font-size: 0.88em; 
   border-radius:3px;
   background-color: #F8F8F8;
   border: 1px solid #CCC; 
@@ -118,7 +120,7 @@ body{font-size:16px;}
   @page :right { margin: 15mm 10mm 15mm 20mm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
-}</style><h1>W.js – Version 2.0</h1>
+}</style></head><body><h1>W.js – Version 2.0</h1>
 <blockquote>
 <p>"A Welterweight Backbone.js &amp; Miscellaneous Utility Pack."</p>
 </blockquote>
@@ -192,8 +194,8 @@ body{font-size:16px;}
 <p><em>*good practice to only create functions here, although any object can be defined.</em></p>
 <p>Example: Mixin</p>
 <pre><code>var mixin = {
-    mixedIn : {
-        // initiate property if it is not already initiatate*
+    mixedIn : function () {
+        // initiate property if it is not already initiated*
         this.property = this.property || 1;
         console.log(this.property);
         this.property++;
@@ -212,7 +214,7 @@ var Object =  W.Object.extend({
 <h3>W.extend</h3>
 <p>Extends one object with the values of another. Same as <a href="http://documentcloud.github.com/underscore/#extend">UnderScore Extend</a>.</p>
 <h3>W.bind</h3>
-<p>Will make a passed function execute within the the passed scope (<em>this</em>). Same as <a href="http://documentcloud.github.com/underscore/#extend">UnderScore Bind</a>. Handy for exents.</p>
+<p>Will make a passed function execute within the the passed scope (<em>this</em>). Same as <a href="http://documentcloud.github.com/underscore/#extend">UnderScore Bind</a>. Handy for events.</p>
 <h3>W.EventMixin</h3>
 <pre><code>var EventedObject = W.Object.extend({
     constructor = function (options) {
@@ -289,7 +291,7 @@ setTimeout(function () {
     object.draw();
 }, 60);
 </code></pre>
-<p>Backbone like refernce to options</p>
+<p>Backbone like reference to options</p>
 <pre><code>var Object = new W.Object({
     constructor : function (options) {
         this.options = options;
@@ -310,7 +312,7 @@ var p2 = new Object({ name : "superman" });
 
 console.log(p1.options.name, p1.options.name); // no name, superman
 </code></pre>
-<h3>Mixin's:</h3>
+<h3>Mixins:</h3>
 <p>Mixin which needs enabled (i.e. needs to initial events and/or many properties)</p>
 <pre><code>var MixinName = {
     enableMixinName : function () {
@@ -332,4 +334,4 @@ var Object = new W.Object({
         this.enableMixinName;
     }
 });
-</code></pre>
+</code></pre></body>
