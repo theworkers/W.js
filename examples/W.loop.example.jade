@@ -14,7 +14,7 @@ html(class='no-js', lang='en')
         p view the console
         script
             //
-            console.log("running normal timeout");
+            console.log("running normal loop");
             // #A normal for loop (could be each)
             for (var i = 0; i < 10; i++) {
                 console.log(i);
@@ -24,7 +24,7 @@ html(class='no-js', lang='en')
             // # a loop with timeout
             // as the timeout executes after the loop has finished
             // i will alway be 10
-            console.log("running with a timeout");
+            console.log("running normal loop with a timeout");
             for (var i = 0; i < 10; i++) {
                 setTimeout(function () {
                     console.log(i);
