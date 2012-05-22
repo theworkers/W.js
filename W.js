@@ -128,7 +128,7 @@
                 fn(index-1, next, end);
             } else {
                 done = true;
-                callback();
+                if (callback) { callback(); }
             }
         };
         next();
