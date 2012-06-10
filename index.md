@@ -71,8 +71,8 @@ _*good practice to only create functions here, although any object can be define
 Example: Mixin
 
 	var mixin = {
-		mixedIn : {
-			// initiate property if it is not already initiatate*
+		mixedIn : function () {
+			// initiate property if it is not already initiated*
 			this.property = this.property || 1;
 			console.log(this.property);
 			this.property++;
@@ -94,7 +94,7 @@ Extends one object with the values of another. Same as [UnderScore Extend](http:
 
 ### W.bind
 
-Will make a passed function execute within the the passed scope (_this_). Same as [UnderScore Bind](http://documentcloud.github.com/underscore/#extend). Handy for exents.
+Will make a passed function execute within the the passed scope (_this_). Same as [UnderScore Bind](http://documentcloud.github.com/underscore/#extend). Handy for events.
 
 ### W.EventMixin
 
