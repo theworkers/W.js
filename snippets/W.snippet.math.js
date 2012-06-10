@@ -31,7 +31,7 @@
         return Math.min(widthScale, heightScale);
     };
 
-    W.snippet.math.map = function (value, inputMin, inputMax, output, clamp) {
+    W.snippet.math.map = function (value, inputMin, inputMax, outputMin, outputMax, clamp) {
         var outVal = ((value-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
         if (clamp) {
             if (outputMax<outputMin) {
@@ -49,6 +49,10 @@
             }
         }
         return outVal;
+    };
+
+    W.snippet.math.randomBetween = function (from, to) {
+        return W.snippet.math.map(Math.random(), 0, 1, from, to);
     };
 
     // @todo test
