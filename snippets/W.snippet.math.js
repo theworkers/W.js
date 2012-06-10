@@ -51,11 +51,13 @@
         return outVal;
     };
 
+    // @todo test
     W.snippet.math.close = function (num, test, tolerance) {
         tolerance = tolerance || 1;
         return (num > test-tolerance && num < test+tolerance);
     };
 
+     // @todo accept numbers and test
     W.snippet.math.angleBetween = function (center, point) {
         var angle = Math.atan2(center.x-point.x,center.y-point.y)*(180/Math.PI);
         if(angle < 0) {
@@ -66,6 +68,7 @@
         return angle;
     };
 
+    // @todo accept numbers and test
     W.snippet.math.distance = function (obj1, obj2) {
         var x = obj2.x - obj1.x;
         var y = obj2.y - obj1.y;
