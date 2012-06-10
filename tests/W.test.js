@@ -31,6 +31,16 @@ test("W.extend", function () {
 	equal(sub.fish,"fingers","sub has fish fingers");
 });
 
+test("W.clone", function () {
+	var base = {
+		fish : "fingers"
+	};
+	var clone = W.clone(base);
+	clone.fish = "and chips";
+	equal(base.fish, "fingers", "Original remained the same");
+	equal(clone.fish, "and chips", "Clone changed");
+});
+
 asyncTest("W.bind", 2, function() {
 	var scope = {
 		worked : "worked"
