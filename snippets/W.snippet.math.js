@@ -31,4 +31,45 @@
         return Math.min(widthScale, heightScale);
     };
 
+    W.snippet.math.map = function (value, inputMin, inputMax, output, clamp) {
+        var outVal = ((value-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
+        if (clamp) {
+            if (outputMax<outputMin) {
+                if (outVal<outputMax) {
+                    outVal = outputMax;
+                } else if (outVal>outputMin) {
+                    outVal = outputMin;
+                }
+            } else {
+                if (outVal>outputMax) {
+                    outVal = outputMax;
+                } else if (outVal<outputMin) {
+                    outVal = outputMin;
+                }
+            }
+        }
+        return outVal;
+    };
+
+    W.snippet.math.close = function (num, test, tolerance) {
+        tolerance = tolerance || 1;
+        return (num > test-tolerance && num < test+tolerance);
+    };
+
+    W.snippet.math.angleBetween = function (center, point) {
+        var angle = Math.atan2(center.x-point.x,center.y-point.y)*(180/Math.PI);
+        if(angle < 0) {
+            angle = Math.abs(angle);
+        } else {
+            angle = 360 - angle;
+        }
+        return angle;
+    };
+
+    W.snippet.math.distance = function (obj1, obj2) {
+        var x = obj2.x - obj1.x;
+        var y = obj2.y - obj1.y;
+        return Math.sqrt((x*x)+(y*y));
+    };
+
 }());
