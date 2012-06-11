@@ -81,7 +81,7 @@
         };
     };
 
-    W.clone = function () {
+    W.clone = function (obj) {
         var target = {};
         for (var i in obj) {
             if (obj.hasOwnProperty(i)) {
