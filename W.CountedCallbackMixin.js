@@ -8,7 +8,7 @@
         root.W = W;
     }
 
-    var CountedCallbackMixin = {
+    W.CountedCallbackMixin = {
         getCountedCallback : function () {
             var self = this;
             self._totalCallbacks =  self._totalCallbacks || 0;
@@ -24,5 +24,5 @@
         }
     };
 
-    
+
 }());
