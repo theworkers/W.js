@@ -81,7 +81,7 @@
 
     // Fisher-Yates shuffle.
     // source http://stackoverflow.com/questions/962802/is-it-correct-to-use-javascript-array-sort-method-for-shuffling
-    W.snippet.math.randomizedArray = function (arr, leaveOriginalUntouched) {
+    W.snippet.math.shuffleArray = function (arr, leaveOriginalUntouched) {
         var array = (leaveOriginalUntouched) ? arr.slice(0) : arr;
         var tmp, current, top = array.length;
         if(top) while(--top) {
