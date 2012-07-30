@@ -13,7 +13,7 @@
      * Add touch events to a view.
      *
      * @example
-     *          _.extend(this, W.TouchEventViewMixin);
+     *          W.extend(this, W.TouchEventViewMixin);
      *          this.enableTouchEvents();
      *          this.bind("touchStart", this.touchStart, this);
      *

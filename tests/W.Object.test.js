@@ -93,3 +93,18 @@ test("Scoped Check", function () {
 	equal(subScopped1.subToBaseMethod(), "A", "sub object inherited returns base, uneffected by subScopped2");
 	equal(subScopped1.baseToSubMethod(), "B", "sub object baseToSubResult returns own, uneffected by subScopped2");
 });
+
+var ObjectWthObject = W.Object.extend({
+	arr : []
+});
+
+var arrObj1 = new ObjectWthObject();
+var arrObj2 = new ObjectWthObject();
+
+test("Object in Extend", function () {
+	equal(arrObj1.arr.length, 0, "instance contains array");
+	arrObj1.arr.push("hello");
+	equal(arrObj1.arr.length, 1, "instance contains array with item");
+	equal(arrObj1.arr[0], "hello", "first instance contains array item");
+	equal(arrObj2.arr[0], "hello", "second instance contains smae array item");
+});

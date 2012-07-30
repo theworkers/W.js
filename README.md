@@ -1,66 +1,24 @@
-```
-|  \ / \  | \| |/ \_ _| | | / _| __|
-| o ) o ) | \\ ( o ) |  | U \_ \ _| 
-|__/ \_/  |_|\_|\_/|_|  |___|__/___|
-```
+# W.js – Version 2.0
 
+> "A Welterweight Backbone.js & Miscellaneous Utility Pack."
 
-# W.js
+Client and server side JavaScript library produced & used by TheWorkers.net, a creative studio based in East London.
 
-JavaScript Library for Node.js and Client-side Browser
+### From Version 1 to Version 2 Notes.
 
-## Usage
+For any sites/apps using version 1 please use commit ef7b74cdd67500fd857a18c7c244de378fc6cedb and before.
 
-     git clone git@github.com:rc1/W.js.git
-     cd W.js
-     git submodule update --init
-
-## Libraries
-
-### _Node + Client Side_
-
-* W
-* W.text
-* W.console
-
-### _Client Side Only_
-
-* W.slideshow.*
-
-### _Client Side + Node Compatable_
-* W.event 	_not required by node see: [Node's implementation](http://nodejs.org/docs/v0.4.2/api/events.html )_
-
-
-### Roadmap
-
-* todo
-    * add W.each() safe browser and node implementation
-    * W.text.enableStringPrototype with W.each() encapsulate each W.text. method, passing `this` as the first argument, a and add to String prototype
-
-* add
-	* W.safeJSON    parse if not already JSON
-    * W.warn, W.log, W.stub to node.js
-    * W.flashcomm
-		* *evented flash communication*
-    * W.symphony
-        * *symphpny datasource and event utilities*
-	* W.slideshow
-		* all for a transition delegate pattern. this will allow for custom transitions.
-		* make jQuery independant
-	* W.event
-		* @todo   bind events by default
-		* @todo   check for non-blocking implemetation
-		* <s>@todo   implement bubbling</s> << this is in node. needed for browser? maybe later
+__Version 2__ removes much functionailty from version 1, as well as docs and examples in favour of a full test suite. Untested & rough functionality can be found in the "dev" branch. All object in Version 2 have been changed to use a `W.Object` pattern (inspired by, [but not implemented](https://github.com/documentcloud/backbone/pull/276) in, [backbone.js](http://documentcloud.github.com/backbone/)).
 
 -------------
 
-		////////////////////////////
-		//    ///////////////    ///    Copyright (c) 2011 The Workers
-		///    /////////////    ////    Authors: Ross Cairns
-		////    ///// /////    /////
-		/////    ///   ///    //////
-		//////    /     /    ///////
-		///////             ////////
-		////////    //     /////////
-		/////////  ////   //////////
-		////////////////////////////
+	////////////////////////////    Copyright (c) 2011 The Workers
+	//    ///////////////    ///	@author: Ross Cairns
+	///    /////////////    ////    
+	////    ///// /////    /////
+	/////    ///   ///    //////
+	//////    /     /    ///////
+	///////             ////////
+	////////    //     /////////
+	/////////  ////   //////////
+	////////////////////////////
