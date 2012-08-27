@@ -1,4 +1,5 @@
-// Copyright The Workers Ltd. 2012 (theworkers.net)
+////
+/// W.TouchEventViewMixin
 // @author Ross Cairns
 (function () {
     var root = this;

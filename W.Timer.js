@@ -1,3 +1,6 @@
+////
+/// W.Timer
+// @author Ross Cairns
 (function () {
     var root = this;
     var W = root.W || {};
