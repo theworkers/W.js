@@ -26,7 +26,7 @@
     }
 
     /** Current version. */
-    W.version = '2';
+    W.version = '2.1.0';
 
     // Inspired/taken from underscore.js
     // Underscore.js 1.3.1
