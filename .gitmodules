@@ -1,6 +1,6 @@
 [submodule "tests/libs/underscore"]
 	path = tests/libs/underscore
-	url = https://github.com/documentcloud/underscore.git
+	url = git://github.com/documentcloud/underscore.git
 [submodule "tests/libs/qunit"]
 	path = tests/libs/qunit
-	url = https://github.com/jquery/qunit.git
+	url = git://github.com/jquery/qunit.git
