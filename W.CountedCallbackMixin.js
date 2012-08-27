@@ -1,3 +1,6 @@
+////
+/// W.CountedCallbackMixin
+// @author Ross Cairns
 (function () {
     var root = this;
     var W = root.W || {};

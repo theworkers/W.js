@@ -1,4 +1,5 @@
-// Copyright The Workers Ltd. 2012 (theworkers.net)
+////
+/// W.ColorUtil
 // @author Ross Cairns
 (function () {
 

@@ -1,3 +1,6 @@
+////
+/// W.snippet.string
+// @author Ross Cairns
 (function () {
     var root = this;
     var W = root.W || {};
