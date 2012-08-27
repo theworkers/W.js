@@ -1,3 +1,6 @@
+////
+/// W.snippet.dom
+// @author Ross Cairns
 (function () {
     var root = this;
     var W = root.W || {};

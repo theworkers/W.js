@@ -1,6 +1,6 @@
-// Copyright The Workers Ltd. 2012 (theworkers.net)
+////
+/// W.Router
 // @author Ross Cairns
-// 
 // Based on [pathjs](https://github.com/mtrpcic/pathjs) by Mike Trpcic. Stripped to not use the location hash matching
 
 (function () {

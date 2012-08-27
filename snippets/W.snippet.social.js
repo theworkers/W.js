@@ -1,3 +1,6 @@
+////
+/// W.snippet.social
+// @author Ross Cairns
 (function () {
     var root = this;
     var W = root.W || {};

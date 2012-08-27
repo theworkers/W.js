@@ -5,9 +5,14 @@
 //    /_/ /_/ /_/\___/|__/|__/\____/_/  /_/|_|\___/_/  /____/    / ./
 //                                                      .net    / /
 //                                                         .   /./
-//    Copyright The Workers Ltd. 2012                 ..   |  //  .
+//    W.js - http://theworkers.github.com/W.js/       ..   |  //  .
 //                                                 .   \\  | /' .'  .
 //                                                  ~-. `     ' .-~
+//
+//    Portions of W.js are inspired or borrowed from:
+//     - [underscore.js](http://underscorejs.org/)
+//     - [backbone.js](http://backbonejs.org/)
+//     - [pathjs](https://github.com/mtrpcic/pathjs)
 //
 (function () {
     // module setup inspired by underscore.js
