@@ -9,31 +9,46 @@ Client and server side JavaScript library produced & used by [TheWorkers.net](ht
 
 * [Readme](https://github.com/theworkers/w.js)
 
-* Tests
+* Files
 	* Core
 		* W.js contains: W, W.bind, W.extend, W.ayncLoop [[source]](W.js) [[test]](tests/W.test.html) 
 		* W.Object.js [[source]](W.Object.js) [[test]](tests/W.Object.test.html)
 		* W.EventMixin.js [[source]](W.EventMixin.js) [[test]](tests/W.EventMixin.test.html)
 	* Utility
 		* W.Timer.js [[source]](W.Timer.js) [[test]](tests/W.Timer.test.html)
-		* W.HSLGradient.js [[source]](W.HSLGradient.js) [[test]](tests/W.Timer.test.html)
 		* W.Router.js [[source]](W.Router.js) [[test]](tests/W.Router.test.html)
-	* Canvas Utilities
-		* W.DisplayViewMixin [[source]](W.DisplayViewMixin.js)
-		* W.TouchEventViewMixin [[source]](W.TouchEventViewMixin.js)
 
-&nbsp;
 ---------------
 ## In Development
 	
-
 * Dom
 	* W.gallery.js [[source]](W.gallery.js) [[test]](tests/W.Gallery.test.html)
+* Core
+	* W.CountedCallbackMixin [[source]](W.CountedCallbackMixin.js)
+* Utility
+	* W.HSLGradient.js [[source]](W.HSLGradient.js) [[test]](tests/W.Timer.test.html)
+* Canvas Utilities
+	* W.DisplayViewMixin [[source]](W.DisplayViewMixin.js)
+	* W.TouchEventViewMixin [[source]](W.TouchEventViewMixin.js)
+
+---------------
+## Snippets
+
+* W.snippets.dom [[source]](snippets/W.snippets.dom.js)
+* W.snippets.math [[source]](snippets/W.snippets.math.js)
+* W.snippets.social [[source]](snippets/W.snippets.social.js)
+* W.snippets.string [[source]](snippets/W.snippets.string.js)
+
+---------------
+## Build files
+
+* build/W.js [[source]](build/W.js)
+* build/W.min.js [[source]](build/W.min.js)
 
 
 &nbsp;
 ---------------
-## Usage pointers
+## Usage Pointers
 
 ### W.Object
 
@@ -44,7 +59,6 @@ Example: Define a class
     		// define ivars
     		this.property1 = 1;
     		this.property2 = options.name;
-
     		// call method
     		this.method();
     	},
@@ -110,10 +124,8 @@ Will make a passed function execute within the the passed scope (_this_). Same a
     var Listener = W.Object.extend({
     	constructor = function (options) {
     		this.evented = options.evented;
-
     		// listen without guaranteed scope
     		this.evented.on("joy", this.shout);
-
     		// list with guaranteed scope (binded scope)
     		this.evented.on("joy", W.bind(this.shout, this));
     		// or just
@@ -208,7 +220,6 @@ Mixin which needs enabled (i.e. needs to initial events and/or many properties)
 		enableMixinName : function () {
 			// create properties
 			this.property = 1;
-
 			// enable events
 			this.on("something");
 			$(window).resize();
