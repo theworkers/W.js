@@ -34,10 +34,10 @@ Client and server side JavaScript library produced & used by [TheWorkers.net](ht
 ---------------
 ## Snippets
 
-* W.snippets.dom [[source]](snippets/W.snippets.dom.js)
-* W.snippets.math [[source]](snippets/W.snippets.math.js)
-* W.snippets.social [[source]](snippets/W.snippets.social.js)
-* W.snippets.string [[source]](snippets/W.snippets.string.js)
+* W.snippets.dom [[source]](snippets/W.snippet.dom.js)
+* W.snippets.math [[source]](snippets/W.snippet.math.js)
+* W.snippets.social [[source]](snippets/W.snippet.social.js)
+* W.snippets.string [[source]](snippets/W.snippet.string.js)
 
 ---------------
 ## Build files
