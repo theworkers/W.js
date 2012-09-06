@@ -799,6 +799,34 @@
 		return {width:e[a+'Width'],height:e[ a+'Height']};
 	}; 
 
+    // @note webkit only
+    // @requires W.snippets.math
+    // W.cssGradientString().add(0, "#FF0000").add(0, "#00FF00").add(0, "#0000FF").get();
+    W.snippet.dom.cssGradientString = function(stops) {
+        var values = [];
+        var _direction = "left"; // "top", "right", "bottom", "left", "-45.0deg"
+        var promise = {
+            direction : function (direction) {
+                _direction = direction;
+                return promise;
+            },
+            add : function (precentage, value) {
+                values.push([precentage, value]);
+                return promise;
+            },
+            get : function () {
+                var str = "-webkit-linear-gradient(" + _direction + ", ";
+                for (var i = 0; i<values.length; i++) {
+                    str += values[i][1] + " " + values[i][0] + "%";
+                    if (i<values.length-1) { str += ","; }
+                }
+                str += ")";
+                return str;
+            }
+        };
+        return promise;
+    };
+
 
     var privateNamespace = {};
     (function(namespace){
@@ -979,6 +1007,49 @@
     } else {
         root.W = W;
     }
+
+    W.RandomColorSequence = W.Object.extend({
+        constructor : function (options) {
+            this.r = Math.random() * 255;
+            this.g = Math.random() * 255;
+            this.b = Math.random() * 255;
+            this.rStep = Math.random() * 10 - 5;
+            this.gStep = Math.random() * 10 - 5;
+            this.bStep = Math.random() * 10 - 5;
+            
+        },
+        start : function () {
+            if (!this.timer) {
+                this.timer = new W.Timer({
+                    updateTime : 10
+                });
+                this.timer.on("fired", this.update, this);
+            }
+            this.timer.start();
+            return this;
+        },
+        stop : function () {
+            this.timer.stop();
+            this.timer.off("fired", this.update);
+            this.timer = undefined;
+            return this;
+        },
+        update : function () {
+            this.r += this.rStep;
+            this.g += this.gStep;
+            this.b += this.bStep;
+            if (this.r>255) { this.r=0+(this.r-255); }
+            if (this.r<0) { this.r=255-this.r; }
+            if (this.g>255) { this.g=0+(this.g-255); }
+            if (this.g<0) { this.g=255-this.g; }
+            if (this.b>255) { this.b=0+(this.b-255); }
+            if (this.b<0) { this.b=255-this.b; }
+            return this;
+        },
+        getHex : function () {
+            return W.colorValuesToHex(this.r&this.r, this.g&this.g, this.b&this.b);
+        }
+    });
 
     /*
     // modified from https://raw.github.com/gist/1590079/bb457e888c3b6ce4d16f5e8ebf767bd4302a7bea/gistfile1.js
