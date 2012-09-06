@@ -1,4 +1,4 @@
-# W.js – Version 2.1.0
+# W.js – Version 2.2.0
 
 > "A Welterweight Backbone.js & Miscellaneous Utility Pack."
 
