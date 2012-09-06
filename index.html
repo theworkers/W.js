@@ -25,7 +25,7 @@ span.backtick {
   border:1px solid #EAEAEA;
   border-radius:3px;
   background:#F8F8F8;
-  padding:0px 3px 0px 3px;
+  padding:0 3px 0 3px;
 }
 
 ::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
@@ -49,7 +49,7 @@ line-height:1em;
 }
 h4,h5,h6{ font-weight: bold; }
 h1{ font-size:2.5em; }
-h2{ font-size:2em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
 h3{ font-size:1.5em; }
 h4{ font-size:1.2em; }
 h5{ font-size:1em; }
@@ -74,7 +74,7 @@ pre , code, kbd, samp {
 }
 pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px;}
 pre code { border: 0px !important; }
-
+code { padding: 0 3px 0 3px; }
 
 b, strong { font-weight: bold; }
 
@@ -120,58 +120,94 @@ body{font-size:16px;}
   @page :right { margin: 15mm 10mm 15mm 20mm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
-}</style></head><body><h1>W.js – Version 2.0.0</h1>
+}</style></head><body><h1 id="wjs-version-210">W.js – Version 2.1.0</h1>
+
 <blockquote>
-<p>"A Welterweight Backbone.js &amp; Miscellaneous Utility Pack."</p>
+  <p>"A Welterweight Backbone.js &amp; Miscellaneous Utility Pack."</p>
 </blockquote>
+
 <p>Client and server side JavaScript library produced &amp; used by <a href="http://theworkers.net/">TheWorkers.net</a>, a creative studio based in East London.</p>
+
 <hr />
-<h2>About</h2>
+
+<h2 id="about">About</h2>
+
 <ul>
-<li>
-<p><a href="https://github.com/theworkers/w.js">Readme</a></p>
-</li>
-<li>
-<p>Tests</p>
+<li><p><a href="https://github.com/theworkers/w.js">Readme</a></p></li>
+<li><p>Files</p>
+
 <ul>
-<li>Core<ul>
+<li>Core
+<ul>
 <li>W.js contains: W, W.bind, W.extend, W.ayncLoop <a href="W.js">[source]</a> <a href="tests/W.test.html">[test]</a> </li>
 <li>W.Object.js <a href="W.Object.js">[source]</a> <a href="tests/W.Object.test.html">[test]</a></li>
 <li>W.EventMixin.js <a href="W.EventMixin.js">[source]</a> <a href="tests/W.EventMixin.test.html">[test]</a></li>
-</ul>
-</li>
-<li>Utility<ul>
+</ul></li>
+<li>Utility
+<ul>
 <li>W.Timer.js <a href="W.Timer.js">[source]</a> <a href="tests/W.Timer.test.html">[test]</a></li>
-<li>W.HSLGradient.js <a href="W.HSLGradient.js">[source]</a> <a href="tests/W.Timer.test.html">[test]</a></li>
 <li>W.Router.js <a href="W.Router.js">[source]</a> <a href="tests/W.Router.test.html">[test]</a></li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-<li>Canvas Utilities<ul>
+
+<hr />
+
+<h2 id="in-development">In Development</h2>
+
+<ul>
+<li>Dom
+<ul>
+<li>W.gallery.js <a href="W.gallery.js">[source]</a> <a href="tests/W.Gallery.test.html">[test]</a></li>
+</ul></li>
+<li>Core
+<ul>
+<li>W.CountedCallbackMixin <a href="W.CountedCallbackMixin.js">[source]</a></li>
+</ul></li>
+<li>Utility
+<ul>
+<li>W.HSLGradient.js <a href="W.HSLGradient.js">[source]</a> <a href="tests/W.Timer.test.html">[test]</a></li>
+</ul></li>
+<li>Canvas Utilities
+<ul>
 <li>W.DisplayViewMixin <a href="W.DisplayViewMixin.js">[source]</a></li>
 <li>W.TouchEventViewMixin <a href="W.TouchEventViewMixin.js">[source]</a></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2>&nbsp;</h2>
-<h2>In Development</h2>
+
+<hr />
+
+<h2 id="snippets">Snippets</h2>
+
 <ul>
-<li>Dom<ul>
-<li>W.gallery.js <a href="W.gallery.js">[source]</a> <a href="tests/W.Gallery.test.html">[test]</a></li>
+<li>W.snippets.dom <a href="snippets/W.snippet.dom.js">[source]</a></li>
+<li>W.snippets.math <a href="snippets/W.snippet.math.js">[source]</a></li>
+<li>W.snippets.social <a href="snippets/W.snippet.social.js">[source]</a></li>
+<li>W.snippets.string <a href="snippets/W.snippet.string.js">[source]</a></li>
 </ul>
-</li>
+
+<hr />
+
+<h2 id="build-files">Build files</h2>
+
+<ul>
+<li>build/W.js <a href="build/W.js">[source]</a></li>
+<li>build/W.min.js <a href="build/W.min.js">[source]</a></li>
 </ul>
-<h2>&nbsp;</h2>
-<h2>Usage pointers</h2>
-<h3>W.Object</h3>
+
+<h2 id="nbsp">&nbsp;</h2>
+
+<h2 id="usage-pointers">Usage Pointers</h2>
+
+<h3 id="wobject">W.Object</h3>
+
 <p>Example: Define a class</p>
+
 <pre><code>var Object = W.Object.extend({
     constructor : function (options) {
         // define ivars
         this.property1 = 1;
         this.property2 = options.name;
-
         // call method
         this.method();
     },
@@ -179,20 +215,25 @@ body{font-size:16px;}
     method1 : function () { 
         console.log( this.property1 );
     },
-    method2 : function () {
+    method2 : function () { 
 
     },
 });
 </code></pre>
+
 <p>Example: Initiate object</p>
+
 <pre><code>var object = new Object({ 
     // optional options object, passed 
     // to the constructor function
     name : "spiderman" 
 });
 </code></pre>
+
 <p><em>*good practice to only create functions here, although any object can be defined.</em></p>
+
 <p>Example: Mixin</p>
+
 <pre><code>var mixin = {
     mixedIn : function () {
         // initiate property if it is not already initiated*
@@ -211,11 +252,17 @@ var Object =  W.Object.extend({
     },
 });
 </code></pre>
-<h3>W.extend</h3>
+
+<h3 id="wextend">W.extend</h3>
+
 <p>Extends one object with the values of another. Same as <a href="http://documentcloud.github.com/underscore/#extend">UnderScore Extend</a>.</p>
-<h3>W.bind</h3>
+
+<h3 id="wbind">W.bind</h3>
+
 <p>Will make a passed function execute within the the passed scope (<em>this</em>). Same as <a href="http://documentcloud.github.com/underscore/#extend">UnderScore Bind</a>. Handy for events.</p>
-<h3>W.EventMixin</h3>
+
+<h3 id="weventmixin">W.EventMixin</h3>
+
 <pre><code>var EventedObject = W.Object.extend({
     constructor = function (options) {
         W.extend(this, W.EventMixin);
@@ -228,10 +275,8 @@ var Object =  W.Object.extend({
 var Listener = W.Object.extend({
     constructor = function (options) {
         this.evented = options.evented;
-
         // listen without guaranteed scope
         this.evented.on("joy", this.shout);
-
         // list with guaranteed scope (binded scope)
         this.evented.on("joy", W.bind(this.shout, this));
         // or just
@@ -249,9 +294,13 @@ var listener = new Listener({
 
 evented.methodWithEvent(); // woop woop woop
 </code></pre>
-<h2>Recommended coding styles &amp; patterns</h2>
-<h3>W.Object</h3>
+
+<h2 id="recommended-coding-styles-patterns">Recommended coding styles &amp; patterns</h2>
+
+<h3 id="wobject-2">W.Object</h3>
+
 <p>Backbone like DOM element reference</p>
+
 <pre><code>var Object = W.Object.extend({
     constructor = function (options) {
         // the dom element
@@ -262,7 +311,9 @@ evented.methodWithEvent(); // woop woop woop
 var object = new Object();
 $("body").append(object.el);
 </code></pre>
+
 <p>Backbone like DOM element reference but for canvas</p>
+
 <pre><code>var Object = W.Object.extend({
     constructor = function (options) {
         // the object
@@ -291,14 +342,18 @@ setTimeout(function () {
     object.draw();
 }, 60);
 </code></pre>
+
 <p>Backbone like reference to options</p>
+
 <pre><code>var Object = new W.Object({
     constructor : function (options) {
         this.options = options;
     }
 });
 </code></pre>
+
 <p>Default options</p>
+
 <pre><code>var Object = new W.Object({
     constructor : function (options) {
         this.options  = W.extend({
@@ -312,13 +367,15 @@ var p2 = new Object({ name : "superman" });
 
 console.log(p1.options.name, p1.options.name); // no name, superman
 </code></pre>
-<h3>Mixins:</h3>
+
+<h3 id="mixins">Mixins:</h3>
+
 <p>Mixin which needs enabled (i.e. needs to initial events and/or many properties)</p>
+
 <pre><code>var MixinName = {
     enableMixinName : function () {
         // create properties
         this.property = 1;
-
         // enable events
         this.on("something");
         $(window).resize();
@@ -334,4 +391,5 @@ var Object = new W.Object({
         this.enableMixinName;
     }
 });
-</code></pre></body>
+</code></pre>
+</body>
