@@ -1,4 +1,4 @@
-# W.js – Version 2.3.0
+# W.js – Version 2.4.0
 
 > "A Welterweight Backbone.js & Miscellaneous Utility Pack."
 
@@ -14,6 +14,7 @@ Client and server side JavaScript library produced & used by [TheWorkers.net](ht
 		* W.js contains: W, W.bind, W.extend, W.ayncLoop [[source]](W.js) [[test]](tests/W.test.html) 
 		* W.Object.js [[source]](W.Object.js) [[test]](tests/W.Object.test.html)
 		* W.EventMixin.js [[source]](W.EventMixin.js) [[test]](tests/W.EventMixin.test.html)
+        * W.List.js [[source]](W.List.js) [[test]](tests/W.List.test.html)
 	* Utility
 		* W.Timer.js [[source]](W.Timer.js) [[test]](tests/W.Timer.test.html)
 		* W.Router.js [[source]](W.Router.js) [[test]](tests/W.Router.test.html)
