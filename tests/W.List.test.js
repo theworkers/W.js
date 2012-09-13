@@ -44,3 +44,13 @@ test("at", function () {
     deepEqual(list.at(1).cid, obj2.cid, "three index ok");
     deepEqual(list.at(3).cid, objAfter.cid, "three index ok");
 });
+
+test("each", function () {
+    // flaky test
+    var counter = 0;
+    list.each(function (node, i) {
+        console.log(node, i);
+        counter += node.cid;
+    }, this);
+    equal(counter, 513, "executes on each");
+});

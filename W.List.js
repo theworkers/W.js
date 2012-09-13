@@ -73,6 +73,15 @@
                 obj = obj.next;
             }
             return obj;
+        },
+        each : function (fn, context) {
+            var bound = (context) ? W.bind(fn, context) : fn;
+            var next = this.first;
+            for (var i=0;i<this.length;++i) {
+                bound(next, i);
+                next = next.next;
+            }
+            return this;
         }
     });
 
