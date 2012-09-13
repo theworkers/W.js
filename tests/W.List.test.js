@@ -49,7 +49,6 @@ test("each", function () {
     // flaky test
     var counter = 0;
     list.each(function (node, i) {
-        console.log(node, i);
         counter += node.cid;
     }, this);
     equal(counter, 513, "executes on each");
