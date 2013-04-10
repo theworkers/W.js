@@ -15,6 +15,7 @@ Client and server side JavaScript library produced & used by [TheWorkers.net](ht
 		* W.Object.js [[source]](W.Object.js) [[test]](tests/W.Object.test.html)
 		* W.EventMixin.js [[source]](W.EventMixin.js) [[test]](tests/W.EventMixin.test.html)
         * W.List.js [[source]](W.List.js) [[test]](tests/W.List.test.html)
+        * W.Math.js [[source]](W.Math.js) [[test]](tests/W.Math.test.html)
 	* Utility
 		* W.Timer.js [[source]](W.Timer.js) [[test]](tests/W.Timer.test.html)
 		* W.Router.js [[source]](W.Router.js) [[test]](tests/W.Router.test.html)
