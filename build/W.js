@@ -1304,6 +1304,30 @@
         return x;
     };
 
+    W.Math.clamp = function (value, min, max) {
+        if (max < min) {
+            if (value < max) {
+                value = max;
+            }
+            else if (value > min) {
+                value = min;
+            }
+        } else {
+            if (value > max) {
+                value = max;
+            }
+            else if (value < min) {
+                value = min;
+            }
+        }
+        return value;
+    };
+
+    // Used for interpolation between two points
+    W.Math.lerp = function (start, end, scalar) {
+        return start + (end - start) * scalar;
+    };
+
     W.Math.fitScaleRatio = function (width, height, boundsWidth, boundsHeight) {
         var widthScale = boundsWidth / width;
         var heightScale = boundsHeight / height;
@@ -1338,6 +1362,11 @@
         return Math.sqrt((x*x)+(y*y));
     };
 
+    W.Math.normalize = function (value, min, max, ease) {
+        value = W.Math.clamp((value-min)/(max-min),0,1);
+        return ease ? ease(value) : value;
+    };
+
     // Fisher-Yates shuffle.
     // source http://stackoverflow.com/questions/962802/is-it-correct-to-use-javascript-array-sort-method-for-shuffling
     W.Math.shuffleArray = function (arr, leaveOriginalUntouched) {
@@ -1350,6 +1379,22 @@
             array[top] = tmp;
         }
         return array;
+    };
+
+    W.Math.hexStringToColorArray  = function (hex)  {
+        // modified from http://stackoverflow.com/a/5624139/179015
+        // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+        var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+            return r + r + g + g + b + b;
+        });
+
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? [
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16)
+        ] : [];
     };
 
     W.Math.colorStringToHex = function (color) {
@@ -1367,14 +1412,8 @@
     };
 
     W.Math.colorValuesToHex = function (r, g, b) {
-
-        var red = parseInt(r, 10);
-        var green = parseInt(g, 10);
-        var blue = parseInt(b, 10);
-        
-        var rgb = blue | (green << 8) | (red << 16);
-        return '#' + rgb.toString(16);
-    };    
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    };
 
     // Ease function can be a interpolation function as below
     W.Math.map = function (input, inputMin, inputMax, outputMin, outputMax, clamp, ease) {
