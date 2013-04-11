@@ -57,4 +57,29 @@ test("Basic close", function () {
     equal("no tests yet", "nope", "stub!");
 });
 
+module("W.Math.clamp");
+
+
+test("Clamping", function () {
+    equal(W.Math.clamp(0,0,1), 0, "No clamping low");
+    equal(W.Math.clamp(5,5,10), 5, "No clamping low");
+    equal(W.Math.clamp(-5,-5,10), -5, "No clamping low");
+
+    equal(W.Math.clamp(1,0,1),1, "No clamping high");
+    equal(W.Math.clamp(10,5,10), 10, "No clamping high");
+    equal(W.Math.clamp(10,-5,10), 10, "No clamping high");
+
+    equal(W.Math.clamp(0.5,0,1), 0.5, "No clamping high");
+    equal(W.Math.clamp(6,5,10), 6, "No clamping high");
+    equal(W.Math.clamp(-1,-5,10), -1, "No clamping high");
+    equal(W.Math.clamp(2,-5,10), 2, "No clamping high");
+
+    equal(W.Math.clamp(2,0,1),1, "Clamping high");
+    equal(W.Math.clamp(20,5,10), 10, "Clamping high");
+    equal(W.Math.clamp(20,-5,10), 10, "Clamping high");
+
+    equal(W.Math.clamp(-100,0,1), 0, "Clamping low");
+    equal(W.Math.clamp(0,5,10), 5, "Clamping low");
+    equal(W.Math.clamp(-15,-5,10), -5, "Clamping low");
+});
 

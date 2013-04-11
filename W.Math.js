@@ -29,6 +29,30 @@
         return x;
     };
 
+    W.Math.clamp = function (value, min, max) {
+        if (max < min) {
+            if (value < max) {
+                value = max;
+            }
+            else if (value > min) {
+                value = min;
+            }
+        } else {
+            if (value > max) {
+                value = max;
+            }
+            else if (value < min) {
+                value = min;
+            }
+        }
+        return value;
+    };
+
+    // Used for interpolation between two points
+    W.Math.lerp = function (start, end, scalar) {
+        return start + (end - start) * scalar;
+    };
+
     W.Math.fitScaleRatio = function (width, height, boundsWidth, boundsHeight) {
         var widthScale = boundsWidth / width;
         var heightScale = boundsHeight / height;
