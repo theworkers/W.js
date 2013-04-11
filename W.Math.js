@@ -87,6 +87,11 @@
         return Math.sqrt((x*x)+(y*y));
     };
 
+    W.Math.normalize = function (value, min, max, ease) {
+        value = W.Math.clamp((value-min)/(max-min),0,1);
+        return ease ? ease(value) : value;
+    };
+
     // Fisher-Yates shuffle.
     // source http://stackoverflow.com/questions/962802/is-it-correct-to-use-javascript-array-sort-method-for-shuffling
     W.Math.shuffleArray = function (arr, leaveOriginalUntouched) {
