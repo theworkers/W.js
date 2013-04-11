@@ -121,14 +121,8 @@
     };
 
     W.Math.colorValuesToHex = function (r, g, b) {
-
-        var red = parseInt(r, 10);
-        var green = parseInt(g, 10);
-        var blue = parseInt(b, 10);
-        
-        var rgb = blue | (green << 8) | (red << 16);
-        return '#' + rgb.toString(16);
-    };    
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    };
 
     // Ease function can be a interpolation function as below
     W.Math.map = function (input, inputMin, inputMax, outputMin, outputMax, clamp, ease) {
