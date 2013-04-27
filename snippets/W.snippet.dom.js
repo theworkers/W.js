@@ -15,6 +15,29 @@
     W.snippet.dom = W.dom || {};
     W.snippet.dom.version = "2.0.0";
 
+    W.snippet.dom.ZIndexStack = W.Object.extend({
+        constructor : function (options) {
+            if (!options) { options = {}; }
+            this.startZIndex = (typeof options.startZIndex === "undefined") ? 100 : options.startZIndex; 
+            this.topZIndex = this.startZIndex;
+            this.elList = new W.List();
+            console.dir(this.elList);
+        },
+        addToTop : function (el) {
+            $(el).css('z-index', ++this.topZIndex);
+            this.elList.append(el);
+        },
+        sendToFront : function (el) {
+            var zindexNeedle = this.topZIndex;
+            this.elList.sendToBack(el);
+            this.elList.each(function (el, i) {
+                console.log(i);
+                $(el).css('z-index', this.startZIndex + i);
+                console.log(this.startZIndex);
+            },this);
+        }
+    });
+
     W.snippet.dom.viewportSize = function () {
 		var e = window, 
 			a = 'inner';

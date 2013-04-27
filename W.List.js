@@ -82,6 +82,10 @@
                 next = next.next;
             }
             return this;
+        },
+        sendToBack : function (obj) {
+            this.remove(obj);
+            this.append(obj);
         }
     });
 
