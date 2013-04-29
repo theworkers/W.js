@@ -31,9 +31,7 @@
             var zindexNeedle = this.topZIndex;
             this.elList.sendToBack(el);
             this.elList.each(function (el, i) {
-                console.log(i);
                 $(el).css('z-index', this.startZIndex + i);
-                console.log(this.startZIndex);
             },this);
         }
     });
