@@ -838,7 +838,6 @@
             this.startZIndex = (typeof options.startZIndex === "undefined") ? 100 : options.startZIndex; 
             this.topZIndex = this.startZIndex;
             this.elList = new W.List();
-            console.dir(this.elList);
         },
         addToTop : function (el) {
             $(el).css('z-index', ++this.topZIndex);
