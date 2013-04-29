@@ -1433,6 +1433,15 @@
         return W.snippet.math.map(Math.random(), 0, 1, from, to);
     };
 
+    W.Math.inRange = function (test, min, max) {
+        if (min === max) { return false; }
+        if (min > max) {
+            return (test < min && test > max);
+        } else {
+            return (test > min && test < max);
+        }
+    };
+
     // @todo test
     W.Math.close = function (num, test, tolerance) {
         tolerance = tolerance || 1;
