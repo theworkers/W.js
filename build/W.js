@@ -667,18 +667,17 @@
         /** Remove event listener */
         off : function (/** String */ event, /** Function */ callback) {
             if (!callback) {
-                throw "No callback function given for 2nd argument of `removeEventlistener` so can not remove event listener. Be sure to store the event callback as a varible if you wish to remove it";
-            }
-            if (this.events()[event]) {
-                var listeners = this.events()[event];
-                for (var i = listeners.length-1; i>=0;--i){
-                    if (listeners[i] === callback) {
-                        listeners.splice(i,1);
-                        return true;
+                delete this.events()[event];
+            } else {
+                if (this.events()[event]) {
+                    var listeners = this.events()[event];
+                    for (var i = listeners.length-1; i>=0;--i){
+                        if (listeners[i] === callback) {
+                            listeners.splice(i,1);
+                        }
                     }
                 }
             }
-            return false;
         },
         /** Fire the event  */
         trigger : function (event, eventData) {
