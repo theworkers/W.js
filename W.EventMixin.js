@@ -44,7 +44,7 @@
         },
         /** Fire the event  */
         trigger : function (event, eventData) {
-            var data = eventData || {};
+            var data = (typeof eventData === 'undefined' || eventData === null) ?  {} : eventData;
             if (this.events()[event]) {
                 var listeners = this.events()[event], 
                     len = listeners.length;
