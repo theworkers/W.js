@@ -6,16 +6,16 @@ W-MIN = ./build/W.min.js
 all: clean build min
 
 clean:
-		rm -f $(W)    
-		rm -f $(W-MIN)
+	@rm -f $(W)    
+	@rm -f $(W-MIN)
 		
 build-w: $(W-SRC)
-		cat $^ > $(W)
+	@cat $^ > $(W)
 		
 build: build-w
 
 min-w: 
-		$(foreach var, $(W-SRC), uglifyjs --no-mangle $(var) >>$(W-MIN);)
+	@$(foreach var, $(W-SRC), uglifyjs --no-mangle $(var) >>$(W-MIN);)
 
 min: min-w
 

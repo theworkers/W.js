@@ -178,7 +178,33 @@
 
     /////
     //// Interpolation Methods
-    ///  from the Penner equations 
+    //
+    
+    // Negative ease produces ease out, positive produces ease in. 
+    // Range around -1 to 1
+    W.Math.getDynamicallyEasedInterpolation = function (ease) { 
+        return function (p) {
+            dynamicEaseInterpolation(p, ease);
+        };
+    };
+
+    W.Math.dynamicEaseInterpolation = dynamicEaseInterpolation;
+
+    function dynamicEaseInterpolation(p, ease) { 
+         // invert negative value and positive so they work on the same logarithmic scale.
+        if (ease >= 0.0) {
+            ease = ease * 2.25 + 1;
+            // superelipse
+            return  Math.pow( 1 - Math.pow( 1 - p, ease ), 1 / ease );
+        } else {
+            ease = Math.abs(ease) * 2.25 + 1;
+            // superelipse shifted
+            return 1 - Math.pow( 1 - Math.pow (p, ease ), 1 / ease );
+        }
+
+    }
+
+    ///  From the Penner equations 
     ///  and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c
 
     // Modeled after the line y = x
