@@ -1556,7 +1556,7 @@
     // Range around -1 to 1
     W.Math.getDynamicallyEasedInterpolation = function (ease) { 
         return function (p) {
-            dynamicEaseInterpolation(p, ease);
+            return dynamicEaseInterpolation(p, ease);
         };
     };
 
@@ -1571,7 +1571,7 @@
         } else {
             ease = Math.abs(ease) * 2.25 + 1;
             // superelipse shifted
-            return 1 - Math.pow( 1 - Math.pow (p, ease ), 1 / ease );
+            return 1 - Math.pow( 1 - Math.pow(p, ease ), 1 / ease );
         }
 
     }
