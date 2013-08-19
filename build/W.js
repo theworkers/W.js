@@ -666,6 +666,7 @@
                     this.events()[event].push(callback);
                 }
             }
+            return this;
         },
         /** Remove event listener */
         off : function (/** String */ event, /** Function */ callback) {
@@ -681,6 +682,7 @@
                     }
                 }
             }
+            return this;
         },
         /** Fire the event  */
         trigger : function (event, eventData) {
