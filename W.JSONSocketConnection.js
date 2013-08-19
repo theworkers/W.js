@@ -1,5 +1,5 @@
 ////
-/// W.EventMixin
+/// W.JSONSocketConnection
 // @author Ross Cairns
 (function () {
     var root = this;
@@ -13,7 +13,7 @@
 
     // A socket connection which will attempt to say open
     // Also attempts to parse incoming message
-    var JSONSocketConnection = W.Object.extend({
+    W.JSONSocketConnection = W.Object.extend({
         // Options
         //  * socketUrl <String>
         //  * attemptReconnectionAfterMS <Number> - wait until attempting reconnection. Default 1000.
