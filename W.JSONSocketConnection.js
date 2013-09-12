@@ -65,6 +65,27 @@
         closeSocketConnection : function () {
             this._connectionDesired = false;
             this.socket.close();
+        },
+        //
+        // @param obj <string/object> - if object it will be strignified
+        // @param callback <function> - called with (err)
+        send : function (obj, callback) {
+            if (typeof obj === "string") {
+                this.socket.send(obj);
+                callback();
+            } else {
+                var str, wasError = false;
+                try {
+                    str = JSON.stringify(obj);
+                } catch (e) {
+                    wasError = true;
+                    callback(e);
+                }
+                if (!wasError) {
+                    this.socket.send(str);
+                    callback();
+                }
+            }
         }
     });
 
