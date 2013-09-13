@@ -218,7 +218,7 @@
      *     .start();
      */
     W.sequence = function (fn) {
-        return new sequence.Sequencer(fn);
+        return new Sequencer(fn);
     };
 
 
