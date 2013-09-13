@@ -72,18 +72,18 @@
         send : function (obj, callback) {
             if (typeof obj === "string") {
                 this.socket.send(obj);
-                callback();
+                if (callback) { callback(); }
             } else {
                 var str, wasError = false;
                 try {
                     str = JSON.stringify(obj);
                 } catch (e) {
                     wasError = true;
-                    callback(e);
+                    if (callback) { callback(e); }
                 }
                 if (!wasError) {
                     this.socket.send(str);
-                    callback();
+                    if (callback) { callback(); }
                 }
             }
         }
