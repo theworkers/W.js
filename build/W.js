@@ -555,7 +555,6 @@
         run : function () {
             var args = Array.prototype.slice.call(arguments);
             args.unshift(this.router.routes[this.path].params);
-            console.log(args);
             this.router.routes[this.path].action.apply(this, args);
         }
     });
