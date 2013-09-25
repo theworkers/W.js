@@ -59,7 +59,9 @@
         trigger : function (path) {
             var match =  this.match(path);
             if (match) {
-                match.run();
+                var args = Array.prototype.slice.call(arguments);
+                args.shift();
+                match.run.apply(match, args);
             } else {
                 if (this.routes.fallback !== null) {
                     this.routes.fallback();
@@ -73,7 +75,6 @@
         constructor : function (options) {
             this.path = options.path;
             this.router = options.router;
-
             this.action = null;
             this.params = {};
         },
@@ -85,7 +86,10 @@
             return this.router;
         },
         run : function () {
-            this.router.routes[this.path].action(this.router.routes[this.path].params);
+            var args = Array.prototype.slice.call(arguments);
+            args.unshift(this.router.routes[this.path].params);
+            console.log(args);
+            this.router.routes[this.path].action.apply(this, args);
         }
     });
 
