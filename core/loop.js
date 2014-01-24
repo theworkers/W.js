@@ -1,4 +1,3 @@
-
 /**
 * Asynchronous Loop
 *
@@ -18,7 +17,7 @@
 *           }
 *       );
 */
-var loop = function (iterations, fn, callback) {
+W.loop = function ( iterations, fn, callback ) {
     var index = 0;
     var done = false;
     var end =  function() {
@@ -26,13 +25,13 @@ var loop = function (iterations, fn, callback) {
         callback();
     };
     var next = function() {
-        if (done) { return; }
-        if (index < iterations) {
+        if ( done ) { return; }
+        if ( index < iterations ) {
             index++;
-            fn(index-1, next, end);
+            fn( index-1, next, end );
         } else {
             done = true;
-            if (callback) { callback(); }
+            if ( callback ) { callback(); }
         }
     };
     next();

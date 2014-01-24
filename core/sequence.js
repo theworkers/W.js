@@ -1,4 +1,4 @@
-var Sequencer = function Sequence(fn) {
+W.Sequencer = function Sequence(fn) {
     var self = this;
     var fns = [];
     var done = function () {
@@ -64,6 +64,6 @@ var Sequencer = function Sequence(fn) {
  *     })
  *     .start();
  */
-function sequence(fn) {
+W.sequence = function (fn) {
     return new Sequencer(fn);
-}
+};
