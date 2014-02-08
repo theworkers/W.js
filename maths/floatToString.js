@@ -1,3 +1,4 @@
-Maths.floatToString = function ( v ) {
-    return  "" + ( Math.floor( v * 10 ) / 10 );
+Maths.floatToString = function ( value, precision ) {
+    var power = Math.pow( 10, precision || 0 );
+    return String( Math.round( value * power ) / power );
 };
