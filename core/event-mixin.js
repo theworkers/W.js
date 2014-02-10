@@ -1,21 +1,15 @@
 W.EventMixin = {
-    /** Add event listener. Callback will recieve (context, details) arguments */
-    on : function (/** String */ event, /** Function */ callback, /** Object */ scope) {
+    on : function ( event,  callback ) {
         if ( typeof callback !== 'function' ) {
             throw "callback not function";
         }
         this.events()[ event ] = this.events()[ event ] || [];
         if ( this.events()[ event ] ) {
-            if ( scope ) {
-                this.events()[ event ].push( W.bind( callback, scope ) );
-            } else {
-                this.events()[ event ].push( callback );
-            }
+            this.events()[ event ].push( callback );
         }
         return this;
     },
-    /** Remove event listener */
-    off : function (/** String */ event, /** Function */ callback) {
+    off : function ( event, callback) {
         if ( !callback ) {
             delete this.events()[ event ];
         } else {
@@ -30,16 +24,16 @@ W.EventMixin = {
         }
         return this;
     },
-    /** Fire the event  */
-    trigger : function ( event, eventData ) {
-        var data = ( typeof eventData === 'undefined' || eventData === null ) ?  {} : eventData;
-        if ( this.events()[ event ] ) {
-            var listeners = this.events()[ event ], 
+    // Call the event with name, calling handlers with all other arguments
+    trigger : function ( name, data ) {
+        var args = Array.prototype.slice.call( arguments, 1 );
+        if ( this.events()[ name ] ) {
+            var listeners = this.events()[ name ], 
                 len = listeners.length;
             if ( len <= 0 ) { return false; }
             while ( len-- ) {
                 if ( typeof listeners[ len ] === 'function' ) {
-                    listeners[ len ]( data );  //callback with self
+                    listeners[ len ].apply( this, args );
                 }
             }
             return true;
@@ -47,7 +41,6 @@ W.EventMixin = {
             return false;
         }
     },
-    /** get all the events  */
     events : function () {
         this.eventsArray = this.eventsArray || [];
         return this.eventsArray;
