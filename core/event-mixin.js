@@ -25,6 +25,7 @@ W.EventMixin = {
         return this;
     },
     // Call the event with name, calling handlers with all other arguments
+    // e.g. trigger( name, ... )
     trigger : function ( name, data ) {
         var args = Array.prototype.slice.call( arguments, 1 );
         if ( this.events()[ name ] ) {
