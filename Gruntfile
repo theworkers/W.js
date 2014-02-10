@@ -1,3 +1,0 @@
-// Core include list
-
-var core = [ 'extend.js', 'inherits.js', 'object.js', 'loop.js', 'list.js', 'timer.js', 'tick-timer.js', 'counted-callback-mixin.js', 'event-mixin.js' ]
