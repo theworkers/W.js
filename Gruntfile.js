@@ -5,21 +5,19 @@ module.exports = function( grunt ) {
         pkg: grunt.file.readJSON( 'package.json' ),
         // Documentation
         docco: {
-            distr: {
-                src: [ 'client/**/*.js', 'color/**/*.js', 'core/**/*.js', 'maths/**/*.js', 'node/**/*.js', 'redis/**/*.js', 'string/**/*/js' ],
-                options: {
-                    output: 'docs/'
-                }
+            interpolations: {
+                src: [ 'maths/interpolations/*.js' ],
+                 options: {
+                     output: 'docs/math/interpolations/'
+                 }
+            }
+        },
+        concat : {
+            interpolations : {
+                src : [ 'maths/interpolations/_.header.js', 'maths/interpolations/*.js', '!maths/interpolations/_.footer.js', 'maths/interpolations/_.footer.js' ],
+                dest : 'build/W.math.interpolations.js'
             }
         }
-        // Build the JS files
-        // concat: {
-        //     options: {},
-        //     distr: {
-        //         src: [ 'src/remoxly.header.js', 'src/mixins.js', 'src/ui.js', 'src/utils.js', 'src/createClient.js', 'src/exports.js', 'src/remoxly.footer.js' ],
-        //         dest: 'build/remoxly.js'
-        //     }
-        // }
         // Watch
         // watch: {
         //     scripts: {
@@ -32,8 +30,7 @@ module.exports = function( grunt ) {
         // }
     });
 
-    grunt.registerTask( 'develop', [ ] );
-    grunt.registerTask( 'default', [ 'develop', 'docco' ] );
+    grunt.registerTask( 'default', [ 'concat' ] );
 
     grunt.loadNpmTasks( 'grunt-docco' );
     grunt.loadNpmTasks( 'grunt-contrib-concat' );
