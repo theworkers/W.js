@@ -1,4 +1,4 @@
-Maths.clipNormalized = function (x, min, max) { // or (value, max), or (value)
+function clipNormalized (x, min, max) { // or (value, max), or (value)
     if (arguments.length === 2) {
         max = min;
         min = 0;
@@ -9,4 +9,4 @@ Maths.clipNormalized = function (x, min, max) { // or (value, max), or (value)
     if (x<min) { return min; }
     if (x>max) { return max; }
     return x;
-};
+}

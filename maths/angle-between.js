@@ -1,4 +1,4 @@
-Maths.angleBetween = function (center, point) {
+function angleBetween (center, point) {
     var angle = Math.atan2(center.x-point.x,center.y-point.y)*(180/Math.PI);
     if(angle < 0) {
         angle = Math.abs(angle);
@@ -6,4 +6,4 @@ Maths.angleBetween = function (center, point) {
         angle = 360 - angle;
     }
     return angle;
-};
+}
