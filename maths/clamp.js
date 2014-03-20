@@ -1,4 +1,4 @@
-Maths.clamp = function ( value, min, max, callbackOnClamp ) {
+function clamp ( value, min, max, callbackOnClamp ) {
     if ( max < min ) {
         if ( value < max ) {
             if ( typeof callbackOnClamp === 'function' ) {

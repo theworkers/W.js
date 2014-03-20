@@ -1,4 +1,4 @@
-Maths.hexStringToColorArray  = function (hex)  {
+function hexStringToColorArray (hex)  {
     // modified from http://stackoverflow.com/a/5624139/179015
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
     var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -12,4 +12,4 @@ Maths.hexStringToColorArray  = function (hex)  {
         parseInt(result[2], 16),
         parseInt(result[3], 16)
     ] : [];
-};
+}

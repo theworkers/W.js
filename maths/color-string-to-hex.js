@@ -1,4 +1,4 @@
-Maths.colorStringToHex = function (color) {
+function colorStringToHex (color) {
     if (color.substr(0, 1) === '#') {
         return color;
     }
@@ -10,4 +10,4 @@ Maths.colorStringToHex = function (color) {
     
     var rgb = blue | (green << 8) | (red << 16);
     return digits[1] + '#' + rgb.toString(16);
-};
+}

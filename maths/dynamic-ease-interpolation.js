@@ -1,12 +1,10 @@
 // Negative ease produces ease out, positive produces ease in. 
 // Range around -1 to 1
-Maths.getDynamicallyEasedInterpolation = function (ease) { 
+function getDynamicallyEasedInterpolation (ease) { 
     return function (p) {
         return dynamicEaseInterpolation(p, ease);
     };
-};
-
-Maths.dynamicEaseInterpolation = dynamicEaseInterpolation;
+}
 
 function dynamicEaseInterpolation(p, ease) { 
      // invert negative value and positive so they work on the same logarithmic scale.
@@ -19,5 +17,4 @@ function dynamicEaseInterpolation(p, ease) {
         // superelipse shifted
         return 1 - Math.pow( 1 - Math.pow(p, ease ), 1 / ease );
     }
-
 }
