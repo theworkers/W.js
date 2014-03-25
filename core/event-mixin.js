@@ -1,4 +1,4 @@
-W.EventMixin = {
+var eventMixin = {
     on : function ( event,  callback ) {
         if ( typeof callback !== 'function' ) {
             throw "callback not function";

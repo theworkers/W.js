@@ -6,10 +6,9 @@
 //         many object with in turn will cause big
 //         garbage collections delays 
     
-var DisplayViewMixin = {
-    version : 1,
+var displayViewMixin = {
     setPosition : function (x, y) { // or setXY(array) or setXY({x:y:})
-        if (typeof x === "[object Array]") {
+        if (Object.prototype.toString.call( x ) === '[object Array]') {
             this.x(x[0]);
             this.y(y[1]);
         } else if (typeof x === "number") {
@@ -31,7 +30,7 @@ var DisplayViewMixin = {
         } else if (typeof width === "number") {
             this.width(width);
             this.height(height);
-        } else if (typeof width === "array") {
+        } else if (Object.prototype.toString.call( width ) === '[object Array]') {
             this.width(width[0]);
             this.height(width[1]);
         } else if (typeof(width) == 'function') {

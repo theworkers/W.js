@@ -1,6 +1,6 @@
 var breaker = {};
 var nativeForEach = Array.prototype.forEach;
-W.each = function( obj, iterator, context ) {
+function each ( obj, iterator, context ) {
     if ( obj === null ) return;
     if ( nativeForEach && obj.forEach === nativeForEach ) {
         obj.forEach( iterator, context );
@@ -15,4 +15,4 @@ W.each = function( obj, iterator, context ) {
             }
         }
     }
-};
+}

@@ -2,11 +2,12 @@
 // tick. Also overriding so the time
 // can be maually set so as not a
 // realtime timer
-W.TickTimer = W.Object.extend({
-    constructor: function (options) {
-        W.extend(this, W.EventMixin);
-        this.lastTickTime = Date.now();
-    },
+function TickTimer (options) {
+    extend(this, EventMixin);
+    this.lastTickTime = Date.now();
+}
+
+TickTimer.prototype = {
     start: function () {
         if (this.isStarted===true) {
             return;
@@ -39,4 +40,4 @@ W.TickTimer = W.Object.extend({
     getTimeSinceLastTickSec: function () {
         return (this.isStarted) ? (Date.now() - this.lastTickTime) / 1000 : 0;
     }
-});
+};

@@ -1,10 +1,12 @@
 {
   "name": "w",
   "version": "4.0.0",
+  "main": "build/W.node.js",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-docco": "~0.3.2",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-mocha-test": "^0.10.0",
+    "grunt-mocha": "^0.4.10"
   }
 }

@@ -17,7 +17,7 @@
 *           }
 *       );
 */
-W.loop = function ( iterations, fn, callback ) {
+function loop ( iterations, fn, callback ) {
     var index = 0;
     var done = false;
     var end =  function() {
@@ -36,4 +36,4 @@ W.loop = function ( iterations, fn, callback ) {
     };
     next();
     return next;
-};
+}

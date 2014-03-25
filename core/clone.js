@@ -1,4 +1,4 @@
-W.clone = function ( obj ) {
+function clone ( obj ) {
     var target = {};
     for ( var i in obj ) {
         if ( obj.hasOwnProperty( i ) ) {
@@ -6,4 +6,4 @@ W.clone = function ( obj ) {
         }
     }
     return target;
-};
+}

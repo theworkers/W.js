@@ -1,4 +1,4 @@
-W.Sequencer = function Sequence(fn) {
+function Sequence(fn) {
     var self = this;
     var fns = [];
     var done = function () {
@@ -33,7 +33,7 @@ W.Sequencer = function Sequence(fn) {
         this.then(fn);
     }
     return this;
-};
+}
 
 /**
  * A function sequencer with `delay` and `then` methods. Functions passed to `then` can have an optional argument `done` which can be used to trigger the function finishing
@@ -64,6 +64,6 @@ W.Sequencer = function Sequence(fn) {
  *     })
  *     .start();
  */
-W.sequence = function (fn) {
+function sequence (fn) {
     return new Sequencer(fn);
-};
+}

@@ -1,6 +1,6 @@
-W.Middleware = function( options ) {
+function Middleware ( options ) {
     var middleware = [];
-
+    
     // Middleware handlers
     this.add = function ( fn ) {
         middleware.push( fn );
@@ -19,5 +19,5 @@ W.Middleware = function( options ) {
             }
         }
     };
-};
+}
     

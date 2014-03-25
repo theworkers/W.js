@@ -1,4 +1,3 @@
-
 ////
 /// W.TouchEventViewMixin
 // @author Ross Cairns
@@ -12,8 +11,7 @@
  *          this.bind("touchStart", this.touchStart, this);
  *
  */
-var TouchEventViewMixin = {
-    version : 1,
+var touchEventViewMixin = {
     enableTouchEvents : function () {
         this.el.ontouchstart = _.bind(function (event) {
             this.trigger("touchStart", event);

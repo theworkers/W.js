@@ -1,16 +1,20 @@
-W.Timer = W.Object.extend({
-    constructor : function (options) {
-        W.extend(this, W.EventMixin);
-        this.options = W.extend({
-            updateTime : 1000,
-            loops : true,
-            eventName : "fired",
-            stoppedEventName : "stop",
-            restartEventName : "restart"
-        }, options);
-        this.setIntervalID = undefined;
-        this._count = 0; 
-    },
+// IE fix
+Date.now = Date.now || function() { return +new Date(); }; 
+
+function Timer (options) {
+    extend(this, EventMixin);
+    this.options = extend({
+        updateTime : 1000,
+        loops : true,
+        eventName : "fired",
+        stoppedEventName : "stop",
+        restartEventName : "restart"
+    }, options);
+    this.setIntervalID = undefined;
+    this._count = 0; 
+}
+
+Timer.prototype = {
     restart : function () {
         clearInterval(this._intervalId);
         this.trigger("restarting", this);
@@ -52,7 +56,4 @@ W.Timer = W.Object.extend({
     resetCounter : function  () {
         this._count = 0;
     }
-});
-
-// IE fix
-Date.now = Date.now || function() { return +new Date(); }; 
+};

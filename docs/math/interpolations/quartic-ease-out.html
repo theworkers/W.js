@@ -203,12 +203,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>Modeled after the quartic x^4</p>
+              <p>Modeled after the quartic y = 1 - (x - 1)^4</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quarticEaseIn</span> <span class="hljs-params">(p)</span> {</span> 
-	<span class="hljs-keyword">return</span> p * p * p * p; 
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quarticEaseOut</span><span class="hljs-params">( p )</span> {</span>
+    <span class="hljs-keyword">var</span> f = (p - <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> f * f * f * (<span class="hljs-number">1</span> - p) + <span class="hljs-number">1</span>;
 }</pre></div></div>
             
         </li>

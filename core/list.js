@@ -1,10 +1,11 @@
 // inspired by http://blog.jcoglan.com/2007/07/23/writing-a-linked-list-in-javascript/
-W.List = W.Object.extend({
-    constructor : function ( options ) {
-        this.length = 0;
-        this.first = null;
-        this.last = null;
-    },
+function List ( options ) {
+    this.length = 0;
+    this.first = null;
+    this.last = null;
+}
+
+List.prototype = {
     append : function( obj ) {
         if ( this.first === null ) {
             obj.prev = obj;
@@ -73,4 +74,4 @@ W.List = W.Object.extend({
         this.remove( obj );
         this.append( obj );
     }
-});
+};
