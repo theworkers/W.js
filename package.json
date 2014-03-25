@@ -1,5 +1,5 @@
 {
-  "name": "w",
+  "name": "w-js",
   "version": "4.0.0",
   "main": "build/W.node.js",
   "devDependencies": {
