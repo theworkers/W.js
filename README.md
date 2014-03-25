@@ -1,5 +1,12 @@
 # W.js Version 4
 
+A welterweight library and snippets repository used by [The Workers](http:://theworkers.net) a creative coding studio in East London. Maintained by [Ross Cairns](http://rosscairns.com/)
+
+Used on projects such as:
+
+* [Where You Are](http://where-you-are.com/)
+* [o/o/o/o](http://o-o-o-o.co.uk/)
+
 ## Building
 
     $ grunt build
