@@ -1,0 +1,37 @@
+	var all = [ 'linearInterpolation', 'quadraticEaseIn', 'quadraticEaseOut', 'quadraticEaseInOut', 'cubicEaseIn', 'cubicEaseOut', 'cubicEaseInOut', 'quarticEaseIn', 'quarticEaseOut', 'quarticEaseInOut', 'quinticEaseIn', 'quinticEaseOut', 'quinticEaseInOut', 'sineEaseIn', 'sineEaseOut', 'sineEaseInOut', 'circularEaseIn', 'circularEaseOut', 'circularEaseInOut', 'exponentialEaseIn', 'exponentialEaseOut', 'exponentialEaseInOut', 'elasticEaseIn', 'elasticEaseOut', 'elasticEaseInOut', 'backEaseIn', 'backEaseOut', 'backEaseInOut', 'bounceEaseIn', 'bounceEaseOut', 'bounceEaseInOut' ];
+	W.interpolations = {
+		linearInterpolation : linearInterpolation,
+		quadraticEaseIn : quadraticEaseIn, 
+		quadraticEaseOut : quadraticEaseOut, 
+		quadraticEaseInOut : quadraticEaseInOut, 
+		cubicEaseIn : cubicEaseIn, 
+		cubicEaseOut : cubicEaseOut, 
+		cubicEaseInOut : cubicEaseInOut, 
+		quarticEaseIn : quarticEaseIn, 
+		quarticEaseOut : quarticEaseOut, 
+		quarticEaseInOut : quarticEaseInOut, 
+		quinticEaseIn : quinticEaseIn, 
+		quinticEaseOut : quinticEaseOut, 
+		quinticEaseInOut : quinticEaseInOut, 
+		sineEaseIn : sineEaseIn, 
+		sineEaseOut : sineEaseOut, 
+		sineEaseInOut : sineEaseInOut, 
+		circularEaseIn : circularEaseIn, 
+		circularEaseOut : circularEaseOut, 
+		circularEaseInOut : circularEaseInOut, 
+		exponentialEaseIn : exponentialEaseIn, 
+		exponentialEaseOut : exponentialEaseOut, 
+		exponentialEaseInOut : exponentialEaseInOut, 
+		elasticEaseIn : elasticEaseIn, 
+		elasticEaseOut : elasticEaseOut, 
+		elasticEaseInOut : elasticEaseInOut, 
+		backEaseIn : backEaseIn, 
+		backEaseOut : backEaseOut, 
+		backEaseInOut : backEaseInOut, 
+		bounceEaseIn : bounceEaseIn, 
+		bounceEaseOut : bounceEaseOut, 
+		bounceEaseInOut : bounceEaseInOut,
+		all : all
+	};
+
+} ( W ) );

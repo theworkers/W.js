@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/mocha.css" type="text/css" charset="utf-8" />
+    </head>
+    <body>
+        <!-- Required for browser reporter -->
+        <div id="mocha"></div>
+
+        <!-- mocha -->
+        <script src="../js/mocha.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            // This will be overridden by mocha-helper if you run with grunt
+            mocha.setup('bdd');
+        </script>
+
+        <!-- Include your assertion lib of choice -->
+        <script src="../js/assert.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Include utils -->
+        <script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Include anything you want to test -->
+        <script src="../../build/W.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Spec -->
+        <script src="../buildsystem.test.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../buildsystem.test.client.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../router.test.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Run mocha -->
+        <script type="text/javascript" charset="utf-8">
+            mocha.run();
+        </script>
+    </body>
+</html>

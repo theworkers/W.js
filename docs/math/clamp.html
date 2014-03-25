@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>clamp.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="_.footer.html">
+                _.footer.js
+              </a>
+            
+              
+              <a class="source" href="_.header.html">
+                _.header.js
+              </a>
+            
+              
+              <a class="source" href="angle-between.html">
+                angle-between.js
+              </a>
+            
+              
+              <a class="source" href="clamp.html">
+                clamp.js
+              </a>
+            
+              
+              <a class="source" href="clip-normalized.html">
+                clip-normalized.js
+              </a>
+            
+              
+              <a class="source" href="color-string-to-hex.html">
+                color-string-to-hex.js
+              </a>
+            
+              
+              <a class="source" href="color-values-to-hex.html">
+                color-values-to-hex.js
+              </a>
+            
+              
+              <a class="source" href="distance.html">
+                distance.js
+              </a>
+            
+              
+              <a class="source" href="dynamic-ease-interpolation.html">
+                dynamic-ease-interpolation.js
+              </a>
+            
+              
+              <a class="source" href="fit-scale-ratio.html">
+                fit-scale-ratio.js
+              </a>
+            
+              
+              <a class="source" href="float-to-string.html">
+                float-to-string.js
+              </a>
+            
+              
+              <a class="source" href="hex-string-to-color-array.html">
+                hex-string-to-color-array.js
+              </a>
+            
+              
+              <a class="source" href="in-range.html">
+                in-range.js
+              </a>
+            
+              
+              <a class="source" href="is-close.html">
+                is-close.js
+              </a>
+            
+              
+              <a class="source" href="lerp.html">
+                lerp.js
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.js
+              </a>
+            
+              
+              <a class="source" href="normalize.html">
+                normalize.js
+              </a>
+            
+              
+              <a class="source" href="pi.html">
+                pi.js
+              </a>
+            
+              
+              <a class="source" href="pi_2.html">
+                pi_2.js
+              </a>
+            
+              
+              <a class="source" href="random-between.html">
+                random-between.js
+              </a>
+            
+              
+              <a class="source" href="shuffle-array.html">
+                shuffle-array.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>clamp.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clamp</span> <span class="hljs-params">( value, min, max, callbackOnClamp )</span> {</span>
+    <span class="hljs-keyword">if</span> ( max &lt; min ) {
+        <span class="hljs-keyword">if</span> ( value &lt; max ) {
+            <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> callbackOnClamp === <span class="hljs-string">'function'</span> ) {
+                callbackOnClamp( value, max );
+            }
+            value = max;
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( value &gt; min ) {
+            <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> callbackOnClamp === <span class="hljs-string">'function'</span> ) {
+                callbackOnClamp( value, min );
+            }
+            value = min;
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> ( value &gt; max ) {
+            <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> callbackOnClamp === <span class="hljs-string">'function'</span> ) {
+                callbackOnClamp( value, max );
+            }
+            value = max;
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( value &lt; min ) {
+            <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> callbackOnClamp === <span class="hljs-string">'function'</span> ) {
+                callbackOnClamp(value, min);
+            }
+            value = min;
+        }
+    }
+    <span class="hljs-keyword">return</span> value;
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
