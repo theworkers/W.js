@@ -1,4 +1,4 @@
-    extend( W, {
+    W.extend( W, {
         angleBetween : angleBetween,
         clamp : clamp,
         clipNormalized : clipNormalized,
@@ -18,7 +18,8 @@
         randomBetween : randomBetween,
         shuffleArray : shuffleArray,
         PI : PI,
-        PI_2 : PI_2
+        PI_2 : PI_2,
+        MatrixStack : MatrixStack
     });
 
 } ( W ) );

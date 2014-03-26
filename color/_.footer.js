@@ -1,4 +1,4 @@
-    extend( W, {
+    W.extend( W, {
         HSLGradient : HSLGradient,
         RandomColorSequence : RandomColorSequence,
         hslToRgb : hslToRgb,
