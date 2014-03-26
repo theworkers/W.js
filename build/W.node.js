@@ -655,7 +655,7 @@ function sequence (fn) {
 // can be maually set so as not a
 // realtime timer
 function TickTimer (options) {
-    extend(this, EventMixin);
+    extend(this, eventMixin);
     this.lastTickTime = Date.now();
 }
 
@@ -697,7 +697,7 @@ TickTimer.prototype = {
 Date.now = Date.now || function() { return +new Date(); }; 
 
 function Timer (options) {
-    extend(this, EventMixin);
+    extend(this, eventMixin);
     this.options = extend({
         updateTime : 1000,
         loops : true,

@@ -3,7 +3,7 @@
 // can be maually set so as not a
 // realtime timer
 function TickTimer (options) {
-    extend(this, EventMixin);
+    extend(this, eventMixin);
     this.lastTickTime = Date.now();
 }
 

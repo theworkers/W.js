@@ -655,7 +655,7 @@ function sequence (fn) {
 // can be maually set so as not a
 // realtime timer
 function TickTimer (options) {
-    extend(this, EventMixin);
+    extend(this, eventMixin);
     this.lastTickTime = Date.now();
 }
 
@@ -697,7 +697,7 @@ TickTimer.prototype = {
 Date.now = Date.now || function() { return +new Date(); }; 
 
 function Timer (options) {
-    extend(this, EventMixin);
+    extend(this, eventMixin);
     this.options = extend({
         updateTime : 1000,
         loops : true,
@@ -1753,6 +1753,15 @@ var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA
     //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
     // Create the namespace
     var W = W || {};
+function clearContext( ctx, canvasEl ) {
+    // Store the current transformation matrix
+    ctx.save();
+    // Use the identity matrix while clearing the canvas
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    // Restore the transform
+    ctx.restore();
+}
 
 ////
 /// W.DisplayViewMixin
@@ -2041,7 +2050,8 @@ ZIndexStack.prototype.sendToFront = function (el) {
         touchEventViewMixin : touchEventViewMixin,
         polyfillRequestAnimationFrame : polyfillRequestAnimationFrame,
         JSONSocketConnection : JSONSocketConnection,
-        displayViewMixin : displayViewMixin
+        displayViewMixin : displayViewMixin,
+        clearContext : clearContext
     });
 
 } ( W ) );

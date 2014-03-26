@@ -2,7 +2,7 @@
 Date.now = Date.now || function() { return +new Date(); }; 
 
 function Timer (options) {
-    extend(this, EventMixin);
+    extend(this, eventMixin);
     this.options = extend({
         updateTime : 1000,
         loops : true,
