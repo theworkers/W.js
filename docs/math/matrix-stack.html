@@ -165,9 +165,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MatrixStack</span> <span class="hljs-params">()</span> {</span>
-    <span class="hljs-keyword">this</span>.stack = [ <span class="hljs-keyword">this</span>.mat4.create() ];
-}</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MatrixStack</span> <span class="hljs-params">()</span> {</span></pre></div></div>
             
         </li>
         
@@ -179,11 +177,13 @@
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
               <h1 id="gl-matrix-inheritance">Gl-Matrix inheritance</h1>
-<p>Extend gl-matrix as in browser it is global, in node it is a module</p>
+<p>Create inheritance if not already created.
+Doing it on first initialisation so that <code>gl-matrix</code>
+is not require just to load W.js on node</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> module !== <span class="hljs-string">'undefined'</span> &amp;&amp; module.exports) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> MatrixStack.prototype.glMatrix === <span class="hljs-string">'undefined'</span> ) {</pre></div></div>
             
         </li>
         
@@ -194,12 +194,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>NPM</p>
+              <p>Extend gl-matrix as in browser it is global, in node it is a module</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    W.extend( MatrixStack.prototype, <span class="hljs-built_in">require</span>( <span class="hljs-string">'gl-matrix'</span> ) );
-} <span class="hljs-keyword">else</span> {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> module !== <span class="hljs-string">'undefined'</span> &amp;&amp; module.exports) {</pre></div></div>
             
         </li>
         
@@ -210,22 +209,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>re-wrap in browser</p>
+              <p>NPM</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    W.extend( MatrixStack.prototype, {
-        glMatrix : glMatrix,
-        mat2 : mat2,
-        mat2d : mat2d,
-        mat3 : mat3,
-        mat4 : mat4,
-        quat : quat,
-        vec2 : vec2,
-        vec3 : vec3,
-        vec4 : vec4
-    });
-}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            W.extend( MatrixStack.prototype, <span class="hljs-built_in">require</span>( <span class="hljs-string">'gl-matrix'</span> ) );
+        } <span class="hljs-keyword">else</span> {</pre></div></div>
             
         </li>
         
@@ -235,6 +224,37 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>re-wrap in browser</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            W.extend( MatrixStack.prototype, {
+                glMatrix : glMatrix,
+                mat2 : mat2,
+                mat2d : mat2d,
+                mat3 : mat3,
+                mat4 : mat4,
+                quat : quat,
+                vec2 : vec2,
+                vec3 : vec3,
+                vec4 : vec4
+            });
+        }
+    }
+
+    <span class="hljs-keyword">this</span>.stack = [ <span class="hljs-keyword">this</span>.mat4.create() ];
+    
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <h1 id="methods">Methods</h1>
 
@@ -250,11 +270,11 @@ MatrixStack.prototype.push = <span class="hljs-function"><span class="hljs-keywo
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>clone the last matrix so all transition are applied</p>
 

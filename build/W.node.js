@@ -950,27 +950,34 @@ function map ( input, inputMin, inputMax, outputMin, outputMax, clamp, ease ) {
 
 // # Class
 function MatrixStack () {
-    this.stack = [ this.mat4.create() ];
-}
 
-// # Gl-Matrix inheritance
-// Extend gl-matrix as in browser it is global, in node it is a module
-if (typeof module !== 'undefined' && module.exports) {
-    // NPM
-    W.extend( MatrixStack.prototype, require( 'gl-matrix' ) );
-} else {
-    // re-wrap in browser
-    W.extend( MatrixStack.prototype, {
-        glMatrix : glMatrix,
-        mat2 : mat2,
-        mat2d : mat2d,
-        mat3 : mat3,
-        mat4 : mat4,
-        quat : quat,
-        vec2 : vec2,
-        vec3 : vec3,
-        vec4 : vec4
-    });
+    // # Gl-Matrix inheritance
+    // Create inheritance if not already created.
+    // Doing it on first initialisation so that `gl-matrix`
+    // is not require just to load W.js on node
+    if ( typeof MatrixStack.prototype.glMatrix === 'undefined' ) {
+        // Extend gl-matrix as in browser it is global, in node it is a module
+        if (typeof module !== 'undefined' && module.exports) {
+            // NPM
+            W.extend( MatrixStack.prototype, require( 'gl-matrix' ) );
+        } else {
+            // re-wrap in browser
+            W.extend( MatrixStack.prototype, {
+                glMatrix : glMatrix,
+                mat2 : mat2,
+                mat2d : mat2d,
+                mat3 : mat3,
+                mat4 : mat4,
+                quat : quat,
+                vec2 : vec2,
+                vec3 : vec3,
+                vec4 : vec4
+            });
+        }
+    }
+
+    this.stack = [ this.mat4.create() ];
+    
 }
 
 // # Methods
