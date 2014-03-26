@@ -5,7 +5,8 @@
         touchEventViewMixin : touchEventViewMixin,
         polyfillRequestAnimationFrame : polyfillRequestAnimationFrame,
         JSONSocketConnection : JSONSocketConnection,
-        displayViewMixin : displayViewMixin
+        displayViewMixin : displayViewMixin,
+        clearContext : clearContext
     });
 
 } ( W ) );

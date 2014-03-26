@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>_.header.js</title>
+  <title>clear-context.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -76,7 +76,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>_.header.js</h1>
+                  <h1>clear-context.js</h1>
               </div>
           </li>
         
@@ -91,7 +91,7 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( W )</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clearContext</span><span class="hljs-params">( ctx, canvasEl )</span> {</span></pre></div></div>
             
         </li>
         
@@ -102,11 +102,43 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p> <em>From the Penner equations and <a href="https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c">https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c</a></em><br>Create the namespace</p>
+              <p>Store the current transformation matrix</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> W = W || {};</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    ctx.save();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Use the identity matrix while clearing the canvas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    ctx.setTransform(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    ctx.clearRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, canvasEl.width, canvasEl.height);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Restore the transform</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    ctx.restore();
+}</pre></div></div>
             
         </li>
         
