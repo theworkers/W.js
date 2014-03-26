@@ -20,7 +20,8 @@ module.exports = function( grunt ) {
         .push( 'color/' ).pop()
         .push( 'string/' ).pop()
         .addFile( 'node/_.export.js' )
-        .addFile( 'redis/_.export.js' );
+        .addFile( 'redis/_.export.js' )
+        .push( 'client/' ).pop();
 
     // # Project configuration.
     grunt.initConfig({

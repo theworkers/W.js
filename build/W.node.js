@@ -1786,3 +1786,309 @@ var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA
     });
 
 }( W ));
+(function ( W ) {
+    //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
+    // Create the namespace
+    var W = W || {};
+function clearContext( ctx, canvasEl ) {
+    // Store the current transformation matrix
+    ctx.save();
+    // Use the identity matrix while clearing the canvas
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    // Restore the transform
+    ctx.restore();
+}
+
+////
+/// W.DisplayViewMixin
+// @author Ross Cairns
+// @notes  Not suitable for heavy usage (i.e. particles) as produces 
+//         many object with in turn will cause big
+//         garbage collections delays 
+    
+var displayViewMixin = {
+    setPosition : function (x, y) { // or setXY(array) or setXY({x:y:})
+        if (Object.prototype.toString.call( x ) === '[object Array]') {
+            this.x(x[0]);
+            this.y(y[1]);
+        } else if (typeof x === "number") {
+            this.x(x);
+            this.y(y);
+        } else {
+            this.x(x.x);
+            this.y(x.y);
+        }
+        return this;
+    },
+    setSize : function (width, height) { // or setSize(Array) or setSize({width:height}) or setSize(DOMElement)
+        if (!!width.tagName && typeof jQuery === 'function') {
+            this.width(jQuery(width).width());
+            this.height(jQuery(width).height());
+        } else if (!!width.tagName) {
+            this.width = width.width;
+            this.height = width.height;
+        } else if (typeof width === "number") {
+            this.width(width);
+            this.height(height);
+        } else if (Object.prototype.toString.call( width ) === '[object Array]') {
+            this.width(width[0]);
+            this.height(width[1]);
+        } else if (typeof(width) == 'function') {
+            this.width(width());
+            this.height(height());
+        } else {
+            var obj = width;
+            this.width(typeof(obj.width) == 'function' ? obj.width() : obj.width);
+            this.height(typeof(obj.height) == 'function' ? obj.height() : obj.height);
+        }
+        return this;
+    },
+    x : function (x) {
+        if (arguments.length > 0) { this._x = x; }
+        if (typeof this._x === "undefined") { this._x = 0; }
+        return this._x;
+    },
+    y : function (y) {
+        if (arguments.length > 0) { this._y = y; }
+        if (typeof this._y === "undefined") { this._y = 0; }
+        return this._y;
+    },
+    width : function (width)  {
+        if (arguments.length > 0) { this._width = width; }
+        if (typeof this._width === "undefined") { this._width = 0; }
+        return this._width;
+    },
+    height : function (height) {
+        if (arguments.length > 0) { this._height = height; }
+        if (typeof this._height === "undefined") { this._height = 0; }
+        return this._height;
+    }
+};
+
+
+
+// A socket connection which will attempt to say open
+// Also attempts to parse incoming message
+var JSONSocketConnection = W.Object.extend({
+    // Options
+    //  * socketUrl <String>
+    //  * attemptReconnectionAfterMS <Number> - wait until attempting reconnection. Default 1000.
+    // Events
+    //  * "open"
+    //  * "closed"
+    //  * "reconnecting"
+    //  * "closed successfully"
+    //  * "json"
+    //  * "nonjson"
+    //  * "message"
+    constructor : function (options) {
+        W.extend(this, W.EventMixin);
+        this.socketUrl = options.socketUrl;
+        this._connectionDesired = false;
+        this.attemptReconnectionAfterMS = (typeof attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 1000;
+    },
+    openSocketConnection : function () {
+        this._connectionDesired = true;
+        var self = this;
+        this.socket = new WebSocket(this.socketUrl); 
+        this.socket.onopen = function () {
+            self.trigger("open");
+        };
+        this.socket.onclose = function () {
+            self.trigger("closed");
+            if (self._connectionDesired) {
+                setTimeout(W.bind(self.openSocketConnection, self), self.attemptReconnectionAfter);
+                self.trigger("reconnecting");
+            } else {
+                self.trigger("closed successfully");
+            }
+        };
+        this.socket.onmessage = function (message) {
+            self.trigger("message", message);
+            var wasError = false;
+            try  {
+                message = JSON.parse( message.data );
+            }  catch (e) {
+                self.trigger("nonjson", message.data);
+                wasError = true;
+                return;
+            }
+            if (!wasError) {
+                self.trigger("json", message);
+            }
+        };
+    },
+    closeSocketConnection : function () {
+        this._connectionDesired = false;
+        this.socket.close();
+    },
+    //
+    // @param obj <string/object> - if object it will be strignified
+    // @param callback <function> - called with (err)
+    send : function (obj, callback) {
+        if (typeof obj === "string") {
+            this.socket.send(obj);
+            if (callback) { callback(); }
+        } else {
+            var str, wasError = false;
+            try {
+                str = JSON.stringify(obj);
+            } catch (e) {
+                wasError = true;
+                if (callback) { callback(e); }
+            }
+            if (!wasError) {
+                this.socket.send(str);
+                if (callback) { callback(); }
+            }
+        }
+    }
+});
+
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+var polyfillRequestAnimationFrame = function () {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame =
+          window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+    }
+
+    if (!window.cancelAnimationFrame) {
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+    }
+};
+
+////
+/// W.TouchEventViewMixin
+// @author Ross Cairns
+
+/**
+ * Add touch events to a view.
+ *
+ * @example
+ *          W.extend(this, W.TouchEventViewMixin);
+ *          this.enableTouchEvents();
+ *          this.bind("touchStart", this.touchStart, this);
+ *
+ */
+var touchEventViewMixin = {
+    enableTouchEvents : function () {
+        this.el.ontouchstart = _.bind(function (event) {
+            this.trigger("touchStart", event);
+        }, this);
+        this.el.ontouchmove = _.bind(function (event) {
+            this.trigger("touchMove", event);
+        }, this);
+        this.el.ontouchend = _.bind(function (event) {
+            this.trigger("touchEnd", event);
+        }, this);
+        this.el.ontouchcancel = _.bind(function (event) {
+            this.trigger("touchCancel", event);
+        }, this);
+    }
+};
+
+function viewportSize () {
+	var e = window, 
+		a = 'inner';
+	if ( !( 'innerWidth' in window ) ){
+		a = 'client';
+		e = document.documentElement || document.body;
+	}
+	return {width:e[a+'Width'],height:e[ a+'Height']};
+}
+
+
+var privateNamespace = {};
+(function(namespace){
+    /*
+     * Modified from 
+     * Canvas Context2D Wrapper <http://github.com/millermedeiros/CanvasContext2DWrapper>
+     * Released under WTFPL <http://sam.zoy.org/wtfpl/>.
+     * @author Miller Medeiros <http://millermedeiros.com>
+     * @version 1.0 (2010/08/08)
+     */
+    var _context2DMethods = 'arc arcTo beginPath bezierCurveTo clearRect clip closePath createImageData createLinearGradient createRadialGradient createPattern drawFocusRing drawImage fill fillRect fillText getImageData isPointInPath lineTo measureText moveTo putImageData quadraticCurveTo rect restore rotate save scale setTransform stroke strokeRect strokeText transform translate'.split(' '),
+        _context2DProperties = 'canvas fillStyle font globalAlpha globalCompositeOperation lineCap lineJoin lineWidth miterLimit shadowOffsetX shadowOffsetY shadowBlur shadowColor strokeStyle textAlign textBaseline'.split(' ');
+    function chainMethod(fn, scope, chainReturn){
+        return function(){
+            return fn.apply(scope, arguments) || chainReturn;
+        };
+    }
+    function chainProperty(propName, scope, chainReturn){
+        return function(value){
+            if(typeof value === 'undefined'){
+                return scope[propName];
+            }else{
+                scope[propName] = value;
+                return chainReturn;
+            }
+        };
+    }
+    namespace.Context2DWrapper = function(target){
+        var n = _context2DMethods.length, curProp;
+        this.context = target;
+        while(n--){
+            curProp = _context2DMethods[n];
+            this[curProp] = chainMethod(target[curProp], target, this);
+        }
+        n = _context2DProperties.length;
+        while(n--){
+            curProp = _context2DProperties[n];
+            this[curProp] = chainProperty(curProp, target, this);
+        }
+    };
+}(privateNamespace));
+
+var wrappedContext = function (context) {
+    return new privateNamespace.Context2DWrapper(context);
+};
+
+function ZIndexStack (options) {
+    if (!options) { options = {}; }
+    this.startZIndex = (typeof options.startZIndex === "undefined") ? 100 : options.startZIndex; 
+    this.topZIndex = this.startZIndex;
+    this.elList = new W.List();
+}
+
+ZIndexStack.prototype.addToTop = function (el) {
+    $(el).css('z-index', ++this.topZIndex);
+    this.elList.append(el);
+};
+
+ZIndexStack.prototype.sendToFront = function (el) {
+    var zindexNeedle = this.topZIndex;
+    this.elList.sendToBack(el);
+    this.elList.each(function (el, i) {
+        $(el).css('z-index', this.startZIndex + i);
+    },this);
+};
+
+    W.extend( W, {
+        ZIndexStack : ZIndexStack,
+        wrappedContext : wrappedContext,
+        viewportSize : viewportSize,
+        touchEventViewMixin : touchEventViewMixin,
+        polyfillRequestAnimationFrame : polyfillRequestAnimationFrame,
+        JSONSocketConnection : JSONSocketConnection,
+        displayViewMixin : displayViewMixin,
+        clearContext : clearContext
+    });
+
+} ( W ) );
