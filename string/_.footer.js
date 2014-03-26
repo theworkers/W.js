@@ -1,4 +1,4 @@
-    extend( W, {
+    W.extend( W, {
         addCommas : addCommas,
         contains : contains,
         cssGradientString : cssGradientString,

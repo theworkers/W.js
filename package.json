@@ -7,6 +7,7 @@
     "grunt-docco": "~0.3.2",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-mocha-test": "^0.10.0",
-    "grunt-mocha": "^0.4.10"
+    "grunt-mocha": "^0.4.10",
+    "gl-matrix": "^2.1.0"
   }
 }

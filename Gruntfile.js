@@ -3,26 +3,24 @@ var FileListBuilder = require( './util/file-list-builder.js' );
 module.exports = function( grunt ) {
     // # Package Lists
     var client = ( new FileListBuilder() )
-        .push( 'core/' )
-            .push( 'math/' )
-                .push( 'math/interpolations/' ).pop()
-            .pop()
-            .push( 'color/' ).pop()
-            .push( 'string/' ).pop()
+        .push( 'core/' ).pop()
+        .push( 'math/' )
+            .push( 'math/interpolations/' ).pop()
         .pop()
+        .push( 'color/' ).pop()
+        .push( 'string/' ).pop()
         .push( 'client/' ).pop();
 
     var node = ( new FileListBuilder() )
         .addFile( '_.header.js' )
-        .push( 'core/' )
-            .push( 'math/' )
-                .push( 'math/interpolations/' ).pop()
-            .pop() 
-            .push( 'color/' ).pop()
-            .push( 'string/' ).pop()
-            .addFile( 'node/_.export.js' )
-            .addFile( 'redis/_.export.js' )
-        .pop();
+        .push( 'core/' ).pop()
+        .push( 'math/' )
+            .push( 'math/interpolations/' ).pop()
+        .pop() 
+        .push( 'color/' ).pop()
+        .push( 'string/' ).pop()
+        .addFile( 'node/_.export.js' )
+        .addFile( 'redis/_.export.js' );
 
     // # Project configuration.
     grunt.initConfig({

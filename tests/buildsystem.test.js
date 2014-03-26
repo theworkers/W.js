@@ -60,6 +60,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.clamp', typeof W.clamp );
     utils.checkExists( 'W.angleBetween', typeof W.angleBetween );
     utils.checkExists( 'W.interpolations', typeof W.interpolations );
+    utils.checkExists( 'W.MatrixStack', typeof W.interpolations );
 
     // ### Interpolations
     utils.checkExists( 'W.interpolations.linearInterpolation', typeof W.interpolations.linearInterpolation );

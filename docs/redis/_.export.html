@@ -92,7 +92,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    extend( W, {
+            <div class="content"><div class='highlight'><pre>    W.extend( W, {
         redisReferrerStorage : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span>  <span class="hljs-built_in">require</span>( <span class="hljs-string">'../node/redis-timeseries-storage'</span> ); },
         redisSetStorage : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span>  <span class="hljs-built_in">require</span>( <span class="hljs-string">'../node/redis-set-storage'</span> ); },
         redisTimeseriesStorage : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span>  <span class="hljs-built_in">require</span>( <span class="hljs-string">'../node/redis-referrer-storage'</span> ); }

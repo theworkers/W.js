@@ -4,7 +4,7 @@
 
     // Allow selective requiring of node modules eg:
     // `var CorsMiddleware = require( 'W' ).CorsMiddleware();
-    extend( W, {
+    W.extend( W, {
         corsMiddleware : function () { return  require( '../node/cors-middleware' ); },
         WebSocketRepeater : function () { return  require( '../node/web-socket-repeater' ); },
         liveReload : function () { return  require( '../node/live-reload' ); },
