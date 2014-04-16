@@ -1784,7 +1784,8 @@ var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA
         JSONSocketConnection : function () { return  require( '../node/json-socket-connection' ); },
         jadeMiddleware : function () { return  require( '../node/jade-middleware' ); },
         Geolocate : function () { return  require( '../node/geo-locate' ); },
-        cssPrefixerMiddleware : function () { return  require( '../node/css-prefixer-middleware' ); }
+        cssPrefixerMiddleware : function () { return  require( '../node/css-prefixer-middleware' ); },
+        serveWJsMiddleware : function () { return require( '../node/serve-w-js-middleware' ); }
     });
 
 }( W ));
