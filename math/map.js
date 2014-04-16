@@ -1,3 +1,4 @@
+// # Map (map interval)
 // Ease function can be a interpolation function as below
 function map ( input, inputMin, inputMax, outputMin, outputMax, clamp, ease ) {
     input = ( input - inputMin ) / ( inputMax - inputMin );
