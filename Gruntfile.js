@@ -89,6 +89,17 @@ module.exports = function( grunt ) {
                 dest : 'build/W.node.js'
             }
         },
+        // ## Ugilfy
+        uglify: {
+            options: {
+                mangle: false
+            },
+            'client': {
+                files: {
+                    'build/W.min.js' : [ 'build/W.js' ]
+                }
+            }
+        },
         // ## Tests – Node
         mochaTest : {
             'node': {
@@ -116,14 +127,16 @@ module.exports = function( grunt ) {
     grunt.registerTask( 'test-node', [ 'mochaTest' ] );
     grunt.registerTask( 'docs', [ 'docco' ] );
     grunt.registerTask( 'build', [ 'concat' ] );
+    grunt.registerTask( 'minify', [ 'uglify' ] );
     grunt.registerTask( 'all', [ 'build', 'test-node', 'test-client', 'docs' ] );
 
     // # Default Grunt
-    grunt.registerTask( 'default', [ 'build', 'test-node', 'test-client' ] );
+    grunt.registerTask( 'default', [ 'build', 'minify', 'test-node', 'test-client' ] );
 
     // # Load Tasks
     grunt.loadNpmTasks( 'grunt-docco' );
     grunt.loadNpmTasks( 'grunt-contrib-concat' );
     grunt.loadNpmTasks( 'grunt-mocha-test' );
     grunt.loadNpmTasks( 'grunt-mocha' );
+    grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 };
