@@ -104,20 +104,34 @@ var eventMixin = {
     // e.g. trigger( name, ... )
     trigger : function ( name, data ) {
         var args = Array.prototype.slice.call( arguments, 1 );
-        if ( this.events()[ name ] ) {
-            var listeners = this.events()[ name ], 
-                len = listeners.length;
-            if ( len <= 0 ) { return false; }
-            while ( len-- ) {
-                if ( typeof listeners[ len ] === 'function' ) {
-                    listeners[ len ].apply( this, args );
+        var listeners;
+        var length;
+        // Find match listeners
+        if ( name !== "*" && this.events()[ name ] ) {
+            listeners = this.events()[ name ];
+            length = listeners.length;
+            while ( length-- ) {
+                if ( typeof listeners[ length ] === 'function' ) {
+                    listeners[ length ].apply( this, args );
                 }
             }
-            return true;
-        } else {
-            return false;
         }
+        // Send to any listeners bound to '*'
+        if ( this.events()[ "*" ] ) {
+            listeners = this.events()[ "*" ];
+            length = listeners.length;
+            // Add the event name to the first callback arg
+            args.unshift( name );
+            while ( length-- ) {
+                if ( typeof listeners[ length ] === 'function' ) {
+                    listeners[ length ].apply( this, args );
+                }
+            }
+        }
+
+        return this;
     },
+    // Added function to avoid the use of a constuctor
     events : function () {
         this.eventsArray = this.eventsArray || [];
         return this.eventsArray;
@@ -919,6 +933,7 @@ function lerp (start, end, scalar) {
     return start + (end - start) * scalar;
 }
 
+// # Map (map interval)
 // Ease function can be a interpolation function as below
 function map ( input, inputMin, inputMax, outputMin, outputMax, clamp, ease ) {
     input = ( input - inputMin ) / ( inputMax - inputMin );
