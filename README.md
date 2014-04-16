@@ -1,11 +1,24 @@
 # W.js Version 4
 
-A welterweight library and snippets repository used by [The Workers](http:://theworkers.net) a creative coding studio in East London. Maintained by [Ross Cairns](http://rosscairns.com/)
+A snippets repository and welterweight library used by [The Workers](http:://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/)
+
+[The Workers](http:://theworkers.net) are a creative coding studio in East London. 
 
 Used on projects such as:
 
 * [Where You Are](http://where-you-are.com/)
 * [o/o/o/o](http://o-o-o-o.co.uk/)
+
+## Node usage
+
+    npm install w-js --save
+
+### With express
+
+If W.js is included via NPM it can also be served to the client using the provided middleware:
+
+	app.get('/js/W.js', W.serveWJsMiddleware() );
+	app.get('/js/W.min.js', W.serveWJsMinMiddleware() );
 
 ## Building
 
