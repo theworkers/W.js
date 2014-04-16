@@ -7,7 +7,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 function checkExists( name, typeString ) {
     describe( name, function () {
-        it( 'should exist', function () {
+        it( 'should have created', function () {
             assert.notEqual( name, 'undefined' );
         });
     });
