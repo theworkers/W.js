@@ -174,21 +174,87 @@ e.g. trigger( name, … )</p>
             
             <div class="content"><div class='highlight'><pre>    trigger : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( name, data )</span> {</span>
         <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">Array</span>.prototype.slice.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span> );
-        <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">this</span>.events()[ name ] ) {
-            <span class="hljs-keyword">var</span> listeners = <span class="hljs-keyword">this</span>.events()[ name ], 
-                len = listeners.length;
-            <span class="hljs-keyword">if</span> ( len &lt;= <span class="hljs-number">0</span> ) { <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; }
-            <span class="hljs-keyword">while</span> ( len-- ) {
-                <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> listeners[ len ] === <span class="hljs-string">'function'</span> ) {
-                    listeners[ len ].apply( <span class="hljs-keyword">this</span>, args );
+        <span class="hljs-keyword">var</span> listeners;
+        <span class="hljs-keyword">var</span> length;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Find match listeners</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> ( name !== <span class="hljs-string">"*"</span> &amp;&amp; <span class="hljs-keyword">this</span>.events()[ name ] ) {
+            listeners = <span class="hljs-keyword">this</span>.events()[ name ];
+            length = listeners.length;
+            <span class="hljs-keyword">while</span> ( length-- ) {
+                <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> listeners[ length ] === <span class="hljs-string">'function'</span> ) {
+                    listeners[ length ].apply( <span class="hljs-keyword">this</span>, args );
                 }
             }
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Send to any listeners bound to ‘*’</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">this</span>.events()[ <span class="hljs-string">"*"</span> ] ) {
+            listeners = <span class="hljs-keyword">this</span>.events()[ <span class="hljs-string">"*"</span> ];
+            length = listeners.length;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Add the event name to the first callback arg</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            args.unshift( name );
+            <span class="hljs-keyword">while</span> ( length-- ) {
+                <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> listeners[ length ] === <span class="hljs-string">'function'</span> ) {
+                    listeners[ length ].apply( <span class="hljs-keyword">this</span>, args );
+                }
+            }
         }
-    },
-    events : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Added function to avoid the use of a constuctor</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    events : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
         <span class="hljs-keyword">this</span>.eventsArray = <span class="hljs-keyword">this</span>.eventsArray || [];
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.eventsArray;
     }
