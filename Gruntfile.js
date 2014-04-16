@@ -139,4 +139,5 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks( 'grunt-mocha-test' );
     grunt.loadNpmTasks( 'grunt-mocha' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+    grunt.loadNpmTasks( 'grunt-bump' ); // bump:minor
 };
