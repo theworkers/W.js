@@ -9,11 +9,11 @@ function objInherits (parent, protoProps, staticProps) {
     } else {
         child = function(){ parent.apply(this, arguments); };
     }
-    objExtend(child, parent);
+    extend(child, parent);
     ctor.prototype = parent.prototype;
     child.prototype = new ctor();
-    if (protoProps) objExtend(child.prototype, protoProps);
-    if (staticProps) objExtend(child, staticProps);
+    if (protoProps) extend(child.prototype, protoProps);
+    if (staticProps) extend(child, staticProps);
     child.prototype.constructor = child;
     child.__super__ = parent.prototype;
     return child;
@@ -27,4 +27,4 @@ function objExtend (protoProps, classProps) {
 }
 
 function Obj () {}
-Obj.extend = extend;
+Obj.extend = objExtend;
