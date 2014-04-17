@@ -142,11 +142,11 @@ Backbone may be freely distributed under the MIT license.</p>
     } <span class="hljs-keyword">else</span> {
         child = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span> parent.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>); };
     }
-    objExtend(child, parent);
+    extend(child, parent);
     ctor.prototype = parent.prototype;
     child.prototype = <span class="hljs-keyword">new</span> ctor();
-    <span class="hljs-keyword">if</span> (protoProps) objExtend(child.prototype, protoProps);
-    <span class="hljs-keyword">if</span> (staticProps) objExtend(child, staticProps);
+    <span class="hljs-keyword">if</span> (protoProps) extend(child.prototype, protoProps);
+    <span class="hljs-keyword">if</span> (staticProps) extend(child, staticProps);
     child.prototype.constructor = child;
     child.__super__ = parent.prototype;
     <span class="hljs-keyword">return</span> child;
@@ -172,7 +172,7 @@ Backbone may be freely distributed under the MIT license.</p>
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Obj</span> <span class="hljs-params">()</span> {</span>}
-Obj.extend = extend;</pre></div></div>
+Obj.extend = objExtend;</pre></div></div>
             
         </li>
         
