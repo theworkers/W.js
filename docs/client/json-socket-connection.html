@@ -133,7 +133,7 @@ Events</li>
             </div>
             
             <div class="content"><div class='highlight'><pre>    constructor : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(options)</span> {</span>
-        W.extend(<span class="hljs-keyword">this</span>, W.EventMixin);
+        W.extend(<span class="hljs-keyword">this</span>, W.eventMixin);
         <span class="hljs-keyword">this</span>.socketUrl = options.socketUrl;
         <span class="hljs-keyword">this</span>._connectionDesired = <span class="hljs-literal">false</span>;
         <span class="hljs-keyword">this</span>.attemptReconnectionAfterMS = (<span class="hljs-keyword">typeof</span> attemptReconnectionAfterMS !== <span class="hljs-string">'undefined'</span>) ? options.attemptReconnectionAfterMS : <span class="hljs-number">1000</span>;
