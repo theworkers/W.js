@@ -140,7 +140,7 @@
 */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bind</span><span class="hljs-params">( fn, scope )</span> {</span>
     <span class="hljs-keyword">var</span> bound, args;
-    <span class="hljs-keyword">if</span> ( fn.bind === nativeBind &amp;&amp; nativeBind ) <span class="hljs-keyword">return</span> nativeBind.apply( fn, slice.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span> ) );
+    <span class="hljs-keyword">if</span> ( fn.bind === nativeBind &amp;&amp; nativeBind ) <span class="hljs-keyword">return</span> nativeBind.apply( fn, <span class="hljs-built_in">Array</span>.prototype.slice.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span> ) );
     args = slice.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-number">2</span> );</pre></div></div>
             
         </li>
@@ -157,10 +157,10 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    bound = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
-        <span class="hljs-keyword">if</span> ( !(<span class="hljs-keyword">this</span> <span class="hljs-keyword">instanceof</span> bound) ) <span class="hljs-keyword">return</span> fn.apply( scope, args.concat( slice.call( <span class="hljs-built_in">arguments</span> ) ) );
+        <span class="hljs-keyword">if</span> ( !(<span class="hljs-keyword">this</span> <span class="hljs-keyword">instanceof</span> bound) ) <span class="hljs-keyword">return</span> fn.apply( scope, args.concat( <span class="hljs-built_in">Array</span>.prototype.slice.call( <span class="hljs-built_in">arguments</span> ) ) );
         W.ctor.prototype = fn.prototype;
         <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">new</span> ctor();
-        <span class="hljs-keyword">var</span> result = fn.apply( self, args.concat( slice.call( <span class="hljs-built_in">arguments</span> ) ) );
+        <span class="hljs-keyword">var</span> result = fn.apply( self, args.concat( <span class="hljs-built_in">Array</span>.prototype.slice.call( <span class="hljs-built_in">arguments</span> ) ) );
         <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Object</span>( result ) === result ) <span class="hljs-keyword">return</span> result;
         <span class="hljs-keyword">return</span> self;
     };
