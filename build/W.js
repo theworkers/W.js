@@ -17,7 +17,7 @@ var nativeBind = Function.prototype.bind;
 function bind( fn, scope ) {
     var bound, args;
     if ( fn.bind === nativeBind && nativeBind ) return nativeBind.apply( fn, Array.prototype.slice.call( arguments, 1 ) );
-    args = slice.call( arguments, 2 );
+    args = Array.prototype.slice.call( arguments, 2 );
     // @todo: don't link this
     bound = function() {
         if ( !(this instanceof bound) ) return fn.apply( scope, args.concat( Array.prototype.slice.call( arguments ) ) );
