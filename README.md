@@ -1,6 +1,6 @@
 # W.js Version 4
 
-A snippets repository and welterweight library used by [The Workers](http:://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/)
+A snippets repository and welterweight library used by [The Workers](http:://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/).
 
 [The Workers](http:://theworkers.net) are a creative coding studio in East London. 
 
@@ -17,8 +17,8 @@ Used on projects such as:
 
 If W.js is included via NPM it can also be served to the client using the provided middleware:
 
-	app.get('/js/W.js', W.serveWJsMiddleware() );
-	app.get('/js/W.min.js', W.serveWJsMinMiddleware() );
+	app.get('/js/W.js', W.jsMiddleware() );
+	app.get('/js/W.min.js', W.jsMinMiddleware() );
 
 ## Building
 

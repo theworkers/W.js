@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>cors-middleware.js</title>
+  <title>js-middleware.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -81,7 +81,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>cors-middleware.js</h1>
+                  <h1>js-middleware.js</h1>
               </div>
           </li>
         
@@ -93,38 +93,18 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>Example usage: <code>app.all(&#39;*&#39;, corsMiddleware);</code></p>
+              <p>Serves the client side W.js
+Avoid having to include W.js in a public folder as well as a node module</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-module.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req, res, next)</span>{</span>
-    <span class="hljs-keyword">if</span> (!req.get(<span class="hljs-string">'Origin'</span>)) {
-        next();
-        <span class="hljs-keyword">return</span>;
-    }
-    res.set(<span class="hljs-string">'Access-Control-Allow-Origin'</span>, <span class="hljs-string">'*'</span>);
-    res.set(<span class="hljs-string">'Access-Control-Allow-Methods'</span>, <span class="hljs-string">'GET, POST'</span>);
-    res.set(<span class="hljs-string">'Access-Control-Allow-Headers'</span>, <span class="hljs-string">'X-Requested-With, Content-Type'</span>);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-2">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>res.set(‘Access-Control-Allow-Max-Age’, 3600);</p>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>( <span class="hljs-string">'fs'</span> );
+<span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>( <span class="hljs-string">'path'</span> );
+<span class="hljs-keyword">var</span> file = fs.readFileSync( path.join( __dirname, <span class="hljs-string">'../build/W.js'</span>) ).toString(<span class="hljs-string">'utf8'</span>);
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (<span class="hljs-string">'OPTIONS'</span> === req.method) {
-        res.send(<span class="hljs-number">200</span>);
-        <span class="hljs-keyword">return</span>;
-    }
-    next();
+module.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( req, res, next )</span>  {</span>
+	res.header( <span class="hljs-string">'Content-type'</span>, <span class="hljs-string">'text/javascript; charset=UTF-8'</span> );
+	res.send( file ); 
 };</pre></div></div>
             
         </li>

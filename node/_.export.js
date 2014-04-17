@@ -12,8 +12,8 @@
         jadeMiddleware : function () { return  require( '../node/jade-middleware' ); },
         Geolocate : function () { return  require( '../node/geo-locate' ); },
         cssPrefixerMiddleware : function () { return  require( '../node/css-prefixer-middleware' ); },
-        serveWJsMiddleware : function () { return require( '../node/serve-w-js-middleware' ); },
-        serveWJsMinMiddleware : function () { return require( '../node/serve-w-js-min-middleware' ); }
+        jsMiddleware : function () { return require( '../node/js-middleware' ); },
+        jsMinMiddleware : function () { return require( '../node/js-min-middleware' ); }
     });
 
 }( W ));

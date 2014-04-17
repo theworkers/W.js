@@ -3,14 +3,14 @@ if (typeof module !== 'undefined' && module.exports) {
     var W = require( '../build/W.node.js' );
 }
 
-describe( 'serve-w-js-min-middleware', function () {
+describe( 'js-min-middleware', function () {
 
     var middleware;
 
     describe( 'when required', function () { 
         it( 'should not throw', function () {
             assert.doesNotThrow( function () {
-                middleware = W.serveWJsMinMiddleware();
+                middleware = W.jsMinMiddleware();
             });
         });
 
