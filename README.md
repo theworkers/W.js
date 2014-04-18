@@ -44,7 +44,7 @@ Node tests:
 
 * `*.test.js` are run on both node and client (provided test is added to test.html)
 * `*.test.client.js` are run client only, provided test is added to test.html
-* `*.test.client.js` are run node only
+* `*.test.node.js` are run node only
 
 ## Node and Redis modules
 
