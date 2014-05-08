@@ -30,6 +30,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.Timer', typeof W.Timer );
     utils.checkExists( 'W.interpose', typeof W.interpose );
     utils.checkExists( 'W.partial', typeof W.partial );
+    utils.checkExists( 'W.flip', typeof W.partial );
     
     // ## Color
     utils.checkExists( 'W.HSLGradient', typeof W.HSLGradient );

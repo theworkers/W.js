@@ -1,0 +1,71 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.26/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'W-js',
+1 verbose cli   '--save' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 warn package.json w-js@4.7.0 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'W-js', null ]
+7 verbose cache add name=undefined spec="W-js" args=["W-js",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'W-js',
+8 verbose parsed url   path: 'W-js',
+8 verbose parsed url   href: 'W-js' }
+9 silly lockFile 2026f6f1-W-js W-js
+10 verbose lock W-js /Users/ross/.npm/2026f6f1-W-js.lock
+11 silly lockFile 2026f6f1-W-js W-js
+12 silly lockFile 2026f6f1-W-js W-js
+13 verbose addNamed [ 'W-js', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile cd0d405d-W-js W-js@
+16 verbose lock W-js@ /Users/ross/.npm/cd0d405d-W-js.lock
+17 silly addNameRange { name: 'W-js', range: '*', hasData: false }
+18 verbose url raw W-js
+19 verbose url resolving [ 'https://registry.npmjs.org/', './W-js' ]
+20 verbose url resolved https://registry.npmjs.org/W-js
+21 info trying registry request attempt 1 at 17:00:09
+22 http GET https://registry.npmjs.org/W-js
+23 http 404 https://registry.npmjs.org/W-js
+24 silly registry.get cb [ 404,
+24 silly registry.get   { date: 'Thu, 08 May 2014 16:00:09 GMT',
+24 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+24 silly registry.get     'content-type': 'application/json',
+24 silly registry.get     via: '1.1 varnish',
+24 silly registry.get     'cache-control': 'max-age=0',
+24 silly registry.get     'content-length': '52',
+24 silly registry.get     'accept-ranges': 'bytes',
+24 silly registry.get     age: '0',
+24 silly registry.get     'x-served-by': 'cache-v42-ASH, cache-lcy1130-LCY',
+24 silly registry.get     'x-cache': 'MISS, MISS',
+24 silly registry.get     'x-cache-hits': '0, 0',
+24 silly registry.get     'x-timer': 'S1399564809.339752197,VS0,VS38,VE140,VE178',
+24 silly registry.get     'keep-alive': 'timeout=10, max=50',
+24 silly registry.get     connection: 'Keep-Alive' } ]
+25 silly lockFile cd0d405d-W-js W-js@
+26 silly lockFile cd0d405d-W-js W-js@
+27 error 404 'W-js' is not in the npm registry.
+27 error 404 You should bug the author to publish it
+27 error 404 It was specified as a dependency of 'w-js'
+27 error 404
+27 error 404 Maybe try 'npm search  '
+27 error 404
+27 error 404 Note that you can also install from a
+27 error 404 tarball, folder, or http url, or git url.
+28 error System Darwin 13.1.0
+29 error command "/usr/local/Cellar/node/0.10.26/bin/node" "/usr/local/bin/npm" "install" "W-js" "--save"
+30 error cwd /Users/ross/Repos/W.js
+31 error node -v v0.10.26
+32 error npm -v 1.4.3
+33 error code E404
+34 verbose exit [ 1, true ]

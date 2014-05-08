@@ -3,22 +3,22 @@ if (typeof module !== 'undefined' && module.exports) {
     var W = require( "../build/W.node.js" );
 }
 
-describe( "add", function () {
+describe( "partial", function () {
 
     it( 'should be a function', function () {
-       assert.equal( typeof W.add, 'function' );
+       assert.equal( typeof W.partial, 'function' );
     });
 
-    describe( 'should return 0 when passed no arguments', function () {
-        assert.equal( W.add( ), 0 );
+    it( 'should return a function', function () {
+       assert.equal( typeof W.partial( W.add, 0 ), 'function' );
     });
 
     describe( 'should return the correct result with 1 argument', function () {
-        assert.equal( W.add( 2 ), 2 );
+        assert.equal( W.partial( W.add, 2 )( 2 ), 4 );
     });
 
     describe( 'should return the correct result with 4 argument', function () {
-        assert.equal( W.add( 10, 20, 30, 40 ), 100 );
+        assert.equal( W.partial (W.add, 2, 10, 1, 1 )( 2, 1000 ), 1016 );
     });
 
 });

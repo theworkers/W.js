@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>trim.js</title>
+  <title>redis-key.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -81,7 +81,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>trim.js</h1>
+                  <h1>redis-key.js</h1>
               </div>
           </li>
         
@@ -93,11 +93,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              
+              <p><code>makeRedisKey( &#39;ross&#39;, cairns )</code> === <code>&#39;ross:cairns&#39;</code> </p>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/** String trim leading and ending whitespace */</span>
-<span class="hljs-keyword">var</span> trim = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(str)</span> {</span> <span class="hljs-keyword">return</span> (str.replace(<span class="hljs-regexp">/^[\s\xA0]+/</span>, <span class="hljs-string">""</span>).replace(<span class="hljs-regexp">/[\s\xA0]+$/</span>, <span class="hljs-string">""</span>)); };</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeRedisKey</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> W.interpose( <span class="hljs-built_in">Array</span>.prototype.slice.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-number">0</span> ), <span class="hljs-string">":"</span> ).join( <span class="hljs-string">''</span> );
+}</pre></div></div>
             
         </li>
         

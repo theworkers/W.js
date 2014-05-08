@@ -152,6 +152,11 @@ function extend ( obj ) {
     });
     return obj;
  }
+function flip( fn ) {
+    return function () { 
+        return fn.apply( fn, Array.prototype.slice.call( arguments ).reverse() ); 
+    };
+}
 // interpose( array, seperator ) returns [ item, seperator, item, seperator, item ]
 function interpose( arr, seperator) {
     var result = [];
@@ -802,7 +807,8 @@ Timer.prototype = {
 		isNotOk : isNotOk,
 		Router : Router,
 		interpose : interpose,
-		partial : partial
+		partial : partial,
+		flip : flip
     });
 } ( W ) );
 (function ( W ) {

@@ -3,7 +3,7 @@ if (typeof module !== 'undefined' && module.exports) {
     var W = require( "../build/W.node.js" );
 }
 
-describe( "add", function () {
+describe( 'add', function () {
 
     it( 'should be a function', function () {
        assert.equal( typeof W.add, 'function' );

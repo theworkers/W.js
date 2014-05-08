@@ -17,6 +17,7 @@
 		isNotOk : isNotOk,
 		Router : Router,
 		interpose : interpose,
-		partial : partial
+		partial : partial,
+		flip : flip
     });
 } ( W ) );
