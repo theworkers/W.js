@@ -19,7 +19,8 @@
         shuffleArray : shuffleArray,
         PI : PI,
         PI_2 : PI_2,
-        MatrixStack : MatrixStack
+        MatrixStack : MatrixStack,
+        add : add
     });
 
 } ( W ) );

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>extend.js</title>
+  <title>partial.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -126,7 +126,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>extend.js</h1>
+                  <h1>partial.js</h1>
               </div>
           </li>
         
@@ -138,23 +138,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>Underscore.js 1.6.0
-<a href="http://underscorejs.org">http://underscorejs.org</a>
-(c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters &amp; Editors
-Underscore may be freely distributed under the MIT license.</p>
-
+              
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extend</span> <span class="hljs-params">( obj )</span> {</span>
-    each( <span class="hljs-built_in">Array</span>.prototype.slice.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span> ), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( source )</span> {</span>
-        <span class="hljs-keyword">if</span> (source) {
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> prop <span class="hljs-keyword">in</span> source) {
-                obj[prop] = source[prop];
-            }
-        }
-    });
-    <span class="hljs-keyword">return</span> obj;
- }</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partial</span><span class="hljs-params">( fn, arg1, arg2, etc )</span> {</span>
+    <span class="hljs-keyword">var</span> rest = <span class="hljs-built_in">Array</span>.prototype.slice.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span> );
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+        <span class="hljs-keyword">return</span> fn.apply( <span class="hljs-keyword">this</span>, <span class="hljs-built_in">Array</span>.prototype.concat.apply( rest, <span class="hljs-built_in">arguments</span> ) );
+    };
+}</pre></div></div>
             
         </li>
         

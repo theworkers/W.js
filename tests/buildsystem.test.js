@@ -28,7 +28,9 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.sequence', typeof W.sequence );
     utils.checkExists( 'W.TickTimer', typeof W.TickTimer );
     utils.checkExists( 'W.Timer', typeof W.Timer );
-
+    utils.checkExists( 'W.interpose', typeof W.interpose );
+    utils.checkExists( 'W.partial', typeof W.partial );
+    
     // ## Color
     utils.checkExists( 'W.HSLGradient', typeof W.HSLGradient );
     utils.checkExists( 'W.RandomColorSequence', typeof W.RandomColorSequence );
@@ -60,7 +62,8 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.clamp', typeof W.clamp );
     utils.checkExists( 'W.angleBetween', typeof W.angleBetween );
     utils.checkExists( 'W.interpolations', typeof W.interpolations );
-    utils.checkExists( 'W.MatrixStack', typeof W.interpolations );
+    utils.checkExists( 'W.MatrixStack', typeof W.MatrixStack );
+    utils.checkExists( 'W.add', typeof W.add );
 
     // ### Interpolations
     utils.checkExists( 'W.interpolations.linearInterpolation', typeof W.interpolations.linearInterpolation );
@@ -104,6 +107,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.startsWith', typeof W.startsWith );
     utils.checkExists( 'W.trim', typeof W.trim );
     utils.checkExists( 'W.isValidEmailAddress', typeof W.isValidEmailAddress );
+    utils.checkExists( 'W.makeRedisKey', typeof W.makeRedisKey );
 
     // ## Client
     utils.checkExists( 'W.zIndexStack', typeof W.zIndexStack );

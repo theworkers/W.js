@@ -21,7 +21,7 @@ describe( "object", function () {
                     }
                 });
             });
-        })
+        });
 
         it( 'returning a function', function () {
             assert.equal( typeof Class, 'function' );

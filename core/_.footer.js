@@ -15,6 +15,8 @@
 		Object : Obj,
 		isOk : isOk,
 		isNotOk : isNotOk,
-		Router : Router
+		Router : Router,
+		interpose : interpose,
+		partial : partial
     });
 } ( W ) );

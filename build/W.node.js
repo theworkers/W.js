@@ -152,6 +152,16 @@ function extend ( obj ) {
     });
     return obj;
  }
+// interpose( array, seperator ) returns [ item, seperator, item, seperator, item ]
+function interpose( arr, seperator) {
+    var result = [];
+    for ( var i = 0; i < arr.length-1; ++i ) {
+        result.push( arr[ i ] );
+        result.push( seperator );
+    }
+    result.push( arr[ arr.length-1 ] );
+    return result;
+}
 function isNotOk( obj ) {
     return !isOk( obj );
 }
@@ -347,6 +357,12 @@ function objExtend (protoProps, classProps) {
 
 function Obj () {}
 Obj.extend = objExtend;
+function partial( fn, arg1, arg2, etc ) {
+    var rest = Array.prototype.slice.call( arguments, 1 );
+    return function () {
+        return fn.apply( this, Array.prototype.concat.apply( rest, arguments ) );
+    };
+}
 // Inspired by express.js and path.js
 var noOp = function (){};
 
@@ -784,13 +800,20 @@ Timer.prototype = {
 		Object : Obj,
 		isOk : isOk,
 		isNotOk : isNotOk,
-		Router : Router
+		Router : Router,
+		interpose : interpose,
+		partial : partial
     });
 } ( W ) );
 (function ( W ) {
     //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
     // Create the namespace
     var W = W || {};
+function add() {
+    var result = 0;
+    Array.prototype.forEach.call( arguments, function ( n ) { result += n; } );
+    return result;
+}
 function angleBetween (center, point) {
     var angle = Math.atan2(center.x-point.x,center.y-point.y)*(180/Math.PI);
     if(angle < 0) {
@@ -1308,7 +1331,8 @@ function sineEaseOut (p) {
         shuffleArray : shuffleArray,
         PI : PI,
         PI_2 : PI_2,
-        MatrixStack : MatrixStack
+        MatrixStack : MatrixStack,
+        add : add
     });
 
 } ( W ) );
@@ -1754,6 +1778,10 @@ var hasTld = function(str) { var result = str.match(/[a-z0-9.\-]+[.][a-z]{1,4}[\
 function isValidEmailAddress(address) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
 }
+// `makeRedisKey( 'ross', cairns )` === `'ross:cairns'` 
+function makeRedisKey() {
+    return W.interpose( Array.prototype.slice.call( arguments, 0 ), ":" ).join( '' );
+}
 /** String string starts with 
 http://stackoverflow.com/a/646643/179015 */
 var startsWith = function(str, test) { return str.slice(0, test.length) == test; };
@@ -1767,7 +1795,8 @@ var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA
         hsTld : hasTld,
         startsWith : startsWith,
         trim : trim,
-        isValidEmailAddress : isValidEmailAddress
+        isValidEmailAddress : isValidEmailAddress,
+        makeRedisKey : makeRedisKey
     });
 
 } ( W ) );
