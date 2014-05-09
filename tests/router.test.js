@@ -101,7 +101,7 @@ describe( "Router", function () {
             })
             .map( 'chips', [ 'GET', 'PUT' ] ).to( function () {
                 result = 3;
-            })
+            }) 
             .map( 'peas' ).to( function () {
                 result = 4;
             })
@@ -134,6 +134,72 @@ describe( "Router", function () {
                 });
             });
         }
+    });
+
+    describe( "Routes with method and toWhenMethod filter", function () {
+        var a = -1;
+        var b = -1;
+        var router = new W.Router();
+
+        router
+            .map( 'fish', [ 'GET', 'POST', 'SHIP' ] )
+                .to( function ( route, next ) {
+                    next();
+                })
+                .toWhenMethod( 'GET', function ( route, next ) {
+                    a = 1;
+                    next();
+                })
+                .toWhenMethod( 'POST', function ( route, next ) {
+                    a = 2;
+                    next();
+                })
+                .to( function ( route, next ) {
+                    b = 1;
+                })
+            .noMatch( function () {
+                a = -2;
+            });
+
+        describe( 'trigger with no method', function () {
+            it( 'should have triggered', function ( done ) {
+                router.trigger( 'fish' ).onDone( function () {
+                    assert.equal( a, -2 );
+                    assert.equal( b, -1 );
+                    done();
+                });
+            });
+        });
+
+        describe( 'trigger with GET method', function () {
+            it( 'should have triggered', function ( done ) {
+                router.trigger( 'fish' ).withMethod( 'GET' ).onDone( function () {
+                    assert.equal( a, 1 );
+                    assert.equal( b, 1 );
+                    done();
+                });
+            });
+        });
+
+        describe( 'trigger with POST method', function () {
+            it( 'should have triggered', function ( done ) {
+                router.trigger( 'fish' ).withMethod( 'POST' ).onDone( function () {
+                    assert.equal( a, 2 );
+                    assert.equal( b, 1 );
+                    done();
+                });
+            });
+        });
+
+        describe( 'trigger with no method and no match', function () {
+           it( 'should have triggered', function ( done ) {
+                router.trigger( 'chips' ).withMethod( 'WARSHIP' ).onDone( function () {
+                    assert.equal( a, -2 );
+                    done();
+                });
+            });
+        });
+
     });
 
     describe( "Routes with additional arguments", function () {

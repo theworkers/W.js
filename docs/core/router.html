@@ -349,6 +349,32 @@ Router.prototype.map = <span class="hljs-function"><span class="hljs-keyword">fu
         });
         <span class="hljs-keyword">return</span> self;
     };
+    <span class="hljs-keyword">this</span>.toWhenMethod = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(method, fn)</span> {</span>
+        routes.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(route)</span> {</span>
+            route.callbacks.push(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req)</span> {</span>
+                <span class="hljs-keyword">if</span> ( req.method === method ) {
+                    fn.apply( <span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span> );
+                } <span class="hljs-keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>take the last argument, which is next and call it</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="hljs-built_in">arguments</span>[ <span class="hljs-built_in">arguments</span>.length-<span class="hljs-number">1</span> ]();
+                }
+            });
+        });
+        <span class="hljs-keyword">return</span> self;
+    };
     <span class="hljs-keyword">this</span>.map = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
         <span class="hljs-keyword">return</span> routerContext.map.apply(routerContext, <span class="hljs-built_in">arguments</span>);
     };
@@ -420,11 +446,11 @@ Route.prototype.match = <span class="hljs-function"><span class="hljs-keyword">f
         </li>
         
         
-        <li id="section-6">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Borrowed from express utils</p>
 

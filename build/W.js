@@ -526,6 +526,19 @@ function RouterMapPromise(routes, routerContext) {
         });
         return self;
     };
+    this.toWhenMethod = function (method, fn) {
+        routes.forEach(function (route) {
+            route.callbacks.push(function (req) {
+                if ( req.method === method ) {
+                    fn.apply( this, arguments );
+                } else {
+                    // take the last argument, which is next and call it
+                    arguments[ arguments.length-1 ]();
+                }
+            });
+        });
+        return self;
+    };
     this.map = function () {
         return routerContext.map.apply(routerContext, arguments);
     };
