@@ -9,6 +9,145 @@ Used on projects such as:
 * [Where You Are](http://where-you-are.com/)
 * [o/o/o/o](http://o-o-o-o.co.uk/)
 
+## Features
+
+#### Core
+
+* W.bind
+* W.clone
+* W.countedCallbackMixin
+* W.each
+* W.eventMixin
+* W.extend
+* W.List
+* W.loop
+* W.Middleware
+* W.Sequence
+* W.sequence
+* W.TickTimer
+* W.Timer
+* W.Obj
+* W.isOk
+* W.isNotOk
+* W.Router
+* W.interpose
+* W.partial
+* W.flip
+* W.partition
+* W.flatten
+
+#### Client
+
+* W.ZIndexStack
+* W.wrappedContext
+* W.viewportSize
+* W.touchEventViewMixin
+* W.polyfillRequestAnimationFrame
+* W.JSONSocketConnection
+* W.displayViewMixin
+* W.clearContext
+
+#### Color
+
+
+* W.HSLGradient
+* W.RandomColorSequence
+* W.hslToRgb
+* W.hsvToRgb
+* W.rgbToHsl
+* W.rgbToHsv
+* W.randomHex
+
+#### Math
+
+* W.angleBetween
+* W.clamp
+* W.clipNormalized
+* W.colorStringToHex
+* W.colorValuesToHex
+* W.distance
+* W.getDynamicallyEasedInterpolation
+* W.dynamicEaseInterpolation
+* W.fitScaleRatio
+* W.floatToString
+* W.hexStringToColorArray
+* W.inRange
+* W.isClose
+* W.lerp
+* W.map
+* W.normalize
+* W.randomBetween
+* W.shuffleArray
+* W.PI
+* W.PI_2
+* W.MatrixStack
+* W.add
+* W.interpolations.linearInterpolatio
+* W.interpolations.quadraticEaseIn
+* W.interpolations.quadraticEaseOut
+* W.interpolations.quadraticEaseInOut
+* W.interpolations.cubicEaseIn
+* W.interpolations.cubicEaseOut
+* W.interpolations.cubicEaseInOut
+* W.interpolations.quarticEaseIn
+* W.interpolations.quarticEaseOut
+* W.interpolations.quarticEaseInOut
+* W.interpolations.quinticEaseIn
+* W.interpolations.quinticEaseOut
+* W.interpolations.quinticEaseInOut
+* W.interpolations.sineEaseIn
+* W.interpolations.sineEaseOut
+* W.interpolations.sineEaseInOut
+* W.interpolations.circularEaseIn
+* W.interpolations.circularEaseOut
+* W.interpolations.circularEaseInOut
+* W.interpolations.exponentialEaseIn
+* W.interpolations.exponentialEaseOut
+* W.interpolations.exponentialEaseInOut
+* W.interpolations.elasticEaseIn
+* W.interpolations.elasticEaseOut
+* W.interpolations.elasticEaseInOut
+* W.interpolations.backEaseIn
+* W.interpolations.backEaseOut
+* W.interpolations.backEaseInOut
+* W.interpolations.bounceEaseIn
+* W.interpolations.bounceEaseOut
+* W.interpolations.bounceEaseInOut
+
+#### Node
+
+* W.corsMiddleware
+* W.WebSocketRepeater
+* W.liveReload
+* W.JSONSocketConnection
+* W.jadeMiddleware
+* W.Geolocate
+* W.cssPrefixerMiddleware
+* W.jsMiddleware
+* W.jsMinMiddleware
+
+#### Redis
+
+* W.redisReferrerStorage
+* W.redisSetStorage
+* W.redisTimeseriesStorage
+
+#### String
+
+* W.addCommas
+* W.contains
+* W.cssGradientString
+* W.endsWith
+* W.hsTld
+* W.startsWith
+* W.trim
+* W.isValidEmailAddress
+* W.makeRedisKey
+
+#### Util
+
+* FileListBuilder
+
 ## Node usage
 
     npm install w-js --save
