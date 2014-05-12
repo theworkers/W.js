@@ -18,6 +18,8 @@
 		Router : Router,
 		interpose : interpose,
 		partial : partial,
-		flip : flip
+		flip : flip,
+		partition : partition,
+		flatten : flatten
     });
 } ( W ) );

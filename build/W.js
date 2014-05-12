@@ -152,6 +152,9 @@ function extend ( obj ) {
     });
     return obj;
  }
+function flatten( arr ) {
+	return [].concat.apply( [], arr );
+}
 function flip( fn ) {
     return function () { 
         return fn.apply( fn, Array.prototype.slice.call( arguments ).reverse() ); 
@@ -367,6 +370,14 @@ function partial( fn, arg1, arg2, etc ) {
     return function () {
         return fn.apply( this, Array.prototype.concat.apply( rest, arguments ) );
     };
+}
+function partition ( arr, length ) {
+    var result = [];
+    for(var i = 0; i < arr.length; i++) {
+    if(i % length === 0) result.push([]);
+        result[result.length - 1].push(arr[i]);
+    }
+    return result;
 }
 // Inspired by express.js and path.js
 var noOp = function (){};
@@ -821,7 +832,9 @@ Timer.prototype = {
 		Router : Router,
 		interpose : interpose,
 		partial : partial,
-		flip : flip
+		flip : flip,
+		partition : partition,
+		flatten : flatten
     });
 } ( W ) );
 (function ( W ) {

@@ -31,6 +31,8 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.interpose', typeof W.interpose );
     utils.checkExists( 'W.partial', typeof W.partial );
     utils.checkExists( 'W.flip', typeof W.partial );
+    utils.checkExists( 'W.partition', typeof W.partition );
+    utils.checkExists( 'W.flatten', typeof W.flatten );
     
     // ## Color
     utils.checkExists( 'W.HSLGradient', typeof W.HSLGradient );
