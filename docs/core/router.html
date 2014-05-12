@@ -359,10 +359,13 @@ Router.prototype.map = <span class="hljs-function"><span class="hljs-keyword">fu
         });
         <span class="hljs-keyword">return</span> self;
     };
-    <span class="hljs-keyword">this</span>.toWhenMethod = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(method, fn)</span> {</span>
+    <span class="hljs-keyword">this</span>.toWhenMethod = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(methods, fn)</span> {</span>
+        <span class="hljs-keyword">if</span> ( !(methods <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) ) {
+            methods = [methods];
+        }
         routes.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(route)</span> {</span>
             route.callbacks.push(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req)</span> {</span>
-                <span class="hljs-keyword">if</span> ( req.method === method ) {
+                <span class="hljs-keyword">if</span> ( methods.indexOf( req.method ) &gt; -<span class="hljs-number">1</span> ) {
                     fn.apply( <span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span> );
                 } <span class="hljs-keyword">else</span> {</pre></div></div>
             

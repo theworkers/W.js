@@ -537,10 +537,13 @@ function RouterMapPromise(routes, routerContext) {
         });
         return self;
     };
-    this.toWhenMethod = function (method, fn) {
+    this.toWhenMethod = function (methods, fn) {
+        if ( !(methods instanceof Array) ) {
+            methods = [methods];
+        }
         routes.forEach(function (route) {
             route.callbacks.push(function (req) {
-                if ( req.method === method ) {
+                if ( methods.indexOf( req.method ) > -1 ) {
                     fn.apply( this, arguments );
                 } else {
                     // take the last argument, which is next and call it

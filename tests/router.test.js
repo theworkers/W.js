@@ -150,7 +150,7 @@ describe( "Router", function () {
                     a = 1;
                     next();
                 })
-                .toWhenMethod( 'POST', function ( route, next ) {
+                .toWhenMethod( [ 'POST', 'SPACESTATION' ], function ( route, next ) {
                     a = 2;
                     next();
                 })
