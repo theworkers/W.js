@@ -186,14 +186,20 @@ router
 
         })
     .map( <span class="hljs-string">'/a/:b/:c'</span>, [ <span class="hljs-string">'POST'</span>, <span class="hljs-string">'PUT'</span> ] )
-        .to( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( route )</span> {</span>
-
+        .to( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( route, next )</span> {</span>
+             next();
         })
+        .whenMethod( <span class="hljs-string">'POST'</span>, route, next, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+             next();
+         })
+        .whenMethod( [<span class="hljs-string">'POST'</span>, <span class="hljs-string">'PUT'</span>], route, next, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+             next();
+         })
     .map( <span class="hljs-string">'extra args'</span> )
         .to( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( route, x, y, z )</span> {</span>
 
         })
-    .noRoute( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( route, extra )</span> {</span>
+    .noMatch( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( route, extra )</span> {</span>
         console.log( <span class="hljs-string">'no route for'</span>, route.path );
     });
 </code></pre><h3 id="triggering">Triggering</h3>
@@ -209,7 +215,7 @@ router
             <div class="content"><div class='highlight'><pre>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Router</span> <span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">this</span>.routes = [];
-    <span class="hljs-keyword">this</span>.noMatch = <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">this</span>.noMatch = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>};
 }</pre></div></div>
             
         </li>
