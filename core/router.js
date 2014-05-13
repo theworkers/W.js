@@ -20,14 +20,20 @@ var noOp = function (){};
 //     
 //             })
 //         .map( '/a/:b/:c', [ 'POST', 'PUT' ] )
-//             .to( function ( route ) {
-//     
+//             .to( function ( route, next ) {
+//                  next();
 //             })
+//             .whenMethod( 'POST', route, next, function () {
+//                  next();
+//              })
+//             .whenMethod( ['POST', 'PUT'], route, next, function () {
+//                  next();
+//              })
 //         .map( 'extra args' )
 //             .to( function ( route, x, y, z ) {
 //     
 //             })
-//         .noRoute( function ( route, extra ) {
+//         .noMatch( function ( route, extra ) {
 //             console.log( 'no route for', route.path );
 //         });
 // ### Triggering
@@ -46,7 +52,7 @@ var noOp = function (){};
 
 function Router () {
     this.routes = [];
-    this.noMatch = null;
+    this.noMatch = function () {};
 }
 
 // ## Trigger

@@ -45,6 +45,22 @@ describe( "Router", function () {
 
     });
 
+    describe( "triggering an unmapped route and no specified noMatch handler", function () {
+        
+        var router = new W.Router();
+
+        router
+            .map( 'fish' ) .to( function ( route, next ) { next(); })
+            .map( 'chips' ).to( function ( ) { })
+            .map( 'peas' ).to( function () { });
+
+        it( 'should not throw', function () {
+            assert.doesNotThrow( function () {
+                router.trigger( 'spaceships' );
+            });
+        });
+    });
+
     describe( "Routes with params", function () {
         var result = 0;
         var type = "";
@@ -210,12 +226,16 @@ describe( "Router", function () {
         var actualC = 0;
 
         router
-            .map( 'fish', 'GET' ).to( function ( route, a, b, c ) {
-                result = 1;
-                actualA = a;
-                actualB = b;
-                actualC = c;
-            })
+            .map( 'fish', 'GET' )
+                .to( function ( route, a, b, c, next ) {
+                    next();
+                })
+                .to( function ( route, a, b, c ) {
+                    result = 1;
+                    actualA = a;
+                    actualB = b;
+                    actualC = c;
+                })
             .map( 'fish', 'POST' ).to( function ( route, a, b, c ) {
                 result = 2;
                 actualA = a;
@@ -228,12 +248,16 @@ describe( "Router", function () {
                 actualB = b;
                 actualC = c;
             })
-            .map( 'peas' ).to( function ( route, a, b, c ) {
-                result = 4;
-                actualA = a;
-                actualB = b;
-                actualC = c;
-            })
+            .map( 'peas' )
+                .to( function ( route, a, b, c, next ) {
+                    next();
+                })
+                .to( function ( route, a, b, c ) {
+                    result = 4;
+                    actualA = a;
+                    actualB = b;
+                    actualC = c;
+                })
             .noMatch( function ( route ) {
                 result = -1;
                 actualA = -2;
