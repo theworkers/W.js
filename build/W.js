@@ -335,6 +335,8 @@ function Middleware ( options ) {
     };
 }
     
+function noop () {}
+
 // From Backbone
 // (c) 2010-2012 Jeremy Ashkenas, DocumentCloud Inc.
 // Backbone may be freely distributed under the MIT license.
@@ -379,6 +381,36 @@ function partition ( arr, length ) {
     }
     return result;
 }
+function Promise ( fn ) {
+    if ( typeof fn !== 'function' ) {
+        throw new Error( 'Promise constructor needs to be passed a function' );
+    }
+    var success = noop;
+    var error = noop;
+    var done = noop;
+    var resolve = function () {
+        success.apply( this, arguments );
+        Array.prototype.unshift.call( arguments, null );
+        done.apply( this, arguments );
+    };
+    var reject = function () {
+        if ( arguments.length === 0 ) {
+            Array.prototype.unshift.call( arguments, new Error( 'Promise rejected' ) );
+        }
+        error.apply( this, arguments );
+        done.apply( this, arguments );
+    };
+    setTimeout( function () {
+        fn ( resolve, reject );
+    }, 0 );
+    var chain = {
+        success : function ( fn ) { success = fn; return chain; },
+        error : function ( fn ) { error = fn; return chain; },
+        done : function ( fn ) { done = fn; return chain; }
+    };
+    return chain;
+}
+
 // Inspired by express.js and path.js
 var noOp = function (){};
 
@@ -823,29 +855,31 @@ Timer.prototype = {
 
     extend( W, {
         bind : bind,
-		clone : clone,
-		countedCallbackMixin : countedCallbackMixin,
-		each : each,
-		eventMixin : eventMixin,
-		extend : extend,
-		List : List,
-		loop : loop,
-		Middleware : Middleware,
-		Sequence : Sequence,
-		sequence : sequence,
-		TickTimer : TickTimer,
-		Timer : Timer,
-		Object : Obj,
-		isOk : isOk,
-		isNotOk : isNotOk,
-		Router : Router,
-		interpose : interpose,
-		partial : partial,
-		flip : flip,
-		partition : partition,
-		flatten : flatten
+        clone : clone,
+        countedCallbackMixin : countedCallbackMixin,
+        each : each,
+        eventMixin : eventMixin,
+        extend : extend,
+        List : List,
+        loop : loop,
+        Middleware : Middleware,
+        Sequence : Sequence,
+        sequence : sequence,
+        TickTimer : TickTimer,
+        Timer : Timer,
+        Object : Obj,
+        isOk : isOk,
+        isNotOk : isNotOk,
+        Router : Router,
+        interpose : interpose,
+        partial : partial,
+        flip : flip,
+        partition : partition,
+        flatten : flatten,
+        Promise : Promise
     });
 } ( W ) );
+
 (function ( W ) {
     //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
     // Create the namespace
@@ -986,6 +1020,7 @@ function inRange (test, min, max) {
         return (test > min && test < max);
     }
 }
+
 
 function isClose (num, test, tolerance) {
     tolerance = tolerance || 1;
