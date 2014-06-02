@@ -62,6 +62,37 @@ describe( 'Promise', function () {
                 });
             });
         }); 
+        describe( 'with reject', function ( done ) {
+            it ( 'should be fired with an error', function ( done ) {
+                var p = W.Promise( function ( resolve, reject ) {
+                    reject();
+                });
+                p.done( function ( err ) {
+                    assert( err instanceof Error );
+                    done();
+                });
+            });
+        });
+    });
+
+    describe( 'timeoutAfter', function () {
+        it ( 'should fire with a function ', function ( done ) {
+            var t = 0;
+            var timeoutId;
+            var p = W.Promise( function ( resolve, reject ) {
+                timeoutId = setTimeout( function () {
+                    t = 2;
+                }, 100 );
+            });
+            p.timeoutAfter( 50, function () {
+                t = 1;
+                clearTimeout( timeoutId );
+            });
+            setTimeout( function () {
+                assert.equal( t, 1 );
+                done();
+            }, 300 );
+        });
     });
 
 });
