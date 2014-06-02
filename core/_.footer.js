@@ -21,6 +21,9 @@
         flip : flip,
         partition : partition,
         flatten : flatten,
-        Promise : Promise
+        Promise : Promise,
+        last : last,
+        first : first,
+        rest : rest
     });
 } ( W ) );

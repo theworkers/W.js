@@ -152,6 +152,9 @@ function extend ( obj ) {
     });
     return obj;
  }
+function first( arr ) {
+    return arr[ 0 ];
+}
 function flatten( arr ) {
 	return [].concat.apply( [], arr );
 }
@@ -194,6 +197,9 @@ function isOk( obj ) {
         return obj.length > 0;
     }
     return !!obj;
+}
+function last( arr ) {
+    return arr[ arr.length - 1 ];
 }
 // inspired by http://blog.jcoglan.com/2007/07/23/writing-a-linked-list-in-javascript/
 function List ( options ) {
@@ -458,6 +464,9 @@ function Promise ( fn ) {
     return chain;
 }
 
+function rest ( arr, n ) {
+	return arr.splice( n || 1 );
+} 
 // Inspired by express.js and path.js
 var noOp = function (){};
 
@@ -923,7 +932,10 @@ Timer.prototype = {
         flip : flip,
         partition : partition,
         flatten : flatten,
-        Promise : Promise
+        Promise : Promise,
+        last : last,
+        first : first,
+        rest : rest
     });
 } ( W ) );
 
