@@ -36,6 +36,9 @@ Used on projects such as:
 * W.partition
 * W.flatten
 * W.Promise
+* W.rest
+* W.first
+* W.last
 
 #### Client
 
