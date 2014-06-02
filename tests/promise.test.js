@@ -95,4 +95,37 @@ describe( 'Promise', function () {
         });
     });
 
+    describe( 'when two are triggered they', function () {
+
+        var a = 0;
+        var b = 0;
+
+
+        W.Promise( function ( resolve, reject ) {
+            setTimeout( resolve, 5 );
+        }).success( function () {
+            a = 'a';
+        });
+
+        W.Promise( function ( resolve, reject ) {
+            setTimeout( resolve, 0 );
+        }).success( function () {
+            b = 'b';
+        });
+
+        it ( 'should both haved fired', function ( done ) {
+
+            setTimeout( function () {
+
+                assert.equal( a, 'a' );
+                assert.equal( b, 'b' );
+
+                done();
+
+            }, 20 );
+
+        });
+
+    });
+
 });
