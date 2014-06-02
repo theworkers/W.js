@@ -9,7 +9,7 @@ var eventMixin = {
         }
         return this;
     },
-    off : function ( event, callback) {
+    off : function ( event, callback ) {
         if ( !callback ) {
             delete this.events()[ event ];
         } else {

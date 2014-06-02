@@ -92,4 +92,38 @@ describe( 'event-mixin', function () {
 
     });
 
+    describe( 'off', function () {
+
+        var obj = Object.create({});
+        W.extend( obj, W.eventMixin );
+
+        describe ( 'when remove one of many listeners', function () {
+
+            it ( 'should only remove one listener', function ( done ) {
+
+                var a = 0;
+                var b = 0;
+
+                var fnA =  function () { a = 1; };
+                var fnB =  function () { b = 1; };
+
+                obj.on( 'pizza', fnA );
+                obj.on( 'pizza', fnB );
+
+                obj.off( 'pizza', fnB );
+
+                obj.trigger( 'pizza' );
+
+                setTimeout( function () {
+                    assert.equal( b, 0 );
+                    assert.equal( a, 1 );
+                    done();
+                }, 20 ); 
+
+            });
+
+        });
+
+    });
+
 });
