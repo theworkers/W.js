@@ -35,6 +35,7 @@ Used on projects such as:
 * W.flip
 * W.partition
 * W.flatten
+* W.Promise
 
 #### Client
 
