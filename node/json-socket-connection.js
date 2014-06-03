@@ -1,24 +1,24 @@
 // A client websocket connect which attempts to reconnect after disconnection and parse JSON message
 
 // #Modules
-var EventEmitter = require( "events" ).EventEmitter;
-var util = require( "util" );
+var EventEmitter = require( 'events' ).EventEmitter;
+var util = require( 'util' );
 
 // #NPM 
-var WebSocket = require( "ws" );
+var WebSocket = require( 'ws' );
 
 // #JSONSocketConnection
 // Options
 //  * socketUrl <String>
 //  * attemptReconnectionAfterMS <Number> - wait until attempting reconnection. Default 1000.
 // Events
-//  * "open"
-//  * "closed"
-//  * "reconnecting"
-//  * "closed successfully"
-//  * "json"
-//  * "nonjson"
-//  * "message"
+//  * 'open'
+//  * 'closed'
+//  * 'reconnecting'
+//  * 'closed successfully'
+//  * 'json'
+//  * 'nonjson'
+//  * 'message'
 function JSONSocketConnection ( options ) {
     this.socketUrl = options.socketUrl;
     this._connectionDesired = false;
@@ -35,37 +35,37 @@ JSONSocketConnection.prototype.openSocketConnection = function () {
     try {
         this.socket = new WebSocket(this.socketUrl); 
     } catch (err) {
-        self.emit("error", err);
+        self.emit('error', err);
     }
     this.socket.onopen = function () {
-        self.emit("open");
+        self.emit('open');
     };
     this.socket.onclose = errorHandler;
     this.socket.onerror = errorHandler;
     this.socket.onmessage = function (message) {
-        self.emit("message", message);
+        self.emit('message', message);
         var wasError = false;
         try  {
             message = JSON.parse( message.data );
         }  catch (e) {
-            self.emit("nonjson", message.data);
+            self.emit('nonjson', message.data);
             wasError = true;
             return;
         }
         if (!wasError) {
-            self.emit("json", message);
+            self.emit('json', message);
         }
     };
 
     function errorHandler() {
-        self.emit("closed");
+        self.emit('closed');
         if (self._connectionDesired) {
             setTimeout(function () {
                 self.openSocketConnection();
             }, self.attemptReconnectionAfterMS);
-            self.emit("reconnecting");
+            self.emit('reconnecting');
         } else {
-            self.emit("closed successfully");
+            self.emit('closed successfully');
         }
     }
 };
@@ -78,7 +78,7 @@ JSONSocketConnection.prototype.closeSocketConnection = function () {
 // @param obj <string/object> - if object it will be strignified
 // @param callback <function> - called with (err)
 JSONSocketConnection.prototype.send = function (obj, callback) {
-    if (typeof obj === "string") {
+    if (typeof obj === 'string') {
         this.socket.send(obj);
         if (callback) { callback(); }
     } else {
@@ -94,6 +94,18 @@ JSONSocketConnection.prototype.send = function (obj, callback) {
             if (callback) { callback(); }
         }
     }
+};
+
+// ## Browser Style Event Shims
+
+JSONSocketConnection.prototype.off = function () {
+    if ( arguments.length === 0 ) {
+        this.removeAllListeners();
+    } else if ( arguments.length === 1 ) {
+        this.removeAllListeners( arguments[1] );
+    } else {
+        this.removeListener.apply( this, arguments );
+    }   
 };
 
 module.exports = JSONSocketConnection;
