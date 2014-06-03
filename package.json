@@ -1,6 +1,6 @@
 {
   "name": "w-js",
-  "version": "4.14.1",
+  "version": "4.14.2",
   "main": "build/W.node.js",
   "devDependencies": {
     "grunt": "~0.4.2",
