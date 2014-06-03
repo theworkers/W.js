@@ -427,12 +427,16 @@ function Promise ( fn ) {
     var success = noop;
     var error = noop;
     var done = noop;
+    var debug = false;
     var timeoutId;
     var resolve = function () {
         clearTimeout( timeoutId );
         success.apply( this, arguments );
         Array.prototype.unshift.call( arguments, null );
         done.apply( this, arguments );
+        if ( debug ) {
+           console.log( 'Promise resolved with', arguments );
+        }
     };
     var reject = function () {
         clearTimeout( timeoutId );
@@ -441,6 +445,9 @@ function Promise ( fn ) {
         }
         error.apply( this, arguments );
         done.apply( this, arguments );
+        if ( debug ) {
+           console.log( 'Promise rejected with', arguments );
+        }
     };
     setTimeout( function () {
         fn ( resolve, reject );
@@ -459,7 +466,10 @@ function Promise ( fn ) {
                 }
             }, delay );
             return chain; 
-        }
+        },
+        debug : function () {
+            log = true;
+        } 
     };
     return chain;
 }
