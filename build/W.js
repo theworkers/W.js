@@ -468,7 +468,7 @@ function Promise ( fn ) {
             return chain; 
         },
         debug : function () {
-            log = true;
+            debug = true;
         } 
     };
     return chain;
