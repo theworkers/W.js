@@ -318,7 +318,6 @@ function loop ( iterations, fn, callback ) {
     return next;
 }
 
-
 function Middleware ( options ) {
     var middleware = [];
     

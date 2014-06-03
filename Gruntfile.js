@@ -21,7 +21,7 @@ module.exports = function( grunt ) {
         .push( 'string/' ).pop()
         .addFile( 'node/_.export.js' )
         .addFile( 'redis/_.export.js' )
-        .push( 'client/' ).pop();
+        .addFile( 'client/wrapped-context.js' );
 
     // # Project configuration.
     grunt.initConfig({
