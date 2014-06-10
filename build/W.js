@@ -2094,8 +2094,6 @@ var JSONSocketConnection = W.Object.extend({
         // Check it is open
         var state = this.socket.readyState;
 
-        console.log( 'hello here', state );
-
         if ( state !== 1 ) {
             var error;
             switch ( state ) {
