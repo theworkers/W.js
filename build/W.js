@@ -56,7 +56,6 @@ var countedCallbackMixin = {
 };
 
 
-
 var breaker = {};
 var nativeForEach = Array.prototype.forEach;
 function each ( obj, iterator, context ) {
@@ -76,9 +75,6 @@ function each ( obj, iterator, context ) {
     }
 }
 
-function error ( msg ) {
-    throw new Error( msg );
-}
 var eventMixin = {
     on : function ( event,  callback ) {
         if ( typeof callback !== 'function' ) {
@@ -167,11 +163,6 @@ function flip( fn ) {
     return function () { 
         return fn.apply( fn, Array.prototype.slice.call( arguments ).reverse() ); 
     };
-}
-function ifUndefined ( val, fn ) {
-    if ( typeof val === 'undefined' ) {
-	fn();
-    }
 }
 // interpose( array, seperator ) returns [ item, seperator, item, seperator, item ]
 function interpose( arr, seperator) {
@@ -2043,13 +2034,14 @@ var JSONSocketConnection = W.Object.extend({
     //  * socketUrl <String>
     //  * attemptReconnectionAfterMS <Number> - wait until attempting reconnection. Default 1000.
     // Events
-    //  * "open"
-    //  * "closed"
-    //  * "reconnecting"
-    //  * "closed successfully"
-    //  * "json"
-    //  * "nonjson"
-    //  * "message"
+    //  * 'open'
+    //  * 'closed'
+    //  * 'reconnecting'
+    //  * 'closed successfully'
+    //  * 'json'
+    //  * 'nonjson'
+    //  * 'message'
+    //  * 'error'
     constructor : function (options) {
         W.extend(this, W.eventMixin);
         this.socketUrl = options.socketUrl;
@@ -2061,29 +2053,32 @@ var JSONSocketConnection = W.Object.extend({
         var self = this;
         this.socket = new WebSocket(this.socketUrl); 
         this.socket.onopen = function () {
-            self.trigger("open");
+            self.trigger('open');
+        };
+        this.socket.onerror = function () {
+            self.trigger('error');
         };
         this.socket.onclose = function () {
-            self.trigger("closed");
+            self.trigger('closed');
             if (self._connectionDesired) {
                 setTimeout(W.bind(self.openSocketConnection, self), self.attemptReconnectionAfter);
-                self.trigger("reconnecting");
+                self.trigger('reconnecting');
             } else {
-                self.trigger("closed successfully");
+                self.trigger('closed successfully');
             }
         };
         this.socket.onmessage = function (message) {
-            self.trigger("message", message);
+            self.trigger('message', message);
             var wasError = false;
             try  {
                 message = JSON.parse( message.data );
-            }  catch (e) {
-                self.trigger("nonjson", message.data);
+            }  catch ( e ) {
+                self.trigger('nonjson', message.data);
                 wasError = true;
                 return;
             }
-            if (!wasError) {
-                self.trigger("json", message);
+            if ( !wasError ) {
+                self.trigger('json', message);
             }
         };
     },
@@ -2094,21 +2089,43 @@ var JSONSocketConnection = W.Object.extend({
     //
     // @param obj <string/object> - if object it will be strignified
     // @param callback <function> - called with (err)
-    send : function (obj, callback) {
-        if (typeof obj === "string") {
-            this.socket.send(obj);
-            if (callback) { callback(); }
+    send : function ( obj, callback ) {
+
+        // Check it is open
+        var state = this.socket.readyState;
+
+        console.log( 'hello here', state );
+
+        if ( state !== 1 ) {
+            var error;
+            switch ( state ) {
+                case 0: error = new Error( 'WebSocket is CONNECTING' ); break;
+                case 2: error = new Error( 'WebSocket is CLOSING' ); break;
+                case 3: error = new Error( 'WebSocket is CLOSED' ); break;
+                default: error = new Error( 'WebSocket is not in OPEN ready state. State is:'+ state ) ;break;
+            }
+            self.trigger( 'error', error );
+            return callback( error );
+        }
+
+        if (typeof obj === 'string') {
+            this.socket.send( obj );
+            if ( callback ) { 
+                return callback(); 
+            }
         } else {
-            var str, wasError = false;
+            var str;
             try {
                 str = JSON.stringify(obj);
-            } catch (e) {
-                wasError = true;
-                if (callback) { callback(e); }
+            } catch ( e ) {
+                self.trigger( 'error', e );
+                if ( callback ) { 
+                    return callback(e); 
+                }
             }
-            if (!wasError) {
-                this.socket.send(str);
-                if (callback) { callback(); }
+            this.socket.send(str);
+            if ( callback ) { 
+                return callback(); 
             }
         }
     }
