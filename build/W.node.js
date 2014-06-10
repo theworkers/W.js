@@ -55,6 +55,8 @@ var countedCallbackMixin = {
     }
 };
 
+
+
 var breaker = {};
 var nativeForEach = Array.prototype.forEach;
 function each ( obj, iterator, context ) {
@@ -74,6 +76,9 @@ function each ( obj, iterator, context ) {
     }
 }
 
+function error ( msg ) {
+    throw new Error( msg );
+}
 var eventMixin = {
     on : function ( event,  callback ) {
         if ( typeof callback !== 'function' ) {
@@ -162,6 +167,11 @@ function flip( fn ) {
     return function () { 
         return fn.apply( fn, Array.prototype.slice.call( arguments ).reverse() ); 
     };
+}
+function ifUndefined ( val, fn ) {
+    if ( typeof val === 'undefined' ) {
+	fn();
+    }
 }
 // interpose( array, seperator ) returns [ item, seperator, item, seperator, item ]
 function interpose( arr, seperator) {
