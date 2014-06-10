@@ -18,7 +18,7 @@ var JSONSocketConnection = W.Object.extend({
         W.extend(this, W.eventMixin);
         this.socketUrl = options.socketUrl;
         this._connectionDesired = false;
-        this.attemptReconnectionAfterMS = (typeof attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 1000;
+        this.attemptReconnectionAfterMS = (typeof options.attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 1000;
     },
     openSocketConnection : function () {
         this._connectionDesired = true;
