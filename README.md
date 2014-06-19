@@ -1,8 +1,8 @@
 # W.js Version 4
 
-A snippets repository and welterweight library used by [The Workers](http:://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/).
+A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/).
 
-[The Workers](http:://theworkers.net) are a creative coding studio in East London. 
+[The Workers](http://theworkers.net) are a creative coding studio in East London. 
 
 Used on projects such as:
 
