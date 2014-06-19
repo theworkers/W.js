@@ -21,7 +21,7 @@
         flip : flip,
         partition : partition,
         flatten : flatten,
-        Promise : Promise,
+        promise : promise,
         last : last,
         first : first,
         rest : rest

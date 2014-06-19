@@ -6,18 +6,18 @@ if (typeof module !== 'undefined' && module.exports) {
 describe( 'Promise', function () {
 
     it( 'should be a function', function () {
-        assert.equal( typeof W.Promise, 'function' );
+        assert.equal( typeof W.promise, 'function' );
     });
 
     it( 'should not throw', function () {
         assert.doesNotThrow( function () {
-            var promise = W.Promise( function () {}  );
+            var promise = W.promise( function () {}  );
         });
     });
 
     describe( 'success', function () {
         it( 'should get called', function ( done )  {
-            var p = W.Promise( function ( resolve, reject ) {
+            var p = W.promise( function ( resolve, reject ) {
                 resolve();
             });
             p.success( function () {
@@ -32,7 +32,7 @@ describe( 'Promise', function () {
         var returnedError;
 
         it( 'should get called', function ( done )  {
-            var p = W.Promise( function ( resolve, reject ) {
+            var p = W.promise( function ( resolve, reject ) {
                 reject( error );
             });
             p.error( function ( err ) {
@@ -51,7 +51,7 @@ describe( 'Promise', function () {
     describe( 'done', function () {
         describe( 'with resolve', function () {
             it( 'should fire with correct args', function ( done ) {
-                var p = W.Promise( function ( resolve, reject ) {
+                var p = W.promise( function ( resolve, reject ) {
                     resolve( 1, 2 );
                 });
                 p.done( function ( err, v1, v2 ) {
@@ -64,7 +64,7 @@ describe( 'Promise', function () {
         }); 
         describe( 'with reject', function ( done ) {
             it ( 'should be fired with an error', function ( done ) {
-                var p = W.Promise( function ( resolve, reject ) {
+                var p = W.promise( function ( resolve, reject ) {
                     reject();
                 });
                 p.done( function ( err ) {
@@ -79,7 +79,7 @@ describe( 'Promise', function () {
         it ( 'should fire with a function ', function ( done ) {
             var t = 0;
             var timeoutId;
-            var p = W.Promise( function ( resolve, reject ) {
+            var p = W.promise( function ( resolve, reject ) {
                 timeoutId = setTimeout( function () {
                     t = 2;
                 }, 100 );
@@ -101,13 +101,13 @@ describe( 'Promise', function () {
         var b = 0;
 
 
-        W.Promise( function ( resolve, reject ) {
+        W.promise( function ( resolve, reject ) {
             setTimeout( resolve, 5 );
         }).success( function () {
             a = 'a';
         });
 
-        W.Promise( function ( resolve, reject ) {
+        W.promise( function ( resolve, reject ) {
             setTimeout( resolve, 0 );
         }).success( function () {
             b = 'b';
