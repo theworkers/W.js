@@ -33,7 +33,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.flip', typeof W.partial );
     utils.checkExists( 'W.partition', typeof W.partition );
     utils.checkExists( 'W.flatten', typeof W.flatten );
-    utils.checkExists( 'W.Promise', typeof W.Promise );
+    utils.checkExists( 'W.promise', typeof W.promise );
     utils.checkExists( 'W.last', typeof W.last );
     
     // ## Color
