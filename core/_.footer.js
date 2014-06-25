@@ -24,6 +24,7 @@
         promise : promise,
         last : last,
         first : first,
-        rest : rest
+        rest : rest,
+        withoutLast : withoutLast
     });
 } ( W ) );

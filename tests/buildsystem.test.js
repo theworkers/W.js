@@ -35,6 +35,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.flatten', typeof W.flatten );
     utils.checkExists( 'W.promise', typeof W.promise );
     utils.checkExists( 'W.last', typeof W.last );
+    utils.checkExists( 'W.withoutLast', typeof W.withoutLast );
     
     // ## Color
     utils.checkExists( 'W.HSLGradient', typeof W.HSLGradient );
