@@ -3,7 +3,6 @@ if (typeof module !== 'undefined' && module.exports) {
     var W = require( "../build/W.node.js" );
 }
 
-
 describe( 'composeAsync', function () {
 
     describe( 'called and conposed of single argument functions', function () {
@@ -19,7 +18,6 @@ describe( 'composeAsync', function () {
             assert.equal(typeof composed, 'function' );
         });
         it( 'should should call its callback with the correct call count', function ( done ) {
-            console.log( 'hello!!!!!' );
             composed({inc:0}, function (acc) {
                 assert.equal( callcount, 3 );
                 assert.equal( acc.inc, 3 );
