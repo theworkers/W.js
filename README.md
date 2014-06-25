@@ -40,6 +40,8 @@ Used on projects such as:
 * W.first
 * W.last
 * W.withoutLast
+* W.toArray
+* W.composeAsync
 
 #### Client
 

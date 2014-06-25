@@ -25,6 +25,8 @@
         last : last,
         first : first,
         rest : rest,
-        withoutLast : withoutLast
+        withoutLast : withoutLast,
+        toArray : toArray,
+        composeAsync : composeAsync
     });
 } ( W ) );

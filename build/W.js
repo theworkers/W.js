@@ -39,6 +39,31 @@ function clone ( obj ) {
     return target;
 }
 
+// __Description:__ Composes an array of functions into a single function which, when 
+// called, will execute each of the functions sequentially and asynchronously, 
+// passing on any returned arguments on to the next and finally the callback of the 
+// return signature. When each of the functions in the array is called, the final
+// argument will be the caller of the next.  
+// __Arguments:__ `fns<Array:Functions>`
+// __Returns:__ a function with the signture (args...<any>, callback<function>).
+function composeAsync ( fns ) {
+    return function () {
+        var args = toArray( arguments );
+        var finishedCallback = W.last( args );
+        var initialArgs = W.withoutLast( args );
+        var idx = -1;
+        function next () {
+            var args = toArray( arguments );
+            if ( ++idx === fns.length-1 ) {
+                args.push( finishedCallback );
+            } else {
+                args.push( next );
+            }
+            fns[ idx ].apply( this, args );
+        }
+        next.apply( this, initialArgs );
+    };
+}
 var countedCallbackMixin = {
     getCountedCallback : function () {
         var self = this;
@@ -919,6 +944,11 @@ Timer.prototype = {
     }
 };
 
+// Can be used to turn arguments in to an array
+// For example: var args = toArray( arguments );
+function toArray ( obj ) {
+    return Array.prototype.slice.call( obj );
+}
 function withoutLast ( arr ) {
     return Array.prototype.slice.call( arr, 0, arr.length-1 );
 }
@@ -949,7 +979,9 @@ function withoutLast ( arr ) {
         last : last,
         first : first,
         rest : rest,
-        withoutLast : withoutLast
+        withoutLast : withoutLast,
+        toArray : toArray,
+        composeAsync : composeAsync
     });
 } ( W ) );
 
