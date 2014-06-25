@@ -15,7 +15,8 @@ describe( "Buildsystem for node", function () {
 	utils.checkExists( 'W.jadeMiddleware', typeof W.jadeMiddleware );
 	utils.checkExists( 'W.Geolocate', typeof W.Geolocate );
 	utils.checkExists( 'W.cssPrefixerMiddleware', typeof W.cssPrefixerMiddleware );
-	utils.checkExists( 'W.serve-w-js-middleware.js', typeof W.serveWJsMiddleware );
+	utils.checkExists( 'W.js-middleware.js', typeof W.jsMiddleware );
+	utils.checkExists( 'W.js-min-middleware.js', typeof W.jsMiddleware );
 
 	// ## Redis
 	utils.checkExists( 'W.redisReferrerStorage', typeof W.redisReferrerStorage );

@@ -42,6 +42,7 @@ Used on projects such as:
 * W.withoutLast
 * W.toArray
 * W.composeAsync
+* W.isUndefined
 
 #### Client
 

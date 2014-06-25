@@ -27,6 +27,7 @@
         rest : rest,
         withoutLast : withoutLast,
         toArray : toArray,
-        composeAsync : composeAsync
+        composeAsync : composeAsync,
+        isUndefined : isUndefined
     });
 } ( W ) );

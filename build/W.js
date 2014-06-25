@@ -223,6 +223,10 @@ function isOk( obj ) {
     }
     return !!obj;
 }
+// Checks that all passed arguments are not undefined
+function isUndefined () {
+	return Array.prototype.every.call( arguments, function (v) { return typeof v === 'undefined'; } );
+}
 function last( arr ) {
     return arr[ arr.length - 1 ];
 }
@@ -981,7 +985,8 @@ function withoutLast ( arr ) {
         rest : rest,
         withoutLast : withoutLast,
         toArray : toArray,
-        composeAsync : composeAsync
+        composeAsync : composeAsync,
+        isUndefined : isUndefined
     });
 } ( W ) );
 

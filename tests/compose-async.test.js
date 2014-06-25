@@ -5,7 +5,8 @@ if (typeof module !== 'undefined' && module.exports) {
 
 describe( 'composeAsync', function () {
 
-    describe( 'called and conposed of single argument functions', function () {
+    describe( 'composed of single argument functions when called', function () {
+
         var callcount = 0;
 
         var composed = W.composeAsync([
@@ -33,7 +34,7 @@ describe( 'composeAsync', function () {
         });
     });
 
-    describe( 'called and conposed of zero argument functions', function () {
+    describe( 'composed of zero argument functions when called', function () {
         var callcount = 0;
 
         var composed = W.composeAsync([
