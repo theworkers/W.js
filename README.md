@@ -39,6 +39,7 @@ Used on projects such as:
 * W.rest
 * W.first
 * W.last
+* W.withoutLast
 
 #### Client
 
