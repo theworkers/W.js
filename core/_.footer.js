@@ -28,6 +28,7 @@
         withoutLast : withoutLast,
         toArray : toArray,
         composeAsync : composeAsync,
-        isUndefined : isUndefined
+        isUndefined : isUndefined,
+        call : call
     });
 } ( W ) );

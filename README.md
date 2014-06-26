@@ -43,6 +43,7 @@ Used on projects such as:
 * W.toArray
 * W.composeAsync
 * W.isUndefined
+* W.call
 
 #### Client
 
