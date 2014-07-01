@@ -13,5 +13,6 @@
   },
   "optionalDependencies": {
     "gl-matrix": "^2.1.0"
-  }
+  },
+  "dependencies": {}
 }

@@ -856,8 +856,9 @@ function Sequence(fn) {
  *     .start();
  */
 function sequence (fn) {
-    return new Sequencer(fn);
+    return new Sequence(fn);
 }
+
 // Returns the elasped time since last
 // tick. Also overriding so the time
 // can be maually set so as not a
