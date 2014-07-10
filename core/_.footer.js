@@ -29,6 +29,8 @@
         toArray : toArray,
         composeAsync : composeAsync,
         isUndefined : isUndefined,
-        call : call
+        call : call,
+        partialRight : partialRight,
+        compose : compose
     });
 } ( W ) );

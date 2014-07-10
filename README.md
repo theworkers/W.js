@@ -35,7 +35,7 @@ Used on projects such as:
 * W.flip
 * W.partition
 * W.flatten
-* W.Promise
+* W.promise
 * W.rest
 * W.first
 * W.last
@@ -44,6 +44,8 @@ Used on projects such as:
 * W.composeAsync
 * W.isUndefined
 * W.call
+* W.partialRight
+* W.compose
 
 #### Client
 

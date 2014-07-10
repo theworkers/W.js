@@ -77,6 +77,14 @@ function composeAsync ( fns ) {
         next.apply( this, initialArgs );
     };
 }
+function compose( fns ) {
+    var args = arguments;
+    return function () {
+       return W.toArray( args ).reduce( function ( acc, fn, idx ) {
+            return ( idx === 0 ) ? fn.apply( this, acc ) : fn( acc );
+        }, arguments ); 
+    };
+}
 var countedCallbackMixin = {
     getCountedCallback : function () {
         var self = this;
@@ -415,6 +423,12 @@ function objExtend (protoProps, classProps) {
 
 function Obj () {}
 Obj.extend = objExtend;
+function partialRight ( fn ) {
+    var args = W.rest( W.toArray( arguments ) );
+    return function () {
+        return fn.apply( this, W.toArray( arguments ).concat( args ) );
+    };
+} 
 function partial( fn, arg1, arg2, etc ) {
     var rest = Array.prototype.slice.call( arguments, 1 );
     return function () {
@@ -1001,7 +1015,9 @@ function withoutLast ( arr ) {
         toArray : toArray,
         composeAsync : composeAsync,
         isUndefined : isUndefined,
-        call : call
+        call : call,
+        partialRight : partialRight,
+        compose : compose
     });
 } ( W ) );
 
