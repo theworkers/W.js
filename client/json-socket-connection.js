@@ -19,7 +19,7 @@ var JSONSocketConnection = W.Object.extend({
         W.extend(this, W.eventMixin);
         this.socketUrl = options.socketUrl;
         this._connectionDesired = false;
-        this.attemptReconnectionAfterMS = (typeof options.attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 1000;
+        this.attemptReconnectionAfterMS = (typeof options.attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 10000;
     },
     openSocketConnection : function () {
         this._connectionDesired = true;
@@ -34,7 +34,7 @@ var JSONSocketConnection = W.Object.extend({
         this.socket.onclose = function () {
             self.trigger('closed');
             if (self._connectionDesired) {
-                setTimeout(W.bind(self.openSocketConnection, self), self.attemptReconnectionAfter);
+                setTimeout(W.bind(self.openSocketConnection, self), self.attemptReconnectionAfterMS);
                 self.trigger('reconnecting');
             } else {
                 self.trigger('closed successfully');
