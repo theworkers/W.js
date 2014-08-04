@@ -79,22 +79,25 @@ Router.prototype.trigger = function (path) {
                 ++i;
             }
             if (matchingRoute) {
-                W.loop(matchingRoute.callbacks.length, function (i, next, end) {
-                    var callback = matchingRoute.callbacks[i];
-                    // convert the array with keys back to an object
-                    var route = {
-                        method : promise.method,
-                        params : {},
-                        path : path
-                    };
-                    Object.keys(matchingRoute.params).forEach(function (key) {
-                        route.params[key] = matchingRoute.params[key];
-                    });
-                    var args = [route];
-                    for (var j=1; j<triggerArguments.length; j++) {
-                        args.push(triggerArguments[j]);
-                    }
-                    args.push(next);
+                // convert the array with keys back to an object
+                var route = {
+                    method : promise.method,
+                    params : {},
+                    path : path
+                };
+                Object.keys(matchingRoute.params).forEach(function (key) {
+                    route.params[key] = matchingRoute.params[key];
+                });
+                var args = [route];
+                for (var j=1; j<triggerArguments.length; j++) {
+                    args.push(triggerArguments[j]);
+                }
+                args.push( null ); // holder for next
+                // Action all sequentally
+                W.loop(matchingRoute.callbacks.length, function ( i, next, end ) {
+                    var callback = matchingRoute.callbacks[ i ];
+                    // Updated the 
+                    args[ args.length - 1 ] = next;
                     callback.apply(this, args);
                 }, function () {
                     promise.allCallbacksDidNext();
