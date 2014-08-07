@@ -28,8 +28,8 @@ var JSONSocketConnection = W.Object.extend({
         this.socket.onopen = function () {
             self.trigger('open');
         };
-        this.socket.onerror = function () {
-            self.trigger('error');
+        this.socket.onerror = function ( error ) {
+            self.trigger('error',error);
         };
         this.socket.onclose = function () {
             self.trigger('closed');
