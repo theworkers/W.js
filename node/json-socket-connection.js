@@ -79,20 +79,16 @@ JSONSocketConnection.prototype.closeSocketConnection = function () {
 // @param callback <function> - called with (err)
 JSONSocketConnection.prototype.send = function (obj, callback) {
     if (typeof obj === 'string') {
-        this.socket.send(obj);
-        if (callback) { callback(); }
+        this.socket.send(obj, callback);
     } else {
-        var str, wasError = false;
+        var str;
         try {
             str = JSON.stringify(obj);
         } catch (e) {
-            wasError = true;
             if (callback) { callback(e); }
+            return;
         }
-        if (!wasError) {
-            this.socket.send(str);
-            if (callback) { callback(); }
-        }
+        this.socket.send(str, callback);
     }
 };
 
