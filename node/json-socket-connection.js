@@ -42,6 +42,9 @@ JSONSocketConnection.prototype.openSocketConnection = function () {
     };
     this.socket.onclose = errorHandler;
     this.socket.onerror = errorHandler;
+    // WS Method
+    this.socket.on( 'error', errorHandler );
+    this.socket.on( 'close', errorHandler );
     this.socket.onmessage = function (message) {
         self.emit('message', message);
         var wasError = false;
