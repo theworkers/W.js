@@ -22,7 +22,7 @@ var WebSocket = require( 'ws' );
 function JSONSocketConnection ( options ) {
     this.socketUrl = options.socketUrl;
     this._connectionDesired = false;
-    this.attemptReconnectionAfterMS = (typeof attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 1000;
+    this.attemptReconnectionAfterMS = (typeof options.attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 1000;
 }
 
 // Add event emitter
