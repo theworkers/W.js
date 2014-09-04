@@ -5,7 +5,7 @@
 // argument will be the caller of the next.  
 // __Arguments:__ `fns<Functions>...`
 // __Returns:__ a function with the signture (args...<any>, callback<function>).
-function composeAsync ( fns ) {
+function composeAsync () {
     var fns = toArray( arguments );
     return function () {
         var args = toArray( arguments );
