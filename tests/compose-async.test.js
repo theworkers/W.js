@@ -9,11 +9,11 @@ describe( 'composeAsync', function () {
 
         var callcount = 0;
 
-        var composed = W.composeAsync([
+        var composed = W.composeAsync(
             function ( acc, next ) { ++callcount; ++acc.inc; next( acc ); },
             function ( acc, next ) { ++callcount; ++acc.inc; next( acc ); },
             function ( acc, next ) { ++callcount; ++acc.inc; next( acc ); }
-        ]);
+        );
 
         it( 'should return have return a function ', function (  ) {
             assert.equal(typeof composed, 'function' );
@@ -37,11 +37,11 @@ describe( 'composeAsync', function () {
     describe( 'composed of zero argument functions when called', function () {
         var callcount = 0;
 
-        var composed = W.composeAsync([
+        var composed = W.composeAsync(
             function ( next ) { ++callcount; next(); },
             function ( next ) { ++callcount; next(); },
             function ( next ) { ++callcount; next(); }
-        ]);
+        );
 
         it( 'should return have return a function ', function (  ) {
             assert.equal( typeof composed, 'function' );

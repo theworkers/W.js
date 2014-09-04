@@ -3,9 +3,10 @@
 // passing on any returned arguments on to the next and finally the callback of the 
 // return signature. When each of the functions in the array is called, the final
 // argument will be the caller of the next.  
-// __Arguments:__ `fns<Array:Functions>`
+// __Arguments:__ `fns<Functions>...`
 // __Returns:__ a function with the signture (args...<any>, callback<function>).
 function composeAsync ( fns ) {
+    var fns = toArray( arguments );
     return function () {
         var args = toArray( arguments );
         var finishedCallback = W.last( args );
