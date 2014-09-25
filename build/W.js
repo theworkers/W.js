@@ -369,6 +369,7 @@ function loop ( iterations, fn, callback ) {
     return next;
 }
 
+
 function Middleware ( options ) {
     var middleware = [];
     
@@ -787,7 +788,7 @@ Route.prototype.match = function(path){
 
 // Borrowed from express utils
 function pathRegexp(path, keys, sensitive, strict) {
-    if (toString.call(path) == '[object RegExp]') return path;
+    if (''+path == '[object RegExp]') return path;
     if (Array.isArray(path)) path = '(' + path.join('|') + ')';
     path = path
         .concat(strict ? '' : '/?')
