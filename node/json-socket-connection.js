@@ -5,7 +5,7 @@ var EventEmitter = require( 'events' ).EventEmitter;
 var util = require( 'util' );
 
 // #NPM 
-var WebSocket = require( 'ws' );
+var WS = require( 'ws' );
 
 // #JSONSocketConnection
 // Options
@@ -22,7 +22,7 @@ var WebSocket = require( 'ws' );
 function JSONSocketConnection ( options ) {
     this.socketUrl = options.socketUrl;
     this._connectionDesired = false;
-    this.attemptReconnectionAfterMS = (typeof options.attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 1000;
+    this.attemptReconnectionAfterMS = (typeof options.attemptReconnectionAfterMS !== 'undefined') ? options.attemptReconnectionAfterMS : 10000;
 }
 
 // Add event emitter
@@ -31,21 +31,49 @@ util.inherits(JSONSocketConnection, EventEmitter);
 JSONSocketConnection.prototype.openSocketConnection = function () {
     this._connectionDesired = true;
     var self = this;
-    this.socket = null;
+    console.log( 'openSocketConnection' );
+    // if ( this.socket && ( this.socket.readyState === WebSocket.CONNECTING || this.socket.readyState === WebSocket.OPEN ||  this.socket.readyState === WebSocket.CLOSING ) ) {
+    //     // Already connecting
+    //     var state  = '';
+    //     setTimeout( function () { 
+    //         self.openSocketConnection.call( self );
+    //     }, self.attemptReconnectionAfterMS );
+    //     return;
+    // } else if ( this.socket ) {
+    //     // self.socket.onclose = undefined;
+    //     // self.socket.onmessage = undefined;
+    //     // self.socket.onerror = undefined;
+    //     // delete self.socket;
+    // }
+    console.log( 'Connecting 123', self.socketUrl );
+    //this.socket = null;
     try {
-        this.socket = new WebSocket(this.socketUrl); 
+        self.socket = new WS( self.socketUrl ); 
     } catch (err) {
-        self.emit('error', err);
+        console.log( 'Failed to create WS' );
+        return self.emit( 'error', err );
     }
-    this.socket.onopen = function () {
+    self.socket.on( 'open', function () {
         self.emit('open');
-    };
-    this.socket.onclose = errorHandler;
-    this.socket.onerror = errorHandler;
-    // WS Method
-    this.socket.on( 'error', errorHandler );
-    this.socket.on( 'close', errorHandler );
-    this.socket.onmessage = function (message) {
+    });
+
+    self.socket.on( 'close', function () {
+        shouldReconnect();
+        if ( !self._connectionDesired ) {
+            self.emit( 'closed successfully' );
+        }
+    });
+
+    self.socket.on( 'error', function ( err ) {
+        if ( err.code && err.code === 'ECONNREFUSED' ) {
+            console.log( 'connnection refused', 'will close' );
+            shouldReconnect();
+        } else {
+            console.log( 'ws error', err );
+        }
+    });
+
+    self.socket.on( 'message', function ( message ) {
         self.emit('message', message);
         var wasError = false;
         try  {
@@ -58,19 +86,25 @@ JSONSocketConnection.prototype.openSocketConnection = function () {
         if (!wasError) {
             self.emit('json', message);
         }
-    };
+    });
 
-    function errorHandler() {
-        self.emit('closed');
-        if (self._connectionDesired) {
+    function shouldReconnect () {
+        if ( self._connectionDesired ) {
+            self.socket.close();
+            // clean up
+            self.socket.onclose = undefined;
+            self.socket.onmessage = undefined;
+            self.socket.onerror = undefined;
+            delete self.socket;
+            // start again
             setTimeout(function () {
+                console.log( 'Reconnecting' );
                 self.openSocketConnection();
-            }, self.attemptReconnectionAfterMS);
-            self.emit('reconnecting');
-        } else {
-            self.emit('closed successfully');
+            }, self.attemptReconnectionAfterMS );
+            self.emit( 'reconnecting' );
         }
     }
+
 };
 
 JSONSocketConnection.prototype.closeSocketConnection = function () {
@@ -81,6 +115,7 @@ JSONSocketConnection.prototype.closeSocketConnection = function () {
 // @param obj <string/object> - if object it will be strignified
 // @param callback <function> - called with (err)
 JSONSocketConnection.prototype.send = function (obj, callback) {
+    if ( !this.socket ) { return; }
     if (typeof obj === 'string') {
         this.socket.send(obj, callback);
     } else {
@@ -108,4 +143,17 @@ JSONSocketConnection.prototype.off = function () {
 };
 
 module.exports = JSONSocketConnection;
+
+// # Utils
+
+function getStrForReadyState ( readyState ) {
+    var state = "";
+    switch ( readyState ) {
+        case WS.CONNECTING: state = "Connecting"; break;
+        case WS.OPEN: state = "Open"; break;
+        case WS.CLOSING: state = "Closing"; break;
+        case WS.CLOSED: state = "Closed"; break;
+    }
+    return state;
+}
 
