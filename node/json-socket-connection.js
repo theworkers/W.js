@@ -4,7 +4,7 @@
 var EventEmitter = require( 'events' ).EventEmitter;
 var util = require( 'util' );
 
-// #NPM 
+// #NPM
 var WS = require( 'ws' );
 
 // #JSONSocketConnection
@@ -31,24 +31,9 @@ util.inherits(JSONSocketConnection, EventEmitter);
 JSONSocketConnection.prototype.openSocketConnection = function () {
     this._connectionDesired = true;
     var self = this;
-    console.log( 'openSocketConnection' );
-    // if ( this.socket && ( this.socket.readyState === WebSocket.CONNECTING || this.socket.readyState === WebSocket.OPEN ||  this.socket.readyState === WebSocket.CLOSING ) ) {
-    //     // Already connecting
-    //     var state  = '';
-    //     setTimeout( function () { 
-    //         self.openSocketConnection.call( self );
-    //     }, self.attemptReconnectionAfterMS );
-    //     return;
-    // } else if ( this.socket ) {
-    //     // self.socket.onclose = undefined;
-    //     // self.socket.onmessage = undefined;
-    //     // self.socket.onerror = undefined;
-    //     // delete self.socket;
-    // }
-    console.log( 'Connecting 123', self.socketUrl );
-    //this.socket = null;
+
     try {
-        self.socket = new WS( self.socketUrl ); 
+        self.socket = new WS( self.socketUrl );
     } catch (err) {
         console.log( 'Failed to create WS' );
         return self.emit( 'error', err );
@@ -112,7 +97,7 @@ JSONSocketConnection.prototype.closeSocketConnection = function () {
     this._connectionDesired = false;
     this.socket.close();
 };
-        
+
 // @param obj <string/object> - if object it will be strignified
 // @param callback <function> - called with (err)
 JSONSocketConnection.prototype.send = function (obj, callback) {
@@ -140,7 +125,7 @@ JSONSocketConnection.prototype.off = function () {
         this.removeAllListeners( arguments[1] );
     } else {
         this.removeListener.apply( this, arguments );
-    }   
+    }
 };
 
 module.exports = JSONSocketConnection;
@@ -157,4 +142,3 @@ function getStrForReadyState ( readyState ) {
     }
     return state;
 }
-
