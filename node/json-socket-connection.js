@@ -31,6 +31,22 @@ util.inherits(JSONSocketConnection, EventEmitter);
 JSONSocketConnection.prototype.openSocketConnection = function () {
     this._connectionDesired = true;
     var self = this;
+    console.log( 'openSocketConnection' );
+    // if ( this.socket && ( this.socket.readyState === WebSocket.CONNECTING || this.socket.readyState === WebSocket.OPEN ||  this.socket.readyState === WebSocket.CLOSING ) ) {
+    //     // Already connecting
+    //     var state  = '';
+    //     setTimeout( function () { 
+    //         self.openSocketConnection.call( self );
+    //     }, self.attemptReconnectionAfterMS );
+    //     return;
+    // } else if ( this.socket ) {
+    //     // self.socket.onclose = undefined;
+    //     // self.socket.onmessage = undefined;
+    //     // self.socket.onerror = undefined;
+    //     // delete self.socket;
+    // }
+    console.log( 'Connecting 123', self.socketUrl );
+    //this.socket = null;
     try {
         self.socket = new WS( self.socketUrl ); 
     } catch (err) {
@@ -38,7 +54,8 @@ JSONSocketConnection.prototype.openSocketConnection = function () {
         return self.emit( 'error', err );
     }
     self.socket.on( 'open', function () {
-        self.emit('open');
+        console.log( 'opened SocketConnection' );
+        self.emit( 'open' );
     });
 
     self.socket.on( 'close', function () {
@@ -50,7 +67,7 @@ JSONSocketConnection.prototype.openSocketConnection = function () {
 
     self.socket.on( 'error', function ( err ) {
         if ( err.code && err.code === 'ECONNREFUSED' ) {
-            console.log( 'connnection refused', 'will close' );
+            console.log( 'JSONSocketConnnection connection refused', 'will close' );
             shouldReconnect();
         } else {
             console.log( 'ws error', err );
@@ -58,16 +75,16 @@ JSONSocketConnection.prototype.openSocketConnection = function () {
     });
 
     self.socket.on( 'message', function ( message ) {
-        self.emit('message', message);
+        self.emit( 'message', message);
         var wasError = false;
         try  {
-            message = JSON.parse( message.data );
+            message = JSON.parse( message );
         }  catch (e) {
-            self.emit('nonjson', message.data);
+            self.emit('nonjson', message );
             wasError = true;
             return;
         }
-        if (!wasError) {
+        if ( !wasError ) {
             self.emit('json', message);
         }
     });
