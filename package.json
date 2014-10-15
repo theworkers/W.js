@@ -1,6 +1,6 @@
 {
   "name": "w-js",
-  "version": "4.30.0",
+  "version": "4.30.1",
   "main": "build/W.node.js",
   "homepage": "https://github.com/theworkers/W.js",
   "repository": {
