@@ -39,7 +39,6 @@ JSONSocketConnection.prototype.openSocketConnection = function () {
         return self.emit( 'error', err );
     }
     self.socket.on( 'open', function () {
-        console.log( 'opened SocketConnection' );
         self.emit( 'open' );
     });
 

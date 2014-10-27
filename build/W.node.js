@@ -369,7 +369,6 @@ function loop ( iterations, fn, callback ) {
     return next;
 }
 
-
 function Middleware ( options ) {
     var middleware = [];
     
@@ -1329,13 +1328,13 @@ function backEaseOut (p) {
 }
 function bounceEaseInOut (p) {
     if(p < 0.5) {
-        return 0.5 * W.Math.bounceEaseIn(p*2);
+        return 0.5 * bounceEaseIn(p*2);
     } else {
-        return 0.5 * W.Math.bounceEaseOut(p * 2 - 1) + 0.5;
+        return 0.5 * bounceEaseOut(p * 2 - 1) + 0.5;
     }
 }
 function bounceEaseIn (p) {
-    return 1 - W.Math.bounceEaseOut(1 - p);
+    return 1 - bounceEaseOut(1 - p);
 }
 function bounceEaseOut (p) {
     if(p < 4/11.0) {
