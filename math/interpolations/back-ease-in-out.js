@@ -5,9 +5,9 @@ function backEaseInOut (p) {
     var f;
     if(p < 0.5) {
         f = 2 * p;
-        return 0.5 * (f * f * f - f * Math.sin(f * W.Math.PI));
+        return 0.5 * (f * f * f - f * Math.sin(f * Math.PI));
     } else {
         f = (1 - (2*p - 1));
-        return 0.5 * (1 - (f * f * f - f * Math.sin(f * W.Math.PI))) + 0.5;
+        return 0.5 * (1 - (f * f * f - f * Math.sin(f * Math.PI))) + 0.5;
     }
 }

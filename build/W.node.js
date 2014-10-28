@@ -1311,20 +1311,20 @@ function backEaseInOut (p) {
     var f;
     if(p < 0.5) {
         f = 2 * p;
-        return 0.5 * (f * f * f - f * Math.sin(f * W.Math.PI));
+        return 0.5 * (f * f * f - f * Math.sin(f * Math.PI));
     } else {
         f = (1 - (2*p - 1));
-        return 0.5 * (1 - (f * f * f - f * Math.sin(f * W.Math.PI))) + 0.5;
+        return 0.5 * (1 - (f * f * f - f * Math.sin(f * Math.PI))) + 0.5;
     }
 }
 // Modeled after the overshooting cubic y = x^3-x*sin(x*pi)
 function backEaseIn (p) {
-    return p * p * p - p * Math.sin(p * W.Math.PI);
+    return p * p * p - p * Math.sin(p * Math.PI);
 }
 // Modeled after overshooting cubic y = 1-((1-x)^3-(1-x)*sin((1-x)*pi))
 function backEaseOut (p) {
     var f = (1 - p);
-    return 1 - (f * f * f - f * Math.sin(f * W.Math.PI));  
+    return 1 - (f * f * f - f * Math.sin(f * Math.PI));  
 }
 function bounceEaseInOut (p) {
     if(p < 0.5) {
@@ -1389,19 +1389,19 @@ function cubicEaseOut (p) {
 // y = (1/2)*sin(13pi/2*(2*x))*pow(2, 10 * ((2*x) - 1))      ; [0,0.5)
 // y = (1/2)*(sin(-13pi/2*((2x-1)+1))*pow(2,-10(2*x-1)) + 2) ; [0.5, 1]
 function elasticEaseInOut (p) {
-    if(p < 0.5) {
-        return 0.5 * Math.sin(13 * M_PI_2 * (2 * p)) * Math.pow(2, 10 * ((2 * p) - 1));
+    if( p < 0.5 ) {
+        return 0.5 * Math.sin( 13 * ( Math.PI / 2 ) * (2 * p) ) * Math.pow( 2, 10 * ( ( 2 * p ) - 1) );
     } else {
-        return 0.5 * (Math.sin(-13 * M_PI_2 * ((2 * p - 1) + 1)) * Math.pow(2, -10 * (2 * p - 1)) + 2);
+        return 0.5 * ( Math.sin( -13 * ( Math.PI / 2 ) * ( ( 2 * p - 1 ) + 1 ) ) * Math.pow( 2, -10 * ( 2 * p - 1) ) + 2 );
     }
 }
 // Modeled after the damped sine wave y = sin(13pi/2*x)*pow(2, 10 * (x - 1))
 function elasticEaseIn (p) {
-    return Math.sin(13 * W.Math.PI_2 * p) * Math.pow(2, 10 * (p - 1));
+    return Math.sin(13 * ( Math.PI / 2 ) * p) * Math.pow(2, 10 * (p - 1));
 }
 // Modeled after the damped sine wave y = sin(-13pi/2*(x + 1))*pow(2, -10x) + 1
 function elasticEaseOut (p) {
-    return Math.sin(-13 * W.Math.PI_2 * (p + 1)) * Math.pow(2, -10 * p) + 1;
+    return Math.sin(-13 * ( Math.PI / 2 ) * (p + 1)) * Math.pow(2, -10 * p) + 1;
 }
 // Modeled after the piecewise exponential
 // y = (1/2)2^(10(2x - 1))         ; [0,0.5)
@@ -1482,18 +1482,17 @@ function quinticEaseOut (p) {
 }
 // Modeled after half sine wave
 function sineEaseInOut (p) {
-    return 0.5 * (1 - cos(p * W.Math.PI));
+    return 0.5 * ( 1 - Math.cos( p * Math.PI ) );
 }
 // Modeled after quarter-cycle of sine wave
 function sineEaseIn (p) {
-    return sin((p - 1) * W.Math.PI_2) + 1;
+    return Math.sin( (p - 1) * ( Math.PI / 2 ) ) + 1;
 }
 // Modeled after quarter-cycle of sine wave (different phase)
 function sineEaseOut (p) {
-    return sin(p * W.Math.PI_2);
+    return Math.sin( p * ( Math.PI / 2 ) );
 }
 
-	var all = [ 'linearInterpolation', 'quadraticEaseIn', 'quadraticEaseOut', 'quadraticEaseInOut', 'cubicEaseIn', 'cubicEaseOut', 'cubicEaseInOut', 'quarticEaseIn', 'quarticEaseOut', 'quarticEaseInOut', 'quinticEaseIn', 'quinticEaseOut', 'quinticEaseInOut', 'sineEaseIn', 'sineEaseOut', 'sineEaseInOut', 'circularEaseIn', 'circularEaseOut', 'circularEaseInOut', 'exponentialEaseIn', 'exponentialEaseOut', 'exponentialEaseInOut', 'elasticEaseIn', 'elasticEaseOut', 'elasticEaseInOut', 'backEaseIn', 'backEaseOut', 'backEaseInOut', 'bounceEaseIn', 'bounceEaseOut', 'bounceEaseInOut' ];
 	W.interpolations = {
 		linearInterpolation : linearInterpolation,
 		quadraticEaseIn : quadraticEaseIn, 
@@ -1525,8 +1524,7 @@ function sineEaseOut (p) {
 		backEaseInOut : backEaseInOut, 
 		bounceEaseIn : bounceEaseIn, 
 		bounceEaseOut : bounceEaseOut, 
-		bounceEaseInOut : bounceEaseInOut,
-		all : all
+		bounceEaseInOut : bounceEaseInOut
 	};
 
 } ( W ) );

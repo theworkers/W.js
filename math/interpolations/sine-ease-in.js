@@ -1,4 +1,4 @@
 // Modeled after quarter-cycle of sine wave
 function sineEaseIn (p) {
-    return sin((p - 1) * W.Math.PI_2) + 1;
+    return Math.sin( (p - 1) * ( Math.PI / 2 ) ) + 1;
 }

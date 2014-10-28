@@ -1,4 +1,3 @@
-	var all = [ 'linearInterpolation', 'quadraticEaseIn', 'quadraticEaseOut', 'quadraticEaseInOut', 'cubicEaseIn', 'cubicEaseOut', 'cubicEaseInOut', 'quarticEaseIn', 'quarticEaseOut', 'quarticEaseInOut', 'quinticEaseIn', 'quinticEaseOut', 'quinticEaseInOut', 'sineEaseIn', 'sineEaseOut', 'sineEaseInOut', 'circularEaseIn', 'circularEaseOut', 'circularEaseInOut', 'exponentialEaseIn', 'exponentialEaseOut', 'exponentialEaseInOut', 'elasticEaseIn', 'elasticEaseOut', 'elasticEaseInOut', 'backEaseIn', 'backEaseOut', 'backEaseInOut', 'bounceEaseIn', 'bounceEaseOut', 'bounceEaseInOut' ];
 	W.interpolations = {
 		linearInterpolation : linearInterpolation,
 		quadraticEaseIn : quadraticEaseIn, 
@@ -30,8 +29,7 @@
 		backEaseInOut : backEaseInOut, 
 		bounceEaseIn : bounceEaseIn, 
 		bounceEaseOut : bounceEaseOut, 
-		bounceEaseInOut : bounceEaseInOut,
-		all : all
+		bounceEaseInOut : bounceEaseInOut
 	};
 
 } ( W ) );
