@@ -34,6 +34,7 @@ Used on projects such as:
 * W.partial
 * W.flip
 * W.partition
+* W.toPartition
 * W.flatten
 * W.promise
 * W.rest
