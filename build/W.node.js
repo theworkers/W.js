@@ -436,13 +436,8 @@ function partial( fn, arg1, arg2, etc ) {
         return fn.apply( this, Array.prototype.concat.apply( rest, arguments ) );
     };
 }
-function partition ( arr, length ) {
-    var result = [];
-    for(var i = 0; i < arr.length; i++) {
-    if(i % length === 0) result.push([]);
-        result[result.length - 1].push(arr[i]);
-    }
-    return result;
+function partition ( arr, size ) {
+    return arr.reduce( toPartition( size ), [] );
 }
 // ## promise
 // Returns a promise when passed a function with the signature ( resolve<Function>, reject<Function> ).
@@ -986,6 +981,17 @@ Timer.prototype = {
 function toArray ( obj ) {
     return Array.prototype.slice.call( obj );
 }
+function toPartition ( size ) {
+    var partition = [];
+    return function ( acc, v ) {
+        partition.push( v );
+        if ( partition.length === size ) {
+            acc.push( partition );
+            partition = [];
+        }
+        return acc;
+    };
+}
 function withoutLast ( arr ) {
     return Array.prototype.slice.call( arr, 0, arr.length-1 );
 }
@@ -1022,7 +1028,8 @@ function withoutLast ( arr ) {
         isUndefined : isUndefined,
         call : call,
         partialRight : partialRight,
-        compose : compose
+        compose : compose,
+        toPartition : toPartition 
     });
 } ( W ) );
 

@@ -31,6 +31,7 @@
         isUndefined : isUndefined,
         call : call,
         partialRight : partialRight,
-        compose : compose
+        compose : compose,
+        toPartition : toPartition 
     });
 } ( W ) );

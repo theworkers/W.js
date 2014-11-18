@@ -14,7 +14,7 @@ describe( "partition", function () {
     });
 
     it( 'should return an array when passed an empty array', function () {
-       assert.deepEqual(  W.partition( [1,2,3,4,5,6,7], 3 ), [[1,2,3],[4,5,6],[7]] );
+       assert.deepEqual(  W.partition( [1,2,3,4,5,6,7], 3 ), [[1,2,3],[4,5,6]] );
     });
 
 });
