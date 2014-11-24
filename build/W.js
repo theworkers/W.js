@@ -526,6 +526,11 @@ function promise ( fn ) {
     return chain;
 }
 
+function range ( start, length ) {
+    if ( typeof length === 'undefined' ) { length = start; start = 0;  }
+    return Array.apply( null, Array( length ) ).map( function ( _, i ) { return start + i; } );
+}
+
 function rest ( arr, n ) {
 	return arr.splice( n || 1 );
 } 
@@ -995,7 +1000,8 @@ function toPartition ( size ) {
 function withoutLast ( arr ) {
     return Array.prototype.slice.call( arr, 0, arr.length-1 );
 }
-    extend( W, {
+
+extend( W, {
         bind : bind,
         clone : clone,
         countedCallbackMixin : countedCallbackMixin,
@@ -1029,7 +1035,8 @@ function withoutLast ( arr ) {
         call : call,
         partialRight : partialRight,
         compose : compose,
-        toPartition : toPartition 
+        toPartition : toPartition,
+        range : range
     });
 } ( W ) );
 

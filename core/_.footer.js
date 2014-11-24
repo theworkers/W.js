@@ -1,4 +1,5 @@
-    extend( W, {
+
+extend( W, {
         bind : bind,
         clone : clone,
         countedCallbackMixin : countedCallbackMixin,
@@ -32,6 +33,7 @@
         call : call,
         partialRight : partialRight,
         compose : compose,
-        toPartition : toPartition 
+        toPartition : toPartition,
+        range : range
     });
 } ( W ) );
