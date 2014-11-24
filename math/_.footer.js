@@ -20,7 +20,8 @@
         PI : PI,
         PI_2 : PI_2,
         MatrixStack : MatrixStack,
-        add : add
+        add : add,
+        wrap: wrap
     });
 
 } ( W ) );

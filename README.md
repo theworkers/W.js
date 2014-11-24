@@ -47,6 +47,7 @@ Used on projects such as:
 * W.call
 * W.partialRight
 * W.compose
+* W.range
 
 #### Client
 
@@ -94,6 +95,7 @@ Used on projects such as:
 * W.PI_2
 * W.MatrixStack
 * W.add
+* W.wrap
 * W.interpolations.linearInterpolatio
 * W.interpolations.quadraticEaseIn
 * W.interpolations.quadraticEaseOut

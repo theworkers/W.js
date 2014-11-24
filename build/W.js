@@ -526,9 +526,9 @@ function promise ( fn ) {
     return chain;
 }
 
-function range ( start, length ) {
-    if ( typeof length === 'undefined' ) { length = start; start = 0;  }
-    return Array.apply( null, Array( length ) ).map( function ( _, i ) { return start + i; } );
+function range ( start, stop ) {
+    if ( typeof stop === 'undefined' ) { stop = start; start = 0;  }
+    return Array.apply( null, Array( stop - start ) ).map( function ( _, i ) { return start + i; } );
 }
 
 function rest ( arr, n ) {
@@ -1311,6 +1311,10 @@ function  shuffleArray (arr, leaveOriginalUntouched) {
     return array;
 }
 
+function wrap ( min, max, v ) {
+    return ( ( v-min ) % ( max-min+1 ) + ( max-min+1 ) ) % ( max-min+1 ) + min;
+} 
+
 (new function ( W ) {
 	//  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
 	// Create the namespace
@@ -1564,10 +1568,12 @@ function sineEaseOut (p) {
         PI : PI,
         PI_2 : PI_2,
         MatrixStack : MatrixStack,
-        add : add
+        add : add,
+        wrap: wrap
     });
 
 } ( W ) );
+
 (function ( W ) {
     //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
     // Create the namespace
