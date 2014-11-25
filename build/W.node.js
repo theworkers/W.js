@@ -1290,8 +1290,8 @@ function normalize (value, min, max, ease) {
     value = clamp((value-min)/(max-min),0,1);
     return ease ? ease(value) : value;
 }
-var PI = Math.PI;
 var PI_2 = Math.PI / 2;
+var PI = Math.PI;
 function randomBetween (from, to) {
     return map(Math.random(), 0, 1, from, to);
 }
