@@ -2,7 +2,7 @@
 //
 // Creates                                                                                                                                                                                                                   
 //
-// #£ Examples
+// # Examples
 //
 // _<p>hello</p>_
 // 
