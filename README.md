@@ -13,7 +13,7 @@ Used on projects such as:
 
 ## Features
 
-#### Core
+### Core
 
 [bind](core/bind.js),
 [call](core/call.js),
@@ -51,7 +51,7 @@ Used on projects such as:
 [toPartition](core/to-partition.js),
 [withoutLast](core/without-last.js)
 
-#### Client
+### Client
 
 [clearContext](client/clear-context.js),
 [displayViewMixin](client/display-view-mixin.js),
@@ -63,7 +63,7 @@ Used on projects such as:
 [wrappedContext](client/wrapped-context.js),
 [ZIndexStack](client/z-index-stack.js),
 
-#### Color
+### Color
 
 [HSLGradient](color/hsl-gradient.js),
 [hslToRgb](color/hsl-to-rgb.js),
@@ -73,7 +73,7 @@ Used on projects such as:
 [rgbToHsl](color/rgb-to-hsl.js),
 [rgbToHsv](color/rgb-to-hsv.js)
 
-#### Math
+### Math
 
 [add](math/add.JS),
 [angleBetween](math/angle-between.JS),
@@ -99,7 +99,7 @@ Used on projects such as:
 [shuffleArray](math/shuffle-array.JS),
 [wrap](math/wrap.JS)
 
-##### Interpolations
+#### Interpolations
 
 [backEaseIn](math/interpolations/back-ease-in.js),
 [backEaseInOut](math/interpolations/back-ease-in-out.js),
@@ -133,7 +133,7 @@ Used on projects such as:
 [sineEaseInOut](math/interpolations/sine-ease-in-out.js),
 [sineEaseOut](math/interpolations/sine-ease-out.js)
 
-#### Node
+### Node
 
 [corsMiddleware](node/cors-middleware.js),
 [cssPrefixerMiddleware](node/css-prefixer-middleware.js),
@@ -145,13 +145,13 @@ Used on projects such as:
 [liveReload](node/live-reload.js),
 [WebSocketRepeater](node/web-socket-repeater.js)
 
-#### Redis
+### Redis
 
 [redisReferrerStorage](redis/redis-referrer-storage.js),
 [redisSetStorage](redis/redis-set-storage.js),
 [redisTimeseriesStorage](redis/redis-timeseries-storage.js)
 
-#### String
+### String
 
 [addCommas](string/add-commas.js),
 [contains](string/contains.js),
@@ -163,7 +163,7 @@ Used on projects such as:
 [startsWith](string/starts-with.js),
 [trim](string/trim.js)
 
-#### Util
+### Util
 
 [FileListBuilder](util/file-list-builder.js)
 
