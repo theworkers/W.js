@@ -1,4 +1,3 @@
-function isClose (num, test, tolerance) {
-    tolerance = tolerance || 1;
-    return (num > test-tolerance && num < test+tolerance);
+function isClose ( input, point, tolerance ) {
+    return ( input > point - tolerance && input < point + tolerance );
 }
