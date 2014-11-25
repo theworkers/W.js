@@ -123,4 +123,8 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.isValidEmailAddress', typeof W.isValidEmailAddress );
     utils.checkExists( 'W.makeRedisKey', typeof W.makeRedisKey );
 
+    // ## Client
+    utils.checkExists( 'W.domStr', typeof W.domStr );
+    utils.checkExists( 'W.wrappedContext', typeof W.wrappedContext );
+
 });

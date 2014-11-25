@@ -6,7 +6,8 @@
         polyfillRequestAnimationFrame : polyfillRequestAnimationFrame,
         JSONSocketConnection : JSONSocketConnection,
         displayViewMixin : displayViewMixin,
-        clearContext : clearContext
+        clearContext : clearContext,
+        domStr : domStr
     });
 
 } ( W ) );

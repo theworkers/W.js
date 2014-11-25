@@ -19,9 +19,12 @@ module.exports = function( grunt ) {
         .pop() 
         .push( 'color/' ).pop()
         .push( 'string/' ).pop()
+        .addFile( 'node/_.header.js' )
         .addFile( 'node/_.export.js' )
         .addFile( 'redis/_.export.js' )
-        .addFile( 'client/wrapped-context.js' );
+        .addFile( 'client/wrapped-context.js' )
+        .addFile( 'client/dom-str.js' )
+        .addFile( 'node/_.footer.js' );
 
     // # Project configuration.
     grunt.initConfig({
