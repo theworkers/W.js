@@ -1,0 +1,1 @@
+function join () { return Array.prototype.join.call( arguments, ''  ); }

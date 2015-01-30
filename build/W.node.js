@@ -2002,6 +2002,7 @@ var hasTld = function(str) { var result = str.match(/[a-z0-9.\-]+[.][a-z]{1,4}[\
 function isValidEmailAddress(address) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
 }
+function join () { return Array.prototype.join.call( arguments, ''  ); }
 // `makeRedisKey( 'ross', cairns )` === `'ross:cairns'` 
 function makeRedisKey() {
     return W.interpose( Array.prototype.slice.call( arguments, 0 ), ":" ).join( '' );
