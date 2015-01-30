@@ -9,6 +9,7 @@ A snippets repository and welterweight library used by [The Workers](http://thew
 
 Used on projects such as:
 
+* [After Dark](http://afterdark.io/)
 * [Where You Are](http://where-you-are.com/)
 * [o/o/o/o](http://o-o-o-o.co.uk/)
 * [Music To Move To](http://musictomoveto.co.uk/)
@@ -162,6 +163,7 @@ Used on projects such as:
 [endsWith](string/ends-with.js),
 [hsTld](string/hs-tld.js),
 [isValidEmailAddress](string/is-valid-email-address.js),
+[join](string/join.js),
 [makeRedisKey](string/make-redis-key.js),
 [startsWith](string/starts-with.js),
 [trim](string/trim.js)
