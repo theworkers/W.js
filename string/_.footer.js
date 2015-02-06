@@ -6,6 +6,7 @@
         hsTld : hasTld,
         startsWith : startsWith,
         trim : trim,
+        join : join,
         isValidEmailAddress : isValidEmailAddress,
         makeRedisKey : makeRedisKey
     });

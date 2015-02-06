@@ -42,7 +42,6 @@ function call ( fn ) {
         fn.apply( this, rest( toArray( arguments ) ) );
     }
 }
-
 function clone ( obj ) {
     var target = {};
     for ( var i in obj ) {
@@ -2020,6 +2019,7 @@ var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA
         hsTld : hasTld,
         startsWith : startsWith,
         trim : trim,
+        join : join,
         isValidEmailAddress : isValidEmailAddress,
         makeRedisKey : makeRedisKey
     });
