@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/npm/v/w-js.svg?style=flat)
 ![](https://img.shields.io/npm/dm/w-js.svg)
+![](https://api.travis-ci.org/theworkers/W.js.svg)
 
 A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/).
 
