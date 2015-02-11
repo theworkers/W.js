@@ -78,6 +78,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.MatrixStack', typeof W.MatrixStack );
     utils.checkExists( 'W.add', typeof W.add );
     utils.checkExists( 'W.wrap', typeof W.wrap );
+    utils.checkExists( 'W.makeIntervalMap', typeof W.makeIntervalMap );
 
     // ### Interpolations
     utils.checkExists( 'W.interpolations.linearInterpolation', typeof W.interpolations.linearInterpolation );

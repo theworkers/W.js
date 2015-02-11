@@ -13,6 +13,7 @@
         inRange : inRange,
         isClose : isClose,
         lerp : lerp,
+        makeIntervalMap : makeIntervalMap,
         map : map,
         normalize : normalize,
         randomBetween : randomBetween,

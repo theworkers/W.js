@@ -94,6 +94,7 @@ Used on projects such as:
 [inRange](math/in-range.js),
 [isClose](math/is-close.js),
 [lerp](math/lerp.js),
+[makeMapInterval](math/make-map-interval.js),
 [map](math/map.js),
 [MatrixStack](math/matrix-stack.js),
 [normalize](math/normalize.js),
