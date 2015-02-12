@@ -4,6 +4,11 @@
 ![](https://img.shields.io/npm/dm/w-js.svg)
 [![Build Status](https://travis-ci.org/theworkers/W.js.svg?branch=master)](https://travis-ci.org/theworkers/W.js)
 
+__Node Usage__  
+`npm install w-js`  
+__Browser Usage__  
+`wget https://github.com/theworkers/W.js/blob/master/build/W.min.js`
+
 A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/). [The Workers](http://theworkers.net) are a creative coding studio in East London. 
 
 Used in:
@@ -14,7 +19,7 @@ Used in:
 [o/o/o/o](http://o-o-o-o.co.uk/),
 [Music To Move To](http://musictomoveto.co.uk/),
 [Wyldemag](http://archive.wyldemag.co.uk/),
-[51 Jay Street](http://51jayst.com/)
+[51 Jay St](http://51jayst.com/)
 
 ## Features
 
