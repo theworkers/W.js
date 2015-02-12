@@ -78,6 +78,7 @@ function composeAsync () {
         next.apply( this, initialArgs );
     };
 }
+
 function compose( fns ) {
     var args = arguments;
     return function () {

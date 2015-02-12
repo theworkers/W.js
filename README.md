@@ -4,17 +4,17 @@
 ![](https://img.shields.io/npm/dm/w-js.svg)
 [![Build Status](https://travis-ci.org/theworkers/W.js.svg?branch=master)](https://travis-ci.org/theworkers/W.js)
 
-A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/).
+A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/). [The Workers](http://theworkers.net) are a creative coding studio in East London. 
 
-[The Workers](http://theworkers.net) are a creative coding studio in East London. 
-
-Used on projects such as:
-
-* [After Dark](http://afterdark.io/)
-* [Where You Are](http://where-you-are.com/)
-* [o/o/o/o](http://o-o-o-o.co.uk/)
-* [Music To Move To](http://musictomoveto.co.uk/)
-* [Reset](http://www.bibliothequedesign.com/projects/branding/reset/)
+Used in:
+[After Dark](http://afterdark.io/),
+[Where You Are](http://where-you-are.com/),
+[Reset](http://www.bibliothequedesign.com/projects/branding/reset/),
+[Bloomberg Connects](http://www.tate.org.uk/visit/tate-modern/things-to-do/bloomberg-connects-interactive-activities),
+[o/o/o/o](http://o-o-o-o.co.uk/),
+[Music To Move To](http://musictomoveto.co.uk/),
+[Wyldemag](http://archive.wyldemag.co.uk/),
+[51 Jay Street](http://51jayst.com/)
 
 ## Features
 
@@ -163,7 +163,7 @@ Used on projects such as:
 [contains](string/contains.js),
 [cssGradientString](string/css-gradient-string.js),
 [endsWith](string/ends-with.js),
-[hsTld](string/hs-tld.js),
+[hasTld](string/has-tld.js),
 [isValidEmailAddress](string/is-valid-email-address.js),
 [join](string/join.js),
 [makeRedisKey](string/make-redis-key.js),
