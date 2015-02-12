@@ -4,14 +4,14 @@
 ![](https://img.shields.io/npm/dm/w-js.svg)
 [![Build Status](https://travis-ci.org/theworkers/W.js.svg?branch=master)](https://travis-ci.org/theworkers/W.js)
 
-__Node Usage__  
+_Node Usage_  
 `npm install w-js`  
-__Browser Usage__  
+*Browser Usage*  
 `wget https://github.com/theworkers/W.js/blob/master/build/W.min.js`
 
 A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/). [The Workers](http://theworkers.net) are a creative coding studio in East London. 
 
-Used in:
+Used in:  
 [After Dark](http://afterdark.io/),
 [Where You Are](http://where-you-are.com/),
 [Reset](http://www.bibliothequedesign.com/projects/branding/reset/),
