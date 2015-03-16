@@ -29,6 +29,7 @@ extend( W, {
         withoutLast : withoutLast,
         toArray : toArray,
         composeAsync : composeAsync,
+        isNotUndefined  : isNotUndefined,
         isUndefined : isUndefined,
         call : call,
         partialRight : partialRight,

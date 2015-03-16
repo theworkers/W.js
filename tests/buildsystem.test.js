@@ -39,6 +39,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.toArray', typeof W.toArray );
     utils.checkExists( 'W.composeAsync', typeof W.composeAsync );
     utils.checkExists( 'W.isUndefined', typeof W.isUndefined );
+    utils.checkExists( 'W.isNotUndefined', typeof W.isNotUndefined );
     utils.checkExists( 'W.call', typeof W.call );
     utils.checkExists( 'W.partialRight', typeof W.partialRight );
     utils.checkExists( 'W.compose', typeof W.compose );

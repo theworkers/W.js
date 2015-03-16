@@ -41,6 +41,7 @@ Used in:
 [isNotOk](core/is-not-ok.js),
 [isOk](core/is-ok.js),
 [isUndefined](core/is-undefined.js),
+[isNotUndefined](core/is-not-undefined.js),
 [last](core/last.js),
 [List](core/list.js),
 [loop](core/loop.js),

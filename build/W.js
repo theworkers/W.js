@@ -224,6 +224,9 @@ function interpose( arr, seperator) {
 function isNotOk( obj ) {
     return !isOk( obj );
 }
+function isNotUndefined ( v ) { 
+	return typeof v !== 'undefined';
+}
 function isOk( obj ) {
     if (typeof obj === "undefined") {
         return false;
@@ -1032,6 +1035,7 @@ extend( W, {
         withoutLast : withoutLast,
         toArray : toArray,
         composeAsync : composeAsync,
+        isNotUndefined  : isNotUndefined,
         isUndefined : isUndefined,
         call : call,
         partialRight : partialRight,
