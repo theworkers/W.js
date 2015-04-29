@@ -31,6 +31,7 @@ Used in:
 [compose](core/compose.js),
 [composeAsync](core/compose-async.js),
 [countedCallbackMixin](core/counted-callback-mixin.js),
+[cycle](core/cycle.js),
 [each](core/each.js),
 [eventMixin](core/event-mixin.js),
 [extend](core/extend.js),

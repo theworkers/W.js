@@ -44,6 +44,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.partialRight', typeof W.partialRight );
     utils.checkExists( 'W.compose', typeof W.compose );
     utils.checkExists( 'W.range', typeof W.range );
+    utils.checkExists( 'W.cycle', typeof W.cycle );
     
     // ## Color
     utils.checkExists( 'W.HSLGradient', typeof W.HSLGradient );
