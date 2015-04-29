@@ -103,6 +103,13 @@ var countedCallbackMixin = {
     }
 };
 
+function cycle ( arr ) {
+    var idx = -1;
+    return function () {
+        if ( ++idx >= arr.length ) { idx = 0; }
+        return arr[ idx ]; 
+    };
+}
 var breaker = {};
 var nativeForEach = Array.prototype.forEach;
 function each ( obj, iterator, context ) {
@@ -1006,42 +1013,43 @@ function withoutLast ( arr ) {
 }
 
 extend( W, {
-        bind : bind,
-        clone : clone,
-        countedCallbackMixin : countedCallbackMixin,
-        each : each,
-        eventMixin : eventMixin,
-        extend : extend,
-        List : List,
-        loop : loop,
-        Middleware : Middleware,
-        Sequence : Sequence,
-        sequence : sequence,
-        TickTimer : TickTimer,
-        Timer : Timer,
-        Object : Obj,
-        isOk : isOk,
-        isNotOk : isNotOk,
-        Router : Router,
-        interpose : interpose,
-        partial : partial,
-        flip : flip,
-        partition : partition,
-        flatten : flatten,
-        promise : promise,
-        last : last,
-        first : first,
-        rest : rest,
-        withoutLast : withoutLast,
-        toArray : toArray,
-        composeAsync : composeAsync,
-        isNotUndefined  : isNotUndefined,
-        isUndefined : isUndefined,
-        call : call,
-        partialRight : partialRight,
-        compose : compose,
-        toPartition : toPartition,
-        range : range
+        bind: bind,
+        clone: clone,
+        countedCallbackMixin: countedCallbackMixin,
+        cycle: cycle,
+        each: each,
+        eventMixin: eventMixin,
+        extend: extend,
+        List: List,
+        loop: loop,
+        Middleware: Middleware,
+        Sequence: Sequence,
+        sequence: sequence,
+        TickTimer: TickTimer,
+        Timer: Timer,
+        Object: Obj,
+        isOk: isOk,
+        isNotOk: isNotOk,
+        Router: Router,
+        interpose: interpose,
+        partial: partial,
+        flip: flip,
+        partition: partition,
+        flatten: flatten,
+        promise: promise,
+        last: last,
+        first: first,
+        rest: rest,
+        withoutLast: withoutLast,
+        toArray: toArray,
+        composeAsync: composeAsync,
+        isNotUndefined : isNotUndefined,
+        isUndefined: isUndefined,
+        call: call,
+        partialRight: partialRight,
+        compose: compose,
+        toPartition: toPartition,
+        range: range
     });
 } ( W ) );
 
@@ -1537,65 +1545,65 @@ function sineEaseOut (p) {
 }
 
 	W.interpolations = {
-		linearInterpolation : linearInterpolation,
-		quadraticEaseIn : quadraticEaseIn, 
-		quadraticEaseOut : quadraticEaseOut, 
-		quadraticEaseInOut : quadraticEaseInOut, 
-		cubicEaseIn : cubicEaseIn, 
-		cubicEaseOut : cubicEaseOut, 
-		cubicEaseInOut : cubicEaseInOut, 
-		quarticEaseIn : quarticEaseIn, 
-		quarticEaseOut : quarticEaseOut, 
-		quarticEaseInOut : quarticEaseInOut, 
-		quinticEaseIn : quinticEaseIn, 
-		quinticEaseOut : quinticEaseOut, 
-		quinticEaseInOut : quinticEaseInOut, 
-		sineEaseIn : sineEaseIn, 
-		sineEaseOut : sineEaseOut, 
-		sineEaseInOut : sineEaseInOut, 
-		circularEaseIn : circularEaseIn, 
-		circularEaseOut : circularEaseOut, 
-		circularEaseInOut : circularEaseInOut, 
-		exponentialEaseIn : exponentialEaseIn, 
-		exponentialEaseOut : exponentialEaseOut, 
-		exponentialEaseInOut : exponentialEaseInOut, 
-		elasticEaseIn : elasticEaseIn, 
-		elasticEaseOut : elasticEaseOut, 
-		elasticEaseInOut : elasticEaseInOut, 
-		backEaseIn : backEaseIn, 
-		backEaseOut : backEaseOut, 
-		backEaseInOut : backEaseInOut, 
-		bounceEaseIn : bounceEaseIn, 
-		bounceEaseOut : bounceEaseOut, 
-		bounceEaseInOut : bounceEaseInOut
+		linearInterpolation: linearInterpolation,
+		quadraticEaseIn: quadraticEaseIn, 
+		quadraticEaseOut: quadraticEaseOut, 
+		quadraticEaseInOut: quadraticEaseInOut, 
+		cubicEaseIn: cubicEaseIn, 
+		cubicEaseOut: cubicEaseOut, 
+		cubicEaseInOut: cubicEaseInOut, 
+		quarticEaseIn: quarticEaseIn, 
+		quarticEaseOut: quarticEaseOut, 
+		quarticEaseInOut: quarticEaseInOut, 
+		quinticEaseIn: quinticEaseIn, 
+		quinticEaseOut: quinticEaseOut, 
+		quinticEaseInOut: quinticEaseInOut, 
+		sineEaseIn: sineEaseIn, 
+		sineEaseOut: sineEaseOut, 
+		sineEaseInOut: sineEaseInOut, 
+		circularEaseIn: circularEaseIn, 
+		circularEaseOut: circularEaseOut, 
+		circularEaseInOut: circularEaseInOut, 
+		exponentialEaseIn: exponentialEaseIn, 
+		exponentialEaseOut: exponentialEaseOut, 
+		exponentialEaseInOut: exponentialEaseInOut, 
+		elasticEaseIn: elasticEaseIn, 
+		elasticEaseOut: elasticEaseOut, 
+		elasticEaseInOut: elasticEaseInOut, 
+		backEaseIn: backEaseIn, 
+		backEaseOut: backEaseOut, 
+		backEaseInOut: backEaseInOut, 
+		bounceEaseIn: bounceEaseIn, 
+		bounceEaseOut: bounceEaseOut, 
+		bounceEaseInOut: bounceEaseInOut
 	};
 
 } ( W ) );
 
     W.extend( W, {
-        angleBetween : angleBetween,
-        clamp : clamp,
-        clipNormalized : clipNormalized,
-        colorStringToHex : colorStringToHex,
-        colorValuesToHex : colorValuesToHex,
-        distance : distance,
-        getDynamicallyEasedInterpolation : getDynamicallyEasedInterpolation,
-        dynamicEaseInterpolation : dynamicEaseInterpolation,
-        fitScaleRatio : fitScaleRatio,
-        floatToString : floatToString,
-        hexStringToColorArray : hexStringToColorArray,
-        inRange : inRange,
-        isClose : isClose,
-        lerp : lerp,
-        makeIntervalMap : makeIntervalMap,
-        map : map,
-        normalize : normalize,
-        randomBetween : randomBetween,
-        shuffleArray : shuffleArray,
-        PI : PI,
-        PI_2 : PI_2,
-        MatrixStack : MatrixStack,
-        add : add,
+        angleBetween: angleBetween,
+        clamp: clamp,
+        clipNormalized: clipNormalized,
+        colorStringToHex: colorStringToHex,
+        colorValuesToHex: colorValuesToHex,
+        distance: distance,
+        getDynamicallyEasedInterpolation: getDynamicallyEasedInterpolation,
+        dynamicEaseInterpolation: dynamicEaseInterpolation,
+        fitScaleRatio: fitScaleRatio,
+        floatToString: floatToString,
+        hexStringToColorArray: hexStringToColorArray,
+        inRange: inRange,
+        isClose: isClose,
+        lerp: lerp,
+        makeIntervalMap: makeIntervalMap,
+        map: map,
+        normalize: normalize,
+        randomBetween: randomBetween,
+        shuffleArray: shuffleArray,
+        PI: PI,
+        PI_2: PI_2,
+        MatrixStack: MatrixStack,
+        add: add,
         wrap: wrap
     });
 
@@ -1958,13 +1966,13 @@ function rgbToHsv(r, g, b, ref){
 
   
     W.extend( W, {
-        HSLGradient : HSLGradient,
-        RandomColorSequence : RandomColorSequence,
-        hslToRgb : hslToRgb,
-        hsvToRgb : hsvToRgb,
-        rgbToHsl : rgbToHsl,
-        rgbToHsv : rgbToHsv,
-        randomHex : randomHex
+        HSLGradient: HSLGradient,
+        RandomColorSequence: RandomColorSequence,
+        hslToRgb: hslToRgb,
+        hsvToRgb: hsvToRgb,
+        rgbToHsl: rgbToHsl,
+        rgbToHsv: rgbToHsv,
+        randomHex: randomHex
     });
 
 } ( W ) );
@@ -2040,16 +2048,16 @@ var startsWith = function(str, test) { return str.slice(0, test.length) == test;
 /** String trim leading and ending whitespace */
 var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
     W.extend( W, {
-        addCommas : addCommas,
-        contains : contains,
-        cssGradientString : cssGradientString,
-        endsWith : endsWith,
-        hsTld : hasTld,
-        startsWith : startsWith,
-        trim : trim,
-        join : join,
-        isValidEmailAddress : isValidEmailAddress,
-        makeRedisKey : makeRedisKey
+        addCommas: addCommas,
+        contains: contains,
+        cssGradientString: cssGradientString,
+        endsWith: endsWith,
+        hsTld: hasTld,
+        startsWith: startsWith,
+        trim: trim,
+        join: join,
+        isValidEmailAddress: isValidEmailAddress,
+        makeRedisKey: makeRedisKey
     });
 
 } ( W ) );
@@ -2515,15 +2523,15 @@ ZIndexStack.prototype.sendToFront = function (el) {
 };
 
     W.extend( W, {
-        ZIndexStack : ZIndexStack,
-        wrappedContext : wrappedContext,
-        viewportSize : viewportSize,
-        touchEventViewMixin : touchEventViewMixin,
-        polyfillRequestAnimationFrame : polyfillRequestAnimationFrame,
-        JSONSocketConnection : JSONSocketConnection,
-        displayViewMixin : displayViewMixin,
-        clearContext : clearContext,
-        domStr : domStr
+        ZIndexStack: ZIndexStack,
+        wrappedContext: wrappedContext,
+        viewportSize: viewportSize,
+        touchEventViewMixin: touchEventViewMixin,
+        polyfillRequestAnimationFrame: polyfillRequestAnimationFrame,
+        JSONSocketConnection: JSONSocketConnection,
+        displayViewMixin: displayViewMixin,
+        clearContext: clearContext,
+        domStr: domStr
     });
 
 } ( W ) );

@@ -1,6 +1,6 @@
     W.extend( W, {
-        domStr : domStr,
-        wrappedContext : wrappedContext
+        domStr: domStr,
+        wrappedContext: wrappedContext
     });
 
 } ( W ) );
