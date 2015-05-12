@@ -18,9 +18,11 @@ Used in:
 [Bloomberg Connects](http://www.tate.org.uk/visit/tate-modern/things-to-do/bloomberg-connects-interactive-activities),
 [o/o/o/o](http://o-o-o-o.co.uk/),
 [Music To Move To](http://musictomoveto.co.uk/),
+[Wylde Archive](http://archive.wyldemag.co.uk/),
 [Wyldemag](http://archive.wyldemag.co.uk/),
-[51 Jay St](http://51jayst.com/)
-
+[51 Jay St](http://51jayst.com/),
+[David Newton](http://dnewton.com/)
+ 
 ## Features
 
 ### Core
