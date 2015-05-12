@@ -1,11 +1,11 @@
     W.extend( W, {
         HSLGradient: HSLGradient,
-        RandomColorSequence: RandomColorSequence,
         hslToRgb: hslToRgb,
         hsvToRgb: hsvToRgb,
+        RandomColorSequence: RandomColorSequence,
+        randomHex: randomHex,
         rgbToHsl: rgbToHsl,
-        rgbToHsv: rgbToHsv,
-        randomHex: randomHex
+        rgbToHsv: rgbToHsv
     });
 
 } ( W ) );

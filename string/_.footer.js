@@ -4,11 +4,11 @@
         cssGradientString: cssGradientString,
         endsWith: endsWith,
         hsTld: hasTld,
-        startsWith: startsWith,
-        trim: trim,
-        join: join,
         isValidEmailAddress: isValidEmailAddress,
-        makeRedisKey: makeRedisKey
+        join: join,
+        makeRedisKey: makeRedisKey,
+        startsWith: startsWith,
+        trim: trim
     });
 
 } ( W ) );

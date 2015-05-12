@@ -1,13 +1,13 @@
     W.extend( W, {
-        ZIndexStack: ZIndexStack,
-        wrappedContext: wrappedContext,
-        viewportSize: viewportSize,
-        touchEventViewMixin: touchEventViewMixin,
-        polyfillRequestAnimationFrame: polyfillRequestAnimationFrame,
-        JSONSocketConnection: JSONSocketConnection,
-        displayViewMixin: displayViewMixin,
         clearContext: clearContext,
-        domStr: domStr
+        displayViewMixin: displayViewMixin,
+        domStr: domStr,
+        JSONSocketConnection: JSONSocketConnection,
+        polyfillRequestAnimationFrame: polyfillRequestAnimationFrame,
+        touchEventViewMixin: touchEventViewMixin,
+        viewportSize: viewportSize,
+        wrappedContext: wrappedContext,
+        ZIndexStack: ZIndexStack
     });
 
 } ( W ) );

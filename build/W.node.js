@@ -79,6 +79,27 @@ function composeAsync () {
     };
 }
 
+function composePromisers( fns ) {
+    fns = toArray( arguments );
+    return function () {
+        var args = toArray( arguments );
+        return promise( function ( resolve, reject ) {
+            var idx = -1;
+            (function recur () {
+                if ( ++idx >= fns.length ) {
+                    resolve.apply( this, args );
+                } else {
+                    fns[ idx ].apply( this, args )
+                        .success( function () {
+                            args = toArray( arguments );
+                            recur();
+                        })
+                        .error( reject );
+                }
+            }());
+        });
+    };
+}
 function compose( fns ) {
     var args = arguments;
     return function () {
@@ -1014,42 +1035,43 @@ function withoutLast ( arr ) {
 
 extend( W, {
         bind: bind,
+        call: call,
         clone: clone,
+        compose: compose,
+        composeAsync: composeAsync,
+        composePromisers: composePromisers,
         countedCallbackMixin: countedCallbackMixin,
         cycle: cycle,
         each: each,
         eventMixin: eventMixin,
         extend: extend,
+        first: first,
+        flatten: flatten,
+        flip: flip,
+        interpose: interpose,
+        isNotOk: isNotOk,
+        isNotUndefined : isNotUndefined,
+        isOk: isOk,
+        isUndefined: isUndefined,
+        last: last,
         List: List,
         loop: loop,
         Middleware: Middleware,
+        Object: Obj,
+        partial: partial,
+        partialRight: partialRight,
+        partition: partition,
+        promise: promise,
+        range: range,
+        rest: rest,
+        Router: Router,
         Sequence: Sequence,
         sequence: sequence,
         TickTimer: TickTimer,
         Timer: Timer,
-        Object: Obj,
-        isOk: isOk,
-        isNotOk: isNotOk,
-        Router: Router,
-        interpose: interpose,
-        partial: partial,
-        flip: flip,
-        partition: partition,
-        flatten: flatten,
-        promise: promise,
-        last: last,
-        first: first,
-        rest: rest,
-        withoutLast: withoutLast,
         toArray: toArray,
-        composeAsync: composeAsync,
-        isNotUndefined : isNotUndefined,
-        isUndefined: isUndefined,
-        call: call,
-        partialRight: partialRight,
-        compose: compose,
         toPartition: toPartition,
-        range: range
+        withoutLast: withoutLast
     });
 } ( W ) );
 
@@ -1545,65 +1567,65 @@ function sineEaseOut (p) {
 }
 
 	W.interpolations = {
+		backEaseIn: backEaseIn, 
+		backEaseInOut: backEaseInOut, 
+		backEaseOut: backEaseOut, 
+		bounceEaseIn: bounceEaseIn, 
+		bounceEaseInOut: bounceEaseInOut,
+		bounceEaseOut: bounceEaseOut, 
+		circularEaseIn: circularEaseIn, 
+		circularEaseInOut: circularEaseInOut, 
+		circularEaseOut: circularEaseOut, 
+		cubicEaseIn: cubicEaseIn, 
+		cubicEaseInOut: cubicEaseInOut, 
+		cubicEaseOut: cubicEaseOut, 
+		elasticEaseIn: elasticEaseIn, 
+		elasticEaseInOut: elasticEaseInOut, 
+		elasticEaseOut: elasticEaseOut, 
+		exponentialEaseIn: exponentialEaseIn, 
+		exponentialEaseInOut: exponentialEaseInOut, 
+		exponentialEaseOut: exponentialEaseOut, 
 		linearInterpolation: linearInterpolation,
 		quadraticEaseIn: quadraticEaseIn, 
-		quadraticEaseOut: quadraticEaseOut, 
 		quadraticEaseInOut: quadraticEaseInOut, 
-		cubicEaseIn: cubicEaseIn, 
-		cubicEaseOut: cubicEaseOut, 
-		cubicEaseInOut: cubicEaseInOut, 
+		quadraticEaseOut: quadraticEaseOut, 
 		quarticEaseIn: quarticEaseIn, 
-		quarticEaseOut: quarticEaseOut, 
 		quarticEaseInOut: quarticEaseInOut, 
+		quarticEaseOut: quarticEaseOut, 
 		quinticEaseIn: quinticEaseIn, 
-		quinticEaseOut: quinticEaseOut, 
 		quinticEaseInOut: quinticEaseInOut, 
+		quinticEaseOut: quinticEaseOut, 
 		sineEaseIn: sineEaseIn, 
-		sineEaseOut: sineEaseOut, 
 		sineEaseInOut: sineEaseInOut, 
-		circularEaseIn: circularEaseIn, 
-		circularEaseOut: circularEaseOut, 
-		circularEaseInOut: circularEaseInOut, 
-		exponentialEaseIn: exponentialEaseIn, 
-		exponentialEaseOut: exponentialEaseOut, 
-		exponentialEaseInOut: exponentialEaseInOut, 
-		elasticEaseIn: elasticEaseIn, 
-		elasticEaseOut: elasticEaseOut, 
-		elasticEaseInOut: elasticEaseInOut, 
-		backEaseIn: backEaseIn, 
-		backEaseOut: backEaseOut, 
-		backEaseInOut: backEaseInOut, 
-		bounceEaseIn: bounceEaseIn, 
-		bounceEaseOut: bounceEaseOut, 
-		bounceEaseInOut: bounceEaseInOut
+		sineEaseOut: sineEaseOut
 	};
 
 } ( W ) );
 
     W.extend( W, {
+        add: add,
         angleBetween: angleBetween,
         clamp: clamp,
         clipNormalized: clipNormalized,
         colorStringToHex: colorStringToHex,
         colorValuesToHex: colorValuesToHex,
         distance: distance,
-        getDynamicallyEasedInterpolation: getDynamicallyEasedInterpolation,
         dynamicEaseInterpolation: dynamicEaseInterpolation,
         fitScaleRatio: fitScaleRatio,
         floatToString: floatToString,
+        getDynamicallyEasedInterpolation: getDynamicallyEasedInterpolation,
         hexStringToColorArray: hexStringToColorArray,
         inRange: inRange,
         isClose: isClose,
         lerp: lerp,
         makeIntervalMap: makeIntervalMap,
         map: map,
+        MatrixStack: MatrixStack,
         normalize: normalize,
-        randomBetween: randomBetween,
-        shuffleArray: shuffleArray,
         PI: PI,
         PI_2: PI_2,
-        MatrixStack: MatrixStack,
-        add: add,
+        randomBetween: randomBetween,
+        shuffleArray: shuffleArray,
         wrap: wrap
     });
 
@@ -1967,12 +1989,12 @@ function rgbToHsv(r, g, b, ref){
   
     W.extend( W, {
         HSLGradient: HSLGradient,
-        RandomColorSequence: RandomColorSequence,
         hslToRgb: hslToRgb,
         hsvToRgb: hsvToRgb,
+        RandomColorSequence: RandomColorSequence,
+        randomHex: randomHex,
         rgbToHsl: rgbToHsl,
-        rgbToHsv: rgbToHsv,
-        randomHex: randomHex
+        rgbToHsv: rgbToHsv
     });
 
 } ( W ) );
@@ -2053,11 +2075,11 @@ var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA
         cssGradientString: cssGradientString,
         endsWith: endsWith,
         hsTld: hasTld,
-        startsWith: startsWith,
-        trim: trim,
-        join: join,
         isValidEmailAddress: isValidEmailAddress,
-        makeRedisKey: makeRedisKey
+        join: join,
+        makeRedisKey: makeRedisKey,
+        startsWith: startsWith,
+        trim: trim
     });
 
 } ( W ) );
