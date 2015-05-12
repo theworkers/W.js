@@ -32,6 +32,7 @@ Used in:
 [clone](core/clone.js),
 [compose](core/compose.js),
 [composeAsync](core/compose-async.js),
+[composePromisers](core/compose-promisers.js),
 [countedCallbackMixin](core/counted-callback-mixin.js),
 [cycle](core/cycle.js),
 [each](core/each.js),
