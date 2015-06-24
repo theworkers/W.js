@@ -42,6 +42,7 @@ Used in:
 [flatten](core/flatten.js),
 [flip](core/flip.js),
 [interpose](core/interpose.js),
+[isDefined](core/is-defined.js),
 [isNotOk](core/is-not-ok.js),
 [isOk](core/is-ok.js),
 [isUndefined](core/is-undefined.js),

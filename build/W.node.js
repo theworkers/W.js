@@ -249,6 +249,10 @@ function interpose( arr, seperator) {
     result.push( arr[ arr.length-1 ] );
     return result;
 }
+// Checks that all passed arguments are not undefined
+function isDefined () {
+	return Array.prototype.every.call( arguments, function (v) { return typeof v !== 'undefined'; } );
+}
 function isNotOk( obj ) {
     return !isOk( obj );
 }
@@ -1063,6 +1067,7 @@ extend( W, {
         flatten: flatten,
         flip: flip,
         interpose: interpose,
+        isDefined: isDefined,
         isNotOk: isNotOk,
         isNotUndefined : isNotUndefined,
         isOk: isOk,

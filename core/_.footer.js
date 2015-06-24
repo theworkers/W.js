@@ -15,6 +15,7 @@ extend( W, {
         flatten: flatten,
         flip: flip,
         interpose: interpose,
+        isDefined: isDefined,
         isNotOk: isNotOk,
         isNotUndefined : isNotUndefined,
         isOk: isOk,

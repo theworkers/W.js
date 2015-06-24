@@ -25,6 +25,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.flatten', typeof W.flatten );
     utils.checkExists( 'W.flip', typeof W.partial );
     utils.checkExists( 'W.interpose', typeof W.interpose );
+    utils.checkExists( 'W.isDefined', typeof W.isDefined );
     utils.checkExists( 'W.isNotOk', typeof W.isNotOk );
     utils.checkExists( 'W.isNotUndefined', typeof W.isNotUndefined );
     utils.checkExists( 'W.isOk', typeof W.isOk );
