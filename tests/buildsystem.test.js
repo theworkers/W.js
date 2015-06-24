@@ -38,6 +38,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.partialRight', typeof W.partialRight );
     utils.checkExists( 'W.partition', typeof W.partition );
     utils.checkExists( 'W.promise', typeof W.promise );
+    utils.checkExists( 'W.promiseWrap', typeof W.promiseWrap );
     utils.checkExists( 'W.range', typeof W.range );
     utils.checkExists( 'W.Router', typeof W.Router );
     utils.checkExists( 'W.Sequence', typeof W.Sequence );

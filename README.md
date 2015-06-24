@@ -55,6 +55,7 @@ Used in:
 [partialRight](core/partial-right.js),
 [partition](core/partition.js),
 [promise](core/promise.js),
+[promiseWrap](core/promiseWrap.js),
 [range](core/range.js),
 [rest](core/rest.js),
 [Router](core/router.js),

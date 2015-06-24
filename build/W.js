@@ -471,6 +471,20 @@ function partial( fn, arg1, arg2, etc ) {
 function partition ( arr, size ) {
     return arr.reduce( toPartition( size ), [] );
 }
+function promiseWrap( fn ) {
+    return function () {
+        return W.promise( function ( resolve, reject ) {
+            var result;
+            try {
+                result = fn();
+            } catch ( err )  {
+                return reject( err );
+            }
+            resolve.call( this, result );
+        });
+    };
+}
+
 // ## promise
 // Returns a promise when passed a function with the signature ( resolve<Function>, reject<Function> ).
 // ### Usage:
@@ -1062,6 +1076,7 @@ extend( W, {
         partialRight: partialRight,
         partition: partition,
         promise: promise,
+        promiseWrap: promiseWrap,
         range: range,
         rest: rest,
         Router: Router,

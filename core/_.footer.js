@@ -28,6 +28,7 @@ extend( W, {
         partialRight: partialRight,
         partition: partition,
         promise: promise,
+        promiseWrap: promiseWrap,
         range: range,
         rest: rest,
         Router: Router,
