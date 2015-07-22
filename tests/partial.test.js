@@ -13,12 +13,19 @@ describe( "partial", function () {
        assert.equal( typeof W.partial( W.add, 0 ), 'function' );
     });
 
-    describe( 'should return the correct result with 1 argument', function () {
+    it( 'should return the correct result with 1 argument', function () {
         assert.equal( W.partial( W.add, 2 )( 2 ), 4 );
     });
 
-    describe( 'should return the correct result with 4 argument', function () {
-        assert.equal( W.partial (W.add, 2, 10, 1, 1 )( 2, 1000 ), 1016 );
+    it( 'should return the correct result with 4 argument', function () {
+        assert.equal( W.partial ( W.add, 2, 10, 1, 1 )( 2, 1000 ), 1016 );
+    });
+
+    it( 'should maintain array when array passed as argument', function () {
+
+        function returnArgs () { return W.toArray( arguments ); }
+        var args = W.partial( returnArgs, 1, 2 )( 3, [ 4, 5 ] );
+        assert.equal( typeof args[ 3 ], 'object' );
     });
 
 });
