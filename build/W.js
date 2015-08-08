@@ -1169,10 +1169,9 @@ extend( W, {
     // Create the namespace
     var W = W || {};
 function add() {
-    var result = 0;
-    Array.prototype.forEach.call( arguments, function ( n ) { result += n; } );
-    return result;
+    return W.toArray( arguments ).reduce( function ( acc, v ) { return acc + v; }, 0 );
 }
+
 function angleBetween (center, point) {
     var angle = Math.atan2(center.x-point.x,center.y-point.y)*(180/Math.PI);
     if(angle < 0) {

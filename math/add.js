@@ -1,5 +1,3 @@
 function add() {
-    var result = 0;
-    Array.prototype.forEach.call( arguments, function ( n ) { result += n; } );
-    return result;
+    return W.toArray( arguments ).reduce( function ( acc, v ) { return acc + v; }, 0 );
 }
