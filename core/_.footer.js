@@ -35,6 +35,7 @@ extend( W, {
         Router: Router,
         Sequence: Sequence,
         sequence: sequence,
+        take: take,
         TickTimer: TickTimer,
         Timer: Timer,
         toArray: toArray,

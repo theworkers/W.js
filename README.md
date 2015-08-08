@@ -62,6 +62,7 @@ Used in:
 [Router](core/router.js),
 [Sequence](core/sequence.js),
 [sequence](core/sequence.js),
+[take](core/take.js),
 [TickTimer](core/tick-timer.js),
 [Timer](core/timer.js),
 [toArray](core/to-array.js),

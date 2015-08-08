@@ -44,6 +44,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.Router', typeof W.Router );
     utils.checkExists( 'W.Sequence', typeof W.Sequence );
     utils.checkExists( 'W.sequence', typeof W.sequence );
+    utils.checkExists( 'W.take', typeof W.take );
     utils.checkExists( 'W.TickTimer', typeof W.TickTimer );
     utils.checkExists( 'W.Timer', typeof W.Timer );
     utils.checkExists( 'W.toArray', typeof W.toArray );

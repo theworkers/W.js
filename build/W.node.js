@@ -965,6 +965,10 @@ function sequence (fn) {
     return new Sequence(fn);
 }
 
+function take ( arr, number ) {
+    return arr.slice( 0, number );
+}
+
 // Returns the elasped time since last
 // tick. Also overriding so the time
 // can be maually set so as not a
@@ -1124,6 +1128,7 @@ extend( W, {
         Router: Router,
         Sequence: Sequence,
         sequence: sequence,
+        take: take,
         TickTimer: TickTimer,
         Timer: Timer,
         toArray: toArray,
