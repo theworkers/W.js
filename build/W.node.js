@@ -288,6 +288,12 @@ function isUndefined () {
 function last( arr ) {
     return arr[ arr.length - 1 ];
 }
+function limit ( fn, maxArguments ) {
+    return function () {
+        return fn.apply( this, W.take( W.toArray( arguments ), maxArguments ) );
+    };
+}
+
 function list () {
     return new List();
 }
@@ -465,6 +471,8 @@ function Middleware ( options ) {
     };
 }
     
+function negate ( v ) { return !v; }
+
 function noop () {}
 
 // From Backbone
@@ -497,6 +505,16 @@ function objExtend (protoProps, classProps) {
 
 function Obj () {}
 Obj.extend = objExtend;
+function once ( fn ) {
+    var hasTriggered = false;
+    return function () {
+        if ( !hasTriggered ) {
+            hasTriggered = true;
+            fn();
+        }
+    };
+}
+
 function partialRight ( fn ) {
     var args = W.rest( W.toArray( arguments ) );
     return function () {
@@ -611,6 +629,11 @@ function promise ( fn ) {
         } 
     };
     return chain;
+}
+
+function randomFrom ( arr ) {
+    if ( arr.length < 1 ) { return; }
+    return arr[ Math.floor( Math.random() * arr.length ) ];
 }
 
 function range ( start, stop ) {
@@ -1115,15 +1138,19 @@ extend( W, {
         isUndefined: isUndefined,
         last: last,
         list: list,
+        limit: limit,
         loop: loop,
         Middleware: Middleware,
+        negate: negate,
         Object: Obj,
+        once: once,
         partial: partial,
         partialRight: partialRight,
         partition: partition,
         promise: promise,
         promiseWrap: promiseWrap,
         range: range,
+        randomFrom: randomFrom,
         rest: rest,
         Router: Router,
         Sequence: Sequence,
