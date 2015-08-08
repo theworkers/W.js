@@ -1,77 +1,113 @@
-// inspired by http://blog.jcoglan.com/2007/07/23/writing-a-linked-list-in-javascript/
+function list () {
+    return new List();
+}
+
 function List ( options ) {
     this.length = 0;
-    this.first = null;
-    this.last = null;
+    this._first = null;
+    this._last = null;
 }
 
 List.prototype = {
-    append : function( obj ) {
-        if ( this.first === null ) {
-            obj.prev = obj;
-            obj.next = obj;
-            this.first = obj;
-            this.last = obj;
-        } else {
-            obj.prev = this.last;
-            obj.next = this.first;
-            this.first.prev = obj;
-            this.last.next = obj;
-            this.last = obj;
+    append: function( obj ) {
+        var list = this;
+        Array.prototype.forEach.call( arguments, function ( obj ) {
+            if ( list._first === null ) {
+                obj._previous = obj;
+                obj._next = obj;
+                list._first = obj;
+                list._last = obj;
+            } else {
+                obj._previous = list._last;
+                obj._next = list._first;
+                list._first._previous = obj;
+                list._last._next = obj;
+                list._last = obj;
+            }
+            ++list.length;
+        });
+        return this;
+    },
+    prepend: function ( obj ) {
+        var list = this;
+        var objectsToAdd = toArray( arguments );
+        objectsToAdd.reverse().forEach( function ( obj ) {
+            if ( list._first === null ) {
+                obj._previous = obj;
+                obj._next = obj;
+                list._first = obj;
+                list._last = obj;
+            } else {
+                obj._previous = list._last;
+                obj._next = list._first;
+                list._first._previous = obj;
+                list._last._next = obj;
+                list._first = obj;
+            }
+            ++list.length;
+        });
+        return this;
+    },
+    insertAfter: function( after, obj ) {
+        obj._previous = after;
+        obj._next = after._next;
+        after._next._previous = obj;
+        after._next = obj;
+        if ( obj._previous == this._last ) { 
+            this._last = obj; 
         }
         ++this.length;
         return this;
     },
-    insertAfter : function( after, obj ) {
-        obj.prev = after;
-        obj.next = after.next;
-        after.next.prev = obj;
-        after.next = obj;
-        if ( obj.prev == this.last ) { 
-            this.last = obj; 
-        }
-        ++this.length;
-        return this;
-    },
-    remove : function ( obj ) {
+    remove: function ( obj ) {
         if ( this.length > 1 ) {
-            obj.prev.next = obj.next;
-            obj.next.prev = obj.prev;
-            if ( obj == this.first ) { this.first = obj.next; }
-            if ( obj == this.last ) { this.last = obj.prev; }
+            obj._previous._next = obj._next;
+            obj._next._previous = obj._previous;
+            if ( obj == this._first ) { this._first = obj._next; }
+            if ( obj == this._last ) { this._last = obj._previous; }
         } else {
-            this.first = null;
-            this.last = null;
+            this._first = null;
+            this._last = null;
         }
-        obj.prev = null;
-        obj.next = null;
+        obj._previous = null;
+        obj._next = null;
         --this.length;
         return this;
     },
-    at : function ( index ) {
+    at: function ( index ) {
         if ( index >= this.length ) {
             return false;
         }
-        var obj = this.first;
+        var obj = this._first;
         if ( index===0 ) {
             return obj;
         }  
         for ( var i=0; i<index; ++i ) {
-            obj = obj.next;
+            obj = obj._next;
         }
         return obj;
     },
-    each : function ( fn, context ) {
+    first: function () {
+        return this._first;
+    },
+    last: function () {
+        return this._last;
+    },
+    forEach: function ( fn, context ) {
         var bound = ( context ) ? W.bind( fn, context ) : fn;
-        var next = this.first;
+        var next = this._first;
         for ( var i=0; i<this.length; ++i ) {
             bound( next, i );
-            next = next.next;
+            next = next._next;
         }
         return this;
     },
-    sendToBack : function ( obj ) {
+    sendToBack: function ( obj ) {
         this.remove( obj );
         this.append( obj );
+    },
+    sendToFront: function ( obj ) {
+        this.remove( obj );
+        this.prepend( obj );
     }
 };

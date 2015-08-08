@@ -31,7 +31,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.isOk', typeof W.isOk );
     utils.checkExists( 'W.isUndefined', typeof W.isUndefined );
     utils.checkExists( 'W.last', typeof W.last );
-    utils.checkExists( 'W.List', typeof W.List );
+    utils.checkExists( 'W.list', typeof W.list );
     utils.checkExists( 'W.loop', typeof W.loop );
     utils.checkExists( 'W.Middleware', typeof W.Middleware );
     utils.checkExists( 'W.Object', typeof W.Object );

@@ -48,7 +48,7 @@ Used in:
 [isUndefined](core/is-undefined.js),
 [isNotUndefined](core/is-not-undefined.js),
 [last](core/last.js),
-[List](core/list.js),
+[list](core/list.js),
 [loop](core/loop.js),
 [Middleware](core/middleware.js),
 [Obj](core/object.js),

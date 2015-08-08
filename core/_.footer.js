@@ -21,7 +21,7 @@ extend( W, {
         isOk: isOk,
         isUndefined: isUndefined,
         last: last,
-        List: List,
+        list: list,
         loop: loop,
         Middleware: Middleware,
         Object: Obj,
