@@ -448,6 +448,16 @@ function loop ( iterations, fn, callback ) {
     return next;
 }
 
+function makeReporter( status, str ) {
+    var reportArgs = arguments;
+    return function () {
+        report.apply( this, reportArgs );
+        var calleeArgs = arguments;
+        return W.promise( function ( resolve, reject ) {
+            resolve.apply( this, calleeArgs );
+        });
+    };
+}
 function Middleware ( options ) {
     var middleware = [];
     
@@ -641,6 +651,9 @@ function range ( start, stop ) {
     return Array.apply( null, Array( stop - start ) ).map( function ( _, i ) { return start + i; } );
 }
 
+function report( status, str ) {
+    console.log( '[', status, ']', W.rest( W.toArray( arguments ) ).join( ' ' ) );
+}
 function rest ( arr, n ) {
 	return arr.splice( n || 1 );
 } 
@@ -1140,6 +1153,7 @@ extend( W, {
         list: list,
         limit: limit,
         loop: loop,
+        makeReporter: makeReporter,
         Middleware: Middleware,
         negate: negate,
         Object: Obj,
@@ -1151,6 +1165,7 @@ extend( W, {
         promiseWrap: promiseWrap,
         range: range,
         randomFrom: randomFrom,
+        report: report,
         rest: rest,
         Router: Router,
         Sequence: Sequence,

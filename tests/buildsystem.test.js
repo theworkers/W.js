@@ -34,6 +34,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.limit', typeof W.limit );
     utils.checkExists( 'W.list', typeof W.list );
     utils.checkExists( 'W.loop', typeof W.loop );
+    utils.checkExists( 'W.makeReporter', typeof W.makeReporter );
     utils.checkExists( 'W.Middleware', typeof W.Middleware );
     utils.checkExists( 'W.negate', typeof W.negate );
     utils.checkExists( 'W.Object', typeof W.Object );
@@ -43,6 +44,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.partition', typeof W.partition );
     utils.checkExists( 'W.promise', typeof W.promise );
     utils.checkExists( 'W.promiseWrap', typeof W.promiseWrap );
+    utils.checkExists( 'W.report', typeof W.report );
     utils.checkExists( 'W.range', typeof W.range );
     utils.checkExists( 'W.randomFrom', typeof W.randomFrom );
     utils.checkExists( 'W.Router', typeof W.Router );
