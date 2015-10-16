@@ -15,7 +15,7 @@
 //        .success( handler )
 //        .error( handler )
 //        .done( function ( err, a, b ) {} )
-//        .timeout( 2000 );
+//        .timeoutAfter( 2000 );
 //  
 // ### Methods
 // #### .success
