@@ -179,6 +179,7 @@ Used in:
 ### String
 
 [addCommas](string/add-commas.js),
+[capitalizeFirstLetter](string/capitalize-first-letter.js),
 [contains](string/contains.js),
 [cssGradientString](string/css-gradient-string.js),
 [endsWith](string/ends-with.js),

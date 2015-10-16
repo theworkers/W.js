@@ -2123,6 +2123,9 @@ var addCommas = function (number) {
     }
     else return number;
 };
+function capitalizeFirstLetter( string ) {
+    return string.charAt( 0 ).toUpperCase() + string.slice( 1 );
+}
 /** String has string */
 var contains = function (str, test) { return (str.indexOf(test) != -1 ); };
 
@@ -2174,6 +2177,7 @@ var startsWith = function(str, test) { return str.slice(0, test.length) == test;
 var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
     W.extend( W, {
         addCommas: addCommas,
+        capitalizeFirstLetter: capitalizeFirstLetter,
         contains: contains,
         cssGradientString: cssGradientString,
         endsWith: endsWith,

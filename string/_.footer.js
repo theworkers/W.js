@@ -1,5 +1,6 @@
     W.extend( W, {
         addCommas: addCommas,
+        capitalizeFirstLetter: capitalizeFirstLetter,
         contains: contains,
         cssGradientString: cssGradientString,
         endsWith: endsWith,

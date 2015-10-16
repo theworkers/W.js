@@ -127,6 +127,7 @@ describe( "Buildsystem for both client and node", function () {
 
     // ## String
     utils.checkExists( 'W.addCommas', typeof W.addCommas );
+    utils.checkExists( 'W.capitalizeFirstLetter', typeof W.capitalizeFirstLetter );
     utils.checkExists( 'W.contains', typeof W.contains );
     utils.checkExists( 'W.cssGradientString', typeof W.cssGradientString );
     utils.checkExists( 'W.endsWith', typeof W.endsWith );
