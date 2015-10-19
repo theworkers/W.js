@@ -595,8 +595,11 @@ function promise ( fn ) {
     var error = noop;
     var done = noop;
     var debug = false;
+    var state = promise.PENDING;
     var timeoutId;
     var resolve = function () {
+        if ( state !== 0 ) { return; }
+        state = promise.FULFILLED;
         clearTimeout( timeoutId );
         success.apply( this, arguments );
         Array.prototype.unshift.call( arguments, null );
@@ -606,6 +609,8 @@ function promise ( fn ) {
         }
     };
     var reject = function () {
+        if ( state !== 0 ) { return; }
+        state = promise.REJECTED;
         clearTimeout( timeoutId );
         if ( arguments.length === 0 ) {
             Array.prototype.unshift.call( arguments, new Error( 'Promise rejected' ) );
@@ -643,11 +648,17 @@ function promise ( fn ) {
         },
         debug : function () {
             debug = true;
+        },
+        getState : function () {
+            return state;
         } 
     };
     return chain;
 }
 
+promise.FULFILLED = 1;
+promise.PENDING = 0;
+promise.REJECTED = -1;
 function randomFrom ( arr ) {
     if ( arr.length < 1 ) { return; }
     return arr[ Math.floor( Math.random() * arr.length ) ];
