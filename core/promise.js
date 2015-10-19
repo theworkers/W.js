@@ -60,9 +60,16 @@ function promise ( fn ) {
            console.log( 'Promise rejected with', arguments );
         }
     };
-    setTimeout( function () {
-        fn ( resolve, reject );
-    }, 0 );
+    // Fire function
+    if ( typeof setImmediate === 'function' ) {
+        setImmediate( partial( fn, resolve, reject ) );
+    } 
+    else if ( typeof process === 'object' && typeof process.nextTick === 'function' ) {
+        process.nextTick( partial( fn, resolve, reject ) );
+    }
+    else {
+        setTimeout( partial( fn, resolve, reject ), 0 );
+    }
     var chain = {
         success : function ( fn ) { success = fn; return chain; },
         error : function ( fn ) { error = fn; return chain; },
