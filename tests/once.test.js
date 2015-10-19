@@ -6,17 +6,17 @@ if (typeof module !== 'undefined' && module.exports) {
 describe( 'once', function () {
 
     var i = 0;
-    function inc () { ++i; }
+    function inc ( num ) {i += num; }
 
     describe( 'when invloked', function () {
         
         var incOnce = W.once( inc );
 
-        incOnce();
-        incOnce();
-        incOnce();
-        incOnce();
-        incOnce();
+        incOnce(1);
+        incOnce(2);
+        incOnce(1);
+        incOnce(1);
+        incOnce(1);
         
         it( 'should return the correct value', function () {
             assert.equal( i, 1 );

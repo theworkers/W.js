@@ -3,7 +3,7 @@ function once ( fn ) {
     return function () {
         if ( !hasTriggered ) {
             hasTriggered = true;
-            fn();
+            fn.apply( this, arguments );
         }
     };
 }
