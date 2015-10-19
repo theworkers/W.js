@@ -75,6 +75,28 @@ describe( 'promise', function () {
         });
     });
 
+    it( 'should once fire either resolve or reject once', function ( done ) {
+        var count = 0;
+
+        var p = W.promise( function ( resolve, reject ) {
+            resolve();
+            reject();
+            reject();
+            resolve();
+        }).success( function  ( v ) {
+            ++count;
+        })
+        .error( function ( v ) {
+            ++count;
+        });
+
+        setTimeout( function () {
+            assert.equal( count, 1 );
+            done();
+        }, 100 );
+
+    });
+
     describe( 'timeoutAfter', function () {
         it ( 'should fire with a function ', function ( done ) {
             var t = 0;

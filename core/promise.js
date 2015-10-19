@@ -95,7 +95,7 @@ function promise ( fn ) {
         },
         getState : function () {
             return state;
-        } 
+        }
     };
     return chain;
 }

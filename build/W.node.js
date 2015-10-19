@@ -598,7 +598,7 @@ function promise ( fn ) {
     var state = promise.PENDING;
     var timeoutId;
     var resolve = function () {
-        if ( state !== 0 ) { return; }
+        //if ( state !== 0 ) { return; }
         state = promise.FULFILLED;
         clearTimeout( timeoutId );
         success.apply( this, arguments );
@@ -609,7 +609,7 @@ function promise ( fn ) {
         }
     };
     var reject = function () {
-        if ( state !== 0 ) { return; }
+        //if ( state !== 0 ) { return; }
         state = promise.REJECTED;
         clearTimeout( timeoutId );
         if ( arguments.length === 0 ) {
@@ -651,7 +651,7 @@ function promise ( fn ) {
         },
         getState : function () {
             return state;
-        } 
+        }
     };
     return chain;
 }
