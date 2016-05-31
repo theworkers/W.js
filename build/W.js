@@ -598,7 +598,7 @@ function promise ( fn ) {
     var state = promise.PENDING;
     var timeoutId;
     var resolve = function () {
-        //if ( state !== 0 ) { return; }
+        if ( state !== 0 ) { return; }
         state = promise.FULFILLED;
         clearTimeout( timeoutId );
         success.apply( this, arguments );
@@ -609,7 +609,7 @@ function promise ( fn ) {
         }
     };
     var reject = function () {
-        //if ( state !== 0 ) { return; }
+        if ( state !== 0 ) { return; }
         state = promise.REJECTED;
         clearTimeout( timeoutId );
         if ( arguments.length === 0 ) {
@@ -1336,6 +1336,9 @@ function inRange (test, min, max) {
     }
 }
 
+function inverseLerp ( start, end, scalar ) {
+	return ( scalar - start ) / ( end - start );
+}
 function isClose ( input, point, tolerance ) {
     return ( input > point - tolerance && input < point + tolerance );
 }
@@ -1737,6 +1740,7 @@ function sineEaseOut (p) {
         getDynamicallyEasedInterpolation: getDynamicallyEasedInterpolation,
         hexStringToColorArray: hexStringToColorArray,
         inRange: inRange,
+        inverseLerp: inverseLerp,
         isClose: isClose,
         lerp: lerp,
         makeIntervalMap: makeIntervalMap,

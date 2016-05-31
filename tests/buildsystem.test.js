@@ -79,7 +79,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.hexStringToColorArray', typeof W.hexStringToColorArray );
     utils.checkExists( 'W.inRange', typeof W.inRange );
     utils.checkExists( 'W.interpolations', typeof W.interpolations );
-    utils.checkExists( 'W.interpolations', typeof W.interpolations );
+    utils.checkExists( 'W.inverseLerp', typeof W.inverseLerp );
     utils.checkExists( 'W.isClose', typeof W.isClose );
     utils.checkExists( 'W.lerp', typeof W.lerp );
     utils.checkExists( 'W.makeIntervalMap', typeof W.makeIntervalMap );

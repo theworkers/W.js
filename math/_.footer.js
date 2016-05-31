@@ -12,6 +12,7 @@
         getDynamicallyEasedInterpolation: getDynamicallyEasedInterpolation,
         hexStringToColorArray: hexStringToColorArray,
         inRange: inRange,
+        inverseLerp: inverseLerp,
         isClose: isClose,
         lerp: lerp,
         makeIntervalMap: makeIntervalMap,
