@@ -1,7 +1,7 @@
 // ## promise
 // Returns a promise when passed a function with the signature ( resolve<Function>, reject<Function> ).
 // ### Usage:
-// 
+//
 //    function foo () {
 //        return W.promise( function ( resolve, reject )  {
 //            // if something went wrong
@@ -10,21 +10,21 @@
 //            resolve( 1, 2 );
 //        });
 //    }
-//    
+//
 //    foo()
 //        .success( handler )
 //        .error( handler )
 //        .done( function ( err, a, b ) {} )
 //        .timeoutAfter( 2000 );
-//  
+//
 // ### Methods
 // #### .success
 // Called when resolved with any arguments passed to it.
 // #### .error
 // Called upon rejected. If no arguments are provided, the handler will be called with a single argument
 // with is a n Error 'promise rejected'
-// #### .done ( fn<Function> ) 
-// Similar to a node callback, the signature of `fn` is `( errOrNull, arg1, arg2... )`. 
+// #### .done ( fn<Function> )
+// Similar to a node callback, the signature of `fn` is `( errOrNull, arg1, arg2... )`.
 // This handler will be called after `error` or `done` handlers. Like `error` if no arguments
 // are provided to a `reject` the error will be an Error 'promise rejected'
 // #### .timeout( delay<Number>, fn<Function>_optional_ )
@@ -41,8 +41,19 @@ function promise ( fn ) {
     var debug = false;
     var state = promise.PENDING;
     var timeoutId;
-    var resolve = function () {
-        if ( state !== 0 ) { return; }
+    var resolve;
+    var reject;
+    var thenables = [];
+
+    resolve = function () {
+        if ( state !== promise.PENDING ) { return; }
+        if ( thenables.length > 0 ) {
+            var thennable = thenables.shift();
+            thennable.onResolve.apply( this, arguments )
+                .success( function () { resolve.apply( this, arguments ); } )
+                .error( function () { reject.apply( this, arguments ); } );
+            return;
+        }
         state = promise.FULFILLED;
         clearTimeout( timeoutId );
         success.apply( this, arguments );
@@ -52,10 +63,18 @@ function promise ( fn ) {
            console.log( 'Promise resolved with', arguments );
         }
     };
-    var reject = function () {
-        if ( state !== 0 ) { return; }
+
+    reject = function () {
+        if ( state !== promise.PENDING ) { return; }
         state = promise.REJECTED;
         clearTimeout( timeoutId );
+        if ( thenables.length > 0 ) {
+            var thennable = thenables.shift();
+            if ( typeof ( thennable.onReject ) === 'function' ) {
+                thennable.onReject.apply( this, arguments );
+                return;
+            }
+        }
         if ( arguments.length === 0 ) {
             Array.prototype.unshift.call( arguments, new Error( 'Promise rejected' ) );
         }
@@ -65,10 +84,11 @@ function promise ( fn ) {
            console.log( 'Promise rejected with', arguments );
         }
     };
+
     // Fire function
     if ( typeof setImmediate === 'function' ) {
         setImmediate( partial( fn, resolve, reject ) );
-    } 
+    }
     else if ( typeof process === 'object' && typeof process.nextTick === 'function' ) {
         process.nextTick( partial( fn, resolve, reject ) );
     }
@@ -79,7 +99,11 @@ function promise ( fn ) {
         success : function ( fn ) { success = fn; return chain; },
         error : function ( fn ) { error = fn; return chain; },
         done : function ( fn ) { done = fn; return chain; },
-        timeoutAfter : function ( delay, fn ) { 
+        then : function ( onResolve, onReject ) {
+            thenables.push( { onResolve: onResolve, onReject: onReject } );
+            return chain;
+        },
+        timeoutAfter : function ( delay, fn ) {
             timeoutId = setTimeout( function () {
                 success = noop;
                 reject( new Error( 'Promise timed out' ) );
@@ -88,7 +112,7 @@ function promise ( fn ) {
                     fn();
                 }
             }, delay );
-            return chain; 
+            return chain;
         },
         debug : function () {
             debug = true;

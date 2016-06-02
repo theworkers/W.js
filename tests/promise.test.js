@@ -61,7 +61,7 @@ describe( 'promise', function () {
                     done();
                 });
             });
-        }); 
+        });
         describe( 'with reject', function ( done ) {
             it ( 'should be fired with an error', function ( done ) {
                 var p = W.promise( function ( resolve, reject ) {
@@ -118,10 +118,8 @@ describe( 'promise', function () {
     });
 
     describe( 'when two are triggered they', function () {
-
         var a = 0;
         var b = 0;
-
 
         W.promise( function ( resolve, reject ) {
             setTimeout( resolve, 5 );
@@ -145,6 +143,208 @@ describe( 'promise', function () {
                 done();
 
             }, 20 );
+
+        });
+    });
+
+    describe( 'thennable', function () {
+
+        describe( 'then * 2 ok', function () {
+            var a = false;
+            var b = false;
+            var c = false;
+            var d = false;
+
+            W
+                .promise( function ( resolve, reject ) {
+                    setTimeout( function () {
+                        var i = 0;
+                        a = ++i;
+                        resolve( i );
+                    }, 0 );
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            b = ++i;
+                            resolve( i );
+                        }, 0 )
+                    });
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            c = ++i;
+                            resolve( i );
+                        }, 0 );
+                    });
+                })
+                .success(function ( i ) {
+                    d = ++i;
+                });
+
+            it ( 'should hit success', function ( done ) {
+                setTimeout( function () {
+
+                    assert.equal( a, 1 );
+                    assert.equal( b, 2 );
+                    assert.equal( c, 3 );
+                    assert.equal( d, 4 );
+                    done();
+
+                }, 20);
+
+            });
+
+        });
+
+        describe( 'then * 3 with error on 2', function () {
+
+            var a = false;
+            var b = false;
+            var c = false;
+            var d = false;
+            var e = false;
+            var err = false;
+
+            W
+                .promise( function ( resolve, reject ) {
+                    setTimeout( function () {
+                        var i = 0;
+                        a = ++i;
+                        resolve( i );
+                    }, 0 );
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            b = ++i;
+                            resolve( i );
+                        }, 0 );
+                    });
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            c = ++i;
+                            reject( i );
+                        }, 0 );
+                    });
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            d = ++i;
+                            resolve( i );
+                        }, 0 );
+                    });
+                })
+                .success(function ( i ) {
+                    e = ++i;
+                })
+                .error( function ( i ) {
+                    err = true;
+                });
+
+            it ( 'should hit error', function ( done ) {
+                setTimeout( function () {
+
+                    assert.equal( a, 1 );
+                    assert.equal( b, 2 );
+                    assert.equal( c, 3 );
+                    assert.equal( d, false );
+                    assert.equal( e, false );
+                    assert.equal( err, true );
+                    done();
+
+                }, 20);
+
+            });
+
+
+        });
+
+        describe( 'then * 4 with then onReject on 2', function () {
+
+            var a = false;
+            var b = false;
+            var c = false;
+            var d = false;
+            var e = false;
+            var f = false;
+            var err_1 = false;
+            var err_2 = false;
+            var err_3 = false;
+
+            W
+                .promise( function ( resolve, reject ) {
+                    setTimeout( function () {
+                        var i = 0;
+                        a = ++i;
+                        resolve( i );
+                    }, 0 );
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            b = ++i;
+                            resolve( i );
+                        }, 0 );
+                    });
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            c = ++i;
+                            reject( i );
+                        }, 0 );
+                    });
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            d = ++i;
+                            resolve( i );
+                        }, 0 );
+                    });
+                }, function ( err ) {
+                    err_1 = true;
+                })
+                .then( function ( i ) {
+                    return W.promise( function ( resolve, reject ) {
+                        setTimeout( function () {
+                            e = ++i;
+                            resolve( i );
+                        }, 0 );
+                    });
+                }, function ( err ) {
+                    err_2 = true;
+                })
+                .success(function ( i ) {
+                    f = ++i;
+                })
+                .error( function ( i ) {
+                    err_3 = true;
+                });
+
+            it ( 'should hit error', function ( done ) {
+                setTimeout( function () {
+
+                    assert.equal( a, 1 );
+                    assert.equal( b, 2 );
+                    assert.equal( c, 3 );
+                    assert.equal( d, false );
+                    assert.equal( e, false );
+                    assert.equal( f, false );
+                    assert.equal( err_1, true );
+                    assert.equal( err_2, false );
+                    assert.equal( err_3, false );
+                    done();
+
+                }, 20);
+
+            });
+
 
         });
 
