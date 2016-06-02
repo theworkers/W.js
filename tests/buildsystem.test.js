@@ -55,7 +55,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.Timer', typeof W.Timer );
     utils.checkExists( 'W.toArray', typeof W.toArray );
     utils.checkExists( 'W.withoutLast', typeof W.withoutLast );
-    
+
     // ## Color
     utils.checkExists( 'W.HSLGradient', typeof W.HSLGradient );
     utils.checkExists( 'W.hslToRgb', typeof W.hslToRgb );
@@ -130,6 +130,7 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.capitalizeFirstLetter', typeof W.capitalizeFirstLetter );
     utils.checkExists( 'W.contains', typeof W.contains );
     utils.checkExists( 'W.cssGradientString', typeof W.cssGradientString );
+    utils.checkExists( 'W.domStr', typeof W.domStr );
     utils.checkExists( 'W.endsWith', typeof W.endsWith );
     utils.checkExists( 'W.hsTld', typeof W.hsTld );
     utils.checkExists( 'W.isValidEmailAddress', typeof W.isValidEmailAddress );
@@ -138,7 +139,6 @@ describe( "Buildsystem for both client and node", function () {
     utils.checkExists( 'W.trim', typeof W.trim );
 
     // ## Client
-    utils.checkExists( 'W.domStr', typeof W.domStr );
     utils.checkExists( 'W.wrappedContext', typeof W.wrappedContext );
 
 });

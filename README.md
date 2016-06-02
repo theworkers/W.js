@@ -1,6 +1,6 @@
 # W.js
 
-A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/). [The Workers](http://theworkers.net) are a creative coding studio in East London. 
+A snippets repository and welterweight library used by [The Workers](http://theworkers.net) maintained by [Ross Cairns](http://rosscairns.com/). [The Workers](http://theworkers.net) are a creative coding studio in East London.
 
 ![](https://img.shields.io/npm/v/w-js.svg?style=flat)
 ![](https://img.shields.io/npm/dm/w-js.svg)
@@ -22,7 +22,7 @@ Used in:
 [Wyldemag](http://archive.wyldemag.co.uk/),
 [51 Jay St](http://51jayst.com/),
 [David Newton](http://dnewton.com/)
- 
+
 ## Features
 
 ### Core
@@ -79,7 +79,6 @@ Used in:
 
 [clearContext](client/clear-context.js),
 [displayViewMixin](client/display-view-mixin.js),
-[domStr](client/dom-str.js),
 [JSONSocketConnection](client/json-socket-connection.js),
 [polyfillRequestAnimationFrame](client/polyfill-request-animation-frame.js),
 [touchEventViewMixin](client/touch-event-view-mixin.js),
@@ -182,6 +181,7 @@ Used in:
 [capitalizeFirstLetter](string/capitalize-first-letter.js),
 [contains](string/contains.js),
 [cssGradientString](string/css-gradient-string.js),
+[domStr](client/dom-str.js),
 [endsWith](string/ends-with.js),
 [hasTld](string/has-tld.js),
 [isValidEmailAddress](string/is-valid-email-address.js),
@@ -209,7 +209,7 @@ If W.js is included via NPM it can also be served to the client using the provid
 
     $ grunt build
 
-## Documentation 
+## Documentation
 
     $ grunt docs
 

@@ -2179,119 +2179,6 @@ var cssGradientString = function(stops) {
     return promise;
 };
 
-/** String string ends with 
-http://stackoverflow.com/a/646643/179015 */
-var endsWith = function(str, test) { return str.slice(-test.length) == test; };
-/** String contains a top level domain */
-var hasTld = function(str) { var result = str.match(/[a-z0-9.\-]+[.][a-z]{1,4}[\/:]?([\d]{1,5})?/m); return (!!result); };
-function isValidEmailAddress(address) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
-}
-function join () { return Array.prototype.join.call( arguments, ''  ); }
-// `makeRedisKey( 'ross', cairns )` === `'ross:cairns'` 
-function makeRedisKey() {
-    return W.interpose( Array.prototype.slice.call( arguments, 0 ), ":" ).join( '' );
-}
-/** String string starts with 
-http://stackoverflow.com/a/646643/179015 */
-var startsWith = function(str, test) { return str.slice(0, test.length) == test; };
-/** String trim leading and ending whitespace */
-var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
-    W.extend( W, {
-        addCommas: addCommas,
-        capitalizeFirstLetter: capitalizeFirstLetter,
-        contains: contains,
-        cssGradientString: cssGradientString,
-        endsWith: endsWith,
-        hsTld: hasTld,
-        isValidEmailAddress: isValidEmailAddress,
-        join: join,
-        makeRedisKey: makeRedisKey,
-        startsWith: startsWith,
-        trim: trim
-    });
-
-} ( W ) );
-(function ( W ) {
-    //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
-    // Create the namespace
-    var W = W || {};
-function clearContext( ctx, canvasEl ) {
-    // Store the current transformation matrix
-    ctx.save();
-    // Use the identity matrix while clearing the canvas
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-    // Restore the transform
-    ctx.restore();
-}
-
-////
-/// W.DisplayViewMixin
-// @author Ross Cairns
-// @notes  Not suitable for heavy usage (i.e. particles) as produces 
-//         many object with in turn will cause big
-//         garbage collections delays 
-    
-var displayViewMixin = {
-    setPosition : function (x, y) { // or setXY(array) or setXY({x:y:})
-        if (Object.prototype.toString.call( x ) === '[object Array]') {
-            this.x(x[0]);
-            this.y(y[1]);
-        } else if (typeof x === "number") {
-            this.x(x);
-            this.y(y);
-        } else {
-            this.x(x.x);
-            this.y(x.y);
-        }
-        return this;
-    },
-    setSize : function (width, height) { // or setSize(Array) or setSize({width:height}) or setSize(DOMElement)
-        if (!!width.tagName && typeof jQuery === 'function') {
-            this.width(jQuery(width).width());
-            this.height(jQuery(width).height());
-        } else if (!!width.tagName) {
-            this.width = width.width;
-            this.height = width.height;
-        } else if (typeof width === "number") {
-            this.width(width);
-            this.height(height);
-        } else if (Object.prototype.toString.call( width ) === '[object Array]') {
-            this.width(width[0]);
-            this.height(width[1]);
-        } else if (typeof(width) == 'function') {
-            this.width(width());
-            this.height(height());
-        } else {
-            var obj = width;
-            this.width(typeof(obj.width) == 'function' ? obj.width() : obj.width);
-            this.height(typeof(obj.height) == 'function' ? obj.height() : obj.height);
-        }
-        return this;
-    },
-    x : function (x) {
-        if (arguments.length > 0) { this._x = x; }
-        if (typeof this._x === "undefined") { this._x = 0; }
-        return this._x;
-    },
-    y : function (y) {
-        if (arguments.length > 0) { this._y = y; }
-        if (typeof this._y === "undefined") { this._y = 0; }
-        return this._y;
-    },
-    width : function (width)  {
-        if (arguments.length > 0) { this._width = width; }
-        if (typeof this._width === "undefined") { this._width = 0; }
-        return this._width;
-    },
-    height : function (height) {
-        if (arguments.length > 0) { this._height = height; }
-        if (typeof this._height === "undefined") { this._height = 0; }
-        return this._height;
-    }
-};
-
 // DOM String Creator
 //
 // Creates                                                                                                                                                                                                                   
@@ -2435,6 +2322,121 @@ function domStr () {
 
     return chain;
 }
+/** String string ends with 
+http://stackoverflow.com/a/646643/179015 */
+var endsWith = function(str, test) { return str.slice(-test.length) == test; };
+/** String contains a top level domain */
+var hasTld = function(str) { var result = str.match(/[a-z0-9.\-]+[.][a-z]{1,4}[\/:]?([\d]{1,5})?/m); return (!!result); };
+function isValidEmailAddress(address) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
+}
+function join () { return Array.prototype.join.call( arguments, ''  ); }
+// `makeRedisKey( 'ross', cairns )` === `'ross:cairns'` 
+function makeRedisKey() {
+    return W.interpose( Array.prototype.slice.call( arguments, 0 ), ":" ).join( '' );
+}
+/** String string starts with 
+http://stackoverflow.com/a/646643/179015 */
+var startsWith = function(str, test) { return str.slice(0, test.length) == test; };
+/** String trim leading and ending whitespace */
+var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
+    W.extend( W, {
+        addCommas: addCommas,
+        capitalizeFirstLetter: capitalizeFirstLetter,
+        contains: contains,
+        cssGradientString: cssGradientString,
+        domStr: domStr,
+        endsWith: endsWith,
+        hsTld: hasTld,
+        isValidEmailAddress: isValidEmailAddress,
+        join: join,
+        makeRedisKey: makeRedisKey,
+        startsWith: startsWith,
+        trim: trim
+    });
+
+} ( W ) );
+
+(function ( W ) {
+    //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
+    // Create the namespace
+    var W = W || {};
+function clearContext( ctx, canvasEl ) {
+    // Store the current transformation matrix
+    ctx.save();
+    // Use the identity matrix while clearing the canvas
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    // Restore the transform
+    ctx.restore();
+}
+
+////
+/// W.DisplayViewMixin
+// @author Ross Cairns
+// @notes  Not suitable for heavy usage (i.e. particles) as produces 
+//         many object with in turn will cause big
+//         garbage collections delays 
+    
+var displayViewMixin = {
+    setPosition : function (x, y) { // or setXY(array) or setXY({x:y:})
+        if (Object.prototype.toString.call( x ) === '[object Array]') {
+            this.x(x[0]);
+            this.y(y[1]);
+        } else if (typeof x === "number") {
+            this.x(x);
+            this.y(y);
+        } else {
+            this.x(x.x);
+            this.y(x.y);
+        }
+        return this;
+    },
+    setSize : function (width, height) { // or setSize(Array) or setSize({width:height}) or setSize(DOMElement)
+        if (!!width.tagName && typeof jQuery === 'function') {
+            this.width(jQuery(width).width());
+            this.height(jQuery(width).height());
+        } else if (!!width.tagName) {
+            this.width = width.width;
+            this.height = width.height;
+        } else if (typeof width === "number") {
+            this.width(width);
+            this.height(height);
+        } else if (Object.prototype.toString.call( width ) === '[object Array]') {
+            this.width(width[0]);
+            this.height(width[1]);
+        } else if (typeof(width) == 'function') {
+            this.width(width());
+            this.height(height());
+        } else {
+            var obj = width;
+            this.width(typeof(obj.width) == 'function' ? obj.width() : obj.width);
+            this.height(typeof(obj.height) == 'function' ? obj.height() : obj.height);
+        }
+        return this;
+    },
+    x : function (x) {
+        if (arguments.length > 0) { this._x = x; }
+        if (typeof this._x === "undefined") { this._x = 0; }
+        return this._x;
+    },
+    y : function (y) {
+        if (arguments.length > 0) { this._y = y; }
+        if (typeof this._y === "undefined") { this._y = 0; }
+        return this._y;
+    },
+    width : function (width)  {
+        if (arguments.length > 0) { this._width = width; }
+        if (typeof this._width === "undefined") { this._width = 0; }
+        return this._width;
+    },
+    height : function (height) {
+        if (arguments.length > 0) { this._height = height; }
+        if (typeof this._height === "undefined") { this._height = 0; }
+        return this._height;
+    }
+};
+
 
 
 // A socket connection which will attempt to say open
@@ -2676,7 +2678,6 @@ ZIndexStack.prototype.sendToFront = function (el) {
     W.extend( W, {
         clearContext: clearContext,
         displayViewMixin: displayViewMixin,
-        domStr: domStr,
         JSONSocketConnection: JSONSocketConnection,
         polyfillRequestAnimationFrame: polyfillRequestAnimationFrame,
         touchEventViewMixin: touchEventViewMixin,

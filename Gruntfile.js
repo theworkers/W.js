@@ -16,14 +16,13 @@ module.exports = function( grunt ) {
         .push( 'core/' ).pop()
         .push( 'math/' )
             .push( 'math/interpolations/' ).pop()
-        .pop() 
+        .pop()
         .push( 'color/' ).pop()
         .push( 'string/' ).pop()
         .addFile( 'node/_.header.js' )
         .addFile( 'node/_.export.js' )
         .addFile( 'redis/_.export.js' )
         .addFile( 'client/wrapped-context.js' )
-        .addFile( 'client/dom-str.js' )
         .addFile( 'node/_.footer.js' );
 
     // # Project configuration.
@@ -111,7 +110,7 @@ module.exports = function( grunt ) {
                 },
                 src : [ 'tests/**/*.test.js', 'tests/**/*.test.node.js' ]
             }
-        }, 
+        },
         // ## Tests – Client Side (Phantom.js)
         mocha : {
             'client' : {
@@ -139,7 +138,7 @@ module.exports = function( grunt ) {
             }
         }
     });
-    
+
     // # Task Names
     grunt.registerTask( 'test-client', [ 'mocha' ] );
     grunt.registerTask( 'test-node', [ 'mochaTest' ] );

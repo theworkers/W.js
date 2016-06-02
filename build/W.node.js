@@ -2179,122 +2179,6 @@ var cssGradientString = function(stops) {
     return promise;
 };
 
-/** String string ends with 
-http://stackoverflow.com/a/646643/179015 */
-var endsWith = function(str, test) { return str.slice(-test.length) == test; };
-/** String contains a top level domain */
-var hasTld = function(str) { var result = str.match(/[a-z0-9.\-]+[.][a-z]{1,4}[\/:]?([\d]{1,5})?/m); return (!!result); };
-function isValidEmailAddress(address) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
-}
-function join () { return Array.prototype.join.call( arguments, ''  ); }
-// `makeRedisKey( 'ross', cairns )` === `'ross:cairns'` 
-function makeRedisKey() {
-    return W.interpose( Array.prototype.slice.call( arguments, 0 ), ":" ).join( '' );
-}
-/** String string starts with 
-http://stackoverflow.com/a/646643/179015 */
-var startsWith = function(str, test) { return str.slice(0, test.length) == test; };
-/** String trim leading and ending whitespace */
-var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
-    W.extend( W, {
-        addCommas: addCommas,
-        capitalizeFirstLetter: capitalizeFirstLetter,
-        contains: contains,
-        cssGradientString: cssGradientString,
-        endsWith: endsWith,
-        hsTld: hasTld,
-        isValidEmailAddress: isValidEmailAddress,
-        join: join,
-        makeRedisKey: makeRedisKey,
-        startsWith: startsWith,
-        trim: trim
-    });
-
-} ( W ) );
-(function ( W ) {
-    //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
-    // Create the namespace
-    var W = W || {};
-    
-(function ( W ) {
-    // Create the namespace
-    var W = W || {};
-
-    // Allow selective requiring of node modules eg:
-    // `var CorsMiddleware = require( 'W' ).CorsMiddleware();
-    W.extend( W, {
-        corsMiddleware : function () { return  require( '../node/cors-middleware' ); },
-        WebSocketRepeater : function () { return  require( '../node/web-socket-repeater' ); },
-        liveReload : function () { return  require( '../node/live-reload' ); },
-        JSONSocketConnection : function () { return  require( '../node/json-socket-connection' ); },
-        jadeMiddleware : function () { return  require( '../node/jade-middleware' ); },
-        Geolocate : function () { return  require( '../node/geo-locate' ); },
-        cssPrefixerMiddleware : function () { return  require( '../node/css-prefixer-middleware' ); },
-        jsMiddleware : function () { return require( '../node/js-middleware' ); },
-        jsMinMiddleware : function () { return require( '../node/js-min-middleware' ); }
-    });
-
-}( W ));
-(function ( W ) {
-    // Create the namespace
-    var W = W || {};
-
-    // Allow selective requiring of node modules eg:
-    // `var CorsMiddleware = require( 'W' ).CorsMiddleware();
-    W.extend( W, {
-        redisReferrerStorage: function () { return  require( '../node/redis-timeseries-storage' ); },
-        redisSetStorage: function () { return  require( '../node/redis-set-storage' ); },
-        redisTimeseriesStorage: function () { return  require( '../node/redis-referrer-storage' ); }
-    });
-
-}( W ));
-
-var privateNamespace = {};
-(function(namespace){
-    /*
-     * Modified from 
-     * Canvas Context2D Wrapper <http://github.com/millermedeiros/CanvasContext2DWrapper>
-     * Released under WTFPL <http://sam.zoy.org/wtfpl/>.
-     * @author Miller Medeiros <http://millermedeiros.com>
-     * @version 1.0 (2010/08/08)
-     */
-    var _context2DMethods = 'arc arcTo beginPath bezierCurveTo clearRect clip closePath createImageData createLinearGradient createRadialGradient createPattern drawFocusRing drawImage fill fillRect fillText getImageData isPointInPath lineTo measureText moveTo putImageData quadraticCurveTo rect restore rotate save scale setTransform stroke strokeRect strokeText transform translate'.split(' '),
-        _context2DProperties = 'canvas fillStyle font globalAlpha globalCompositeOperation lineCap lineJoin lineWidth miterLimit shadowOffsetX shadowOffsetY shadowBlur shadowColor strokeStyle textAlign textBaseline'.split(' ');
-    function chainMethod(fn, scope, chainReturn){
-        return function(){
-            return fn.apply(scope, arguments) || chainReturn;
-        };
-    }
-    function chainProperty(propName, scope, chainReturn){
-        return function(value){
-            if(typeof value === 'undefined'){
-                return scope[propName];
-            }else{
-                scope[propName] = value;
-                return chainReturn;
-            }
-        };
-    }
-    namespace.Context2DWrapper = function(target){
-        var n = _context2DMethods.length, curProp;
-        this.context = target;
-        while(n--){
-            curProp = _context2DMethods[n];
-            this[curProp] = chainMethod(target[curProp], target, this);
-        }
-        n = _context2DProperties.length;
-        while(n--){
-            curProp = _context2DProperties[n];
-            this[curProp] = chainProperty(curProp, target, this);
-        }
-    };
-}(privateNamespace));
-
-var wrappedContext = function (context) {
-    return new privateNamespace.Context2DWrapper(context);
-};
-
 // DOM String Creator
 //
 // Creates                                                                                                                                                                                                                   
@@ -2438,8 +2322,125 @@ function domStr () {
 
     return chain;
 }
+/** String string ends with 
+http://stackoverflow.com/a/646643/179015 */
+var endsWith = function(str, test) { return str.slice(-test.length) == test; };
+/** String contains a top level domain */
+var hasTld = function(str) { var result = str.match(/[a-z0-9.\-]+[.][a-z]{1,4}[\/:]?([\d]{1,5})?/m); return (!!result); };
+function isValidEmailAddress(address) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
+}
+function join () { return Array.prototype.join.call( arguments, ''  ); }
+// `makeRedisKey( 'ross', cairns )` === `'ross:cairns'` 
+function makeRedisKey() {
+    return W.interpose( Array.prototype.slice.call( arguments, 0 ), ":" ).join( '' );
+}
+/** String string starts with 
+http://stackoverflow.com/a/646643/179015 */
+var startsWith = function(str, test) { return str.slice(0, test.length) == test; };
+/** String trim leading and ending whitespace */
+var trim = function(str) { return (str.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, "")); };
     W.extend( W, {
+        addCommas: addCommas,
+        capitalizeFirstLetter: capitalizeFirstLetter,
+        contains: contains,
+        cssGradientString: cssGradientString,
         domStr: domStr,
+        endsWith: endsWith,
+        hsTld: hasTld,
+        isValidEmailAddress: isValidEmailAddress,
+        join: join,
+        makeRedisKey: makeRedisKey,
+        startsWith: startsWith,
+        trim: trim
+    });
+
+} ( W ) );
+
+(function ( W ) {
+    //  _From the Penner equations and https://github.com/warrenm/AHEasing/blob/master/AHEasing/easing.c_  
+    // Create the namespace
+    var W = W || {};
+    
+(function ( W ) {
+    // Create the namespace
+    var W = W || {};
+
+    // Allow selective requiring of node modules eg:
+    // `var CorsMiddleware = require( 'W' ).CorsMiddleware();
+    W.extend( W, {
+        corsMiddleware : function () { return  require( '../node/cors-middleware' ); },
+        WebSocketRepeater : function () { return  require( '../node/web-socket-repeater' ); },
+        liveReload : function () { return  require( '../node/live-reload' ); },
+        JSONSocketConnection : function () { return  require( '../node/json-socket-connection' ); },
+        jadeMiddleware : function () { return  require( '../node/jade-middleware' ); },
+        Geolocate : function () { return  require( '../node/geo-locate' ); },
+        cssPrefixerMiddleware : function () { return  require( '../node/css-prefixer-middleware' ); },
+        jsMiddleware : function () { return require( '../node/js-middleware' ); },
+        jsMinMiddleware : function () { return require( '../node/js-min-middleware' ); }
+    });
+
+}( W ));
+(function ( W ) {
+    // Create the namespace
+    var W = W || {};
+
+    // Allow selective requiring of node modules eg:
+    // `var CorsMiddleware = require( 'W' ).CorsMiddleware();
+    W.extend( W, {
+        redisReferrerStorage: function () { return  require( '../node/redis-timeseries-storage' ); },
+        redisSetStorage: function () { return  require( '../node/redis-set-storage' ); },
+        redisTimeseriesStorage: function () { return  require( '../node/redis-referrer-storage' ); }
+    });
+
+}( W ));
+
+var privateNamespace = {};
+(function(namespace){
+    /*
+     * Modified from 
+     * Canvas Context2D Wrapper <http://github.com/millermedeiros/CanvasContext2DWrapper>
+     * Released under WTFPL <http://sam.zoy.org/wtfpl/>.
+     * @author Miller Medeiros <http://millermedeiros.com>
+     * @version 1.0 (2010/08/08)
+     */
+    var _context2DMethods = 'arc arcTo beginPath bezierCurveTo clearRect clip closePath createImageData createLinearGradient createRadialGradient createPattern drawFocusRing drawImage fill fillRect fillText getImageData isPointInPath lineTo measureText moveTo putImageData quadraticCurveTo rect restore rotate save scale setTransform stroke strokeRect strokeText transform translate'.split(' '),
+        _context2DProperties = 'canvas fillStyle font globalAlpha globalCompositeOperation lineCap lineJoin lineWidth miterLimit shadowOffsetX shadowOffsetY shadowBlur shadowColor strokeStyle textAlign textBaseline'.split(' ');
+    function chainMethod(fn, scope, chainReturn){
+        return function(){
+            return fn.apply(scope, arguments) || chainReturn;
+        };
+    }
+    function chainProperty(propName, scope, chainReturn){
+        return function(value){
+            if(typeof value === 'undefined'){
+                return scope[propName];
+            }else{
+                scope[propName] = value;
+                return chainReturn;
+            }
+        };
+    }
+    namespace.Context2DWrapper = function(target){
+        var n = _context2DMethods.length, curProp;
+        this.context = target;
+        while(n--){
+            curProp = _context2DMethods[n];
+            this[curProp] = chainMethod(target[curProp], target, this);
+        }
+        n = _context2DProperties.length;
+        while(n--){
+            curProp = _context2DProperties[n];
+            this[curProp] = chainProperty(curProp, target, this);
+        }
+    };
+}(privateNamespace));
+
+var wrappedContext = function (context) {
+    return new privateNamespace.Context2DWrapper(context);
+};
+
+    W.extend( W, {
         wrappedContext: wrappedContext
     });
 

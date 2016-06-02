@@ -3,6 +3,7 @@
         capitalizeFirstLetter: capitalizeFirstLetter,
         contains: contains,
         cssGradientString: cssGradientString,
+        domStr: domStr,
         endsWith: endsWith,
         hsTld: hasTld,
         isValidEmailAddress: isValidEmailAddress,
