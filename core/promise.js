@@ -49,10 +49,15 @@ function promise ( fn ) {
         if ( state !== promise.PENDING ) { return; }
         if ( thenables.length > 0 ) {
             var thennable = thenables.shift();
-            thennable.onResolve.apply( this, arguments )
-                .success( function () { resolve.apply( this, arguments ); } )
-                .error( function () { reject.apply( this, arguments ); } );
-            return;
+            if ( typeof thennable.onResolve === 'function' ) {
+                thennable.onResolve.apply( this, arguments )
+                    .success( function () { resolve.apply( this, arguments ); } )
+                    .error( function () { reject.apply( this, arguments ); } );
+                return;
+            } else {
+                resolve.apply( this, arguments );
+                return;
+            }
         }
         state = promise.FULFILLED;
         clearTimeout( timeoutId );
@@ -70,7 +75,7 @@ function promise ( fn ) {
         clearTimeout( timeoutId );
         if ( thenables.length > 0 ) {
             var thennable = thenables.shift();
-            if ( typeof ( thennable.onReject ) === 'function' ) {
+            if ( typeof thennable.onReject === 'function' ) {
                 thennable.onReject.apply( this, arguments );
                 return;
             }
@@ -100,6 +105,9 @@ function promise ( fn ) {
         error : function ( fn ) { error = fn; return chain; },
         done : function ( fn ) { done = fn; return chain; },
         then : function ( onResolve, onReject ) {
+            if ( typeof onResolve !== 'function' && typeof onReject !== 'function' ) {
+                return chain;
+            }
             thenables.push( { onResolve: onResolve, onReject: onReject } );
             return chain;
         },
