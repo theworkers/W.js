@@ -9,7 +9,7 @@ A snippets repository and welterweight library used by [The Workers](http://thew
 _Node Usage_  
 `npm install w-js`  
 *Browser Usage*  
-`wget https://github.com/theworkers/W.js/blob/master/build/W.min.js`
+`wget https://raw.githubusercontent.com/theworkers/W.js/master/build/W.min.js`
 
 Used in:  
 [After Dark](http://afterdark.io/),
